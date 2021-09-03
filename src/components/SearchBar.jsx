@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import TextInput from './TextInput';
+
 class SearchBar extends React.Component {
   render() {
     const {
@@ -13,7 +15,7 @@ class SearchBar extends React.Component {
     } = this.props;
     return (
       <form data-testid="search-bar-form">
-        uau
+        <TextInput value={ searchText } onChange={ onSearchTextChange } />
       </form>
     );
   }
