@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import FavoriteCheck from './FavoriteCheck';
 import TextInput from './TextInput';
+import Genre from './Genre';
 
 class SearchBar extends React.Component {
   render() {
@@ -18,6 +19,7 @@ class SearchBar extends React.Component {
       <form data-testid="search-bar-form">
         <TextInput value={ searchText } onChange={ onSearchTextChange } />
         <FavoriteCheck checked={ bookmarkedOnly } onChange={ onBookmarkedChange } />
+        <Genre value={ selectedGenre } onChange={ onSelectedGenreChange } />
       </form>
     );
   }
