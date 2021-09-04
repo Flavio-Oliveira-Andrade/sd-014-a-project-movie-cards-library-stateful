@@ -10,11 +10,16 @@ class SearchBar extends React.Component {
     //   Esse formulário deve apresentar o atributo data-testid="search-bar-form"
     return (
       <form data-testid="search-bar-form">
+        {/* 3 - Renderize um input do tipo texto dentro do formulário em <SearchBar /> */}
         <label data-testid="text-input-label">
           Inclui o texto
           <input type="text" value={ searchText } name="texto" onChange={ onSearchTextChange } data-testid="text-input" />
         </label>
-
+        {/* 4 - Renderize um input do tipo checkbox dentro do formulário em <SearchBar /> */}
+        <label data-testid="checkbox-input-label">
+          Mostrar somente favoritos
+          <input type="checkbox" name="name" value={ bookmarkedOnly } onChange={ onBookmarkedChange } data-testid="checkbox-input" checked={ bookmarkedOnly } />
+        </label>
       </form>
     );
   }
