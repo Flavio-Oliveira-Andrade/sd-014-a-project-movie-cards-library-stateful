@@ -15,6 +15,22 @@ class AddMovie extends React.Component {
     };
   }
 
+  handleClick = (event) => {
+    event.preventDefault();
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState(
+      {
+        subtitle: '',
+        title: '',
+        imagePath: '',
+        storyline: '',
+        rating: 0,
+        genre: 'action',
+      }
+    );
+  }
+
   handleChange = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -37,15 +53,7 @@ class AddMovie extends React.Component {
   );
 
   render() {
-    const { onClick } = this.props;
-    const {
-      subtitle,
-      title,
-      imagePath,
-      storyline,
-      rating,
-      genre,
-    } = this.state;
+    const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="title" data-testid="title-input-label">
@@ -62,7 +70,7 @@ class AddMovie extends React.Component {
         </label>
         <label htmlFor="storyline" data-testid="storyline-input-label">
           Sinopse
-          <textarea data-testid="storyline-input">
+          <textarea name="storyline" value={ storyline } data-testid="storyline-input" onChange={ this.handleChange }>
             { storyline }
           </textarea>
         </label>
@@ -72,12 +80,18 @@ class AddMovie extends React.Component {
         </label>
         <label htmlFor="genre" data-testid="genre-input-label">
           Gênero
-          <select data-testid="genre-input">
+          <select
+            name="genre"
+            data-testid="genre-input"
+            value={ genre }
+            onChange={ this.handleChange }
+          >
             <option data-testid="genre-option" value="action">Ação</option>
             <option data-testid="genre-option" value="comedy">Comédia</option>
-            <option  data-testid="genre-option" value="thriller">Suspense</option>
+            <option data-testid="genre-option" value="thriller">Suspense</option>
           </select>
         </label>
+        <button data-testid="send-button" onClick={ this.handleClick } type="button">Adicionar filme</button>
       </form>
     );
   }
