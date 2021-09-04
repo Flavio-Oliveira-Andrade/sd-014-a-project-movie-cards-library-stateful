@@ -1,5 +1,6 @@
 // implement SearchBar component here
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class SearchBar extends Component {
   render() {
@@ -16,6 +17,7 @@ class SearchBar extends Component {
         <label data-testid="text-input-label" htmlFor="textincluded">
           Inclui o texto:
           <input
+            data-testid="text-input"
             name="textincluded"
             type="text"
             value={ searchText }
@@ -34,11 +36,15 @@ class SearchBar extends Component {
         </label>
         <label data-testid="select-input-label" htmlFor="favorites">
           Filtrar por gênero
-          <select value={ selectedGenre } onChange={ onSelectedGenreChange }>
-            <option value="">Todos</option>
-            <option value="action">Ação</option>
-            <option value="comedy">Comédia</option>
-            <option value="thiller">Suspense</option>
+          <select
+            data-testid="select-input"
+            value={ selectedGenre }
+            onChange={ onSelectedGenreChange }
+          >
+            <option data-testid="select-option" value="">Todos</option>
+            <option data-testid="select-option" value="action">Ação</option>
+            <option data-testid="select-option" value="comedy">Comédia</option>
+            <option data-testid="select-option" value="thriller">Suspense</option>
           </select>
         </label>
       </form>
