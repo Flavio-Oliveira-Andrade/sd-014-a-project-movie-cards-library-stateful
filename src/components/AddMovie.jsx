@@ -1,14 +1,12 @@
 // implement AddMovie component here
 import React from 'react';
 import PropTypes from 'prop-types';
-import { property } from 'lodash';
 
 class AddMovie extends React.Component {
   constructor() {
     super();
 
     this.handleChange = this.handleChange.bind(this);
-    this.createInput = this.createInput.bind(this);
 
     this.state = {
       subtitle: '',
@@ -41,12 +39,23 @@ class AddMovie extends React.Component {
 
   render() {
     const { onClick } = this.props;
+    const { subtitle,
+      title,
+      imagePath,
+      storyline,
+      rating,
+      genre,
+    } = this.state;
 
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="title" data-testid="title-input-label">
           Título
           { this.createInput('title', 'text', title, 'title-input') }
+        </label>
+        <label htmlFor="subtitle" data-testid="title-input-label">
+          Subtítulo
+          { this.createInput('subtitle', 'text', subtitle, 'subtitle-input') }
         </label>
       </form>
     );
