@@ -1,8 +1,9 @@
 // implement SearchBar component here
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import InputGen from './InputGen';
 
-class SearchBar extends React.Component {
+class SearchBar extends Component {
   render() {
     const {
       searchText,
@@ -15,7 +16,28 @@ class SearchBar extends React.Component {
 
     return (
       <form action="" data-testid="search-bar-form">
-        <p>oi</p>
+        <InputGen
+          config={ ['text', 'text-input', 'text-input', searchText, null,
+            onSearchTextChange, 'Inclui o texto:'] }
+        />
+        <InputGen
+          config={ ['checkbox', 'checkbox-input', 'checkbox-input', null, bookmarkedOnly,
+            onBookmarkedChange, 'Mostrar somente favoritos'] }
+        />
+        <label htmlFor="select-input" data-testid="select-input-label">
+          <span>Filtrar por gênero</span>
+          <select
+            value={ selectedGenre }
+            onChange={ onSelectedGenreChange }
+            data-testid="select-input"
+            name="select-input"
+          >
+            <option value="" data-testid="select-option">Todos</option>
+            <option value="action" data-testid="select-option">Ação</option>
+            <option value="comedy" data-testid="select-option">Comédia</option>
+            <option value="thriller" data-testid="select-option">Suspense</option>
+          </select>
+        </label>
       </form>
     );
   }
