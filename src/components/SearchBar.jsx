@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 
 class SearchBar extends React.Component {
   render() {
+    //   1. Crie um componente chamado SearchBar
     const { onSelectedGenreChange, selectedGenre, onBookmarkedChange,
       bookmarkedOnly, onSearchTextChange, searchText } = this.props;
-    return (<p />);
+    return (<form data-testid="search-bar-form"> </form>);
   }
 }
 
