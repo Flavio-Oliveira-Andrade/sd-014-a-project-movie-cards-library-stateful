@@ -39,13 +39,7 @@ class AddMovie extends React.Component {
 
   render() {
     const { onClick } = this.props;
-    const { subtitle,
-      title,
-      imagePath,
-      storyline,
-      rating,
-      genre,
-    } = this.state;
+    const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
 
     return (
       <form data-testid="add-movie-form">
@@ -82,7 +76,13 @@ class AddMovie extends React.Component {
             <option value="thriller">Suspense</option>
           </select>
         </label>
-
+        <button
+          type="submit"
+          data-testid="send-button"
+          onClick={ onClick }
+        >
+          Adicionar Filme
+        </button>
       </form>
     );
   }
