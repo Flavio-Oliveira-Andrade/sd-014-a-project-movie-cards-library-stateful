@@ -26,6 +26,16 @@ class MovieLibrary extends Component {
     });
   }
 
+  movieFilter(searchText, bookmarkedOnly, selectedGenre, movies) {
+    return movies.filter((movie) => (
+      movie.title.includes(searchText)
+      || movie.subtitle.includes(searchText)
+      || movie.storyline.includes(searchText)
+    ))
+      .filter((movie) => movie.genre.includes(selectedGenre))
+      .filter((movie) => (bookmarkedOnly ? movie.bookmarked === true : movie));
+  }
+
   render() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
 
@@ -39,7 +49,9 @@ class MovieLibrary extends Component {
           onBookmarkedChange={ this.handleChange }
           onSelectedGenreChange={ this.handleChange }
         />
-        <MovieList movies={ movies } />
+        <MovieList
+          movies={ this.movieFilter(searchText, bookmarkedOnly, selectedGenre, movies) }
+        />
         <AddMovie />
       </div>
     );
