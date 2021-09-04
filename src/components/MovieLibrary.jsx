@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MovieList from './MovieList';
+import SearchBar from './SearchBar';
 
 class MovieLibrary extends React.Component {
   constructor(props) {
@@ -15,10 +16,26 @@ class MovieLibrary extends React.Component {
     };
   }
 
+  handleChange = ({ target }) => {
+    const { name } = target;
+
+    this.setState({
+      [name]: (target.type === 'checkbox' ? target.checked : target.value),
+    });
+  }
+
   render() {
-    const { movies } = this.state;
+    const { movies, searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <main>
+        <SearchBar
+          searchText={ searchText }
+          onSearchTextChange={ this.handleChange }
+          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.handleChange }
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ this.handleChange }
+        />
         <MovieList movies={ movies } />
       </main>
     );
