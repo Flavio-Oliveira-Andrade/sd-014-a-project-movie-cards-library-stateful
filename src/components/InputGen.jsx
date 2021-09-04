@@ -6,6 +6,20 @@ class InputGen extends Component {
     const { config } = this.props;
     const [type, name, dataTestId, value, checked, onChange, labelText] = config;
 
+    if (checked === false) {
+      return (
+        <label htmlFor={ dataTestId } data-testid={ `${dataTestId}-label` }>
+          <span>{ labelText }</span>
+          <input
+            type={ type }
+            name={ name }
+            data-testid={ dataTestId }
+            value={ value }
+            onChange={ onChange }
+          />
+        </label>
+      );
+    }
     return (
       <label htmlFor={ dataTestId } data-testid={ `${dataTestId}-label` }>
         <span>{ labelText }</span>
@@ -13,7 +27,6 @@ class InputGen extends Component {
           type={ type }
           name={ name }
           data-testid={ dataTestId }
-          value={ value }
           checked={ checked }
           onChange={ onChange }
         />
@@ -27,6 +40,7 @@ InputGen.propTypes = {
     PropTypes.string,
     PropTypes.func,
     PropTypes.number,
+    PropTypes.bool,
   ])).isRequired,
 };
 

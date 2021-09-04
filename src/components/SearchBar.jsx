@@ -17,25 +17,25 @@ class SearchBar extends Component {
     return (
       <form action="" data-testid="search-bar-form">
         <InputGen
-          config={ ['text', 'text-input', 'text-input', searchText, null,
+          config={ ['text', 'searchText', 'text-input', searchText, false,
             onSearchTextChange, 'Inclui o texto:'] }
         />
         <InputGen
-          config={ ['checkbox', 'checkbox-input', 'checkbox-input', null, bookmarkedOnly,
+          config={ ['checkbox', 'bookmarkedOnly', 'checkbox-input', false, bookmarkedOnly,
             onBookmarkedChange, 'Mostrar somente favoritos'] }
         />
-        <label htmlFor="select-input" data-testid="select-input-label">
-          <span>Filtrar por gênero</span>
+        <label htmlFor="selectedGenre" data-testid="select-input-label">
+          Filtrar por gênero
           <select
+            name="selectedGenre"
+            data-testid="select-input"
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }
-            data-testid="select-input"
-            name="select-input"
           >
-            <option value="" data-testid="select-option">Todos</option>
-            <option value="action" data-testid="select-option">Ação</option>
-            <option value="comedy" data-testid="select-option">Comédia</option>
-            <option value="thriller" data-testid="select-option">Suspense</option>
+            <option data-testid="select-option" value="">Todos</option>
+            <option data-testid="select-option" value="action">Ação</option>
+            <option data-testid="select-option" value="comedy">Comédia</option>
+            <option data-testid="select-option" value="thriller">Suspense</option>
           </select>
         </label>
       </form>
@@ -54,11 +54,11 @@ SearchBar.propTypes = {
 
 SearchBar.defaultProps = {
   searchText: '',
-  onSearchTextChange: null,
+  onSearchTextChange: false,
   bookmarkedOnly: false,
-  onBookmarkedChange: null,
+  onBookmarkedChange: false,
   selectedGenre: '',
-  onSelectedGenreChange: null,
+  onSelectedGenreChange: false,
 };
 
 export default SearchBar;

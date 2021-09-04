@@ -48,23 +48,23 @@ class AddMovie extends Component {
     return (
       <form action="" data-testid="add-movie-form">
         <InputGen
-          config={ ['text', 'title', 'title-input', title, null,
+          config={ ['text', 'title', 'title-input', title, false,
             this.handleChange, 'Título'] }
         />
         <InputGen
-          config={ ['text', 'subtitle', 'subtitle-input', subtitle, null,
+          config={ ['text', 'subtitle', 'subtitle-input', subtitle, false,
             this.handleChange, 'Subtítulo'] }
         />
         <InputGen
-          config={ ['img', 'imagePath', 'image-input', imagePath, null,
+          config={ ['img', 'imagePath', 'image-input', imagePath, false,
             this.handleChange, 'Imagem'] }
         />
         <InputGen
-          config={ ['text', 'storyline', 'storyline-input', storyline, null,
+          config={ ['text', 'storyline', 'storyline-input', storyline, false,
             this.handleChange, 'Sinopse'] }
         />
         <InputGen
-          config={ ['number', 'rating', 'rating-input', rating, null,
+          config={ ['number', 'rating', 'rating-input', rating, false,
             this.handleChange, 'Avaliação'] }
         />
         <label htmlFor="genre" data-testid="genre-input-label">
