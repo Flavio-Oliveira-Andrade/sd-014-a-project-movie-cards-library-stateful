@@ -1,24 +1,27 @@
 // implement AddMovie component here
-import React from 'react'
+import React from 'react';
 
 class AddMovie extends React.Component {
   constructor() {
-    super()
-    
+    super();
+
     this.state = {
       subtitle: '',
       title: '',
       imagePath: '',
       storyline: '',
       rating: 0,
-      genre: 'action'
-    }
+      genre: 'action',
+    };
   }
+
   render() {
+    const { onClick } = this.props;
 
     return (
+      <form data-testid="add-movie-form" />
     );
   }
 }
 
-export default AddMovie
+export default AddMovie;
