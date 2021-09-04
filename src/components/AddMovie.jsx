@@ -33,10 +33,9 @@ class AddMovie extends React.Component {
 
   handleChange = ({ target }) => {
     const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
 
     this.setState({
-      [name]: value,
+      [name]: (target.type === 'checkbox' ? target.checked : target.value),
     });
   }
 
@@ -70,7 +69,12 @@ class AddMovie extends React.Component {
         </label>
         <label htmlFor="storyline" data-testid="storyline-input-label">
           Sinopse
-          <textarea name="storyline" value={ storyline } data-testid="storyline-input" onChange={ this.handleChange }>
+          <textarea
+            name="storyline"
+            value={ storyline }
+            data-testid="storyline-input"
+            onChange={ this.handleChange }
+          >
             { storyline }
           </textarea>
         </label>
@@ -91,7 +95,9 @@ class AddMovie extends React.Component {
             <option data-testid="genre-option" value="thriller">Suspense</option>
           </select>
         </label>
-        <button data-testid="send-button" onClick={ this.handleClick } type="button">Adicionar filme</button>
+        <button data-testid="send-button" onClick={ this.handleClick } type="button">
+          Adicionar filme
+        </button>
       </form>
     );
   }
