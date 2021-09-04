@@ -32,6 +32,15 @@ class SearchBar extends Component {
             onChange={ onBookmarkedChange }
           />
         </label>
+        <label data-testid="select-input-label" htmlFor="favorites">
+          Filtrar por gênero
+          <select value={ selectedGenre } onChange={ onSelectedGenreChange }>
+            <option value="">Todos</option>
+            <option value="action">Ação</option>
+            <option value="comedy">Comédia</option>
+            <option value="thiller">Suspense</option>
+          </select>
+        </label>
       </form>
     );
   }
