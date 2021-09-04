@@ -26,11 +26,15 @@ class AddMovie extends React.Component {
 
   // funcao que cria um input automagicamente tendo como parametros inputName, inputType, value, dataTestId respectivamente
   // chamando a funcao que cria o input na linha 49, passando os parametros que o input terá */}
-  createInput = (inputName, inputType, value, dataTestId) => {
-    return(
-      <input name={ inputName } type={ inputType } value={ value } data-testid={ dataTestId } onChange={ this.handleChange } />
-    );
-  }
+  createInput = (inputName, inputType, value, dataTestId) => (
+    <input
+      name={ inputName }
+      type={ inputType }
+      value={ value }
+      data-testid={ dataTestId }
+      onChange={ this.handleChange }
+    />
+  );
 
   render() {
     const { onClick } = this.props;
@@ -47,6 +51,10 @@ class AddMovie extends React.Component {
         <label htmlFor="title" data-testid="title-input-label">
           Título
           { this.createInput('title', 'text', title, 'title-input') }
+        </label>
+        <label htmlFor="subtitle" data-testid="subtitle-input-label">
+          Subtítulo
+          { this.createInput('subtitle', 'text', subtitle, 'subtitle-input') }
         </label>
       </form>
     );
