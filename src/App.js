@@ -4,10 +4,7 @@ import './App.css';
 import MovieLibrary from './components/MovieLibrary';
 import movies from './data';
 
-
-
 class App extends React.Component {
-
   render () {
     return (
       <div className="App">
