@@ -16,6 +16,7 @@ class MovieLibrary extends Component {
       movies,
     };
     this.handleChange = this.handleChange.bind(this);
+    this.newMovieClick = this.newMovieClick.bind(this);
   }
 
   handleChange({ target }) {
@@ -23,6 +24,13 @@ class MovieLibrary extends Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
+    });
+  }
+
+  newMovieClick(movie) {
+    const { movies } = this.state;
+    this.setState({
+      movies: [...movies, movie],
     });
   }
 
@@ -52,7 +60,7 @@ class MovieLibrary extends Component {
         <MovieList
           movies={ this.movieFilter(searchText, bookmarkedOnly, selectedGenre, movies) }
         />
-        <AddMovie />
+        <AddMovie onClick={ this.newMovieClick } />
       </div>
     );
   }

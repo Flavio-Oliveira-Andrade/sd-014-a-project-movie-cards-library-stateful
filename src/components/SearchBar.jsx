@@ -20,10 +20,16 @@ class SearchBar extends Component {
           config={ ['text', 'searchText', 'text-input', searchText, false,
             onSearchTextChange, 'Inclui o texto:'] }
         />
-        <InputGen
-          config={ ['checkbox', 'bookmarkedOnly', 'checkbox-input', false, bookmarkedOnly,
-            onBookmarkedChange, 'Mostrar somente favoritos'] }
-        />
+        <label htmlFor="checkbox-input-label" data-testid="checkbox-input-label">
+          <span>Mostrar somente favoritos</span>
+          <input
+            type="checkbox"
+            name="bookmarkedOnly"
+            data-testid="checkbox-input"
+            checked={ bookmarkedOnly }
+            onChange={ onBookmarkedChange }
+          />
+        </label>
         <label htmlFor="selectedGenre" data-testid="select-input-label">
           Filtrar por gênero
           <select
