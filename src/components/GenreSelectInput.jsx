@@ -1,24 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import genderList from '../configData';
+import genreList from '../configData';
 
 class GenderSelectInput extends React.Component {
   render() {
     const { value, handler } = this.props;
     return (
-      <label htmlFor="genderSelect" data-testid="select-input-label">
+      <label htmlFor="genreSelect" data-testid="select-input-label">
         Filtrar por gênero :
         <select
-          name="genderSelect"
-          id="genderSelect"
+          name="genreSelect"
+          id="genreSelect"
           value={ value }
           onChange={ handler }
           data-testid="select-input"
         >
-          {genderList.map(({ gender, text }) => (
+          {genreList.map(({ genre, text }) => (
             <option
-              value={ gender }
-              key={ gender }
+              value={ genre }
+              key={ genre }
               data-testid="select-option"
             >
               {text}

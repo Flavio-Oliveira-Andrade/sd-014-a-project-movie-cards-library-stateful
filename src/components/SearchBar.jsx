@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SearchTextInput from './SearchTextInput';
 import BookmarkInput from './BookmarkInput';
-import GenderSelectInput from './GenderSelectInput';
+import GenreSelectInput from './GenreSelectInput';
 
 class SearchBar extends React.Component {
   render() {
@@ -19,7 +19,7 @@ class SearchBar extends React.Component {
 
         <BookmarkInput value={ bookmarkedOnly } handler={ onBookmarkedChange } />
 
-        <GenderSelectInput value={ selectedGenre } handler={ onSelectedGenreChange } />
+        <GenreSelectInput value={ selectedGenre } handler={ onSelectedGenreChange } />
       </form>
     );
   }

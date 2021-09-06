@@ -1,20 +1,20 @@
-const genderList = [
+const genreList = [
   {
-    gender: '',
+    genre: '',
     text: 'Todos',
   },
   {
-    gender: 'action',
+    genre: 'action',
     text: 'Ação',
   },
   {
-    gender: 'comedy',
+    genre: 'comedy',
     text: 'Comédia',
   },
   {
-    gender: 'thriller',
+    genre: 'thriller',
     text: 'Suspense',
   },
 ];
 
-export default genderList;
+export default genreList;
