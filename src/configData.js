@@ -1,4 +1,4 @@
-const genreList = [
+const genres = [
   {
     genre: '',
     text: 'Todos',
@@ -17,4 +17,13 @@ const genreList = [
   },
 ];
 
-export default genreList;
+const searchGenreTestIds = {
+  labelId: 'select-input-label',
+  inputId: 'select-input',
+  optionId: 'select-option ',
+};
+
+export {
+  genres,
+  searchGenreTestIds,
+};

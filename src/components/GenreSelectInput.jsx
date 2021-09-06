@@ -1,25 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import genreList from '../configData';
 
-class GenderSelectInput extends React.Component {
+class GenreSelectInput extends React.Component {
   render() {
-    const { value, handler } = this.props;
+    const { value, handler, genreList, testIds, title } = this.props;
+    const { labelId, inputId, optionId } = testIds;
     return (
-      <label htmlFor="genreSelect" data-testid="select-input-label">
-        Filtrar por gênero :
+      <label htmlFor="genre" data-testid={ labelId }>
+        { title }
         <select
-          name="genreSelect"
-          id="genreSelect"
+          name="genre"
+          id="genre"
           value={ value }
           onChange={ handler }
-          data-testid="select-input"
+          data-testid={ inputId }
         >
           {genreList.map(({ genre, text }) => (
             <option
               value={ genre }
               key={ genre }
-              data-testid="select-option"
+              data-testid={ optionId }
             >
               {text}
             </option>
@@ -31,14 +31,30 @@ class GenderSelectInput extends React.Component {
   }
 }
 
-GenderSelectInput.propTypes = {
+GenreSelectInput.propTypes = {
   handler: PropTypes.func,
   value: PropTypes.string,
+  genreList: PropTypes.arrayOf(PropTypes.shape({
+    genre: PropTypes.string,
+    text: PropTypes.string,
+  })).isRequired,
+  testIds: PropTypes.shape({
+    labelId: PropTypes.string,
+    inputId: PropTypes.string,
+    optionId: PropTypes.string,
+  }),
+  title: PropTypes.string,
 };
 
-GenderSelectInput.defaultProps = {
+GenreSelectInput.defaultProps = {
   handler: () => undefined,
   value: '',
+  testIds: {
+    labelId: '',
+    inputId: '',
+    optionId: '',
+  },
+  title: '',
 };
 
-export default GenderSelectInput;
+export default GenreSelectInput;

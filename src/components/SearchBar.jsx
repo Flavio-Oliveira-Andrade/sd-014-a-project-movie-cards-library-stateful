@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { searchGenreTestIds, genres } from '../configData';
+
 import SearchTextInput from './SearchTextInput';
 import BookmarkInput from './BookmarkInput';
 import GenreSelectInput from './GenreSelectInput';
@@ -19,7 +21,13 @@ class SearchBar extends React.Component {
 
         <BookmarkInput value={ bookmarkedOnly } handler={ onBookmarkedChange } />
 
-        <GenreSelectInput value={ selectedGenre } handler={ onSelectedGenreChange } />
+        <GenreSelectInput
+          value={ selectedGenre }
+          handler={ onSelectedGenreChange }
+          genreList={ genres }
+          testIds={ searchGenreTestIds }
+          title="Filtrar por gênero :"
+        />
       </form>
     );
   }
