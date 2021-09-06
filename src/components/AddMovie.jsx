@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AddMovieFormInput from './AddMovieFormInput';
+import AddMovieFormTextarea from './AddMovieFormTextarea';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -55,7 +56,12 @@ class AddMovie extends React.Component {
           string="Imagem"
           eventListener={ this.handleChange }
         />
-        <p>{ storyline }</p>
+        <AddMovieFormTextarea
+          name="storyline"
+          value={ storyline }
+          string="Sinopse"
+          eventListener={ this.handleChange }
+        />
         <p>{ rating }</p>
         <p>{ genre }</p>
         <p>{ eventListener }</p>
