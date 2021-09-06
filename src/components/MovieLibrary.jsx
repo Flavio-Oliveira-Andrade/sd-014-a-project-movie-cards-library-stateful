@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import SearchBar from './SearchBar';
 
 export default class MovieLibrary extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ export default class MovieLibrary extends Component {
   render() {
     return (
       <main>
-        
+        <SearchBar />
       </main>
     )
   }
