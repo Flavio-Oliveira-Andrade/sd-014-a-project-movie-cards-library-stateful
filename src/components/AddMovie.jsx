@@ -49,7 +49,12 @@ class AddMovie extends React.Component {
           string="Subtítulo"
           eventListener={ this.handleChange }
         />
-        <p>{ imagePath }</p>
+        <AddMovieFormInput
+          name="imagePath"
+          value={ imagePath }
+          string="Imagem"
+          eventListener={ this.handleChange }
+        />
         <p>{ storyline }</p>
         <p>{ rating }</p>
         <p>{ genre }</p>
