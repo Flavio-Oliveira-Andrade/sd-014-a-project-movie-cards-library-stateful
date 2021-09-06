@@ -69,7 +69,9 @@ class MovieLibrary extends React.Component {
 
   addNewMovie(movie) {
     const { movies } = this.state;
-    this.setState({ movies: [...movies, movie] });
+    const newMovie = movie;
+    newMovie.rating = parseFloat(movie.rating);
+    this.setState({ movies: [...movies, newMovie] });
   }
 
   render() {
