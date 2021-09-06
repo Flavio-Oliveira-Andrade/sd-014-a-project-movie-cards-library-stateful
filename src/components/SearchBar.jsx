@@ -20,7 +20,22 @@ class SearchBar extends React.Component {
         <p>{ onBookmarkedChange }</p>
         <p>{ selectedGenre }</p>
         <p>{ onSelectedGenreChange }</p>
-        <form data-testid="search-bar-form" />
+        <form data-testid="search-bar-form">
+          <label
+            id="text-input-label"
+            data-testid="text-input-label"
+            htmlFor="text-input"
+          >
+            Inclui o texto:
+            <input
+              id="text-input"
+              type="text"
+              data-testid="text-input"
+              value={ searchText }
+              onChange={ onSearchTextChange }
+            />
+          </label>
+        </form>
       </section>
     );
   }
