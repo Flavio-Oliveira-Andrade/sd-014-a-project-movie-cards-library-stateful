@@ -24,8 +24,8 @@ class GenreForm extends React.Component {
 }
 
 GenreForm.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+}.isRequired;
 
 export default GenreForm;

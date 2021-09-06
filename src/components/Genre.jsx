@@ -33,8 +33,8 @@ class Genre extends React.Component {
 }
 
 Genre.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+}.isRequired;
 
 export default Genre;
