@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
+import AddMovie from './AddMovie';
 
 export default class MovieLibrary extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ export default class MovieLibrary extends Component {
     };
     this.handleMoviesFilter = this.handleMoviesFilter.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleNewMovie = this.handleNewMovie.bind(this);
   }
 
   handleMoviesFilter(arr) {
@@ -44,6 +46,13 @@ export default class MovieLibrary extends Component {
     });
   }
 
+  handleNewMovie(obj) {
+    const { movies } = this.state
+    this.setState({
+      movies : [...movies, obj]
+    })
+  }
+
   render() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     return (
@@ -57,6 +66,7 @@ export default class MovieLibrary extends Component {
           onSelectedGenreChange={this.handleChange}
         />
         <MovieList movies={this.handleMoviesFilter(movies)} />
+        <AddMovie onClick={this.handleNewMovie} />
       </main>
     );
   }
