@@ -10,7 +10,7 @@ class Genre extends React.Component {
         <select
           id="select-genre"
           data-testid="select-input"
-          name="genre"
+          name="selectedGenre"
           value={ value }
           onChange={ onChange }
         >

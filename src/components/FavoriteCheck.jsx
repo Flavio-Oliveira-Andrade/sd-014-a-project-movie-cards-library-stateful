@@ -10,6 +10,7 @@ class FavoriteCheck extends React.Component {
         <input
           data-testid="checkbox-input"
           type="checkbox"
+          name="bookmarkedOnly"
           id="checkbox-favorite"
           checked={ checked }
           onChange={ onChange }
