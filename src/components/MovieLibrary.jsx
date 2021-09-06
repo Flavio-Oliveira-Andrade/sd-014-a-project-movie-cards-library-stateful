@@ -33,8 +33,10 @@ class MovieLibrary extends React.Component {
     return undefined;
   }
 
-  onClickAddMovie() {
-    return undefined;
+  onClickAddMovie(movie) {
+    this.setState((previousMovies) => ({
+      movie: [...previousMovies, movie],
+    }));
   }
 
   render() {
@@ -52,7 +54,7 @@ class MovieLibrary extends React.Component {
           onSelectedGenreChange={ this.onSelectedGenreChange }
         />
         <MovieList movies={ movies } />
-        <AddMovie onClickAddMovie={ this.onClickAddMovie } />
+        <AddMovie onClick={ this.onClickAddMovie } />
       </>
     );
   }

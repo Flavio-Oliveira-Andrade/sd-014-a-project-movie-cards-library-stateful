@@ -1,11 +1,14 @@
 // implement AddMovie component here
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
   constructor() {
     super();
 
     this.handleChange = this.handleChange.bind(this);
+    this.createInput = this.createInput.bind(this);
+    this.createOptions = this.createOptions.bind(this);
 
     this.state = {
       subtitle: '',
@@ -24,6 +27,39 @@ class AddMovie extends React.Component {
     });
   }
 
+  createInput(type, nameId, testId, value) {
+    return (
+      <input
+        type={ type }
+        name={ nameId }
+        id={ nameId }
+        data-testid={ testId }
+        value={ value }
+        onChange={ this.handleChange }
+      />
+    );
+  }
+
+  createOptions() {
+    const options = [
+      { value: 'action', name: 'Ação' },
+      { value: 'comedy', name: 'Comédia' },
+      { value: 'thriller', name: 'Suspense' },
+    ];
+
+    return (
+      options.map((option) => (
+        <option
+          key={ option.value }
+          value={ option.value }
+          data-testid="genre-option"
+        >
+          { option.name }
+        </option>
+      ))
+    );
+  }
+
   render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     const { onClick } = this.props;
@@ -32,36 +68,15 @@ class AddMovie extends React.Component {
       <form data-testid="add-movie-form">
         <label data-testid="title-input-label" htmlFor="title">
           Título
-          <input
-            type="text"
-            name="title"
-            id="title"
-            data-testid="title-input"
-            value={ title }
-            onChange={ this.handleChange }
-          />
+          { this.createInput('text', 'title', 'title-input', title) }
         </label>
         <label data-testid="subtitle-input-label" htmlFor="subtitle">
           Subtítulo
-          <input
-            type="text"
-            name="subtitle"
-            id="subtitle"
-            data-testid="subtitle-input"
-            value={ subtitle }
-            onChange={ this.handleChange }
-          />
+          { this.createInput('text', 'subtitle', 'subtitle-input', subtitle) }
         </label>
         <label data-testid="image-input-label" htmlFor="imagePath">
           Imagem
-          <input
-            type="text"
-            name="imagePath"
-            id="imagePath"
-            data-testid="image-input"
-            value={ imagePath }
-            onChange={ this.handleChange }
-          />
+          { this.createInput('text', 'imagePath', 'image-input', imagePath) }
         </label>
         <label data-testid="storyline-input-label" htmlFor="storyline">
           Sinopse
@@ -75,14 +90,7 @@ class AddMovie extends React.Component {
         </label>
         <label data-testid="rating-input-label" htmlFor="rating">
           Avaliação
-          <input
-            type="number"
-            name="rating"
-            id="rating"
-            data-testid="rating-input"
-            value={ rating }
-            onChange={ this.handleChange }
-          />
+          { this.createInput('number', 'rating', 'rating-input', rating) }
         </label>
         <label data-testid="genre-input-label" htmlFor="genre">
           Gênero
@@ -93,15 +101,19 @@ class AddMovie extends React.Component {
             value={ genre }
             onChange={ this.handleChange }
           >
-            <option value="action" data-testid="genre-option">Ação</option>
-            <option value="comedy" data-testid="genre-option">Comédia</option>
-            <option value="thriller" data-testid="genre-option">Suspense</option>
+            { this.createOptions() }
           </select>
         </label>
-        <button data-testid="send-button" onClick={ onClick }>Adicionar filme</button>
+        <button type="submit" data-testid="send-button" onClick={ onClick }>
+          Adicionar filme
+        </button>
       </form>
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default AddMovie;
