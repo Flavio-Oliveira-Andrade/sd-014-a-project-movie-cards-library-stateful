@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import TitleForm from './TitleForm';
 import SubtitleForm from './SubtitleForm';
 import ImageForm from './ImageForm';
+import SinopseForm from './SinopseForm';
 class AddMovie extends React.Component {
   constructor() {
     super();
@@ -30,6 +31,7 @@ class AddMovie extends React.Component {
         <TitleForm value={ title } onChange={ this.handleChange } />
         <SubtitleForm value={ subtitle } onChange={ this.handleChange } />
         <ImageForm value={ imagePath } onChange={ this.handleChange } />
+        <SinopseForm value={ storyline } onChange={ this.handleChange } />
       </form>
     );
   }
