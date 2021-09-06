@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import TitleForm from './TitleForm';
 class AddMovie extends React.Component {
   constructor() {
     super();
@@ -11,13 +12,20 @@ class AddMovie extends React.Component {
       rating: 0,
       genre: 'action',
     };
+    this.handleChange = this.handleChange.bind(this);
   }
 
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
+
   render() {
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     const { onClick } = this.props;
     return (
       <form data-testid="add-movie-form">
-        OI
+        <TitleForm value={ title } onChange={ this.handleChange } name="title" />
       </form>
     );
   }
