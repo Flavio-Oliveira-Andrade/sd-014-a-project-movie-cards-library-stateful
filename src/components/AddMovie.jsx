@@ -34,6 +34,7 @@ class AddMovie extends React.Component {
         <p>{ rating }</p>
         <p>{ genre }</p>
         <p>{ eventListener }</p>
+        <form data-testid="add-movie-form" />
       </div>
     );
   }
