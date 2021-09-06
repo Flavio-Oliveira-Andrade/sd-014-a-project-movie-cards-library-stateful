@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class AddMovie extends Component {
   constructor() {
@@ -78,7 +79,8 @@ export default class AddMovie extends Component {
               name='storyline'
               onChange={this.handleChange}
               data-testid='storyline-input'
-            ></textarea>
+            >
+            </textarea>
           </label>
           <label data-testid='rating-input-label' htmlFor='rating'>
             Avaliação
@@ -109,4 +111,8 @@ export default class AddMovie extends Component {
       </section>
     );
   }
+}
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
 }
