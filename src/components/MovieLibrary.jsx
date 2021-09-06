@@ -21,16 +21,22 @@ class MovieLibrary extends React.Component {
     };
   }
 
-  onSearchTextChange() {
-    return undefined;
+  onSearchTextChange({ target }) {
+    this.setState({
+      searchText: target.value,
+    });
   }
 
-  onBookmarkedChange() {
-    return undefined;
+  onBookmarkedChange({ target }) {
+    this.setState({
+      bookmarkedOnly: target.checked,
+    });
   }
 
-  onSelectedGenreChange() {
-    return undefined;
+  onSelectedGenreChange({ target }) {
+    this.setState({
+      selectedGenre: target.value,
+    });
   }
 
   onClickAddMovie(movie) {
