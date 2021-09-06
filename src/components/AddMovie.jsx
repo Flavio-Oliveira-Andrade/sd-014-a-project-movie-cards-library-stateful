@@ -15,8 +15,8 @@ class AddMovie extends React.Component {
   render() {
     const { onCLick } = this.props;
     return(
-      <div>
-      </div>
+      <form data-testid="add-movie-form">
+      </form>
     )
   }
 }
