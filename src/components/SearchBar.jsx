@@ -1,5 +1,9 @@
+/* eslint-disable max-lines-per-function */
 import React from 'react';
 import PropTypes from 'prop-types';
+import SearchFormInputText from './SearchFormInputText';
+import SearchFormInputCheckbox from './SearchFormInputCheckbox';
+import SearchFormSelect from './SearchFormSelect';
 
 class SearchBar extends React.Component {
   render() {
@@ -13,39 +17,19 @@ class SearchBar extends React.Component {
     } = this.props;
     return (
       <section>
-        <h1>Hello React!</h1>
-        <p>{ onBookmarkedChange }</p>
-        <p>{ selectedGenre }</p>
-        <p>{ onSelectedGenreChange }</p>
         <form data-testid="search-bar-form">
-          <label
-            id="text-input-label"
-            data-testid="text-input-label"
-            htmlFor="text-input"
-          >
-            Inclui o texto:
-            <input
-              id="text-input"
-              type="text"
-              data-testid="text-input"
-              value={ searchText }
-              onChange={ onSearchTextChange }
-            />
-          </label>
-          <label
-            id="checkbox-input-label"
-            data-testid="checkbox-input-label"
-            htmlFor="checkbox-input"
-          >
-            <input
-              id="checkbox-input"
-              type="checkbox"
-              data-testid="checkbox-input"
-              checked={ bookmarkedOnly }
-              onChange={ onBookmarkedChange }
-            />
-            Mostrar somente favoritos
-          </label>
+          <SearchFormInputText
+            value={ searchText }
+            eventListener={ onSearchTextChange }
+          />
+          <SearchFormInputCheckbox
+            value={ bookmarkedOnly }
+            eventListener={ onBookmarkedChange }
+          />
+          <SearchFormSelect
+            value={ selectedGenre }
+            eventListener={ onSelectedGenreChange }
+          />
         </form>
       </section>
     );
