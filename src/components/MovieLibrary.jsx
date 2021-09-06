@@ -25,9 +25,9 @@ class MovieLibrary extends Component {
   }
 
   newMovie(movie) {
-    const { movies } = this.state;
-    movies.push(movie);
-    this.setState(({ movies }));
+    this.setState(({ movies }) => ({
+      movies: [...movies, movie],
+    }));
   }
 
   render() {
