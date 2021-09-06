@@ -14,10 +14,34 @@ class SearchBar extends React.Component {
     } = this.props;
     return (
       <form data-testid="search-bar-form">
-        <label htmlFor="text-input-label" data-testid="text-input-label">
-          Inclui o texto
-          <input id="text-input-label" />
-        </label>
+        <div className="d-flex">
+          <label htmlFor="text-input-label" data-testid="text-input-label">
+            Inclui o texto
+            <input
+              id="text-input-label"
+              type="text"
+              value={ searchText }
+              onChange={ onSearchTextChange }
+              data-testid="text-input"
+
+            />
+          </label>
+        </div>
+        <div className="d-flex">
+          <label
+            htmlFor="text-input-label"
+            data-testid="checkbox-input-label"
+          >
+            Mostrar somente favoritos
+            <input
+              id="text-input-label"
+              type="checkbox"
+              checked={ bookmarkedOnly }
+              onChange={ onBookmarkedChange }
+              data-testid="checkbox-input"
+            />
+          </label>
+        </div>
       </form>
     );
   }
