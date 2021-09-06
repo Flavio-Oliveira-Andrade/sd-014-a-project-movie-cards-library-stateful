@@ -24,10 +24,9 @@ export default class MovieLibrary extends Component {
     let resultArr = [...arr];
     if (searchText) {
       resultArr = arr.filter(
-        (movie) =>
-          movie.title.toLowerCase().includes(searchText) ||
-          movie.subtitle.toLowerCase().includes(searchText) ||
-          movie.storyline.toLowerCase().includes(searchText)
+        (movie) => movie.title.toLowerCase().includes(searchText)
+          || movie.subtitle.toLowerCase().includes(searchText)
+          || movie.storyline.toLowerCase().includes(searchText),
       );
     }
     if (selectedGenre) {
@@ -48,10 +47,10 @@ export default class MovieLibrary extends Component {
   }
 
   handleNewMovie(obj) {
-    const { movies } = this.state
+    const { movies } = this.state;
     this.setState({
-      movies : [...movies, obj]
-    })
+      movies: [...movies, obj],
+    });
   }
 
   render() {
@@ -59,15 +58,15 @@ export default class MovieLibrary extends Component {
     return (
       <main>
         <SearchBar
-          searchText={searchText}
-          onSearchTextChange={this.handleChange}
-          bookmarkedOnly={bookmarkedOnly}
-          onBookmarkedChange={this.handleChange}
-          selectedGenre={selectedGenre}
-          onSelectedGenreChange={this.handleChange}
+          searchText={ searchText }
+          onSearchTextChange={ this.handleChange }
+          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.handleChange }
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ this.handleChange }
         />
-        <MovieList movies={this.handleMoviesFilter(movies)} />
-        <AddMovie onClick={this.handleNewMovie} />
+        <MovieList movies={ this.handleMoviesFilter(movies) } />
+        <AddMovie onClick={ this.handleNewMovie } />
       </main>
     );
   }
@@ -75,4 +74,4 @@ export default class MovieLibrary extends Component {
 
 MovieLibrary.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
-}
+};
