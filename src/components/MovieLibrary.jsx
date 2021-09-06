@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
+import AddMovie from './AddMovie';
 
 class MovieLibrary extends React.Component {
   constructor(props) {
@@ -8,6 +10,7 @@ class MovieLibrary extends React.Component {
     const { movies } = this.props;
     this.handleChange = this.handleChange.bind(this);
     this.movieFilter = this.movieFilter.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
@@ -24,13 +27,20 @@ class MovieLibrary extends React.Component {
     );
   }
 
+  handleClick(movie) {
+    const { movies } = this.state;
+    this.setState({
+      movies: [...movies, movie],
+    });
+  }
+
+  // Filtro retirado do PR do Marcello, T14A
   movieFilter({ searchText, bookmarkedOnly, selectedGenre, movies }) {
-    return movies.filter(
-      (movie) => movie.title.includes(searchText)
-      || movie.subtitle.includes(searchText)
-      || movie.storyline.includes(searchText),
-    ).filter((movie) => (bookmarkedOnly ? movie.bookmarked : true))
-      .filter((movie) => (selectedGenre ? movie.genre === selectedGenre : true));
+    return movies.filter((movie) => (bookmarkedOnly ? movie.bookmarked : true))
+      .filter((movie) => (selectedGenre ? movie.genre === selectedGenre : true))
+      .filter((movie) => movie.title.includes(searchText)
+          || movie.subtitle.includes(searchText)
+          || movie.storyline.includes(searchText));
   }
 
   render() {
@@ -46,9 +56,14 @@ class MovieLibrary extends React.Component {
           onSelectedGenreChange={ this.handleChange }
         />
         <MovieList movies={ this.movieFilter(this.state) } />
+        <AddMovie onClick={ this.handleClick } />
       </main>
     );
   }
 }
+
+MovieLibrary.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default MovieLibrary;
