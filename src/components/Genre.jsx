@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 class Genre extends React.Component {
   render() {
-    const { value, onChange, name } = this.props;
+    const { value, onChange } = this.props;
     return (
       <label htmlFor="select-genre" data-testid="select-input-label">
         Filtrar por gênero
         <select
           id="select-genre"
           data-testid="select-input"
-          name={ name }
+          name="genre"
           value={ value }
           onChange={ onChange }
         >
@@ -35,7 +35,6 @@ class Genre extends React.Component {
 Genre.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
 };
 
 export default Genre;

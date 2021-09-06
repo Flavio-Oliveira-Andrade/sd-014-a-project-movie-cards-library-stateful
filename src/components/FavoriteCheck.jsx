@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class FavoriteCheck extends React.Component {
   render() {
-    const { checked, onChange, name } = this.props;
+    const { checked, onChange } = this.props;
     return (
       <label htmlFor="checkbox-favorite" data-testid="checkbox-input-label">
         Mostrar somente favoritos
@@ -11,7 +11,6 @@ class FavoriteCheck extends React.Component {
           data-testid="checkbox-input"
           type="checkbox"
           id="checkbox-favorite"
-          name={ name }
           checked={ checked }
           onChange={ onChange }
         />
@@ -23,7 +22,6 @@ class FavoriteCheck extends React.Component {
 FavoriteCheck.propTypes = {
   checked: PropTypes.bool.isRequired,
   onChange: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
 };
 
 export default FavoriteCheck;
