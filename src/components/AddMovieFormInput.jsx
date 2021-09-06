@@ -1,0 +1,40 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
+class AddMovieFormInput extends React.Component {
+  render() {
+    const { name, value, string, eventListener } = this.props;
+    return (
+      <label
+        data-testid={ ` ${name}-input-label` }
+        htmlFor={ `${name}-text-input` }
+      >
+        { string }
+        <input
+          id={ `${name}-text-input` }
+          type="text"
+          data-testid={ `${name}-input` }
+          name={ name }
+          value={ value }
+          onChange={ eventListener }
+        />
+      </label>
+    );
+  }
+}
+
+AddMovieFormInput.defaultProps = {
+  name: '',
+  value: '',
+  string: '',
+  eventListener: '',
+};
+
+AddMovieFormInput.propTypes = {
+  name: PropTypes.string,
+  value: PropTypes.string,
+  string: PropTypes.string,
+  eventListener: PropTypes.func,
+};
+
+export default AddMovieFormInput;
