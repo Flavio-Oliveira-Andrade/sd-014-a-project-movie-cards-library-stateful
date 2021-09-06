@@ -22,7 +22,7 @@ class AddMovie extends Component {
   onClick = () => {};
 
   render() {
-    const { title } = this.state; // Desestrutura objeto state para não agarrar no lint. Aula 12.1 - min. 51;
+    const { title, subtitle } = this.state; // Desestrutura objeto state para não agarrar no lint. Aula 12.1 - min. 51;
     return (
       <form data-testid="add-movie-form">
         <label data-testid="title-input-label" htmlFor="title-input">
@@ -31,7 +31,16 @@ class AddMovie extends Component {
             data-testid="title-input"
             type="text"
             name="title-input"
-            onChange={ this.handleChange }
+            onChange={ title }
+          />
+        </label>
+        <label data-testid="subtitle-input-label" htmlFor="subtitle-input">
+          Subtítulo
+          <input
+            data-testid="subtitle-input"
+            type="text"
+            name="subtitle-input"
+            onChange={ subtitle }
           />
         </label>
       </form>
