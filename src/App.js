@@ -5,7 +5,7 @@ import MovieLibrary from './components/MovieLibrary';
 import movies from './data';
 
 class App extends React.Component {
-  render () {
+  render() {
     return (
       <div className="App">
         <Header />
@@ -13,7 +13,6 @@ class App extends React.Component {
       </div>
     );
   }
-
 }
 
 export default App;
