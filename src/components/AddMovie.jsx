@@ -22,6 +22,19 @@ export default class AddMovie extends Component {
     });
   }
 
+  handleButton = () => {
+    const { onClick } = this.props;
+    onClick();
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    })
+  }
+
   render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
@@ -90,6 +103,7 @@ export default class AddMovie extends Component {
               <option data-testid="genre-option" value="thriller">Suspense</option>
             </select>
           </label>
+          <button type='button' data-testid="send-button" onClick={this.handleButton}>Adicionar filme</button>
          
         </form>
       </section>
