@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 
 class SearchTextInput extends React.Component {
   render() {
-    const { value, testIds, handler } = this.props;
+    const { value, handler } = this.props;
     return (
-      <label htmlFor="searchText" data-testid={ testIds.labelId }>
+      <label htmlFor="searchText" data-testid="text-input-label">
         Inclui o texto:
         <input
           type="text"
           name="searchText"
           id="searchText"
           value={ value }
-          data-testid={ testIds.inputId }
+          data-testid="text-input"
           onChange={ handler }
         />
       </label>
@@ -23,19 +23,11 @@ class SearchTextInput extends React.Component {
 SearchTextInput.propTypes = {
   handler: PropTypes.func,
   value: PropTypes.string,
-  testIds: PropTypes.shape({
-    labelId: PropTypes.string,
-    inputId: PropTypes.string,
-  }),
 };
 
 SearchTextInput.defaultProps = {
   handler: () => undefined,
   value: '',
-  testIds: {
-    labelId: '',
-    inputId: '',
-  },
 };
 
 export default SearchTextInput;

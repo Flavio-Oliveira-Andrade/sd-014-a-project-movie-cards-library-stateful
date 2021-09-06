@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SearchTextInput from './SearchTextInput';
+import BookmarkInput from './BookmarkInput';
+import GenderSelectInput from './GenderSelectInput';
 
 class SearchBar extends React.Component {
   render() {
@@ -13,37 +15,11 @@ class SearchBar extends React.Component {
 
     return (
       <form data-testid="search-bar-form">
-        <SearchTextInput
-          value={ searchText }
-          handler={ onSearchTextChange }
-          testIds={ { labelId: 'text-input-label', inputId: 'text-input' } }
-        />
-        <label htmlFor="bookmark" data-testid="checkbox-input-label">
-          Mostrar somente favoritos:
-          <input
-            type="checkbox"
-            name="bookmark"
-            id="bookmark"
-            checked={bookmarkedOnly}
-            data-testid="checkbox-input"
-            onChange={onBookmarkedChange}
-          />
-        </label>
-        <label htmlFor="genderSelect" data-testid="select-input-label">
-          Filtrar por gênero :
-          <select
-            name="genderSelect"
-            id="genderSelect"
-            value={selectedGenre}
-            onChange={onSelectedGenreChange}
-            data-testid="select-input"
-          >
-            <option value="" data-testid="select-option">Todos</option>
-            <option value="action" data-testid="select-option">Ação</option>
-            <option value="comedy" data-testid="select-option">Comédia</option>
-            <option value="thriller" data-testid="select-option">Suspense</option>
-          </select>
-        </label>
+        <SearchTextInput value={ searchText } handler={ onSearchTextChange } />
+
+        <BookmarkInput value={ bookmarkedOnly } handler={ onBookmarkedChange } />
+
+        <GenderSelectInput value={ selectedGenre } handler={ onSelectedGenreChange } />
       </form>
     );
   }
