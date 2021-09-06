@@ -12,6 +12,7 @@ class RatingForm extends React.Component {
           type="number"
           name="rating"
           id="rating"
+          step="any"
           value={ value }
           onChange={ onChange }
         />
@@ -21,8 +22,8 @@ class RatingForm extends React.Component {
 }
 
 RatingForm.propTypes = {
-  value: PropTypes.number.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
+  value: PropTypes.number,
+  onChange: PropTypes.func,
+}.isRequired;
 
 export default RatingForm;
