@@ -22,7 +22,7 @@ class AddMovie extends Component {
   onClick = () => {};
 
   render() {
-    const { title, subtitle, imagePath } = this.state; // Desestrutura objeto state para não agarrar no lint. Aula 12.1 - min. 51;
+    const { title, subtitle, imagePath, storyline } = this.state; // Desestrutura objeto state para não agarrar no lint. Aula 12.1 - min. 51;
     return (
       <form data-testid="add-movie-form">
         <label data-testid="title-input-label" htmlFor="title-input">
@@ -50,6 +50,15 @@ class AddMovie extends Component {
             type="text"
             name="image-input"
             onChange={ imagePath }
+          />
+        </label>
+        <label data-testid="storyline-input-label" htmlFor="storyline-input">
+          Sinopse
+          <textarea
+            data-testid="storyline-input"
+            type="text"
+            name="storyline-input"
+            onChange={ storyline }
           />
         </label>
       </form>
