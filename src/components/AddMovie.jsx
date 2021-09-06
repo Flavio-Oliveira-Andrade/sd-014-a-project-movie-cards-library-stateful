@@ -20,9 +20,10 @@ class AddMovie extends Component {
   }
 
   onClick = () => {};
+  // Função criada para passar no lint, pois o tamanho do form estava muito grande. Ajuda do Marcello Alves para encontrar solução e criar função. <3
 
   render() {
-    const { title, subtitle, imagePath, storyline } = this.state; // Desestrutura objeto state para não agarrar no lint. Aula 12.1 - min. 51;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state; // Desestrutura objeto state para não agarrar no lint. Aula 12.1 - min. 51;
     return (
       <form data-testid="add-movie-form">
         <label data-testid="title-input-label" htmlFor="title-input">
@@ -60,6 +61,23 @@ class AddMovie extends Component {
             name="storyline-input"
             onChange={ storyline }
           />
+        </label>
+        <label data-testid="rating-input-label" htmlFor="image-input">
+          Avaliação
+          <input
+            data-testid="rating-input"
+            type="number"
+            name="rating-input"
+            onChange={ rating }
+          />
+        </label>
+        <label data-testid="genre-input-label" hmtlFor="genre">
+          Gênero
+          <select data-testid="genre-input" value={ genre } name="genre">
+          <option value="action" data-testid="genre-option">Ação</option>
+          <option value="comedy" data-testid="genre-option">Comédia</option>
+          <option value="thriller" data-testid="genre-option">Suspense</option>
+        </select>
         </label>
       </form>
     );
