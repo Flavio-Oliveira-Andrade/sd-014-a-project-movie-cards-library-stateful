@@ -14,9 +14,6 @@ class SearchBar extends React.Component {
     return (
       <section>
         <h1>Hello React!</h1>
-        <p>{ searchText }</p>
-        <p>{ onSearchTextChange }</p>
-        <p>{ bookmarkedOnly }</p>
         <p>{ onBookmarkedChange }</p>
         <p>{ selectedGenre }</p>
         <p>{ onSelectedGenreChange }</p>
@@ -34,6 +31,20 @@ class SearchBar extends React.Component {
               value={ searchText }
               onChange={ onSearchTextChange }
             />
+          </label>
+          <label
+            id="checkbox-input-label"
+            data-testid="checkbox-input-label"
+            htmlFor="checkbox-input"
+          >
+            <input
+              id="checkbox-input"
+              type="checkbox"
+              data-testid="checkbox-input"
+              checked={ bookmarkedOnly }
+              onChange={ onBookmarkedChange }
+            />
+            Mostrar somente favoritos
           </label>
         </form>
       </section>
