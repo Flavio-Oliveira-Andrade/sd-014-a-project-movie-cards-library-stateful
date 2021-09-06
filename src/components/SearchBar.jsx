@@ -26,7 +26,7 @@ class SearchBar extends React.Component {
           handler={ onSelectedGenreChange }
           genreList={ genres }
           testIds={ searchGenreTestIds }
-          title="Filtrar por gênero :"
+          title="Filtrar por gênero:"
         />
       </form>
     );

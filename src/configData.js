@@ -23,7 +23,14 @@ const searchGenreTestIds = {
   optionId: 'select-option ',
 };
 
+const addGenreTestIds = {
+  labelId: 'genre-input-label',
+  inputId: 'genre-input',
+  optionId: 'genre-option',
+};
+
 export {
   genres,
   searchGenreTestIds,
+  addGenreTestIds,
 };

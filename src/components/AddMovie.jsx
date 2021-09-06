@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { genres, addGenreTestIds } from '../configData';
+
 import TextInput from './TextInput';
 import StoryLineInput from './StoryLineInput';
 import RatingInput from './RatingInput';
+import GenreSelectInput from './GenreSelectInput';
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -25,7 +28,7 @@ class AddMovie extends React.Component {
 
   render() {
     const { onclick } = this.props;
-    const { title, subtitle, imagePath, storyline, rating } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <TextInput
@@ -52,6 +55,14 @@ class AddMovie extends React.Component {
         <StoryLineInput value={ storyline } handler={ this.handleChange } />
 
         <RatingInput value={ rating } handler={ this.handleChange } />
+
+        <GenreSelectInput
+          value={ genre }
+          handler={ this.handleChange }
+          genreList={ genres.slice(1) }
+          testIds={ addGenreTestIds }
+          title="Gênero:"
+        />
       </form>
 
     );
