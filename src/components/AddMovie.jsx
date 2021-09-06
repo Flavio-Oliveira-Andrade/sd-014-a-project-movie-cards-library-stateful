@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TitleForm from './TitleForm';
+import SubtitleForm from './SubtitleForm';
 class AddMovie extends React.Component {
   constructor() {
     super();
@@ -25,7 +26,8 @@ class AddMovie extends React.Component {
     const { onClick } = this.props;
     return (
       <form data-testid="add-movie-form">
-        <TitleForm value={ title } onChange={ this.handleChange } name="title" />
+        <TitleForm value={ title } onChange={ this.handleChange } />
+        <SubtitleForm value={ subtitle } onChange={ this.handleChange } />
       </form>
     );
   }
