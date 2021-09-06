@@ -12,10 +12,11 @@ class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     };
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange() {
-
+  handleChange(event) {
+    this.setState({ title: event.target.value });
   }
 
   onClick = () => {};
@@ -30,7 +31,7 @@ class AddMovie extends Component {
             data-testid="title-input"
             type="text"
             name="title-input"
-            onChange={ () => { this.handleChange() } }
+            onChange={ this.handleChange }
           />
         </label>
       </form>

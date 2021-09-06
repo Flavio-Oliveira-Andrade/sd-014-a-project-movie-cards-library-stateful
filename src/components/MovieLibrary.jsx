@@ -4,15 +4,15 @@ import MovieList from './MovieList';
 import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
-  constructor() {
-    super();
-    const { movies } = this.props; // recebe props;
-    this.state = { searchText: '',
-      bookmarkedOnly: false,
-      selectedGenre: '',
-      movies,
-    };
-  }
+//   constructor() {
+//     super();
+//     const { movies } = this.props; // recebe props;
+//     this.state = { searchText: '',
+//       bookmarkedOnly: false,
+//       selectedGenre: '',
+//       movies,
+//     };
+//   }
 
   render() {
     return (
