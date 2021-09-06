@@ -39,6 +39,10 @@ export default class AddMovie extends Component {
             Imagem
             <input type='text' value={imagePath} name='imagePath' onChange={this.handleChange} data-testid="image-input"/>
           </label>
+          <label data-testid='storyline-input-label' htmlFor='storyline'>
+            Sinopse
+            <textarea type='text' value={storyline} name='storyline' onChange={this.handleChange} data-testid="storyline-input"></textarea>
+          </label>
         </form>
       </section>
     );
