@@ -5,6 +5,7 @@ import SubtitleForm from './SubtitleForm';
 import ImageForm from './ImageForm';
 import SinopseForm from './SinopseForm';
 import RatingForm from './RatingForm';
+import GenreForm from './GenreForm';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -35,6 +36,7 @@ class AddMovie extends React.Component {
         <ImageForm value={ imagePath } onChange={ this.handleChange } />
         <SinopseForm value={ storyline } onChange={ this.handleChange } />
         <RatingForm value={ rating } onChange={ this.handleChange } />
+        <GenreForm value={ genre } onChange={ this.handleChange } />
       </form>
     );
   }
