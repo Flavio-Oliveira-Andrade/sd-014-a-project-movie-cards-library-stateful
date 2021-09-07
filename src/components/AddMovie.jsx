@@ -23,6 +23,7 @@ class AddMovie extends Component {
       estadoFavorito: event.target.value,
     });
   }
+  // muitas repetições, trocar futuramente por uma classe única para fazer o trabalho
 
   render() {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.props;
@@ -34,6 +35,7 @@ class AddMovie extends Component {
           </label>
           <input
             id="title-input"
+            type="text"
             value={ title }
             data-testid="title-input"
             onChange={ title }
@@ -43,9 +45,29 @@ class AddMovie extends Component {
           </label>
           <input
             id="subtitle-input"
+            type="text"
             value={ subtitle }
             data-testid="subtitle-input"
             onChange={ subtitle }
+          />
+          <label htmlFor="image" data-testid="image-input-label">
+            Imagem
+          </label>
+          <input
+            id="image"
+            type="text"
+            value={ imagePath }
+            data-testid="image-input"
+            onChange={ imagePath }
+          />
+          <label htmlFor="sinopse" data-testid="storyline-input-label">
+            Sinopse
+          </label>
+          <textarea
+            id="sinopse"
+            value={ storyline }
+            data-testid="storyline-input"
+            onChange={ storyline }
           />
         </form>
       </div>
