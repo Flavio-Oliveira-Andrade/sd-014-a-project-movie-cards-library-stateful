@@ -1,12 +1,10 @@
 // implement AddMovie component here
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class AddMovie extends Component {
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+  constructor() {
+    super();
     this.state = {
       title: '',
       subtitle: '',
@@ -15,6 +13,8 @@ class AddMovie extends Component {
       storyline: '',
       genre: 'action',
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange = ({ target }) => this.setState({
@@ -23,13 +23,14 @@ class AddMovie extends Component {
 
   handleClick(event) {
     event.preventDefault();
-
+    const { onClick } = this.props;
+    onClick(this.state);
     this.setState({
-      title: '',
       subtitle: '',
-      rating: 0,
+      title: '',
       imagePath: '',
       storyline: '',
+      rating: 0,
       genre: 'action',
     });
   }
@@ -80,7 +81,8 @@ class AddMovie extends Component {
   render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
-      <form data-testid="add-movie-form">
+      <form data-testid="add-movie-form" id="fr">
+        <p>Incluir filmes</p>
         <label data-testid="title-input-label" htmlFor="title">
           Título
           { this.createCustomInputs('text', title, 'title', 'title-input') }
@@ -123,6 +125,6 @@ class AddMovie extends Component {
   }
 }
 
-// AddMovie.propTypes = { onClick: PropTypes.func.isRequired };
+AddMovie.propTypes = { onClick: PropTypes.func.isRequired };
 
 export default AddMovie;

@@ -1,13 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  font-family: Lato, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: darkgrey;
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.ah-main {
+  display: flex;
+  flex-direction: row;
+}
+
+.ah-sidenav{
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  padding: 48px 20px;
+}
+
+.ah-header-capsule {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: center;
+  background-color: #141414;
+}
+
+.ah-header {
+  display: inline-block;
+  font-family: "Bebas Neue", cursive;
+  color: rgb(182, 0, 0);
+  font-size: 4.5em;
+  font-weight: 500;
+  margin: 0;
+  padding: 25px;
+  justify-self: flex-start;
+  width: 240px;
+}
+
+.header {
+  display: inline-block;
+  margin: auto;
+  color: darkgrey;
+}
+
+.ah-h1 {
+  text-align: center;
+  font-family: "Lato", sans-serif;
+}
+
+.cont-img {
+  height: 180px;
+}
+
+.cont-title {
+  height: 30px;
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.6em;
+}
+
+.cont-subtitle {
+  height: 10px;
+  font-size: 1.1em;
+}
+
+.cont-story {
+  height: 160px;
+  text-align: justify;
+}
+
+.sub-cont{
+  padding: 10px;
+  font-family: "Lato", sans-serif;
+}
+
+.hamann{
+  color: rgb(97, 97, 97);
+  font-size: 0.8em;
+  display: flex;
+  padding-right: 15px;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.ah-input{
+  font-size: 0.9em;
+  height: 15px;
+  width: 180px;
+  color: rgb(97, 97, 97);
+  background-color: #141414;
+}
+
+#fr input[type=text] , input[type=number] , select {
+  font-size: 0.9em;
+  height: 25px;
+  width: 180px;
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+  background-color: #141414;
+  border: 0.5px solid rgb(175, 175, 175);
+}
+
+#fr textarea {
+  font-size: 0.9em;
+  width: 180px;
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+  background-color: #141414;
+  border: 0.5px solid rgb(175, 175, 175);
+}
+
+#fr input[type=checkbox] {
+  font-size: 0.9em;
+  height: 15px;
+  margin-left: 10px
+}
+
+#fr p {
+  font-family: "Bebas Neue", cursive;
+  color: rgb(255, 255, 255);
+}
+
+#fr label {
+  font-size: 0.7em;
+  line-height: 15px;
+  justify-items: center;
+}
+
+#fr button {
+  background-color: #141414;
+  font-family: "Bebas Neue", cursive;
+  color: rgb(255, 255, 255);
+  width: 180px;
+  font-size: 1.1em;
+  border: none;
 }

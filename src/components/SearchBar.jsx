@@ -1,7 +1,6 @@
 // implement SearchBar component here
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import SelectInput from './SelectInput'
 
 class SearchBar extends Component {
   render() {
@@ -14,7 +13,8 @@ class SearchBar extends Component {
       onSelectedGenreChange,
     } = this.props;
     return (
-      <form data-testid="search-bar-form">
+      <form data-testid="search-bar-form" id="fr">
+        <p>Pesquisa de filmes</p>
         <label data-testid="text-input-label" htmlFor="searchText">
           Inclui o texto
           <input
