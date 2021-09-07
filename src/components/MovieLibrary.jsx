@@ -25,8 +25,17 @@ class MovieLibrary extends React.Component {
   }
 
   onSearchTextChange({ target }) {
+    const { movies } = this.props;
+
+    const filteredMovies = movies.filter((movie) => movie.title.includes(target.value)
+        || movie.subtitle.includes(target.value)
+        || movie.storyline.includes(target.value));
+
     this.setState({
       searchText: target.value,
+      movies: target.value === ''
+        ? movies
+        : filteredMovies,
     });
   }
 
