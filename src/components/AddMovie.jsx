@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AddMovieFormInput from './AddMovieFormInput';
 import AddMovieFormTextarea from './AddMovieFormTextarea';
+import AddMovieFormSelect from './AddMovieFormSelect';
 import setupFormInputs from './addMovieInputSetup';
 
 class AddMovie extends React.Component {
@@ -36,6 +37,7 @@ class AddMovie extends React.Component {
       imageInput,
       ratingInput,
       textareaInput,
+      selectInput,
     } = setupFormInputs;
     return (
       <div>
@@ -64,7 +66,11 @@ class AddMovie extends React.Component {
           value={ rating }
           eventListener={ this.handleChange }
         />
-        <p>{ genre }</p>
+        <AddMovieFormSelect
+          options={ selectInput }
+          value={ genre }
+          eventListener={ this.handleChange }
+        />
         <p>{ eventListener }</p>
         <form data-testid="add-movie-form" />
       </div>

@@ -29,6 +29,15 @@ const setupFormInputs = {
     name: 'storyline',
     content: 'Sinopse',
   },
+  selectInput: {
+    id: 'genre',
+    name: 'genre',
+    content: 'Gênero',
+    optionTag: {
+      optionTagValue: ['action', 'comedy', 'thriller'],
+      optionTagContent: ['Ação', 'Comédia', 'Suspense'],
+    },
+  },
 };
 
 export default setupFormInputs;
