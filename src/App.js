@@ -15,32 +15,34 @@ class App extends React.Component {
 
     this.state = {
       searchText: '',
-      bookMarkedOnly: true,
+      bookmarkedOnly: true,
       selectedGenre: '',
     };
   }
 
-  onSearchTextChange() {
-    console.log('searchTextchange');
+  onSearchTextChange({ target }) {
+    this.setState({ searchText: target.value });
   }
 
   onBookmarkedChange() {
-    console.log('bookmarkedchange');
+    const { bookmarkedOnly } = this.state;
+    const value = bookmarkedOnly;
+    this.setState({ bookmarkedOnly: !value });
   }
 
-  onSelectedGenreChange() {
-    console.log('onselectedgenrechange');
+  onSelectedGenreChange({ target }) {
+    this.setState({ selectedGenre: target.value });
   }
 
   render() {
-    const { searchText, bookMarkedOnly, selectedGenre } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div className="App">
         <Header />
         <SearchBar
           onSearchTextChange={ this.onSearchTextChange }
           searchText={ searchText }
-          bookMarkedOnly={ bookMarkedOnly }
+          bookMarkedOnly={ bookmarkedOnly }
           selectedGenre={ selectedGenre }
           onBookmarkedChange={ this.onBookmarkedChange }
           onSelectedGenreChange={ this.onSelectedGenreChange }
