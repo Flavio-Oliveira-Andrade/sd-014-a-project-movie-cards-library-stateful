@@ -226,9 +226,9 @@ describe('19 - Renderize `<AddMovie />` dentro de `<MovieLibrary />`', () => {
     event.selectOptions(genreInput, newMovie.genre);
 
     event.click(sendButton);
-
+    
     movieCards = getAllByTestId(movieCardTestId);
-
+    
     expect(movieCards).toHaveLength(movies.length + 1);
     const newMovieTitle = getAllByTestId(movieCardTitleId);
     expect(newMovieTitle[movieCards.length - 1]).toHaveTextContent(newMovie.title);

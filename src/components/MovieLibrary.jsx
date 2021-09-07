@@ -27,10 +27,10 @@ class MovieLibrary extends React.Component {
     super(props);
     const { movies } = this.props;
     this.state = {
-      searchText: '', // guarda o texto de busca por filmes;
-      bookmarkedOnly: false, // um boolean que guarda se é para filtrar por filmes favoritados ou não;
-      selectedGenre: '', // guarda o gênero do filme selecionado para poder fazer a filtragem;
-      movies, // guarda a lista de filmes
+      searchText: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
+      movies,
     };
 
     this.onClick = this.onClick.bind(this);
@@ -39,10 +39,14 @@ class MovieLibrary extends React.Component {
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
   }
 
-  onClick(state) {
-    console.log(`App: ${Object.entries(state)}`);
+  onClick(movie) {
     const { movies } = this.state;
-    console.table(movies);
+    this.setState({
+      // searchText: '',
+      // selectedGenre: '',
+      // bookmarkedOnly: false,
+      movies: [...movies, movie],
+    });
   }
 
   onSearchTextChange({ target }) {
@@ -52,7 +56,6 @@ class MovieLibrary extends React.Component {
     const search = value.toLowerCase();
     const filtered = applyFilter(movies,
       { content: search, marked: bookmarkedOnly, type: selectedGenre });
-    // console.table(filtered);
     this.setState({
       searchText: value,
       movies: filtered,
