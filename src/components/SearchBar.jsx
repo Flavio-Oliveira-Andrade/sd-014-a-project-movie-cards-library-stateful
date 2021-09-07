@@ -7,13 +7,37 @@ class searchBar extends Component {
   // }
 
   render() {
-    const { searchText, onSearchTextChange,
-      bookmarkedOnly, onBookmarkedChange,
-      selectedGenre, onSelectedGenreChange } = this.props;
+    const {
+      searchText,
+      onSearchTextChange,
+      bookmarkedOnly,
+      onBookmarkedChange,
+      selectedGenre,
+      onSelectedGenreChange,
+    } = this.props;
     return (
       <div>
         <form data-testid="search-bar-form">
-          <input type="text" />
+          <label htmlFor="text-input" data-testid="text-input-label">
+            Inclui o texto
+          </label>
+          <input
+            id="text-input"
+            type="text"
+            value={ searchText }
+            onChange={ onSearchTextChange }
+            data-testid="text-input"
+          />
+          <label htmlFor="checkbox-input" data-testid="checkbox-input-label">
+            Mostrar somente favoritos
+          </label>
+          <input
+            id="checkbox-input"
+            type="checkbox"
+            checked={ bookmarkedOnly }
+            onChange={ onBookmarkedChange }
+            data-testid="checkbox-input"
+          />
         </form>
       </div>
     );
