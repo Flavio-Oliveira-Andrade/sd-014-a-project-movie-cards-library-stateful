@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import AddMovieFormInput from './AddMovieFormInput';
 import AddMovieFormTextarea from './AddMovieFormTextarea';
 import AddMovieFormSelect from './AddMovieFormSelect';
+import AddMovieFormButton from './AddMovieFormButton';
 import setupFormInputs from './addMovieInputSetup';
 
 class AddMovie extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       subtitle: '',
@@ -19,6 +20,7 @@ class AddMovie extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange({ target }) {
@@ -28,19 +30,27 @@ class AddMovie extends React.Component {
     });
   }
 
+  handleClick(state) {
+    console.table(state);
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
   render() {
     const { eventListener } = this.props;
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
-    const {
-      titleInput,
-      subtitleInput,
-      imageInput,
-      ratingInput,
-      textareaInput,
+    const { titleInput, subtitleInput, imageInput, ratingInput, textareaInput,
       selectInput,
+      formButton,
     } = setupFormInputs;
     return (
-      <form data-testid="add-movie-form">
+      <form data-testid="add-movie-form" id="add-movie-form">
         <AddMovieFormInput
           options={ titleInput }
           value={ title }
@@ -71,14 +81,21 @@ class AddMovie extends React.Component {
           value={ genre }
           eventListener={ this.handleChange }
         />
-        <p>{ eventListener }</p>
+        <AddMovieFormButton
+          options={ formButton }
+          eventListeners={ () => {
+            eventListener(this.state);
+            this.handleClick(this.state);
+          } }
+        />
       </form>
     );
   }
 }
 
 AddMovie.defaultProps = {
-  eventListener: '',
+  // eventListener: (state) => console.log(`AddMovie ${state}`),
+  eventListener: (state) => console.log(`AddMovie ${Object.keys(state)}`),
 };
 
 AddMovie.propTypes = {

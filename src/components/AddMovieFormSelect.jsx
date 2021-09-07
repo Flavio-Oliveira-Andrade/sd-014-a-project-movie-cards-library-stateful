@@ -46,7 +46,10 @@ AddMovieFormSelect.propTypes = {
     name: PropTypes.string,
     id: PropTypes.string,
     content: PropTypes.string,
-    optionTag: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+    optionTag: PropTypes.shape(
+      [PropTypes.arrayOf(PropTypes.string)],
+      [PropTypes.arrayOf(PropTypes.string)],
+    ),
   }),
   value: PropTypes.string,
   eventListener: PropTypes.func,

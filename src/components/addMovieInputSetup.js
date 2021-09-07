@@ -38,6 +38,12 @@ const setupFormInputs = {
       optionTagContent: ['Ação', 'Comédia', 'Suspense'],
     },
   },
+  formButton: {
+    type: 'button',
+    form: 'add-movie-form',
+    id: 'send',
+    content: 'Adicionar filme',
+  },
 };
 
 export default setupFormInputs;

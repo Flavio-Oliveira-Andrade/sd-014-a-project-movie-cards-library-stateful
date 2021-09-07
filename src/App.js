@@ -5,14 +5,28 @@ import AddMovie from './components/AddMovie';
 
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <SearchBar />
-      <AddMovie />
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleAdd = this.handleAdd.bind(this);
+  }
+
+  handleAdd(state) {
+    console.log(`App: ${Object.keys(state)}`);
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Header />
+        <SearchBar />
+        <AddMovie
+          eventListener={ this.handleAdd }
+        />
+      </div>
+    );
+  }
 }
 
 export default App;

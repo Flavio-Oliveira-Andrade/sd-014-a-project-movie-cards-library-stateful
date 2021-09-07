@@ -38,7 +38,10 @@ AddMovieFormInput.propTypes = {
     id: PropTypes.string,
     content: PropTypes.string,
   }),
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   eventListener: PropTypes.func,
 };
 
