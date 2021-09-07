@@ -1,6 +1,9 @@
 // implement AddMovie component here
 import React from 'react';
 import PropTypes from 'prop-types';
+import Itc from './Inputs/InputTextComponent';
+import Inc from './Inputs/InputNumberComponent';
+import SelectC from './Inputs/SelectComponent';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -16,7 +19,10 @@ class AddMovie extends React.Component {
   }
 
   handleChange = ({ target }) => {
-    const { id, value } = target;
+    const { id } = target;
+    const value = id === 'rating'
+      ? Number(target.value)
+      : target.value;
     this.setState({
       [id]: value,
     });
@@ -50,14 +56,13 @@ class AddMovie extends React.Component {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <label data-testid="title-input-label" htmlFor="title">
-          Título
-          {this.funcInput('title', 'text', title, 'title-input')}
-        </label>
-        <label data-testid="subtitle-input-label" htmlFor="subtitle">
-          Subtítulo
-          {this.funcInput('subtitle', 'text', subtitle, 'subtitle-input')}
-        </label>
+        <Itc id="title" callback={ this.handleChange } value={ title } titulo="Título" />
+        <Itc
+          id="subtitle"
+          callback={ this.handleChange }
+          value={ subtitle }
+          titulo="Subtítulo"
+        />
         <label data-testid="image-input-label" htmlFor="imagePath">
           Imagem
           {this.funcInput('imagePath', 'text', imagePath, 'image-input')}
@@ -71,18 +76,18 @@ class AddMovie extends React.Component {
             data-testid="storyline-input"
           />
         </label>
-        <label data-testid="rating-input-label" htmlFor="rating">
-          Avaliação
-          {this.funcInput('rating', 'number', rating, 'rating-input')}
-        </label>
-        <label data-testid="genre-input-label" htmlFor="genre">
-          Gênero
-          <select data-testid="genre-input" id="genre" value={ genre } onChange={ this.handleChange }>
-            <option data-testid="genre-option" value="action">Ação</option>
-            <option data-testid="genre-option" value="comedy">Comédia</option>
-            <option data-testid="genre-option" value="thriller">Suspense</option>
-          </select>
-        </label>
+        <Inc
+          id="rating"
+          callback={ this.handleChange }
+          value={ rating }
+          titulo="Avaliação"
+        />
+        <SelectC
+          id="genre"
+          callback={ this.handleChange }
+          value={ genre }
+          titulo="Gênero"
+        />
         <button
           type="button"
           data-testid="send-button"
