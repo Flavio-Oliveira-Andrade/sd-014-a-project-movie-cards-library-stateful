@@ -6,18 +6,21 @@ import AddMovie from './AddMovie';
 import MovieList from './MovieList';
 
 class MovieLibrary extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
     this.onClickAddMovie = this.onClickAddMovie.bind(this);
 
+    const { movies } = this.props;
+
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
+      movies,
     };
   }
 
@@ -28,29 +31,37 @@ class MovieLibrary extends React.Component {
   }
 
   onBookmarkedChange({ target }) {
+    const { movies } = this.props;
     this.setState({
       bookmarkedOnly: target.checked,
+      movies: target.checked
+        ? movies.filter((movie) => movie.bookmarked)
+        : movies,
     });
   }
 
   onSelectedGenreChange({ target }) {
+    const { movies } = this.props;
     this.setState({
       selectedGenre: target.value,
+      movies: target.value === ''
+        ? movies
+        : movies.filter((movie) => movie.genre === target.value),
     });
   }
 
   onClickAddMovie(movie) {
-    this.setState((previousMovies) => ({
-      movie: [...previousMovies, movie],
+    this.setState(({ movies }) => ({
+      movies: [...movies, movie],
     }));
   }
 
   render() {
-    const { movies } = this.props;
-    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
 
     return (
-      <>
+      <div>
+        <h2>My Awesome Movie Library</h2>
         <SearchBar
           searchText={ searchText }
           bookmarkedOnly={ bookmarkedOnly }
@@ -61,7 +72,7 @@ class MovieLibrary extends React.Component {
         />
         <MovieList movies={ movies } />
         <AddMovie onClick={ this.onClickAddMovie } />
-      </>
+      </div>
     );
   }
 }
