@@ -29,7 +29,7 @@ class MovieLibrary extends React.Component {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     return movies.filter(({ title, subtitle, storyline, bookmarked, genre }) => {
       // https://stackoverflow.com/questions/5296268/fastest-way-to-check-a-string-contain-another-substring-in-javascript
-      const searchFlag = (new RegExp(searchText, 'i'))
+      const searchFlag = (RegExp(searchText, 'i'))
         .test(`${title} ${subtitle} ${storyline}`);
       const bookmarkFlag = (!bookmarkedOnly || bookmarked);
       const genreFlag = (genre === (selectedGenre || genre));
