@@ -28,7 +28,16 @@ class MovieLibrary extends React.Component {
 
   render() {
     return (
-      <main />
+      <main>
+        <SearchBar
+          searchText={ searchText }
+          onSearchTextChange={ this.handleChange }
+          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.handleChange }
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ this.handleChange }
+        />
+      </main>
     );
   }
 }
