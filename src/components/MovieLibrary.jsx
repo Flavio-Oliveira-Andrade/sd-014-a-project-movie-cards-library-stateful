@@ -18,6 +18,12 @@ class MovieLibrary extends React.Component {
       selectedGenre: '',
       movies,
     };
+    this.this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange({ target }) {
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({ [target.name]: value });
   }
 
   render() {
