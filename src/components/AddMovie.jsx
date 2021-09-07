@@ -34,7 +34,7 @@ class AddMovie extends React.Component {
       titleInput,
       subtitleInput,
       imageInput,
-      // ratingInput,
+      ratingInput,
       textareaInput,
     } = setupFormInputs;
     return (
@@ -59,7 +59,11 @@ class AddMovie extends React.Component {
           value={ storyline }
           eventListener={ this.handleChange }
         />
-        <p>{ rating }</p>
+        <AddMovieFormInput
+          options={ ratingInput }
+          value={ rating }
+          eventListener={ this.handleChange }
+        />
         <p>{ genre }</p>
         <p>{ eventListener }</p>
         <form data-testid="add-movie-form" />
