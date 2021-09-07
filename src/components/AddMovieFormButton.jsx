@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 
 class AddMovieFormButton extends React.Component {
   render() {
-    const { options, eventListeners } = this.props;
+    const { options, callback } = this.props;
     const { type, form, id, content } = options;
 
     return (
       <button
         id={ `${id}-${type}` }
         form={ form }
-        type="button"
+        type="submit"
         data-testid={ `${id}-${type}` }
-        onClick={ eventListeners }
+        onClick={ callback }
       >
         { content }
       </button>
@@ -21,8 +21,13 @@ class AddMovieFormButton extends React.Component {
 }
 
 AddMovieFormButton.defaultProps = {
-  options: '',
-  eventListeners: '',
+  options: {
+    type: '',
+    form: '',
+    id: '',
+    content: '',
+  },
+  callback: () => (undefined),
 };
 
 AddMovieFormButton.propTypes = {
@@ -32,7 +37,7 @@ AddMovieFormButton.propTypes = {
     id: PropTypes.string,
     content: PropTypes.string,
   }),
-  eventListeners: PropTypes.func,
+  callback: PropTypes.func,
 };
 
 export default AddMovieFormButton;

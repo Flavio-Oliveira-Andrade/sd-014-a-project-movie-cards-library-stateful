@@ -30,8 +30,10 @@ class AddMovie extends React.Component {
     });
   }
 
-  handleClick(state) {
-    console.table(state);
+  handleClick(event) {
+    event.preventDefault();
+    const { onClick } = this.props;
+    onClick(this.state);
     this.setState({
       subtitle: '',
       title: '',
@@ -43,7 +45,6 @@ class AddMovie extends React.Component {
   }
 
   render() {
-    const { eventListener } = this.props;
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     const { titleInput, subtitleInput, imageInput, ratingInput, textareaInput,
       selectInput,
@@ -54,39 +55,36 @@ class AddMovie extends React.Component {
         <AddMovieFormInput
           options={ titleInput }
           value={ title }
-          eventListener={ this.handleChange }
+          callback={ this.handleChange }
         />
         <AddMovieFormInput
           options={ subtitleInput }
           value={ subtitle }
-          eventListener={ this.handleChange }
+          callback={ this.handleChange }
         />
         <AddMovieFormInput
           options={ imageInput }
           value={ imagePath }
-          eventListener={ this.handleChange }
+          callback={ this.handleChange }
         />
         <AddMovieFormTextarea
           options={ textareaInput }
           value={ storyline }
-          eventListener={ this.handleChange }
+          callback={ this.handleChange }
         />
         <AddMovieFormInput
           options={ ratingInput }
           value={ rating }
-          eventListener={ this.handleChange }
+          callback={ this.handleChange }
         />
         <AddMovieFormSelect
           options={ selectInput }
           value={ genre }
-          eventListener={ this.handleChange }
+          callback={ this.handleChange }
         />
         <AddMovieFormButton
           options={ formButton }
-          eventListeners={ () => {
-            eventListener(this.state);
-            this.handleClick(this.state);
-          } }
+          callback={ this.handleClick }
         />
       </form>
     );
@@ -94,12 +92,11 @@ class AddMovie extends React.Component {
 }
 
 AddMovie.defaultProps = {
-  // eventListener: (state) => console.log(`AddMovie ${state}`),
-  eventListener: (state) => console.log(`AddMovie ${Object.keys(state)}`),
+  onClick: () => (undefined),
 };
 
 AddMovie.propTypes = {
-  eventListener: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 export default AddMovie;

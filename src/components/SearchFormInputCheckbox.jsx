@@ -24,12 +24,12 @@ class SearchFormInputCheckbox extends React.Component {
 }
 
 SearchFormInputCheckbox.defaultProps = {
-  value: '',
-  eventListener: '',
+  value: false,
+  eventListener: undefined,
 };
 
 SearchFormInputCheckbox.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.bool,
   eventListener: PropTypes.func,
 };
 

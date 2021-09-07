@@ -25,7 +25,7 @@ class SearchFormInputText extends React.Component {
 
 SearchFormInputText.defaultProps = {
   value: '',
-  eventListener: '',
+  eventListener: undefined,
 };
 
 SearchFormInputText.propTypes = {

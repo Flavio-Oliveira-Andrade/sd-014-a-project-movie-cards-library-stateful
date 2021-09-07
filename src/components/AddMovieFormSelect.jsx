@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class AddMovieFormSelect extends React.Component {
   render() {
-    const { options, value, eventListener } = this.props;
+    const { options, value, callback } = this.props;
     const { name, id, content, optionTag } = options;
     const { optionTagValue, optionTagContent } = optionTag;
 
@@ -18,7 +18,7 @@ class AddMovieFormSelect extends React.Component {
           data-testid={ `${id}-input` }
           name={ name }
           value={ value }
-          onChange={ eventListener }
+          onChange={ callback }
         >
           { optionTagValue.map((x, i) => (
             <option
@@ -36,9 +36,14 @@ class AddMovieFormSelect extends React.Component {
 }
 
 AddMovieFormSelect.defaultProps = {
-  options: '',
+  options: {
+    name: '',
+    id: '',
+    content: '',
+    optionTag: [],
+  },
   value: '',
-  eventListener: '',
+  callback: () => (undefined),
 };
 
 AddMovieFormSelect.propTypes = {
@@ -52,7 +57,7 @@ AddMovieFormSelect.propTypes = {
     ),
   }),
   value: PropTypes.string,
-  eventListener: PropTypes.func,
+  callback: PropTypes.func,
 };
 
 export default AddMovieFormSelect;

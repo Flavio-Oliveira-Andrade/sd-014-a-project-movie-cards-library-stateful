@@ -29,7 +29,7 @@ class SearchFormSelect extends React.Component {
 
 SearchFormSelect.defaultProps = {
   value: '',
-  eventListener: '',
+  eventListener: undefined,
 };
 
 SearchFormSelect.propTypes = {

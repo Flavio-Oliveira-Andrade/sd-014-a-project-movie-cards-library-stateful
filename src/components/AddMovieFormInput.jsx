@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class AddMovieFormInput extends React.Component {
   render() {
-    const { options, value, eventListener } = this.props;
+    const { options, value, callback } = this.props;
     const { type, name, id, content } = options;
 
     return (
@@ -18,7 +18,7 @@ class AddMovieFormInput extends React.Component {
           data-testid={ `${id}-input` }
           name={ name }
           value={ value }
-          onChange={ eventListener }
+          onChange={ callback }
         />
       </label>
     );
@@ -26,9 +26,14 @@ class AddMovieFormInput extends React.Component {
 }
 
 AddMovieFormInput.defaultProps = {
-  options: '',
+  options: {
+    type: '',
+    name: '',
+    id: '',
+    content: '',
+  },
   value: '',
-  eventListener: '',
+  callback: () => (undefined),
 };
 
 AddMovieFormInput.propTypes = {
@@ -42,7 +47,7 @@ AddMovieFormInput.propTypes = {
     PropTypes.string,
     PropTypes.number,
   ]),
-  eventListener: PropTypes.func,
+  callback: PropTypes.func,
 };
 
 export default AddMovieFormInput;

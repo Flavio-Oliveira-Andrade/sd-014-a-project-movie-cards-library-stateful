@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class AddMovieFormTextarea extends React.Component {
   render() {
-    const { options, value, eventListener } = this.props;
+    const { options, value, callback } = this.props;
     const { type, name, id, content } = options;
 
     return (
@@ -18,7 +18,7 @@ class AddMovieFormTextarea extends React.Component {
           data-testid={ `${id}-input` }
           name={ name }
           value={ value }
-          onChange={ eventListener }
+          onChange={ callback }
         />
       </label>
     );
@@ -26,9 +26,14 @@ class AddMovieFormTextarea extends React.Component {
 }
 
 AddMovieFormTextarea.defaultProps = {
-  options: '',
+  options: {
+    type: '',
+    name: '',
+    id: '',
+    content: '',
+  },
   value: '',
-  eventListener: '',
+  callback: () => (undefined),
 };
 
 AddMovieFormTextarea.propTypes = {
@@ -39,7 +44,7 @@ AddMovieFormTextarea.propTypes = {
     content: PropTypes.string,
   }),
   value: PropTypes.string,
-  eventListener: PropTypes.func,
+  callback: PropTypes.func,
 };
 
 export default AddMovieFormTextarea;

@@ -9,11 +9,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleAdd = this.handleAdd.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
-  handleAdd(state) {
-    console.log(`App: ${Object.keys(state)}`);
+  onClick(state) {
+    console.log(`App: ${Object.entries(state)}`);
   }
 
   render() {
@@ -22,7 +22,7 @@ class App extends React.Component {
         <Header />
         <SearchBar />
         <AddMovie
-          eventListener={ this.handleAdd }
+          onClick={ this.onClick }
         />
       </div>
     );
