@@ -1,5 +1,6 @@
 import React from 'react';
 import Input from './Input';
+import InputImg from './InputImg';
 import InputNumber from './InputNumber';
 import Select from './Select';
 import Textarea from './Textarea';
@@ -23,7 +24,7 @@ class AddMovie extends React.Component {
   handleClick(event) {
     event.preventDefault();
     const { onClick } = this.props;
-    onClick();
+    onClick(this.state);
     this.setState({
       subtitle: '',
       title: '',
@@ -57,7 +58,7 @@ class AddMovie extends React.Component {
           handleChange={ this.handleChange }
           titulo={ `${'Subtítulo'}` }
         />
-        <Input
+        <InputImg
           id={ `${'image'}` }
           src={ imagePath }
           handleChange={ this.handleChange }
