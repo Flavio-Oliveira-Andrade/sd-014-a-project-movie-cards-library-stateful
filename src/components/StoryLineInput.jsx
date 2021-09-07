@@ -10,11 +10,11 @@ class StoryLineInput extends React.Component {
         <textarea
           name="storyline"
           id="storyline"
-          cols="30"
-          rows="10"
+          rows="3"
           value={ value }
           onChange={ handler }
           data-testid="storyline-input"
+          className="form-control"
         />
       </label>
     );

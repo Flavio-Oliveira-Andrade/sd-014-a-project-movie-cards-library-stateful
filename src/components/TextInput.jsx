@@ -5,7 +5,7 @@ class TextInput extends React.Component {
   render() {
     const { name, title, handler, testIds, value } = this.props;
     return (
-      <label htmlFor={ name } data-testid={ testIds.labelId }>
+      <label htmlFor={ name } data-testid={ testIds.labelId } className="form-label">
         { title }
         <input
           type="text"
@@ -14,6 +14,7 @@ class TextInput extends React.Component {
           value={ value }
           data-testid={ testIds.inputId }
           onChange={ handler }
+          className="form-control"
         />
       </label>
     );

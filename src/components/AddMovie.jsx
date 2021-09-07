@@ -15,7 +15,7 @@ class AddMovie extends React.Component {
       title: '',
       imagePath: '',
       storyline: '',
-      rating: '0',
+      rating: 0,
       genre: 'action',
     };
     this.reset = {
@@ -23,7 +23,7 @@ class AddMovie extends React.Component {
       title: '',
       imagePath: '',
       storyline: '',
-      rating: '0',
+      rating: 0,
       genre: 'action',
     };
 
@@ -32,7 +32,8 @@ class AddMovie extends React.Component {
   }
 
   handleChange({ target }) {
-    this.setState({ [target.name]: target.value });
+    const { name, value, type } = target;
+    this.setState({ [name]: type === 'number' ? parseFloat(value) : value });
   }
 
   handleSubmit(event) {
@@ -45,7 +46,7 @@ class AddMovie extends React.Component {
   render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
-      <form data-testid="add-movie-form">
+      <form data-testid="add-movie-form" className="d-flex flex-column py-2 px-4">
         <TextInput
           name="title"
           title="Título:"
@@ -83,6 +84,7 @@ class AddMovie extends React.Component {
           type="submit"
           data-testid="send-button"
           onClick={ this.handleSubmit }
+          className="btn btn-primary"
         >
           Adicionar filme
         </button>
@@ -91,8 +93,6 @@ class AddMovie extends React.Component {
   }
 }
 
-AddMovie.propTypes = { onClick: PropTypes.func };
-
-AddMovie.defaultProps = { onClick: () => undefined };
+AddMovie.propTypes = { onClick: PropTypes.func.isRequired };
 
 export default AddMovie;

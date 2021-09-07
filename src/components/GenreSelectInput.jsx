@@ -14,6 +14,7 @@ class GenreSelectInput extends React.Component {
           value={ value }
           onChange={ handler }
           data-testid={ inputId }
+          className="form-select"
         >
           {genreList.map(({ genre, text }) => (
             <option

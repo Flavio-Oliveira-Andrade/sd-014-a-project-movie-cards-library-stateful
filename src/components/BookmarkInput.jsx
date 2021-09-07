@@ -5,18 +5,21 @@ class BookmarkInput extends React.Component {
   render() {
     const { value, handler } = this.props;
     return (
-      <label htmlFor="bookmarkedOnly" data-testid="checkbox-input-label">
-        Mostrar somente favoritos:
-        <input
-          type="checkbox"
-          name="bookmarkedOnly"
-          id="bookmarkedOnly"
-          checked={ value }
-          value={ value }
-          data-testid="checkbox-input"
-          onChange={ handler }
-        />
-      </label>
+      <div className="form-check">
+        <label htmlFor="bookmarkedOnly" data-testid="checkbox-input-label">
+          <input
+            type="checkbox"
+            name="bookmarkedOnly"
+            id="bookmarkedOnly"
+            checked={ value }
+            value={ value }
+            data-testid="checkbox-input"
+            onChange={ handler }
+            className="form-check-input"
+          />
+          Mostrar somente favoritos
+        </label>
+      </div>
     );
   }
 }

@@ -16,6 +16,7 @@ class RatingInput extends React.Component {
           value={ value }
           onChange={ handler }
           data-testid="rating-input"
+          className="form-control"
         />
       </label>
     );
@@ -23,13 +24,12 @@ class RatingInput extends React.Component {
 }
 
 RatingInput.propTypes = {
-  handler: PropTypes.func,
-  value: PropTypes.string,
+  handler: PropTypes.func.isRequired,
+  value: PropTypes.number,
 };
 
 RatingInput.defaultProps = {
-  handler: () => undefined,
-  value: '0',
+  value: 0,
 };
 
 export default RatingInput;

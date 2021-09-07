@@ -16,7 +16,7 @@ class SearchBar extends React.Component {
       bookmarkedOnly } = this.props;
 
     return (
-      <form data-testid="search-bar-form">
+      <form data-testid="search-bar-form" className="d-flex flex-column py-2 px-4">
         <SearchTextInput value={ searchText } handler={ onSearchTextChange } />
 
         <BookmarkInput value={ bookmarkedOnly } handler={ onBookmarkedChange } />

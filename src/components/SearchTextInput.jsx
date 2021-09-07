@@ -14,6 +14,7 @@ class SearchTextInput extends React.Component {
           value={ value }
           data-testid="text-input"
           onChange={ handler }
+          className="form-control"
         />
       </label>
     );
