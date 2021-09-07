@@ -14,8 +14,10 @@ class MovieLibrary extends React.Component {
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
     this.onClickAddMovie = this.onClickAddMovie.bind(this);
 
+    // Guarda array passado através de props
     const { movies } = this.props;
 
+    // Estado inicial do componente
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
@@ -24,6 +26,7 @@ class MovieLibrary extends React.Component {
     };
   }
 
+  // Controla a chave searchText do componente
   onSearchTextChange({ target }) {
     const { movies } = this.props;
 
@@ -39,6 +42,7 @@ class MovieLibrary extends React.Component {
     });
   }
 
+  // Controla a chave bookmarkedOnly do componente
   onBookmarkedChange({ target }) {
     const { movies } = this.props;
     this.setState({
@@ -49,6 +53,7 @@ class MovieLibrary extends React.Component {
     });
   }
 
+  // Controla a chave selectedGenre do componente
   onSelectedGenreChange({ target }) {
     const { movies } = this.props;
     this.setState({
@@ -59,6 +64,7 @@ class MovieLibrary extends React.Component {
     });
   }
 
+  // Adiciona card quando o botao do formulario AddMovie é clicado
   onClickAddMovie(movie) {
     this.setState(({ movies }) => ({
       movies: [...movies, movie],

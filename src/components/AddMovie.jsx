@@ -11,6 +11,7 @@ class AddMovie extends React.Component {
     this.createOptions = this.createOptions.bind(this);
     this.handleClick = this.handleClick.bind(this);
 
+    // Estado inicial do componente
     this.state = {
       subtitle: '',
       title: '',
@@ -21,6 +22,7 @@ class AddMovie extends React.Component {
     };
   }
 
+  // Funçao genérica para manipular chaves do estado
   handleChange({ target }) {
     const { name } = target;
     this.setState({
@@ -28,11 +30,11 @@ class AddMovie extends React.Component {
     });
   }
 
+  // Apaga todos os campos do formulario e chama função para adicionar um filme à tela
   handleClick(event) {
     event.preventDefault();
 
     const { onClick } = this.props;
-    console.log(this.state);
     onClick(this.state);
 
     this.setState({
@@ -45,6 +47,7 @@ class AddMovie extends React.Component {
     });
   }
 
+  // Cria uma tag input com os parametros selecionados
   createInput(type, nameId, testId, value) {
     return (
       <input
@@ -58,6 +61,7 @@ class AddMovie extends React.Component {
     );
   }
 
+  // Cria as tags options dentro do elemento select
   createOptions() {
     const options = [
       { value: 'action', name: 'Ação' },
