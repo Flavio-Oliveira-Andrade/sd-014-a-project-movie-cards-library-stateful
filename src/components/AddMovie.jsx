@@ -16,6 +16,7 @@ class AddMovie extends React.Component {
     };
 
     this.aE = this.aE.bind(this);
+    this.reset = this.reset.bind(this);
   }
 
   aE(event) {
@@ -25,8 +26,19 @@ class AddMovie extends React.Component {
     });
   }
 
+  reset() {
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
   render() {
-    //  const { onClick } = this.props;
+    const { onClick: click } = this.props;
     const { title: t, subtitle: s, imagePath: i, storyline: sl, rating: r, genre: g } = this.state;
     const ti = 'title-input';
     const si = 'subtitle-input';
@@ -34,6 +46,7 @@ class AddMovie extends React.Component {
     const sli = 'storyline-input';
     const ri = 'rating-input';
     const gi = 'genre-input';
+    const bi = 'send-button';
 
     return (
       <form data-testid="add-movie-form">
@@ -65,13 +78,16 @@ class AddMovie extends React.Component {
             <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
+        <button type="submit" onClick={ () => { click(); this.reset(); } } data-testid={ bi }>
+          Adicionar filme
+        </button>
       </form>
     );
   }
 }
 
-/*  AddMovie.propTypes = {
+AddMovie.propTypes = {
   onClick: PropTypes.func.isRequired,
-};  */
+};
 
 export default AddMovie;
