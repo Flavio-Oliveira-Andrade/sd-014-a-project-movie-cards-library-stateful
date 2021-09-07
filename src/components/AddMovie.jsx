@@ -4,7 +4,7 @@ export class AddMovie extends Component {
   constructor() {
     super();
     this.state = {
-      // subtitle: '',
+      subtitle: '',
       title: '',
       // imagePath: '',
       // storyline: '',
@@ -34,12 +34,16 @@ export class AddMovie extends Component {
   }
 
   render() {
-    const { title } = this.state;
+    const { title, subtitle } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="title" data-testid="title-input-label">
           Título
           { this.createNewInput('text', 'title', title, 'title-input') }
+        </label>
+        <label htmlFor="subtitle" data-testid="subtitle-input-label">
+          Subtítulo
+          { this.createNewInput('text', 'subtitle', subtitle, 'subtitle-input') }
         </label>
       </form>
     );
