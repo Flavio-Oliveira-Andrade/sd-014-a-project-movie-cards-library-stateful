@@ -9,9 +9,7 @@ class SearchBar extends React.Component {
     const { onBookmarkedChange, selectedGenre, onSelectedGenreChange } = this.props;
 
     return (
-      <>
-
-      </>
+      <form data-testid="search-bar-form"></form>
     );
   }
 }
