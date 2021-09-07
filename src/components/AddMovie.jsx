@@ -41,10 +41,13 @@ class AddMovie extends React.Component {
           <textarea
             name="storyline"
             id="storyline"
-            cols="30"
-            rows="10"
             data-testid="storyline-input"
+            value={ storyline }
           />
+        </label>
+        <label htmlFor="rating" data-testid="rating-input-label">
+          Avaliação
+          <input type="number" data-testid="rating-input" />
         </label>
       </form>
     );
