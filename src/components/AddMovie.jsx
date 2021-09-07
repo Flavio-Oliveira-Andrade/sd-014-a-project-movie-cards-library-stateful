@@ -23,12 +23,30 @@ class AddMovie extends Component {
       estadoFavorito: event.target.value,
     });
   }
+
   render() {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.props;
     return (
       <div>
         <form data-testid="add-movie-form">
-          
+          <label htmlFor="title-input" data-testid="title-input-label">
+            Título
+          </label>
+          <input
+            id="title-input"
+            value={ title }
+            data-testid="title-input"
+            onChange={ title }
+          />
+          <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
+            Subtítulo
+          </label>
+          <input
+            id="subtitle-input"
+            value={ subtitle }
+            data-testid="subtitle-input"
+            onChange={ subtitle }
+          />
         </form>
       </div>
     );
