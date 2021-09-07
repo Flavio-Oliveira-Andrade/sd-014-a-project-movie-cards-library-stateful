@@ -38,6 +38,16 @@ class AddMovie extends React.Component {
           />
           {subtitle}
         </label>
+        <label htmlFor="image-input" data-testid="image-input-label">
+          Imagem
+          <input
+            name="image-input"
+            type="text"
+            data-testid="image-input"
+            onChange={ imagePath }
+          />
+          { imagePath }
+        </label>
       </form>
     );
   }
