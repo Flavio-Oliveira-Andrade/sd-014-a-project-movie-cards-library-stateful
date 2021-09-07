@@ -366,12 +366,7 @@ Esse componente renderizará uma barra com filtros acima da listagem de cartões
 ### 2 - Renderize um formulário dentro de `<SearchBar />`
 
 Dentro desse formulário haverá campos usados na filtragem de cartões.
-
-- Esse formulário deve apresentar o atributo `data-testid="search-bar-form"`
-
-**O que será verificado:**
-  - Será validado se é renderizado 1, e apenas 1, form dentro de `<SearchBar />`
-
+<SearchBar />
 
 ### 3 - Renderize um input do tipo texto dentro do formulário em `<SearchBar />`
 
