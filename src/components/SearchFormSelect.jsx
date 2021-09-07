@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class SearchFormSelect extends React.Component {
   render() {
-    const { value, eventListener } = this.props;
+    const { value, callback } = this.props;
     return (
       <label
         id="select-input-label"
@@ -15,7 +15,7 @@ class SearchFormSelect extends React.Component {
           id="select-input"
           data-testid="select-input"
           value={ value }
-          onChange={ eventListener }
+          onChange={ callback }
         >
           <option data-testid="select-option" value="">Todos</option>
           <option data-testid="select-option" value="action">Ação</option>
@@ -29,12 +29,12 @@ class SearchFormSelect extends React.Component {
 
 SearchFormSelect.defaultProps = {
   value: '',
-  eventListener: undefined,
+  callback: () => (undefined),
 };
 
 SearchFormSelect.propTypes = {
   value: PropTypes.string,
-  eventListener: PropTypes.func,
+  callback: PropTypes.func,
 };
 
 export default SearchFormSelect;

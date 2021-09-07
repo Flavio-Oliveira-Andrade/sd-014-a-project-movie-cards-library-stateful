@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class SearchFormInputCheckbox extends React.Component {
   render() {
-    const { value, eventListener } = this.props;
+    const { value, callback } = this.props;
     return (
       <label
         id="checkbox-input-label"
@@ -15,7 +15,7 @@ class SearchFormInputCheckbox extends React.Component {
           type="checkbox"
           data-testid="checkbox-input"
           checked={ value }
-          onChange={ eventListener }
+          onChange={ callback }
         />
         Mostrar somente favoritos
       </label>
@@ -25,12 +25,12 @@ class SearchFormInputCheckbox extends React.Component {
 
 SearchFormInputCheckbox.defaultProps = {
   value: false,
-  eventListener: undefined,
+  callback: () => (undefined),
 };
 
 SearchFormInputCheckbox.propTypes = {
   value: PropTypes.bool,
-  eventListener: PropTypes.func,
+  callback: PropTypes.func,
 };
 
 export default SearchFormInputCheckbox;

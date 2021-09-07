@@ -20,15 +20,15 @@ class SearchBar extends React.Component {
         <form data-testid="search-bar-form">
           <SearchFormInputText
             value={ searchText }
-            eventListener={ onSearchTextChange }
+            callback={ onSearchTextChange }
           />
           <SearchFormInputCheckbox
             value={ bookmarkedOnly }
-            eventListener={ onBookmarkedChange }
+            callback={ onBookmarkedChange }
           />
           <SearchFormSelect
             value={ selectedGenre }
-            eventListener={ onSelectedGenreChange }
+            callback={ onSelectedGenreChange }
           />
         </form>
       </section>
