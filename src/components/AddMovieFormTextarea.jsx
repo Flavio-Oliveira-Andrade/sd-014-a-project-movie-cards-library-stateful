@@ -9,11 +9,11 @@ class AddMovieFormTextarea extends React.Component {
     return (
       <label
         data-testid={ `${id}-input-label` }
-        htmlFor={ `${id}-text-input` }
+        htmlFor={ `${id}-input` }
       >
         { content }
         <textarea
-          id={ `${id}-text-input` }
+          id={ `${id}-input` }
           type={ type }
           data-testid={ `${id}-input` }
           name={ name }

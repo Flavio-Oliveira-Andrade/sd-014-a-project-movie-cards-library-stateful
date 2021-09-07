@@ -10,11 +10,11 @@ class AddMovieFormSelect extends React.Component {
     return (
       <label
         data-testid={ `${id}-input-label` }
-        htmlFor={ `${id}-text-input` }
+        htmlFor={ `${id}-input` }
       >
         { content }
         <select
-          id={ `${id}-text-input` }
+          id={ `${id}-input` }
           data-testid={ `${id}-input` }
           name={ name }
           value={ value }
