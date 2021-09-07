@@ -77,6 +77,7 @@ class AddMovie extends React.Component {
           genreList={ genres.slice(1) }
           testIds={ addGenreTestIds }
           title="Gênero:"
+          name="genre"
         />
         <button
           type="submit"

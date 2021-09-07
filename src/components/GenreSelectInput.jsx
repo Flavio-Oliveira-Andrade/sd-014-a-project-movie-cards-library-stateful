@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 
 class GenreSelectInput extends React.Component {
   render() {
-    const { value, handler, genreList, testIds, title } = this.props;
+    const { value, handler, genreList, testIds, title, name } = this.props;
     const { labelId, inputId, optionId } = testIds;
     return (
-      <label htmlFor="genre" data-testid={ labelId }>
+      <label htmlFor="selectedGenre" data-testid={ labelId }>
         { title }
         <select
-          name="genre"
-          id="genre"
+          name={ name }
+          id="selectedGenre"
           value={ value }
           onChange={ handler }
           data-testid={ inputId }
@@ -33,6 +33,7 @@ class GenreSelectInput extends React.Component {
 
 GenreSelectInput.propTypes = {
   handler: PropTypes.func,
+  name: PropTypes.string,
   value: PropTypes.string,
   genreList: PropTypes.arrayOf(PropTypes.shape({
     genre: PropTypes.string,
@@ -48,6 +49,7 @@ GenreSelectInput.propTypes = {
 
 GenreSelectInput.defaultProps = {
   handler: () => undefined,
+  name: '',
   value: '',
   testIds: {
     labelId: '',
