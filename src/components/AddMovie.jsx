@@ -1,6 +1,7 @@
 import React from 'react';
 import Input from './Input';
 import InputNumber from './InputNumber';
+import Select from './Select';
 import Textarea from './Textarea';
 
 class AddMovie extends React.Component {
@@ -27,7 +28,7 @@ class AddMovie extends React.Component {
 
   render() {
     const { onCLick } = this.props;
-    const { title, subtitle, imagePath, storyline, rating } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <Input
@@ -60,7 +61,12 @@ class AddMovie extends React.Component {
           handleChange={ this.handleChange }
           titulo={ `${'Avaliação'}` }
         />
-        
+        <Select
+          id={ `${'genre'}` }
+          value={ genre }
+          handleChange={ this.handleChange }
+          titulo={ `${'Gênero'}` }
+        />
       </form>
     );
   }
