@@ -40,7 +40,7 @@ class AddMovie extends React.Component {
       selectInput,
     } = setupFormInputs;
     return (
-      <div>
+      <form data-testid="add-movie-form">
         <AddMovieFormInput
           options={ titleInput }
           value={ title }
@@ -72,8 +72,7 @@ class AddMovie extends React.Component {
           eventListener={ this.handleChange }
         />
         <p>{ eventListener }</p>
-        <form data-testid="add-movie-form" />
-      </div>
+      </form>
     );
   }
 }
