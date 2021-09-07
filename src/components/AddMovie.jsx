@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AddMovieFormInput from './AddMovieFormInput';
 import AddMovieFormTextarea from './AddMovieFormTextarea';
+import setupFormInputs from './addMovieInputSetup';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -28,38 +29,34 @@ class AddMovie extends React.Component {
 
   render() {
     const { eventListener } = this.props;
+    const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     const {
-      subtitle,
-      title,
-      imagePath,
-      storyline,
-      rating,
-      genre,
-    } = this.state;
+      titleInput,
+      subtitleInput,
+      imageInput,
+      // ratingInput,
+      textareaInput,
+    } = setupFormInputs;
     return (
       <div>
         <AddMovieFormInput
-          name="title"
+          options={ titleInput }
           value={ title }
-          string="Título"
           eventListener={ this.handleChange }
         />
         <AddMovieFormInput
-          name="subtitle"
+          options={ subtitleInput }
           value={ subtitle }
-          string="Subtítulo"
           eventListener={ this.handleChange }
         />
         <AddMovieFormInput
-          name="imagePath"
+          options={ imageInput }
           value={ imagePath }
-          string="Imagem"
           eventListener={ this.handleChange }
         />
         <AddMovieFormTextarea
-          name="storyline"
+          options={ textareaInput }
           value={ storyline }
-          string="Sinopse"
           eventListener={ this.handleChange }
         />
         <p>{ rating }</p>

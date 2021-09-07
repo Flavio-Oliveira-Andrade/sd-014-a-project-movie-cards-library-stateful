@@ -3,18 +3,19 @@ import PropTypes from 'prop-types';
 
 class AddMovieFormInput extends React.Component {
   render() {
-    const { name, value, string, eventListener } = this.props;
-    const otherName = name === 'imagePath' ? 'image' : name;
+    const { options, value, eventListener } = this.props;
+    const { type, name, id, content } = options;
+
     return (
       <label
-        data-testid={ ` ${otherName}-input-label` }
-        htmlFor={ `${otherName}-text-input` }
+        data-testid={ `${id}-input-label` }
+        htmlFor={ `${id}-text-input` }
       >
-        { string }
+        { content }
         <input
-          id={ `${otherName}-text-input` }
-          type="text"
-          data-testid={ `${otherName}-input` }
+          id={ `${id}-text-input` }
+          type={ type }
+          data-testid={ `${id}-input` }
           name={ name }
           value={ value }
           onChange={ eventListener }
@@ -25,16 +26,19 @@ class AddMovieFormInput extends React.Component {
 }
 
 AddMovieFormInput.defaultProps = {
-  name: '',
+  options: '',
   value: '',
-  string: '',
   eventListener: '',
 };
 
 AddMovieFormInput.propTypes = {
-  name: PropTypes.string,
+  options: PropTypes.shape({
+    type: PropTypes.string,
+    name: PropTypes.string,
+    id: PropTypes.string,
+    content: PropTypes.string,
+  }),
   value: PropTypes.string,
-  string: PropTypes.string,
   eventListener: PropTypes.func,
 };
 
