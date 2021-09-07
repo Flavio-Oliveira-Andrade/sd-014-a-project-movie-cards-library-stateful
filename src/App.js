@@ -11,7 +11,7 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <MovieLibrary
-          allMovies={ movies }
+          movies={ movies }
         />
       </div>
     );
