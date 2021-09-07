@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import AddMovie from './AddMovie';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
-import data from '../data';
 
 class MovieLibrary extends React.Component {
   constructor(props) {
@@ -20,20 +19,24 @@ class MovieLibrary extends React.Component {
 
   onSearchTextChange = ({ target }) => {
     const { value } = target;
-    const newMovies = data.filter((item) => (
-      item.title.toLocaleLowerCase().includes(value.toLowerCase())));
+    const { searchText } = this.state;
+    const { movies } = this.props;
+    const newMovies = movies.filter((item) => (
+      item.title.includes(searchText)
+      || item.subtitle.includes(searchText)
+      || item.storyline.includes(searchText)));
     this.setState({
       searchText: value,
       movies: newMovies,
-
     });
   }
 
   onBookmarkedChange = ({ target }) => {
     const { checked } = target;
+    const { movies } = this.props;
     const newMovies = checked
-      ? data.filter((item) => item.bookmarked === checked)
-      : data;
+      ? movies.filter((item) => item.bookmarked === checked)
+      : movies;
     this.setState({
       bookmarkedOnly: checked,
       movies: newMovies,
@@ -42,10 +45,21 @@ class MovieLibrary extends React.Component {
 
   onSelectedGenreChange = ({ target }) => {
     const { value } = target;
-    console.log(value);
+    const { movies } = this.props;
     this.setState({
       selectedGenre: value,
+      movies: movies.filter((e) => e.genre === value),
     });
+  }
+
+  onClick = (state) => {
+    // console.log(this.state.movies.concat(state));
+    const newState = state;
+    const { movies } = this.state;
+    newState.rating = parseFloat(newState.rating);
+    this.setState(() => ({
+      movies: [...movies, newState],
+    }));
   }
 
   render() {
@@ -61,7 +75,7 @@ class MovieLibrary extends React.Component {
           onSelectedGenreChange={ this.onSelectedGenreChange }
         />
         <MovieList movies={ movies } />
-        <AddMovie />
+        <AddMovie onClick={ this.onClick } />
       </>
     );
   }
