@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
+import AddMovie from './AddMovie';
 
 class MovieLibrary extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class MovieLibrary extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.filterMovies = this.filterMovies.bind(this);
+    this.addNewMovie = this.addNewMovie.bind(this);
   }
 
   handleChange({ target }) {
@@ -32,8 +34,22 @@ class MovieLibrary extends React.Component {
     });
   }
 
+  addNewMovie({ title, subtitle, imagePath, storyline, rating, genre }) {
+    this.setState((actualState) => ({
+      movies: actualState.movies.concat([{
+        title,
+        subtitle,
+        storyline,
+        rating,
+        imagePath,
+        bookmarked: false,
+        genre,
+      }]),
+    }));
+  }
+
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <section>
         <SearchBar
@@ -45,6 +61,8 @@ class MovieLibrary extends React.Component {
           onSelectedGenreChange={ this.handleChange }
         />
         <MovieList movies={ this.filterMovies() } />
+
+        <AddMovie onClick={ this.addNewMovie } />
       </section>
     );
   }
