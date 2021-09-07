@@ -27,6 +27,7 @@ class MovieLibrary extends React.Component {
   }
 
   render() {
+    const { searchText, selectedGenre, bookmarkedOnly } = this.state;
     return (
       <main>
         <SearchBar
