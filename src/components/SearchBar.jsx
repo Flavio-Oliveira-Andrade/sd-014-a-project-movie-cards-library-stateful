@@ -6,7 +6,9 @@ class SearchBar extends React.Component {
   render() {
     const { searchText: s, onSearchTextChange: o, bookmarkedOnly: bO } = this.props;
 
-    const { onBookmarkedChange: oBC, selectedGenre, onSelectedGenreChange } = this.props;
+    const { onBookmarkedChange: oBC, selectedGenre: sG } = this.props;
+
+    const { onSelectedGenreChange: oSGC } = this.props;
 
     const dt = 'checkbox-input';
     const tc = 'checkbox';
@@ -20,6 +22,15 @@ class SearchBar extends React.Component {
         <label htmlFor="ck" data-testid="checkbox-input-label">
           Mostrar somente favoritos
           <input type={ tc } id="ck" checked={ bO } onChange={ oBC } data-testid={ dt } />
+        </label>
+        <label htmlFor="sel" data-testid="select-input-label">
+          Filtrar por gênero
+          <select id="sel" value={ sG } onChange={ oSGC }>
+            <option data-testid="select-option" value="">Todos</option>
+            <option data-testid="select-option" value="action">Ação</option>
+            <option data-testid="select-option" value="comedy">Comédia</option>
+            <option data-testid="select-option" value="thriller">Suspense</option>
+          </select>
         </label>
       </form>
     );
