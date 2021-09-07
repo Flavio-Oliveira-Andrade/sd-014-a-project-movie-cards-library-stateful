@@ -1,4 +1,5 @@
 import React from 'react';
+import Input from './Input';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -25,42 +26,26 @@ class AddMovie extends React.Component {
   render() {
     const { onCLick } = this.props;
     const { title, subtitle, imagePath } = this.state;
-
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="title" data-testid="title-input-label">
-          Título
-          <input
-            onChange={ this.handleChange }
-            type="text"
-            id="title"
-            name="title"
-            value={ title }
-            data-testid="title-input"
-          />
-        </label>
-        <label htmlFor="subtitle" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            onChange={ this.handleChange }
-            type="text"
-            id="subtitle"
-            name="subtitle"
-            value={ subtitle }
-            data-testid="subtitle-input"
-          />
-        </label>
-        <label htmlFor="image" data-testid="image-input-label">
-          Imagem
-          <input
-            onChange={ this.handleChange }
-            type="text"
-            id="image"
-            name="image"
-            src={ imagePath }
-            data-testid="image-input"
-          />
-        </label>
+        <Input
+          id={ `${'title'}` }
+          value={ title }
+          handleChange={ this.handleChange }
+          titulo={ `${'Título'}` }
+        />
+        <Input
+          id={ `${'subtitle'}` }
+          value={ subtitle }
+          handleChange={ this.handleChange }
+          titulo={ `${'Subtítulo'}` }
+        />
+        <Input
+          id={ `${'image'}` }
+          src={ imagePath }
+          handleChange={ this.handleChange }
+          titulo={ `${'Imagem'}` }
+        />
       </form>
     );
   }
