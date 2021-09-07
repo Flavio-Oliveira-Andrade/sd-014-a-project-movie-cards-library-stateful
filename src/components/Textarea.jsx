@@ -1,18 +1,16 @@
 import React from 'react';
 
-class Input extends React.Component {
+class Textarea extends React.Component {
   render() {
     const { id, value, titulo, handleChange } = this.props;
     return (
       <label htmlFor={ id } data-testid={ `${id}-input-label` }>
         { titulo }
-        <input
+        <textarea
           onChange={ handleChange }
-          type="text"
           id={ id }
           name={ id }
           value={ value }
-          src={ value }
           data-testid={ `${id}-input` }
         />
       </label>
@@ -20,4 +18,4 @@ class Input extends React.Component {
   }
 }
 
-export default Input;
+export default Textarea;

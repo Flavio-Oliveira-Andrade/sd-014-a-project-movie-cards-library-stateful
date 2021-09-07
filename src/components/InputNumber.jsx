@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Input extends React.Component {
+class InputNumber extends React.Component {
   render() {
     const { id, value, titulo, handleChange } = this.props;
     return (
@@ -8,11 +8,10 @@ class Input extends React.Component {
         { titulo }
         <input
           onChange={ handleChange }
-          type="text"
+          type="number"
           id={ id }
           name={ id }
           value={ value }
-          src={ value }
           data-testid={ `${id}-input` }
         />
       </label>
@@ -20,4 +19,4 @@ class Input extends React.Component {
   }
 }
 
-export default Input;
+export default InputNumber;
