@@ -1,11 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Title from './AddMovieComponents/Title';
 import Subtitle from './AddMovieComponents/Subtitle';
 import ImagePath from './AddMovieComponents/ImagePath';
 import Storyline from './AddMovieComponents/Storyline';
 import Rating from './AddMovieComponents/Rating';
 import Genre from './AddMovieComponents/Genre';
-// import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -21,13 +21,29 @@ class AddMovie extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange({ target }) {
     const { name } = target;
-    const value = target.type === 'select' ? target.option : target.value;
     this.setState({
-      [name]: value,
+      [name]: target.value,
+    });
+  }
+
+  handleClick(event) {
+    event.preventDefault();
+
+    const { onClick } = this.props;
+    onClick(this.state);
+
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
     });
   }
 
@@ -60,11 +76,19 @@ class AddMovie extends React.Component {
             genre={ genre }
             genreChange={ this.handleChange }
           />
+          <button
+            type="submit"
+            data-testid="send-button"
+            onClick={ this.handleClick }
+          >
+            Adicionar filme
+          </button>
         </form>
       </div>
 
     );
   }
 }
+AddMovie.propTypes = { onClick: PropTypes.func.isRequired };
 
 export default AddMovie;
