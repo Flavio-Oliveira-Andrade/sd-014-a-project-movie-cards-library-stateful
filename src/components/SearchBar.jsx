@@ -9,11 +9,19 @@ class SearchBar extends Component {
       bookmarkedOnly,
       onBookMarkedChange,
       selectedGenre,
-      onSelectedGenreChange
+      onSelectedGenreChange,
     } = this.props;
     return (
       <form data-testid="search-bar-form">
-        
+        <label data-testid="text-input-label" htmlFor="search-bar">
+          Inclui o texto:
+          <input
+            value={ searchText }
+            onChange={ onSearchTextChange }
+            data-testid="text-input"
+            name="search-bar"
+          />
+        </label>
       </form>
     );
   }

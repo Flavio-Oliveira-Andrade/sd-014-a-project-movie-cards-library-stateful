@@ -4,17 +4,17 @@ import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
-  constructor() {
-    super();
-  }
+  // constructor() {
+  //   super();
+  // }
 
   render() {
-    const { movies } = this.props;
+    // const { movies } = this.props;
     return (
       <div>
         <h2>My awesome movie library</h2>
         <SearchBar />
-        <MovieList movies={ movies } />
+        <MovieList /* movies={ movies } */ />
         <AddMovie />
       </div>
     );
