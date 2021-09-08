@@ -33,6 +33,7 @@ class AddMovie extends Component {
       imagePath,
       storyline,
       rating,
+      genre,
     } = this.state;
 
     return (
@@ -108,6 +109,38 @@ class AddMovie extends Component {
           data-testid="rating-input"
           onChange={ this.handleChange }
         />
+        </label>
+        <label
+        data-testid="genre-input-label"
+        htmlFor="genre"
+        >
+          Gênero
+          <select
+          name="genre" 
+          value={ genre }
+          id="genre"
+          data-testid="genre-input"
+          onChange={ this.handleChange }
+          >
+            <option
+            data-testid="genre-option"
+            value="action"
+            >
+              Ação
+            </option>  
+            <option
+            data-testid="genre-option"
+            value="comedy"
+            >
+              Comédia
+            </option>
+            <option
+            data-testid="genre-option"
+            value="thriller"
+            >
+              Suspense
+            </option>
+          </select>
         </label>
       </form>
     );
