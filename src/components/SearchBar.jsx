@@ -24,7 +24,7 @@ class SearchBar extends React.Component {
           />
         </label>
         <label data-testid="checkbox-input-label" htmlFor="bookmarkedOnly">
-            Mostrar somente favoritos:
+          Mostrar somente favoritos:
           <input
             checked={ bookmarkedOnly }
             onChange={ onBookmarkedChange }
@@ -33,7 +33,7 @@ class SearchBar extends React.Component {
           />
         </label>
         <label data-testid="select-input-label" htmlFor="selectedGenre">
-            Filtrar por gênero:
+          Filtrar por gênero:
           <select
             data-testid="select-input"
             name="selectedGenre"
