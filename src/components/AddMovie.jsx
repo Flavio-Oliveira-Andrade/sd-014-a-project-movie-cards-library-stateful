@@ -3,6 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Title from './AddMovieComponens/Title';
 import Subtitle from './AddMovieComponens/Subtitle';
+import Image from './AddMovieComponens/Image';
+import Story from './AddMovieComponens/Story';
+import Rating from './AddMovieComponens/Rating';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -35,11 +38,15 @@ class AddMovie extends React.Component {
       <form data-testid="add-movie-form">
         <Title
           title={ title }
-          TitleChange={ this.handleChange }
+          titleChange={ this.handleChange }
         />
         <Subtitle
           subtitle={ subtitle }
-          SubtitleChange={ this.handleChange }
+          subtitleChange={ this.handleChange }
+        />
+        <Image
+          image={ imagePath }
+          imageTChange={ this.handleChange }
         />
       </form>
     );
