@@ -1,4 +1,6 @@
 import React from 'react';
+import CreateInput from './CreateInput';
+import CreateTextArea from './CreateTextArea';
 import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
@@ -24,39 +26,30 @@ class AddMovie extends React.Component {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     return (
       <form action="form" data-testid="add-movie-form">
-        <label htmlFor="titulo" data-testid="title-input-label">
-          Título
-          <input
-            type="text"
-            name="title"
-            id="title"
-            data-testid="title-input"
-            value={ title }
-            onChange={ this.handleForm }
-          />
-        </label>
-        <label htmlFor="subtitulo" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            type="text"
-            name="subtitle"
-            id="subtitle"
-            data-testid="subtitle-input"
-            value={ subtitle }
-            onChange={ this.handleForm }
-          />
-        </label>
-        <label htmlFor="imagem" data-testid="image-input-label">
-          Imagem
-          <input
-            type="text"
-            name="imagePath"
-            id="imagePath"
-            data-testid="image-input"
-            value={ imagePath }
-            onChange={ this.handleForm }
-          />
-        </label>
+        <CreateInput
+          name="title"
+          value={ title }
+          handleForm={ this.handleForm }
+          text="Título"
+        />
+        <CreateInput
+          name="subtitle"
+          value={ subtitle }
+          handleForm={ this.handleForm }
+          text="Subtítulo"
+        />
+        <CreateInput
+          name="image"
+          value={ imagePath }
+          handleForm={ this.handleForm }
+          text="Imagem"
+        />
+        <CreateTextArea
+          name="storyline"
+          value={ storyline }
+          handleForm={ this.handleForm }
+          text="Sinopse"
+        />
       </form>
     );
   }
