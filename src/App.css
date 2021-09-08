@@ -8,6 +8,10 @@ body {
   padding: 20px;
 }
 
+.label-block {
+  display: block;
+}
+
 .movie-card-header {
   align-items: center;
   background-color: #343a40;

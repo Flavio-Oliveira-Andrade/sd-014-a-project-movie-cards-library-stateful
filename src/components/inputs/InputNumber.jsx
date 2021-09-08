@@ -18,6 +18,7 @@ class InputNumber extends React.Component {
           value={ value }
           data-testid={ `${id}-input` }
           max="10"
+          min="0"
           step="0.1"
         />
       </div>

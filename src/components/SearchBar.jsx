@@ -27,7 +27,7 @@ class SearchBar extends React.Component {
           handleChange={ onBookmarkedChange }
           titulo={ `${' Mostrar somente favoritos'}` }
         />
-        <label htmlFor="genero" data-testid="select-input-label">
+        <label htmlFor="genero" className="label-block" data-testid="select-input-label">
           Filtrar por gênero
           <select
             className="form-control"
