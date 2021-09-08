@@ -54,6 +54,17 @@ class AddMovie extends React.Component {
             id="handle-change-subtitle"
           />
         </label>
+        <label htmlFor="handle-change-image" data-testid="image-input-label">
+          Imagem
+          <input
+            type="text"
+            value={ imagePath }
+            name="imagePath"
+            data-testid="image-input"
+            onChange={ this.handleChange }
+            id="handle-change-image"
+          />
+        </label>
       </form>
     );
   }
