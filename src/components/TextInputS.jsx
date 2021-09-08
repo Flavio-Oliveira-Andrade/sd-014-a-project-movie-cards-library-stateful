@@ -8,6 +8,7 @@ class TextInputS extends Component {
           Inclui o texto:
           <input
             type="text"
+            name="textInput"
             // value={ searchText }
             // onChange={ onSearchTextChange }
             data-testid="text-input"

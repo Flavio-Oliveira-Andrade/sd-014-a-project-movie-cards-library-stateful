@@ -8,6 +8,7 @@ class CheckboxInputS extends Component {
           Mostrar somente favoritos
           <input
             type="checkbox"
+            name="checkboxInput"
             // checked={ bookmarkedOnly }
             // onChange={ onBookmarkedChange }
             data-testid="checkbox-input"
