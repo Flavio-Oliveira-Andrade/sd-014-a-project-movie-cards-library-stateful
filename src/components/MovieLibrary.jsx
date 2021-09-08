@@ -18,7 +18,7 @@ class MovieLibrary extends React.Component {
     const { movies } = this.props;
     return (
       <div>
-        <SearchBar movies={ movies } />
+        <SearchBar />
         <AddMovie movies={ movies } />
       </div>
     );
