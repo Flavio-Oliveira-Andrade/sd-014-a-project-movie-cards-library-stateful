@@ -1,12 +1,18 @@
-import React from "react";
+import React from 'react';
+import SearchBar from './SearchBar';
+import MovieList from './MovieList';
+import AddMovie from './AddMovie';
+
+const movies = require('../data');
 
 class MovieLibrary extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchText: "",
+      searchText: '',
       bookmarked: false,
-      selectedGenre: "",
+      selectedGenre: '',
+      movies,
     };
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
@@ -20,19 +26,19 @@ class MovieLibrary extends React.Component {
   onSelectedGenreChange() {}
 
   render() {
-    const { searchText, bookmarked, selectedGenre } = this.state;
+    const { state: { searchText, bookmarked, selectedGenre, movies } } = this;
     return (
       <div>
         <h2> My awesome movie library </h2>
         <SearchBar
-          searchText={searchText}
-          onSearchTextChange={this.onSearchTextChange}
-          bookmarked={bookmarked}
-          onBookmarkedChange={this.onBookmarkedChange}
-          selectedGenre={selectedGenre}
-          onSelectedGenreChange={this.onSelectedGenreChange}
+          searchText={ searchText }
+          onSearchTextChange={ this.onSearchTextChange }
+          bookmarked={ bookmarked }
+          onBookmarkedChange={ this.onBookmarkedChange }
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ this.onSelectedGenreChange }
         />
-        <MovieList movies={this.props.movies} />
+        <MovieList movies={ movies } />
         <AddMovie />
       </div>
     );
