@@ -15,7 +15,6 @@ class AddMovie extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.cleanStates = this.cleanStates.bind(this);
-
   }
 
   handleChange(event) {
@@ -169,5 +168,9 @@ class AddMovie extends React.Component {
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default AddMovie;
