@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import LabelInputGen from './LabelInputGen';
 
 class AddMovie extends Component {
   constructor() {
@@ -13,13 +14,10 @@ class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
   }
 
   // Função genérica apresentada no course (lembrado pelo Rod)
-  handleChange({ target }) {
+  handleChange = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
@@ -27,21 +25,8 @@ class AddMovie extends Component {
     });
   }
 
-  // Ideia do Rod
-  handleInput(type, name, value, dataTestId) {
-    return (
-      <input
-        type={ type }
-        name={ name }
-        value={ value }
-        data-testid={ dataTestId }
-        onChange={ this.handleChange }
-      />
-    );
-  }
-
   // Botão copiado do Marcello
-  handleClick(event) {
+  handleClick = (event) => {
     event.preventDefault();
     const { onClick } = this.props;
     onClick(this.state);
@@ -57,20 +42,21 @@ class AddMovie extends Component {
 
   render() {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
-    return (
+
+    return ( // Ideia de array com Pablo
       <form data-testid="add-movie-form">
-        <label htmlFor="title" data-testid="title-input-label">
-          Título
-          {this.handleInput('text', 'title', title, 'title-input')}
-        </label>
-        <label htmlFor="subtitle" data-testid="subtitle-input-label">
-          Subtítulo
-          {this.handleInput('text', 'subtitle', subtitle, 'subtitle-input')}
-        </label>
-        <label htmlFor="imagePath" data-testid="image-input-label">
-          Imagem
-          {this.handleInput('text', 'imagePath', imagePath, 'image-input')}
-        </label>
+        <LabelInputGen
+          atributes={ ['title', 'title-input-label', 'Título', 'text', 'title', title,
+            'title-input', this.handleChange] }
+        />
+        <LabelInputGen
+          atributes={ ['subtitle', 'subtitle-input-label', 'Subtítulo', 'text',
+            'subtitle', subtitle, 'subtitle-input', this.handleChange] }
+        />
+        <LabelInputGen
+          atributes={ ['imagePath', 'image-input-label', 'Imagem', 'text', 'imagePath',
+            imagePath, 'image-input', this.handleChange] }
+        />
         <label htmlFor="storyline" data-testid="storyline-input-label">
           Sinopse
           <textarea
@@ -80,10 +66,10 @@ class AddMovie extends Component {
             onChange={ this.handleChange }
           />
         </label>
-        <label htmlFor="rating" data-testid="rating-input-label">
-          Avaliação
-          {this.handleInput('number', 'rating', rating, 'rating-input')}
-        </label>
+        <LabelInputGen
+          atributes={ ['rating', 'rating-input-label', 'Avaliação', 'number', 'rating',
+            rating, 'rating-input', this.handleChange] }
+        />
         <label htmlFor="genre" data-testid="genre-input-label">
           Gênero
           <select
