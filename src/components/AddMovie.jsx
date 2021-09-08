@@ -35,9 +35,9 @@ class AddMovie extends React.Component {
         <label htmlFor="handle-change-title" data-testid="title-input-label">
           Título
           <input
-            type="text"
-            value={ title }
-            name="title"
+            type="text" 
+            value={ title } 
+            name="title" 
             data-testid="title-input"
             onChange={ this.handleChange }
             id="handle-change-title"
@@ -63,6 +63,27 @@ class AddMovie extends React.Component {
             data-testid="image-input"
             onChange={ this.handleChange }
             id="handle-change-image"
+          />
+        </label>
+        <label htmlFor="handle-change-storyline" data-testid="storyline-input-label">
+          Sinopse
+          <textarea
+            value={ storyline }
+            name="storyline"
+            data-testid="storyline-input"
+            onChange={ this.handleChange }
+            id="handle-change-storyline"
+          />
+        </label>
+        <label htmlFor="handle-change-rating" data-testid="rating-input-label">
+          Avaliação
+          <input
+            type="number"
+            value={ rating }
+            name="rating"
+            data-testid="rating-input"
+            onChange={ this.handleChange }
+            id="handle-change-rating"
           />
         </label>
       </form>
