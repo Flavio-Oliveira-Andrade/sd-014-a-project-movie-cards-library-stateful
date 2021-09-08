@@ -1,6 +1,7 @@
 import React from 'react';
 import Title from './AddMovieComponents/Title';
 import Subtitle from './AddMovieComponents/Subtitle';
+import ImagePath from './AddMovieComponents/ImagePath';
 // import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
@@ -38,6 +39,10 @@ class AddMovie extends React.Component {
           <Subtitle
             subtitle={ subtitle }
             subtitleChange={ this.handleChange }
+          />
+          <ImagePath
+            imagePath={ imagePath }
+            imagePathChange={ this.handleChange }
           />
         </form>
       </div>
