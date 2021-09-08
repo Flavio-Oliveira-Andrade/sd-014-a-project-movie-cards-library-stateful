@@ -1,6 +1,12 @@
 // implement AddMovie component here
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import TitleAux from './auxAddMovie/TitleAux';
+import SubtitleAux from './auxAddMovie/SubtitleAux';
+import ImagePathAux from './auxAddMovie/ImagePathAux';
+import StorylineAux from './auxAddMovie/StorylineAux';
+import RatingAux from './auxAddMovie/RatingAux';
+import SelectAux from './auxAddMovie/SelectAux';
 
 class AddMovie extends Component {
   constructor() {
@@ -12,9 +18,9 @@ class AddMovie extends Component {
   }
 
   handleChange(event) {
-    const { name, value } = event.target;
+    const { id, value } = event.target;
     this.setState({
-      [name]: value,
+      [id]: value,
     });
   }
 
@@ -39,49 +45,15 @@ class AddMovie extends Component {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.props;
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="title-input" data-testid="title-input-label">
-          Título
-          <input
-            id="title-input"
-            type="text"
-            value={ title }
-            data-testid="title-input"
-            name="title"
-            onChange={ this.handleChange }
-          />
-        </label>
-        <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            id="subtitle-input"
-            data-testid="subtitle-input"
-            name="subtitle"
-            onChange={ this.handleChange }
-            type="text"
-            value={ subtitle }
-          />
-        </label>
-        <label htmlFor="image" data-testid="image-input-label">
-          Imagem
-          <input
-            id="image"
-            type="text"
-            value={ imagePath }
-            data-testid="image-input"
-            name="imagePath"
-            onChange={ this.handleChange }
-          />
-        </label>
-        <label htmlFor="sinopse" data-testid="storyline-input-label">
-          Sinopse
-          <textarea
-            id="sinopse"
-            value={ storyline }
-            data-testid="storyline-input"
-            name="storyline"
-            onChange={ this.handleChange }
-          />
-        </label>
+        <TitleAux title={ title } handleChange={ this.handleChange } />
+        <SubtitleAux subtitle={ subtitle } handleChange={ this.handleChange } />
+        <ImagePathAux imagePath={ imagePath } handleChange={ this.handleChange } />
+        <StorylineAux storyline={ storyline } handleChange={ this.handleChange } />
+        <RatingAux rating={ rating } handleChange={ this.handleChange } />
+        <SelectAux genre={ genre } name="genre" handleChange={ this.handleChange } />
+        <button type="button" data-testid="send-button" onClick={ this.addMovie }>
+          Adicionar filme
+        </button>
       </form>
     );
   }
