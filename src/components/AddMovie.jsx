@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import TextInput from './TextInput';
+
 class AddMovie extends Component {
   constructor() {
     super();
@@ -27,28 +29,12 @@ class AddMovie extends Component {
 
     return (
       <form data-testid="add-movie-form">
-        <label data-testid="title-input-label" htmlFor="title">
+        <TextInput id="title" onChange={ this.handleChange } value={ title }>
           Título
-          <input
-            data-testid="title-input"
-            id="title"
-            name="title"
-            onChange={ this.handleChange }
-            type="text"
-            value={ title }
-          />
-        </label>
-        <label data-testid="subtitle-input-label" htmlFor="subtitle">
+        </TextInput>
+        <TextInput id="subtitle" onChange={ this.handleChange } value={ subtitle }>
           Subtítulo
-          <input
-            data-testid="subtitle-input"
-            id="subtitle"
-            name="subtitle"
-            onChange={ this.handleChange }
-            type="text"
-            value={ subtitle }
-          />
-        </label>
+        </TextInput>
       </form>
     );
   }
