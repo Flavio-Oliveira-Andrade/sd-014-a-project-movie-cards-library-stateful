@@ -7,6 +7,7 @@ class AddMovie extends React.Component {
     super();
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
     this.state = {
       subtitle: '',
@@ -71,7 +72,12 @@ class AddMovie extends React.Component {
         </label>
         <label htmlFor="storyline" data-testid="storyline-input-label">
           Sinopse
-          { this.createInput('storyline', 'textarea', storyline, 'storyline-input') }
+          <textarea
+            name="storyline"
+            value={ storyline }
+            data-testid="storyline-input"
+            onChange={ this.handleChange }
+          />
         </label>
         <label htmlFor="rating" data-testid="rating-input-label">
           Avaliação
@@ -90,11 +96,7 @@ class AddMovie extends React.Component {
             <option data-testid="genre-option" value="thriller">Suspense</option>
           </select>
         </label>
-        <button
-          type="submit"
-          data-testid="send-button"
-          onClick={ this.handleClick }
-        >
+        <button type="submit" data-testid="send-button" onClick={ this.handleClick }>
           Adicionar filme
         </button>
       </form>
