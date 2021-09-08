@@ -13,6 +13,7 @@ class AddMovie extends React.Component {
     };
   }
 
+  // Inspirado no codigo do Marcello Alves tanto a função handleChange quanto a customImput
   handleChange = ({ target }) => this.setState({
     [target.name]: (target.type === 'checkbox' ? target.checked : target.value),
   });
@@ -47,6 +48,10 @@ class AddMovie extends React.Component {
         <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
           Subtítulo
           {this.customImput('text', 'subtitle', subtitle, 'subtitle-input')}
+        </label>
+        <label htmlFor="image-input" data-testid="image-input-label">
+          Imagem
+          {this.customImput('text', 'imagePath', imagePath, 'image-input')}
         </label>
       </form>
     );
