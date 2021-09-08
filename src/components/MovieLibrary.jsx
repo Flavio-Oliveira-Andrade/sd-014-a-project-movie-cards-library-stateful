@@ -14,6 +14,7 @@ class MovieLibrary extends React.Component {
       bookmarkedOnly: false,
       selectedGenre: '',
       movies: [...movies],
+      newCards: [],
     };
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
@@ -23,41 +24,50 @@ class MovieLibrary extends React.Component {
 
   onSearchTextChange(e) {
     const { movies } = this.props;
-    const { searchText } = this.state;
-    const titleContains = movies.filter((el) => el.title.includes(searchText)
-    || el.subtitle.includes(searchText)
-     || el.storyline.includes(searchText));
+    const { newCards } = this.state;
+    const { value } = e.target; // value do html atualiza antes do state (que é async);
+    const allMovies = [...movies, ...newCards];
+    const titleContains = allMovies.filter((el) => el.title.includes(value)
+        || el.subtitle.includes(value)
+        || el.storyline.includes(value));
     this.setState({
-      searchText: e.target.value,
-      movies: [...titleContains],
+      searchText: value,
+      movies: titleContains,
     });
   }
 
   onBookmarkedChange(e) {
     const { movies } = this.props;
-    const bookmark = e.target.checked;
-    const favorited = movies.filter((el) => el.bookmarked === true);
+    const { newCards } = this.state;
+    const { checked } = e.target;
+    const allMovies = [...movies, ...newCards];
+    const favorited = allMovies.filter((el) => el.bookmarked === true);
     this.setState({
-      movies: (bookmark === true ? [...favorited] : [...movies]),
-      bookmarkedOnly: bookmark,
+      movies: (checked === true ? favorited : allMovies),
+      bookmarkedOnly: checked,
     });
   }
 
   onSelectedGenreChange(e) {
     const { value } = e.target;
     const { movies } = this.props;
-    const filtered = movies.filter((el) => el.genre === value);
+    const { newCards } = this.state;
+    const allMovies = [...movies, ...newCards];
+    const filtered = allMovies.filter((el) => el.genre === value);
     this.setState({
       selectedGenre: value,
-      movies: value !== '' ? [...filtered] : [...movies],
+      movies: (value !== '' ? [...filtered] : allMovies),
     });
   }
 
-  newMovie(state) {
+  newMovie(newCard) {
     const { movies } = this.props;
-    this.setState(() => ({
-      movies: [...movies, state],
-    }));
+    const { newCards } = this.state;
+    const allNewMovies = [...newCards, newCard];
+    this.setState({
+      newCards: allNewMovies,
+      movies: [...movies, ...allNewMovies],
+    });
   }
 
   render() {

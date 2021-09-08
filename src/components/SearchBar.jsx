@@ -1,5 +1,4 @@
 // implement SearchBar component here
-// teste
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextInput from './AddMovieComponents/TextInput';

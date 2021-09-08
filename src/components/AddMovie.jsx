@@ -17,13 +17,12 @@ class AddMovie extends React.Component {
       rating: 0,
       genre: 'action',
     };
-    this.btnEvent = this.btnEvent.bind(this);
-    this.saveNewCard = this.saveNewCard.bind(this);
   }
 
-  btnEvent() {
+  addMovieBtn = () => {
     const { onClick } = this.props;
-    onClick(this.state);
+    const getMovie = onClick;
+    getMovie(this.state);
     this.setState({
       subtitle: '',
       title: '',
@@ -34,22 +33,21 @@ class AddMovie extends React.Component {
     });
   }
 
-  saveNewCard({ target }) {
+  saveNewCardValues = ({ target }) => {
     const { value, name } = target;
-
     if (name === 'image') {
       this.setState({
         imagePath: value,
       });
     } else {
-      this.setState({
+      this.setState({ // value chega como string por ser extraído de string de html;
         [name]: (name === 'rating' ? Number(value) : value),
       });
     }
   }
 
   render() {
-    const cb = this.saveNewCard;
+    const cb = this.saveNewCardValues;
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
@@ -68,7 +66,7 @@ class AddMovie extends React.Component {
         <button
           type="button"
           data-testid="send-button"
-          onClick={ this.btnEvent }
+          onClick={ this.addMovieBtn }
         >
           Adicionar filme
         </button>
