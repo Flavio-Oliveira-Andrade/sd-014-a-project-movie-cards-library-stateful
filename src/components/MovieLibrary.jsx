@@ -25,6 +25,8 @@ class MovieLibrary extends React.Component {
     this.aSG = this.aSG.bind(this);
     this.add = this.add.bind(this);
     this.filtraTexto = this.filtraTexto.bind(this);
+    this.filtraFavorito = this.filtraFavorito.bind(this);
+    this.filtraGenero = this.filtraGenero.bind(this);
   }
 
   filtraTexto(filt) {
@@ -56,6 +58,17 @@ class MovieLibrary extends React.Component {
     });
   }
 
+  filtraGenero(filt) {
+    const { inicialData } = this.state;
+    let filmes;
+    if (filt === '') {
+      filmes = inicialData;
+    } else {
+      filmes = inicialData.filter((mov) => mov.genre === filt);
+    }
+    this.setState({ movies: filmes });
+  }
+
   aST({ target }) {
     this.setState({
       searchText: target.value,
@@ -74,6 +87,7 @@ class MovieLibrary extends React.Component {
     this.setState({
       selectedGenre: target.value,
     });
+    this.filtraGenero(target.value);
   }
 
   add(newMovie) {
