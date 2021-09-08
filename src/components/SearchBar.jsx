@@ -5,21 +5,34 @@ class SearchBar extends Component {
     super(props);
     this.state = {
       searchText: '',
-      onSearchTextChange: callback(),
+      onSearchTextChange: this.changeSearchText,
       bookmarkedOnly: true,
-      onBookmarkedChange: outraCallback(),
+      // onBookmarkedChange: outraCallback(),
       selectedGenre: '',
-      onSelectedGenreChange: maisCallBack(),
-    }
+      // onSelectedGenreChange: maisCallBack(),
+    };
+    this.changeSearchText = this.changeSearchText.bind(this);
   }
+
+  changeSearchText(event) {
+    this.setState({
+      searchText: event.target.value,
+    });
+    console.log(this.state.searchText);
+  }
+
   render() {
-    return ( 
+    // const {data-testeid} = this.props
+    const { searchText, onSearchTextChange, bookmarkedOnly, selectedGenre } = this.state;
+
+    return (
       <form>
         <fieldset>
-          <label htmlFor="texto">Inclui o texto:</label>
+          <label htmlFor="texto" data-testid="text-input-label">Inclui o texto:</label>
+          <input type="text" value={ searchText } onChange={ this.changeSearchText } />
         </fieldset>
       </form>
-     );
+    );
   }
 }
 
