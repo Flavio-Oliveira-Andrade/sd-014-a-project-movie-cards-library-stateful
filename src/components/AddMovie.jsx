@@ -7,21 +7,23 @@ import Image from './AddMovieComponens/Image';
 import Story from './AddMovieComponens/Story';
 import Rating from './AddMovieComponens/Rating';
 import Genre from './AddMovieComponens/Genre';
+import Button from './AddMovieComponens/Button';
 
 class AddMovie extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       title: '',
       subtitle: '',
-      imagePath: '',
       storyline: '',
+      imagePath: '',
       rating: 0,
       genre: 'action',
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange({ target }) {
@@ -29,6 +31,18 @@ class AddMovie extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
+    });
+  }
+
+  handleClick(callback) {
+    callback(this.state);
+    this.setState({
+      title: '',
+      subtitle: '',
+      storyline: '',
+      imagePath: '',
+      rating: 0,
+      genre: 'action',
     });
   }
 
@@ -63,6 +77,7 @@ class AddMovie extends React.Component {
           genre={ genre }
           genreChange={ this.handleChange }
         />
+        <Button funcOnClick={ () => this.handleClick(onClick) } />
       </form>
     );
   }

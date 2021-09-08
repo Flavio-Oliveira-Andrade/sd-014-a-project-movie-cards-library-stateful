@@ -5,7 +5,7 @@ class Story extends React.Component {
   render() {
     const { story, storyChange } = this.props;
     return (
-      <label htmlFor="storyLine" data-testid="storyline-input-label">
+      <label htmlFor="storyline" data-testid="storyline-input-label">
         Sinopse
         <input
           type="text"
