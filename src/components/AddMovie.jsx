@@ -7,7 +7,7 @@ import Image from './AddMovieComponens/Image';
 import Story from './AddMovieComponens/Story';
 import Rating from './AddMovieComponens/Rating';
 import Genre from './AddMovieComponens/Genre';
-import Button from './AddMovieComponens/Button';
+// import Button from './AddMovieComponens/Button';
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -34,8 +34,11 @@ class AddMovie extends React.Component {
     });
   }
 
-  handleClick(callback) {
-    callback(this.state);
+  handleClick(event) {
+    event.preventDefault();
+    const { onClick } = this.props;
+
+    onClick(this.state);
     this.setState({
       title: '',
       subtitle: '',
@@ -47,7 +50,6 @@ class AddMovie extends React.Component {
   }
 
   render() {
-    const { onClick } = this.props;
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       // https://github.com/tryber/sd-012-project-movie-cards-library-stateful/tree/LuisFernando-movie-cards-library-s-stateful
@@ -77,7 +79,9 @@ class AddMovie extends React.Component {
           genre={ genre }
           genreChange={ this.handleChange }
         />
-        <Button funcOnClick={ () => this.handleClick(onClick) } />
+        <button type="submit" onClick={ this.handleClick } data-testid="send-button">
+          Adicionar filme
+        </button>
       </form>
     );
   }

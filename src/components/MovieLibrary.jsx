@@ -18,6 +18,7 @@ class MovieLibrary extends React.Component {
       movies,
     };
     this.handleChange = this.handleChange.bind(this);
+    this.filteredMovies = this.filteredMovies.bind(this);
   }
 
   handleChange({ target }) {
@@ -25,8 +26,19 @@ class MovieLibrary extends React.Component {
     this.setState({ [target.name]: value });
   }
 
-  render() {
+  filteredMovies() {
     const { searchText, selectedGenre, bookmarkedOnly, movies } = this.state;
+    const arrayMovies = movies
+      .filter((movie) => (bookmarkedOnly ? movie.bookmarked === true : movie))
+      .filter((movie) => (movie.genre.includes(selectedGenre)))
+      .filter((movie) => (movie.title.toLowerCase().includes(searchText)
+      || movie.subtitle.toLowerCase().includes(searchText)
+      || movie.storyline.toLowerCase().includes(searchText)));
+    return arrayMovies;
+  }
+
+  render() {
+    const { searchText, selectedGenre, bookmarkedOnly } = this.state;
     return (
       <main>
         <SearchBar
@@ -37,7 +49,7 @@ class MovieLibrary extends React.Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleChange }
         />
-        <MovieList movies={ movies } />
+        <MovieList movies={ this.filteredMovies() } />
         <AddMovie />
       </main>
     );
