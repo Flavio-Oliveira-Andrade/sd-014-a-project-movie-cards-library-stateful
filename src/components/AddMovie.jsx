@@ -1,6 +1,7 @@
 import React from 'react';
 import CreateInput from './CreateInput';
 import CreateTextArea from './CreateTextArea';
+import CreateSelect from './CreateSelect';
 import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
@@ -49,6 +50,18 @@ class AddMovie extends React.Component {
           value={ storyline }
           handleForm={ this.handleForm }
           text="Sinopse"
+        />
+        <CreateInput
+          name="rating"
+          value={ rating }
+          handleForm={ this.handleForm }
+          text="Avaliação"
+        />
+        <CreateSelect
+          name="genre"
+          value={ genre }
+          handleForm={ this.handleForm }
+          text="Gênero"
         />
       </form>
     );

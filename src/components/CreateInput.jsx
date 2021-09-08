@@ -8,7 +8,7 @@ class CreateInput extends React.Component {
       <label htmlFor={ name } data-testid={ `${name}-input-label` }>
         { text }
         <input
-          type="text"
+          type={ text === 'Avaliação' ? 'number' : 'text' }
           name={ name === 'image' ? 'imagePath' : name }
           id={ name }
           data-testid={ `${name}-input` }
