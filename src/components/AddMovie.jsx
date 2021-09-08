@@ -2,14 +2,14 @@ import React from 'react';
 
 class AddMovie extends React.Component {
   constructor() {
-    super()
+    super();
     this.state = {
       subtitle: '',
       title: '',
       imagePath: '',
       rating: 0,
       genre: 'action',
-    }
+    };
   }
 
   render() {
@@ -18,9 +18,15 @@ class AddMovie extends React.Component {
     } = this.props;
 
     return (
-      <form>
+      <form data-testid="add-movie-form">
 
       </form>
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired
+};
+
+export default AddMovie;
