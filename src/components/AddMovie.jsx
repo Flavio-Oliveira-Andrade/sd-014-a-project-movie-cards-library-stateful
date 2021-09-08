@@ -13,6 +13,8 @@ class AddMovie extends Component {
     };
 
     this.onChange = this.onChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleInput = this.handleInput.bind(this);
   }
 
   handleClick() {
