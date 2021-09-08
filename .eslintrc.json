@@ -11,5 +11,6 @@
     },
     "sourceType": "module"
   },
-  "plugins": ["react", "sonarjs"]
+  "plugins": ["react", "sonarjs","css-modules"],
+  "root": true
 }

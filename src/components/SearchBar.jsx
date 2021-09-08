@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 // implement SearchBar component here
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class SearchBar extends React.Component {
   render() {
@@ -16,7 +16,7 @@ class SearchBar extends React.Component {
           Inclui o texto.
           <input
             type="text"
-            id="text"
+            className="text"
             value={ searchText }
             onChange={ onSearchTextChange }
             data-testid="text-input"
@@ -25,7 +25,7 @@ class SearchBar extends React.Component {
         <label data-testid="checkbox-input-label" htmlFor="favorites">
           <input
             type="checkbox"
-            id="favorites"
+            className="favorites"
             checked={ bookmarkedOnly }
             onChange={ onBookmarkedChange }
             data-testid="checkbox-input"
@@ -36,7 +36,7 @@ class SearchBar extends React.Component {
           Filtrar por gênero
           <select
             value={ selectedGenre }
-            id="genre"
+            className="genre"
             onChange={ onSelectedGenreChange }
             data-testid="select-input"
           >
@@ -50,5 +50,14 @@ class SearchBar extends React.Component {
     );
   }
 }
+
+SearchBar.propTypes = {
+  onSearchTextChange: PropTypes.func,
+  searchText: PropTypes.string,
+  bookmarkedOnly: PropTypes.boolean,
+  selectedGenre: PropTypes.string,
+  onBookmarkedChange: PropTypes.func,
+  onSelectedGenreChange: PropTypes.func,
+}.isRequired;
 
 export default SearchBar;
