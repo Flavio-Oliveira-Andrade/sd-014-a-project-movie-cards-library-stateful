@@ -1,6 +1,6 @@
 //  implement AddMovie component here
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 // 6 - Crie um componente chamado <AddMovie />
 class AddMovie extends React.Component {
@@ -56,25 +56,20 @@ class AddMovie extends React.Component {
 
   render() {
     const { subtitle, storyline, rating, imagePath, genre, title } = this.state;
-    //   7 - Renderize um formulário dentro de <AddMovie />
     return (
       <form data-testid="add-movie-form">
-        {/* 8 - Renderize um input do tipo texto dentro do formulário em <AddMovie />  */}
         <label htmlFor="title" data-testid="title-input-label">
           Título
           {this.input('title', 'text', title, 'title-input')}
         </label>
-        {/* 9 - Renderize um input do tipo texto dentro do formulário em <AddMovie /> */}
         <label htmlFor="subtitle" data-testid="subtitle-input-label">
           Subtítulo
           {this.input('subtitle', 'text', subtitle, 'subtitle-input')}
         </label>
-        {/* 10 - Renderize um input do tipo texto dentro do formulário em <AddMovie /> */}
         <label htmlFor="imagePath" data-testid="image-input-label">
           Imagem
           {this.input('imagePath', 'text', imagePath, 'image-input')}
         </label>
-        {/* 11 - Renderize uma textarea dentro do formulário em <AddMovie /> */}
         <label htmlFor="storyline" data-testid="storyline-input-label">
           Sinopse
           <textarea
@@ -101,7 +96,7 @@ class AddMovie extends React.Component {
             <option data-testid="genre-option" value="thriller">Suspense</option>
           </select>
         </label>
-        <button data-testid="send-button" onClick={ this.handleClick } type="submit">
+        <button type="submit" data-testid="send-button" onClick={ this.handleClick }>
           Adicionar filme
         </button>
       </form>
@@ -109,8 +104,8 @@ class AddMovie extends React.Component {
   }
 }
 
-// AddMovie.propTypes = {
-//   onClick: PropTypes.func.isRequerid,
-// };
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default AddMovie;
