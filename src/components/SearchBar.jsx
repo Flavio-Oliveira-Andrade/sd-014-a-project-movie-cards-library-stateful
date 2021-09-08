@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { searchGenreTestIds, genres } from '../configData';
+import { searchGenreTestIds, genres } from '../data';
 
 import SearchTextInput from './SearchTextInput';
 import BookmarkInput from './BookmarkInput';

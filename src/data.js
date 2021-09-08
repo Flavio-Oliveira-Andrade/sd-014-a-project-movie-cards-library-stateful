@@ -46,4 +46,71 @@ const movies = [
   },
 ];
 
-export default movies;
+const genres = [
+  {
+    genre: '',
+    text: 'Todos',
+  },
+  {
+    genre: 'action',
+    text: 'Ação',
+  },
+  {
+    genre: 'comedy',
+    text: 'Comédia',
+  },
+  {
+    genre: 'thriller',
+    text: 'Suspense',
+  },
+];
+
+const searchGenreTestIds = {
+  labelId: 'select-input-label',
+  inputId: 'select-input',
+  optionId: 'select-option ',
+};
+
+const addGenreTestIds = {
+  labelId: 'genre-input-label',
+  inputId: 'genre-input',
+  optionId: 'genre-option',
+};
+
+const searchTextTestIds = {
+  labelId: 'text-input-label',
+  inputId: 'text-input',
+}
+
+const bookmarkTestIds = {
+  labelId: 'checkbox-input-label',
+  inputId: 'checkbox-input',
+}
+
+const textInputTestIds = {
+  titleIds: { labelId: 'title-input-label', inputId: 'title-input' },
+  subtitleIds: { labelId: 'subtitle-input-label', inputId: 'subtitle-input' },
+  imagePathIds: { labelId: 'image-input-label', inputId: 'image-input' },
+}
+
+ const storylineTestIds = {
+   labelId: 'storyline-input-label',
+   inputId: 'storyline-input'
+ }
+
+ const ratingInputTestIds = {
+   labelId: 'rating-input-label',
+   inputId: 'rating-input',
+ }
+
+export {
+  movies,
+  genres,
+  searchGenreTestIds,
+  addGenreTestIds,
+  searchTextTestIds,
+  bookmarkTestIds,
+  textInputTestIds,
+  storylineTestIds,
+  ratingInputTestIds,
+}

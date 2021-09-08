@@ -4,15 +4,16 @@ import PropTypes from 'prop-types';
 class TextInput extends React.Component {
   render() {
     const { name, title, handler, testIds, value } = this.props;
+    const { labelId, inputId } = testIds;
     return (
-      <label htmlFor={ name } data-testid={ testIds.labelId } className="form-label">
+      <label htmlFor={ name } data-testid={ labelId } className="form-label">
         { title }
         <input
           type="text"
           name={ name }
           id={ name }
           value={ value }
-          data-testid={ testIds.inputId }
+          data-testid={ inputId }
           onChange={ handler }
           className="form-control"
         />

@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { ratingInputTestIds } from '../data';
+
+const { labelId, inputId } = ratingInputTestIds;
+
 class RatingInput extends React.Component {
   render() {
     const { value, handler } = this.props;
     return (
-      <label htmlFor="rating" data-testid="rating-input-label">
+      <label htmlFor="rating" data-testid={ labelId }>
         Avaliação:
         <input
           type="number"
@@ -15,7 +19,7 @@ class RatingInput extends React.Component {
           id="rating"
           value={ value }
           onChange={ handler }
-          data-testid="rating-input"
+          data-testid={ inputId }
           className="form-control"
         />
       </label>
