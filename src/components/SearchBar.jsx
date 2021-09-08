@@ -1,25 +1,22 @@
 import React, { Component } from 'react';
+import TextInput from './TextInput';
 
 class SearchBar extends Component {
   render() {
     const {
-      onSearchTextChange, onBookmarkedChange, onSelectedGenreChange,
-      searchText, bookmarkedOnly, selectedGenre
+      onSearchTextChange,
+      onBookmarkedChange,
+      onSelectedGenreChange,
+      searchText,
+      bookmarkedOnly,
+      selectedGenre,
     } = this.props;
 
     return (
       <form data-testid="search-bar-form">
-        <label data-testid="text-input-label" htmlFor="textInput">
+        <TextInput id="text" onChange={ onSearchTextChange } value={ searchText }>
           Inclui o texto:
-          <input
-            data-testid="text-input"
-            id="textInput"
-            name="textInput"
-            onChange={ onSearchTextChange }
-            type="text"
-            value={ searchText }
-          />
-        </label>
+        </TextInput>
         <label data-testid="checkbox-input-label" htmlFor="checkboxInput">
           Mostrar somente favoritos
           <input
