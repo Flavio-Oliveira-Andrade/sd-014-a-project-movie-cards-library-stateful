@@ -5,6 +5,7 @@ class LabelInputGen extends Component {
   render() {
     const { atributes } = this.props;
     const [htmlFor, idLabel, text, type, name, value, idInput, onChange] = atributes;
+
     return (
       <label
         htmlFor={ htmlFor }
@@ -24,7 +25,7 @@ class LabelInputGen extends Component {
 }
 
 LabelInputGen.propTypes = {
-  atributes: PropTypes.arrayOf.isRequired,
+  atributes: PropTypes.arrayOf(PropTypes.shape).isRequired,
 };
 
 export default LabelInputGen;

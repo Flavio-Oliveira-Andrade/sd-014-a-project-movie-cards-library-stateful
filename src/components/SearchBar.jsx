@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import LabelInputGen from './LabelInputGen';
 
 class SearchBar extends Component {
   render() {
@@ -13,16 +14,10 @@ class SearchBar extends Component {
 
     return (
       <form data-testid="search-bar-form">
-        <label htmlFor="searchText" data-testid="text-input-label">
-          Inclui o texto
-          <input
-            type="text"
-            name="searchText"
-            value={ searchText }
-            onChange={ onSearchTextChange }
-            data-testid="text-input"
-          />
-        </label>
+        <LabelInputGen
+          atributes={ ['searchText', 'text-input-label', 'Inclui o texto', 'text',
+            'searchText', searchText, 'text-input', onSearchTextChange] }
+        />
         <label htmlFor="bookmarkedOnly" data-testid="checkbox-input-label">
           Mostrar somente favoritos
           <input
