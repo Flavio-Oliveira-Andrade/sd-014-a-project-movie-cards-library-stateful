@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { genres, addGenreTestIds } from '../configData';
 
 import TextInput from './TextInput';
-import StorylineInput from './StorylineInput';
+import StoryLineInput from './StoryLineInput';
 import RatingInput from './RatingInput';
 import GenreSelectInput from './GenreSelectInput';
-
-import { genres, addGenreTestIds, textInputTestIds } from '../data';
-
-const { titleIds, subtitleIds, imagePathIds } = textInputTestIds;
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -55,23 +52,23 @@ class AddMovie extends React.Component {
           title="Título:"
           handler={ this.handleChange }
           value={ title }
-          testIds={ titleIds }
+          testIds={ { labelId: 'title-input-label', inputId: 'title-input' } }
         />
         <TextInput
           name="subtitle"
           title="Subtítulo:"
           handler={ this.handleChange }
           value={ subtitle }
-          testIds={ subtitleIds }
+          testIds={ { labelId: 'subtitle-input-label', inputId: 'subtitle-input' } }
         />
         <TextInput
           name="imagePath"
           title="Imagem:"
           handler={ this.handleChange }
           value={ imagePath }
-          testIds={ imagePathIds }
+          testIds={ { labelId: 'image-input-label', inputId: 'image-input' } }
         />
-        <StorylineInput value={ storyline } handler={ this.handleChange } />
+        <StoryLineInput value={ storyline } handler={ this.handleChange } />
 
         <RatingInput value={ rating } handler={ this.handleChange } />
 

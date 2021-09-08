@@ -1,15 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { storylineTestIds } from '../data';
-
-const { labelId, inputId } = storylineTestIds;
-
-class StorylineInput extends React.Component {
+class StoryLineInput extends React.Component {
   render() {
     const { value, handler } = this.props;
     return (
-      <label htmlFor="storyline" data-testid={ labelId }>
+      <label htmlFor="storyline" data-testid="storyline-input-label">
         Sinopse:
         <textarea
           name="storyline"
@@ -17,7 +13,7 @@ class StorylineInput extends React.Component {
           rows="3"
           value={ value }
           onChange={ handler }
-          data-testid={ inputId }
+          data-testid="storyline-input"
           className="form-control"
         />
       </label>
@@ -25,14 +21,14 @@ class StorylineInput extends React.Component {
   }
 }
 
-StorylineInput.propTypes = {
+StoryLineInput.propTypes = {
   handler: PropTypes.func,
   value: PropTypes.string,
 };
 
-StorylineInput.defaultProps = {
+StoryLineInput.defaultProps = {
   handler: () => undefined,
   value: '',
 };
 
-export default StorylineInput;
+export default StoryLineInput;
