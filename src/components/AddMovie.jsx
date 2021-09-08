@@ -40,8 +40,8 @@ class AddMovie extends Component {
   }
 
   renderInput(type, text, name, valueState) {
-    const testeValueInput = `${name}-input`;
-    const testeValueLabel = `${name}-input-label`;
+    const testeValueInput = name === 'imagePath' ? "image-input" : `${name}-input`;
+    const testeValueLabel = name === 'imagePath' ? "image-input-label" : `${name}-input-label`;
     return (
       <label data-testid={ testeValueLabel } htmlFor={ name }>
         { text }
