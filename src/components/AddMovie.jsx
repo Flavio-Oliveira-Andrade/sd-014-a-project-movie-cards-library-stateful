@@ -1,5 +1,6 @@
 import React from 'react';
 import Title from './AddMovieComponents/Title';
+import Subtitle from './AddMovieComponents/Subtitle';
 // import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
@@ -18,9 +19,10 @@ class AddMovie extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
+  handleChange({ target }) {
+    const { name } = target;
     this.setState({
-      title: event.target.value,
+      [name]: target.value,
     });
   }
 
@@ -32,6 +34,10 @@ class AddMovie extends React.Component {
           <Title
             title={ title }
             titleChange={ this.handleChange }
+          />
+          <Subtitle
+            subtitle={ subtitle }
+            subtitleChange={ this.handleChange }
           />
         </form>
       </div>
