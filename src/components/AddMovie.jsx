@@ -6,6 +6,7 @@ import ImageInput from './ImageInput';
 import StorylineInput from './StorylineInput';
 import RatingInput from './RatingInput';
 import GenreInput from './GenreInput';
+import SendInput from './SendButton';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -61,13 +62,7 @@ class AddMovie extends React.Component {
         <StorylineInput value={ storyline } onChange={ this.handleChange } />
         <RatingInput value={ rating } onChange={ this.handleChange } />
         <GenreInput onChange={ this.handleChange } />
-        <button
-          data-testid="send-button"
-          onClick={ this.addMovie }
-          type="button"
-        >
-          Adicionar filme
-        </button>
+        <SendInput onClick={ this.addMovie } />
       </form>
     );
   }
