@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Inputs from './Inputs';
 
 class AddMovie extends Component {
   constructor() {
@@ -15,6 +14,29 @@ class AddMovie extends Component {
 
     this.onChange = this.onChange.bind(this);
   }
+
+  handleClick() {
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
+  handleInput = (title, type, dataTest, value) => (
+    <input
+      name={ title }
+      type={ type }
+      data-testid={ dataTest }
+      value={ value }
+      onChange={ this.onChange }
+    />
+  )
 
   onChange({ target }) {
     const value = (target.type === 'checkbox') ? target.checked : target.value;
@@ -32,14 +54,7 @@ class AddMovie extends Component {
       <form data-testid="add-movie-form">
         <label htmlFor="title" data-testid="title-input-label">
           Título
-          <input
-            type="text"
-            id="title"
-            name="title"
-            value={ title }
-            onChange={ this.onChange }
-            data-testid="title-input"
-          />
+          { this.handleInput('title', 'text', 'title-input', title)}
         </label>
         <label htmlFor="subtitle" data-testid="subtitle-input-label">
           Subtítulo
@@ -75,6 +90,8 @@ class AddMovie extends Component {
             <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
+
+        <button type="submit" data-testid="send-button" onClick={ this.handleClick }>Adicionar filme</button>
       </form>
     );
   }
