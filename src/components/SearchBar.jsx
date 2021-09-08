@@ -15,12 +15,11 @@ class SearchBar extends Component {
 
   onSearchTextChange = (event) => this.setState({ searchText: event.target.value })
 
-  onBookmarkedChange = (event) => {
+  onBookmarkedChange = () => {
     if (this.bookmarkedOnly === false) {
       this.setState({ bookmarkedOnly: true });
     } else {
       this.setState({ bookmarkedOnly: false });
-      console.log(event.target.value)
     }
   }
 
