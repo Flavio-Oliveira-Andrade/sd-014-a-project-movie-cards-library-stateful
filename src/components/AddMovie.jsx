@@ -2,6 +2,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 
 import ImagePath from './ImagePath';
+import Sinopse from './Sinopse';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -10,7 +11,7 @@ class AddMovie extends React.Component {
       title: '',
       subtitle: '',
       imagePath: '',
-      // storyline: '',
+      storyline: '',
       // rating: 0,
       // genre: 'action',
     };
@@ -30,6 +31,7 @@ class AddMovie extends React.Component {
       title,
       subtitle,
       imagePath,
+      storyline,
     } = this.state;
 
     return (
@@ -57,6 +59,7 @@ class AddMovie extends React.Component {
           />
         </label>
         <ImagePath value={ imagePath } handleOnChange={ this.handleOnChange } />
+        <Sinopse value={ storyline } handleOnChange={ this.handleOnChange } />
       </form>
     );
   }
