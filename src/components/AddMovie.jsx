@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class AddMovie extends Component {
   render() {
-    const { title, subtitle, imagePath, storyline } = this.props;
+    const { title, subtitle, imagePath, storyline, rating } = this.props;
     return (
       <form data-testid="add-movie-form">
         <label data-testid="title-input-label">
@@ -35,6 +35,16 @@ class AddMovie extends Component {
             value={ storyline }
             data-testid="storyline-input"
             onChange={ storyline }
+          />
+        </label>
+        <label data-testid="rating-input-label">
+          Avaliação
+          <input
+            type="number"
+            defaultValue="0"
+            value={ rating }
+            data-testid="rating-input"
+            onChange={ rating }
           />
         </label>
       </form>
