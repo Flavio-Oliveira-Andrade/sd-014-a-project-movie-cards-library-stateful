@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import TextInput from './TextInput';
 
 class AddMovie extends Component {
   constructor() {
     super();
-
     this.handleChange = this.handleChange.bind(this);
     this.state = {
       subtitle: '',
@@ -22,21 +20,38 @@ class AddMovie extends Component {
     });
   }
 
+  createCustomInput(id, onChange, type, value) {
+    const name = id === 'image' ? 'imagePath' : id;
+
+    return (
+      <input
+        data-testid={ `${id}-input` }
+        id={ id }
+        name={ name }
+        onChange={ onChange }
+        type={ type }
+        value={ value }
+      />
+    );
+  }
+
   render() {
     const { onClick } = this.props;
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
-
     return (
       <form data-testid="add-movie-form">
-        <TextInput id="title" onChange={ this.handleChange } value={ title }>
+        <label data-testid="title-input-label" htmlFor="title">
           Título
-        </TextInput>
-        <TextInput id="subtitle" onChange={ this.handleChange } value={ subtitle }>
+          {this.createCustomInput('title', this.handleChange, 'text', title)}
+        </label>
+        <label data-testid="title-input-label" htmlFor="title">
           Subtítulo
-        </TextInput>
-        <TextInput id="image" onChange={ this.handleChange } value={ imagePath }>
+          {this.createCustomInput('subtitle', this.handleChange, 'text', subtitle)}
+        </label>
+        <label data-testid="title-input-label" htmlFor="title">
           Imagem
-        </TextInput>
+          {this.createCustomInput('image', this.handleChange, 'text', imagePath)}
+        </label>
         <label data-testid="storyline-input-label" htmlFor="storyline">
           Sinopse
           <textarea
