@@ -2,6 +2,8 @@ import React from 'react';
 import Header from './components/Header';
 import './App.css';
 
+// inicio do projeto
+
 function App() {
   return (
     <div className="App">
