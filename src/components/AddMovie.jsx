@@ -6,6 +6,7 @@ import Subtitle from './AddMovieComponens/Subtitle';
 import Image from './AddMovieComponens/Image';
 import Story from './AddMovieComponens/Story';
 import Rating from './AddMovieComponens/Rating';
+import Genre from './AddMovieComponens/Genre';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -57,6 +58,10 @@ class AddMovie extends React.Component {
         <Rating
           rating={ rating }
           ratingChange={ this.handleChange }
+        />
+        <Genre
+          genre={ genre }
+          genreChange={ this.handleChange }
         />
       </form>
     );
