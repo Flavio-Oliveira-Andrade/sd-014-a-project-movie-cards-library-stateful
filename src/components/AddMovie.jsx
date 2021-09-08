@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class AddMovie extends Component {
   render() {
-    const { title, subtitle } = this.props;
+    const { title, subtitle, imagePath } = this.props;
     return (
       <form data-testid="add-movie-form">
         <label data-testid="title-input-label">
@@ -19,6 +19,14 @@ class AddMovie extends Component {
             value={ subtitle }
             data-testid="subtitle-input"
             onChange={ subtitle }
+          />
+        </label>
+        <label data-testid="image-input-label">
+          Imagem
+          <input
+            value={ imagePath }
+            data-testid="image-input"
+            onChange={ imagePath }
           />
         </label>
       </form>
