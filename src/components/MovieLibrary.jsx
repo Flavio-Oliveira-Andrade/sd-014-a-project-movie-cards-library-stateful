@@ -42,9 +42,6 @@ class MovieLibrary extends React.Component {
   onClick(movie) {
     const { movies } = this.state;
     this.setState({
-      // searchText: '',
-      // selectedGenre: '',
-      // bookmarkedOnly: false,
       movies: [...movies, movie],
     });
   }
