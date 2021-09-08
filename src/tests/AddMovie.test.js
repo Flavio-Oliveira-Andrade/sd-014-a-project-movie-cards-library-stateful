@@ -225,7 +225,7 @@ describe('14 - Renderize um botão do formulário em `<AddMovie />` para fazer u
     const expectedRating = 3.5;
     event.type(titleInput, movieHarryPotter);
     event.type(subtitleInput, subtitleMagical);
-    fireEvent.change(storylineInput, { target: { value: `${inputStoryline}` } });
+    fireEvent.change(storylineInput, { target: { value: `${inputStoryline}` } }); 
     event.type(ratingInput, '3.5');
     event.selectOptions(genreInput, 'comedy');
 
