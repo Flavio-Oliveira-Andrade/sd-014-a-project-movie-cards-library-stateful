@@ -2,7 +2,16 @@ import React, { Component } from 'react';
 
 class SearchBar extends Component {
   render() {
-    return (<h1>Search Bar</h1>);
+    return (
+      <section>
+        <form data-testid="search-bar-form">
+          <label htmlFor="search">
+            Pesquisar
+            <input type="text" name="search" id="search" />
+          </label>
+        </form>
+      </section>
+    );
   }
 }
 
