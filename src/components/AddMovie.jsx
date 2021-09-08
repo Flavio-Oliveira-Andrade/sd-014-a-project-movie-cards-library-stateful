@@ -30,6 +30,7 @@ class AddMovie extends Component {
     event.preventDefault(); // Limpa comportamento padrão do submit
     const { onClick } = this.props;
     onClick(this.state);
+    // Como o comportamento padrão do submit foi inibido, é necessário passar o this.setState para que fosse passado o estado inicial e "limpar" o form.
     this.setState({
       subtitle: '',
       title: '',
@@ -40,8 +41,6 @@ class AddMovie extends Component {
     });
   }
   // filter 1h11min aula 12.1
-
-  // Função criada para passar no lint, pois o tamanho do form estava muito grande. Ajuda do Marcello Alves para encontrar solução e criar função. <3
 
   render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state; // Desestrutura objeto state para não agarrar no lint. Aula 12.1 - min. 51;
