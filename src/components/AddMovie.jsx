@@ -26,7 +26,7 @@ class AddMovie extends Component {
   }
 }
 
-AddMovie.prototype = { 
+AddMovie.protoTypes = { 
   onClick: PropTypes.func.isRequired,
 }
 
