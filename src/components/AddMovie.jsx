@@ -12,12 +12,14 @@ class AddMovie extends Component {
       genre: 'action',
     };
   }
+  // Funçoes em baixo
 
   render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
+    const { onClick } = this.props;
 
     return (
-      <form>
+      <form data-testid="add-movie-form">
         <label htmlFor="title">
           Titulo:
           <input type="text" id="title" value={ title } />
