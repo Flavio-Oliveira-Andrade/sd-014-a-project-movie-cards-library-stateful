@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Proptypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class AddMovie extends Component {
   constructor() {
@@ -13,6 +13,7 @@ class AddMovie extends Component {
       genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   // handle genérico utilizado para atualizar o estado de todos os componentes com a mesma lógica.
@@ -25,6 +26,19 @@ class AddMovie extends Component {
     });
   }
 
+  handleClick(event) {
+    event.preventDefault(); // Limpa comportamento padrão do submit
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
   // filter 1h11min aula 12.1
 
   // Função criada para passar no lint, pois o tamanho do form estava muito grande. Ajuda do Marcello Alves para encontrar solução e criar função. <3
@@ -91,15 +105,17 @@ class AddMovie extends Component {
             name="genre"
             onChange={ this.handleChange  }
           >
-          <option value="action" data-testid="genre-option">Ação</option>
-          <option value="comedy" data-testid="genre-option">Comédia</option>
-          <option value="thriller" data-testid="genre-option">Suspense</option>
-        </select>
+            <option value="action" data-testid="genre-option">Ação</option>
+            <option value="comedy" data-testid="genre-option">Comédia</option>
+            <option value="thriller" data-testid="genre-option">Suspense</option>
+          </select>
         </label>
-        <button data-testid="send-button">Adicionar filme</button>
+        <button type="submit" data-testid="send-button" onClick={ this.handleClick }>Adicionar filme</button>
       </form>
     );
   }
 }
+
+AddMovie.propTypes = { onClick: PropTypes.func.isRequired };
 
 export default AddMovie;
