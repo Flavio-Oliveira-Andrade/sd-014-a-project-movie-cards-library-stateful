@@ -7,6 +7,7 @@ class AddMovie extends React.Component {
       subtitle: '',
       title: '',
       imagePath: '',
+      storyline: '',
       rating: 0,
       genre: 'action',
     };
@@ -29,6 +30,7 @@ class AddMovie extends React.Component {
       subtitle,
       title,
       imagePath,
+      storyline,
       rating,
       genre,
     } = this.state;
@@ -62,6 +64,15 @@ class AddMovie extends React.Component {
             value={ imagePath }
             data-testid="image-input"
             name="imagePath"
+            onChange={ this.handleChange }
+          />
+        </label>
+        <label data-testid="storyline-input-label" htmlFor="storyline">
+          Sinopse
+          <textarea
+            value={ storyline }
+            data-testid="storyline-input"
+            name="storyline"
             onChange={ this.handleChange }
           />
         </label>
