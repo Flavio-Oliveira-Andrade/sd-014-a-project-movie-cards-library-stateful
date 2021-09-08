@@ -1,5 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import Title from './AddMovieComponents/Title';
+// import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -13,6 +14,14 @@ class AddMovie extends React.Component {
       rating: 0,
       genre: 'action',
     };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({
+      title: event.target.value,
+    });
   }
 
   render() {
@@ -20,13 +29,15 @@ class AddMovie extends React.Component {
     return (
       <div>
         <form data-testid="add-movie-form">
-          Formulario Add Movie
+          <Title
+            title={ title }
+            titleChange={ this.handleChange }
+          />
         </form>
       </div>
 
     );
   }
 }
-AddMovie.propTypes = { };
 
 export default AddMovie;
