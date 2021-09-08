@@ -6,6 +6,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <h1>oi</h1>
     </div>
   );
 }
