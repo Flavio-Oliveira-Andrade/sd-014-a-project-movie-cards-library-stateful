@@ -15,6 +15,51 @@ class MovieLibrary extends React.Component {
       selectedGenre: '',
       movies,
     };
+
+    this.onSearchTextChange = this.onSearchTextChange.bind(this);
+    this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
+    this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
+  }
+
+  onSearchTextChange({ target }) {
+    const { movies } = this.props;
+    const newArray = movies.filter((movie) => movie.title.includes(target.value)
+     || movie.subtitle.includes(target.value)
+     || movie.storyline.includes(target.value));
+
+    this.setState({
+      searchText: target.value,
+      movies: newArray,
+    });
+  }
+
+  onBookmarkedChange({ target }) {
+    const { movies } = this.props;
+    const newArray = movies.filter((movie) => movie.bookmarked === true);
+
+    if (target.checked) {
+      this.setState({
+        bookmarkedOnly: target.checked,
+        movies: newArray,
+      });
+    } else {
+      this.setState({
+        bookmarkedOnly: target.checked,
+        movies,
+      });
+    }
+  }
+
+  onSelectedGenreChange({ target }) {
+    const { movies } = this.props;
+    const newArray = target.value === '' ? movies : movies.filter(
+      (movie) => movie.genre === target.value,
+    );
+
+    this.setState({
+      selectedGenre: target.value,
+      movies: newArray,
+    });
   }
 
   render() {

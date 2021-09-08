@@ -20,6 +20,7 @@ class SearchBar extends React.Component {
             data-testid="text-input"
             type="text"
             id="searchText"
+            name="searchText"
             value={ searchText }
             onChange={ onSearchTextChange }
           />
@@ -34,7 +35,6 @@ class SearchBar extends React.Component {
             onChange={ onBookmarkedChange }
           />
         </label>
-
         <label data-testid="select-input-label" htmlFor="genero">
           Filtrar por gênero
           <select
