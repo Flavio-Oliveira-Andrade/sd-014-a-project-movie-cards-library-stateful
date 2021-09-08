@@ -3,20 +3,31 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class AddMovie extends Component {
-  constructor() { 
+  constructor() {
     super();
 
-    this.state = { 
-      
+    this.state = {
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
     };
 
   }
   render() {
     const { onClick } = this.props;
-    return ( 
+    return (
       <form action="">
 
       </form>
     );
   }
 }
+
+AddMovie.prototype = { 
+  onClick: PropTypes.func.isRequired,
+}
+
+export default AddMovie;
