@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Title from './AddMovieComponens/Title';
+import Subtitle from './AddMovieComponens/Subtitle';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -35,6 +36,10 @@ class AddMovie extends React.Component {
         <Title
           title={ title }
           TitleChange={ this.handleChange }
+        />
+        <Subtitle
+          subtitle={ subtitle }
+          SubtitleChange={ this.handleChange }
         />
       </form>
     );
