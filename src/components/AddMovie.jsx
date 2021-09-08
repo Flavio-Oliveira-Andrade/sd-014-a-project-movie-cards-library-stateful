@@ -34,6 +34,9 @@ class AddMovie extends Component {
         <TextInput id="subtitle" onChange={ this.handleChange } value={ subtitle }>
           Subtítulo
         </TextInput>
+        <TextInput id="image" onChange={ this.handleChange } value={ imagePath }>
+          Imagem
+        </TextInput>
       </form>
     );
   }

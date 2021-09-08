@@ -10,7 +10,7 @@ class TextInput extends Component {
         <input
           data-testid={ `${id}-input` }
           id={ id }
-          name={ id }
+          name={ id === 'image' ? 'imagePath' : id }
           onChange={ onChange }
           type="text"
           value={ value }
