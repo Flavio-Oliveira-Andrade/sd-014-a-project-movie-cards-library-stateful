@@ -4,6 +4,7 @@ import TitleInput from './TitleInput';
 import SubtitleInput from './SubtitleInput';
 import ImageInput from './ImageInput';
 import StorylineInput from './StorylineInput';
+import RatingInput from './RatingInput';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -57,16 +58,7 @@ class AddMovie extends React.Component {
         <SubtitleInput value={ subtitle } onChange={ this.handleChange } />
         <ImageInput value={ imagePath } onChange={ this.handleChange } />
         <StorylineInput value={ storyline } onChange={ this.handleChange } />
-        <label data-testid="rating-input-label" htmlFor="rating">
-          Avaliação
-          <input
-            type="number"
-            value={ rating }
-            data-testid="rating-input"
-            name="rating"
-            onChange={ this.handleChange }
-          />
-        </label>
+        <RatingInput value={ rating } onChange={ this.handleChange } />
         <label data-testid="genre-input-label" htmlFor="genre">
           Gênero
           <select
