@@ -4,8 +4,8 @@ import React from 'react';
 
 // 6 - Crie um componente chamado <AddMovie />
 class AddMovie extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       subtitle: '',
       title: '',
@@ -43,10 +43,17 @@ class AddMovie extends React.Component {
     //   7 - Renderize um formulário dentro de <AddMovie />
     return (
       <form data-testid="add-movie-form">
+        {/* 8 - Renderize um input do tipo texto dentro do formulário em <AddMovie />  */}
         <label htmlFor="title" data-testid="title-input-label">
           Título
           {this.input('title', 'text', title, 'title-input')}
         </label>
+        {/* 9 - Renderize um input do tipo texto dentro do formulário em <AddMovie /> */}
+        <label htmlFor="subtitle" data-testid="subtitle-input-label">
+          Subtítulo
+          {this.input('subtitle', 'text', subtitle, 'subtitle-input')}
+        </label>
+        {/* 10 - Renderize um input do tipo texto dentro do formulário em <AddMovie /> */}
       </form>
     );
   }
