@@ -25,7 +25,7 @@ class MovieLibrary extends React.Component {
   onSearchTextChange(e) {
     const { movies } = this.props;
     const { newCards } = this.state;
-    const { value } = e.target; // value do html atualiza antes do state (que é async);
+    const { value } = e.target; // value do html atualiza antes do state (que é async);;
     const allMovies = [...movies, ...newCards];
     const titleContains = allMovies.filter((el) => el.title.includes(value)
         || el.subtitle.includes(value)
