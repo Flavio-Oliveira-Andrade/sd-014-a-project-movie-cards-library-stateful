@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class LabelInputGen extends Component {
   render() {
@@ -21,5 +22,9 @@ class LabelInputGen extends Component {
     );
   }
 }
+
+LabelInputGen.propTypes = {
+  atributes: PropTypes.arrayOf.isRequired,
+};
 
 export default LabelInputGen;
