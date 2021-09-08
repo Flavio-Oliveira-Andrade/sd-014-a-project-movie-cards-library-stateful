@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import movies from '../data';
 import TitleInput from './TitleInput';
 import SubtitleInput from './SubtitleInput';

@@ -1,5 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
+import MovieList from './MovieList';
+import AddMovie from './AddMovie';
 
 class MovieLibrary extends React.Component {
   constructor() {
@@ -25,14 +28,20 @@ class MovieLibrary extends React.Component {
   render() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     return (
-      <SearchBar
-        searchText={ searchText }
-        onSearchTextChange={ this.handleChange }
-        bookmarkedOnly={ bookmarkedOnly }
-        onBookmarkedChange={ this.handleChange }
-        selectedGenre={ selectedGenre }
-        onSelectedGenre={ this.handleChange }
-      />
+      <section>
+        <SearchBar
+          searchText={ searchText }
+          onSearchTextChange={ this.handleChange }
+          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.handleChange }
+          selectedGenre={ selectedGenre }
+          onSelectedGenre={ this.handleChange }
+        />
+        <MovieList
+          movies={ movies }
+        />
+        <AddMovie />
+      </section>
     );
   }
 }
