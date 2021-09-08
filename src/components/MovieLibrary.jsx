@@ -4,7 +4,7 @@ import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
 import MovieList from './MovieList';
 
-const applyFilter = (array, { content, marked, type }) => {
+function applyFilter(array, { content, marked, type }) {
   let result = array;
   if (content) {
     result = result.filter(
@@ -20,17 +20,20 @@ const applyFilter = (array, { content, marked, type }) => {
     result = result.filter(({ genre }) => genre === type);
   }
   return result;
-};
+}
 
 class MovieLibrary extends React.Component {
   constructor(props) {
     super(props);
+
     const { movies } = this.props;
+
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
       movies,
+      allMovies: movies,
     };
 
     this.onClick = this.onClick.bind(this);
@@ -40,18 +43,21 @@ class MovieLibrary extends React.Component {
   }
 
   onClick(movie) {
-    const { movies } = this.state;
+    const { allMovies } = this.state;
     this.setState({
-      movies: [...movies, movie],
+      searchText: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
+      movies: [...allMovies, movie],
+      allMovies: [...allMovies, movie],
     });
   }
 
   onSearchTextChange({ target }) {
     const { value } = target;
-    const { movies } = this.props;
-    const { bookmarkedOnly, selectedGenre } = this.state;
+    const { allMovies, bookmarkedOnly, selectedGenre } = this.state;
     const search = value.toLowerCase();
-    const filtered = applyFilter(movies,
+    const filtered = applyFilter(allMovies,
       { content: search, marked: bookmarkedOnly, type: selectedGenre });
     this.setState({
       searchText: value,
@@ -61,11 +67,9 @@ class MovieLibrary extends React.Component {
 
   onBookmarkedChange({ target }) {
     const { checked } = target;
-    const { movies } = this.props;
-    const { searchText, selectedGenre } = this.state;
-    const filtered = applyFilter(movies,
+    const { allMovies, searchText, selectedGenre } = this.state;
+    const filtered = applyFilter(allMovies,
       { content: searchText, marked: checked, type: selectedGenre });
-    // console.table(filtered);
     this.setState({
       bookmarkedOnly: checked,
       movies: filtered,
@@ -74,11 +78,9 @@ class MovieLibrary extends React.Component {
 
   onSelectedGenreChange({ target }) {
     const { value } = target;
-    const { movies } = this.props;
-    const { searchText, bookmarkedOnly } = this.state;
-    const filtered = applyFilter(movies,
+    const { allMovies, searchText, bookmarkedOnly } = this.state;
+    const filtered = applyFilter(allMovies,
       { content: searchText, marked: bookmarkedOnly, type: value });
-    // console.table(filtered);
     this.setState({
       selectedGenre: value,
       movies: filtered,
