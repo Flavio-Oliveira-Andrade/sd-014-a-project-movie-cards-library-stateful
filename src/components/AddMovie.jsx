@@ -1,5 +1,7 @@
 // implement AddMovie component here
 import React from 'react';
+import ImagePath from './ImagePath';
+import Sinopse from './Sinopse';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -26,7 +28,7 @@ class AddMovie extends React.Component {
 
   render() {
     const { onClick } = this.props;
-    const { title, subtitle, imagePath } = this.state;
+    const { title, subtitle, imagePath, storyline } = this.state;
 
     return (
       <form data-testid="add-movie-form">
@@ -54,17 +56,8 @@ class AddMovie extends React.Component {
           />
         </label>
 
-        <label data-testid="image-input-label" htmlFor="imagePath">
-          Imagem
-          <input
-            data-testid="image-input"
-            type="text"
-            name="imagePath"
-            id="imagePath"
-            value={ imagePath }
-            onChange={ this.handleChange }
-          />
-        </label>
+        <ImagePath value={ imagePath } handleChange={ this.handleChange } />
+        <Sinopse value={ storyline } handleChange={ this.handleChange } />
       </form>
     );
   }
