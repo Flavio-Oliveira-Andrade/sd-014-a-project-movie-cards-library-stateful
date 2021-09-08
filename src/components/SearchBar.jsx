@@ -53,7 +53,7 @@ class SearchBar extends Component {
   }
 }
 
-SearchBar.ropTypes = {
+SearchBar.propTypes = {
   searchText: PropTypes.string.isRequired,
   onSearchTextChange: PropTypes.func.isRequired,
   bookmarkedOnly: PropTypes.bool.isRequired,
