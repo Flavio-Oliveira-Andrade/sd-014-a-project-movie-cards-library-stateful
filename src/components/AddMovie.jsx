@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 // implement AddMovie component here
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -15,6 +16,8 @@ class AddMovie extends React.Component {
   constructor() {
     super();
     this.state = stateInitial;
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -37,25 +40,35 @@ class AddMovie extends React.Component {
   }
 
   render() {
-    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
+    const { title, subtitle } = this.state;
     return (
       <form data-testid="add-movie-form" onSubmit={ this.handleSubmit }>
-        <label htmlFor="title">
-          Title:
+        <label htmlForm="title" data-testid="title-input-label">
+          Título
           <input
-            value={ title }
-            type="text"
             id="title"
-            onChange={ this.handleChange }
+            data-testid="title-input"
+            value={ this.stateInitial }
+            onChange={ title }
           />
         </label>
+        <label htmlFor="subtitle" data-testid="subtitle-input-label">
+          Subtítulo
+          <input
+            id="subtitle"
+            data-testid="subtitle-input"
+            value={ this.stateInitial }
+            onChange={ subtitle }
+          />
+        </label>
+
       </form>
     );
   }
 }
 
 AddMovie.propTypes = {
-  onChange: PropTypes.func,
+  onClick: PropTypes.func,
 }.isRequired;
 
 export default AddMovie;
