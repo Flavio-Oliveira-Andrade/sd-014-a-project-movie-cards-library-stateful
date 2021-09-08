@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import CreateInput from './CreateInput';
 import CreateTextArea from './CreateTextArea';
 import CreateSelect from './CreateSelect';
-import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -16,12 +16,19 @@ class AddMovie extends React.Component {
       genre: 'action',
     };
     this.handleForm = this.handleForm.bind(this);
+    // this.sendState = this.sendState.bind(this);
+    // const initialState = this.state;
   }
 
   handleForm(event) {
     const { name, value } = event.target;
     this.setState(() => ({ [name]: value }));
   }
+
+  //    sendState() {
+  //      const { onClick } = this.props;
+  //      onClick(this.state);
+  //    }
 
   render() {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
@@ -63,6 +70,13 @@ class AddMovie extends React.Component {
           handleForm={ this.handleForm }
           text="Gênero"
         />
+        <button
+          type="submit"
+          data-testid="send-button"
+        //   onClick={ this.sendState }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
