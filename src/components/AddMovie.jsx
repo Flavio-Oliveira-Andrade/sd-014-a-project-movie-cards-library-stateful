@@ -17,7 +17,7 @@ class AddMovie extends React.Component {
     };
   }
 
-  handleChange({ target }) { // / desestrutura 'event.target' para 'target'
+  handleChange({ target }) { // desestrutura 'event.target' para 'target'
     const { name } = target; // acessa 'name' de 'value' (pega todos os names, ex 'title')
     const value = target.type === 'checkbox' ? target.checked : target.value; // para checkbox o bolleano de retorno não fica em 'value', mas sim em 'checkbox'
 
@@ -54,6 +54,41 @@ class AddMovie extends React.Component {
             id="subtitle"
             data-testid="subtitle-input"
             value={ this.state.subtitle }
+            onChange={ this.handleChange }
+          />
+        </label>
+
+        <label htmlFor="imagePath" data-testid="image-input-label">
+          Imagem
+          <input
+            name="imagePath"
+            type="text"
+            id="imagePath"
+            data-testid="image-input"
+            value={ this.state.imagePath }
+            onChange={ this.handleChange }
+          />
+        </label>
+
+        <label htmlFor="storyline" data-testid="storyline-input-label">
+          Sinopse
+          <textarea
+            name="storyline"
+            id="storyline"
+            data-testid="storyline-input"
+            value={ this.state.storyline }
+            onChange={ this.handleChange }
+          />
+        </label>
+
+        <label htmlFor="" data-testid="rating-input-label">
+          Avaliação
+          <input
+            name=""
+            type="number"
+            id=""
+            data-testid="rating-input"
+            value={ this.state.rating }
             onChange={ this.handleChange }
           />
         </label>
