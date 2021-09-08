@@ -50,7 +50,7 @@ class AddMovie extends Component {
         <ImagePathAux imagePath={ imagePath } handleChange={ this.handleChange } />
         <StorylineAux storyline={ storyline } handleChange={ this.handleChange } />
         <RatingAux rating={ rating } handleChange={ this.handleChange } />
-        <SelectAux genre={ genre } name="genre" handleChange={ this.handleChange } />
+        <SelectAux genre={ genre } handleChange={ this.handleChange } />
         <button type="button" data-testid="send-button" onClick={ this.addMovie }>
           Adicionar filme
         </button>
