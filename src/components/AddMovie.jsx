@@ -35,6 +35,8 @@ class AddMovie extends React.Component {
     const { onClick } = this.props;
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
+      // https://github.com/tryber/sd-012-project-movie-cards-library-stateful/tree/LuisFernando-movie-cards-library-s-stateful
+      // Meu amigo Luis Fernando me instruiu a fazer varios componentes para facilitar a leitura e o entendimento do funcionamento do React. Muito obrigado.
       <form data-testid="add-movie-form">
         <Title
           title={ title }
@@ -51,6 +53,10 @@ class AddMovie extends React.Component {
         <Story
           storyline={ storyline }
           storyChange={ this.handleChange }
+        />
+        <Rating
+          rating={ rating }
+          ratingChange={ this.handleChange }
         />
       </form>
     );
