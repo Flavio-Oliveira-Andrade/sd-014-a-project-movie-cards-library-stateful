@@ -1,12 +1,23 @@
 // implement MovieLibrary component here
 import React from 'react';
 import PropTypes from 'prop-types';
+import SearchBar from './SearchBar';
 
 class MovieLibrary extends React.Component {
-  render() {
+  constructor() {
+    super();
     const [movies] = this.props;
 
-    return movies;
+    this.state = {
+      searchText: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
+      movies,
+    };
+  }
+
+  render() {
+    return <SearchBar />;
   }
 }
 
