@@ -1,41 +1,41 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// import React from 'react';
+// import PropTypes from 'prop-types';
 
-class AddMovie extends React.Component {
-  constructor(props) {
-    super(props);
+// class AddMovie extends React.Component {
+//   constructor(props) {
+//     super(props);
 
-    this.state = {
-      title: '',
-      subtitle: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    };
-  }
+//     this.state = {
+//       title: '',
+//       subtitle: '',
+//       imagePath: '',
+//       storyline: '',
+//       rating: 0,
+//       genre: 'action',
+//     };
+//   }
 
-  render() {
-    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
-    return(
-      <form data-testid="add-movie-form">
-        <label htmlFor="Título" data-testid="title-input-label">
-          Título
-          <input 
-            type="text"
-            value={title}
-            data-testid="title-input"
-            // onChange={this.setState({title: event.target.value})}
-          />
-        </label>
-        
-      </form>
-    );
-  }
-}
+//   render() {
+//     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
+//     return(
+//       <form data-testid="add-movie-form">
+//         <label htmlFor="Título" data-testid="title-input-label">
+//           Título
+//           <input
+//             type="text"
+//             value={title}
+//             data-testid="title-input"
+//             // onChange={this.setState({title: event.target.value})}
+//           />
+//         </label>
 
-AddMovie.propTypes = {
-  onClick: PropTypes.func.isRequired,
-};
-// func because it's got to be a callback OnClick
-export default AddMovie;
+//       </form>
+//     );
+//   }
+// }
+
+// AddMovie.propTypes = {
+//   onClick: PropTypes.func.isRequired,
+// };
+// // func because it's got to be a callback OnClick
+// export default AddMovie;
