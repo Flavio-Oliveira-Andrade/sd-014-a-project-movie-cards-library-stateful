@@ -53,6 +53,14 @@ class AddMovie extends React.Component {
           Imagem
           {this.customImput('text', 'imagePath', imagePath, 'image-input')}
         </label>
+        <label htmlFor="storyline" data-testid="storyline-input-label">
+          Sinopse
+          {this.customImput('text', 'storyline', storyline, 'storyline-input')}
+        </label>
+        <label htmlFor="rating" data-testid="rating-input-label">
+          Avaliação
+          {this.customImput('number', 'rating', rating, 'rating-input')}
+        </label>
       </form>
     );
   }
