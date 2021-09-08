@@ -15,11 +15,18 @@ class AddMovie extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({ title: event.target.value });
+  // handle genérico utilizado para atualizar o estado de todos os componentes com a mesma lógica.
+
+  handleChange({ target }) {
+    const { name, value } = target;
+
+    this.setState({
+      [name]: value,
+    });
   }
 
-  onClick = () => {};
+  // filter 1h11min aula 12.1
+
   // Função criada para passar no lint, pois o tamanho do form estava muito grande. Ajuda do Marcello Alves para encontrar solução e criar função. <3
 
   render() {
@@ -31,8 +38,9 @@ class AddMovie extends Component {
           <input
             data-testid="title-input"
             type="text"
-            name="title-input"
-            onChange={ title }
+            name="title"
+            value={ title }
+            onChange={ this.handleChange }
           />
         </label>
         <label data-testid="subtitle-input-label" htmlFor="subtitle-input">
@@ -40,8 +48,9 @@ class AddMovie extends Component {
           <input
             data-testid="subtitle-input"
             type="text"
-            name="subtitle-input"
-            onChange={ subtitle }
+            name="subtitle"
+            value={ subtitle }
+            onChange={ this.handleChange  }
           />
         </label>
         <label data-testid="image-input-label" htmlFor="image-input">
@@ -49,8 +58,9 @@ class AddMovie extends Component {
           <input
             data-testid="image-input"
             type="text"
-            name="image-input"
-            onChange={ imagePath }
+            name="imagePath"
+            value={ imagePath }
+            onChange={ this.handleChange  }
           />
         </label>
         <label data-testid="storyline-input-label" htmlFor="storyline-input">
@@ -58,8 +68,9 @@ class AddMovie extends Component {
           <textarea
             data-testid="storyline-input"
             type="text"
-            name="storyline-input"
-            onChange={ storyline }
+            name="storyline"
+            value={ storyline }
+            onChange={ this.handleChange  }
           />
         </label>
         <label data-testid="rating-input-label" htmlFor="image-input">
@@ -67,19 +78,25 @@ class AddMovie extends Component {
           <input
             data-testid="rating-input"
             type="number"
-            name="rating-input"
-            onChange={ rating }
+            name="rating"
+            value={ rating }
+            onChange={ this.handleChange  }
           />
         </label>
         <label data-testid="genre-input-label" hmtlFor="genre">
           Gênero
-          <select data-testid="genre-input" value={ genre } name="genre">
+          <select 
+            data-testid="genre-input" 
+            value={ genre } 
+            name="genre"
+            onChange={ this.handleChange  }
+          >
           <option value="action" data-testid="genre-option">Ação</option>
           <option value="comedy" data-testid="genre-option">Comédia</option>
           <option value="thriller" data-testid="genre-option">Suspense</option>
         </select>
         </label>
-        <button data-testid="send-button" onClick={}>Adicionar filme</button>
+        <button data-testid="send-button">Adicionar filme</button>
       </form>
     );
   }
