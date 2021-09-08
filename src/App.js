@@ -3,6 +3,7 @@ import Header from './components/Header';
 import MovieList from './components/MovieList';
 import SearchBar from './components/SearchBar';
 import movies from './data';
+import AddMovie from './components/AddMovie';
 import './App.css';
 
 class App extends React.Component {
@@ -48,6 +49,7 @@ class App extends React.Component {
           onSelectedGenreChange={ this.onSelectedGenreChange }
         />
         <MovieList movies={ movies } />
+        <AddMovie />
       </div>
     );
   }
