@@ -58,40 +58,41 @@ class AddMovie extends Component {
         </label>
         <label htmlFor="subtitle" data-testid="subtitle-input-label">
           Subtítulo
-          <input
-            type="text"
-            name="subtitle"
-            id="subtitle"
-            value={ subtitle }
-            onChange={ this.onChange }
-            data-testid="subtitle-input"
-          />
+          {this.handleInput('subtitle', 'text', 'subtitle-input', subtitle)}
         </label>
         <label htmlFor="Imagem" data-testid="image-input-label">
           Imagem do filme:
-          <input type="text" name="imagePath" id="Imagem" value={ imagePath } onChange={ this.onChange } data-testid="image-input" />
+          {this.handleInput('imagePath', 'text', 'image-input', imagePath)}
         </label>
-
         <label htmlFor="Sinopse" data-testid="storyline-input-label">
           Sinopse:
-          <textarea type="text" name="storyline" id="Sinopse" value={ storyline } onChange={ this.onChange } data-testid="storyline-input" />
+          {this.handleInput('storyLine', 'textarea', 'storyline-input', storyline)}
         </label>
-
         <label htmlFor="Avaliacao" data-testid="rating-input-label">
           Avaliação:
-          <input type="number" name="rating" id="Avaliacao" value={ rating } onChange={ this.onChange } data-testid="rating-input" />
+          {this.handleInput('rating', 'number', 'rating-input', rating)}
         </label>
-
         <label htmlFor="genero" data-testid="genre-input-label">
           Genero:
-          <select name="genre" id="genero" value={ genre } onChange={ this.onChange } data-testid="genre-input">
+          <select
+            name="genre"
+            value={ genre }
+            onChange={ this.onChange }
+            data-testid="genre-input"
+          >
             <option value="action" data-testid="genre-option">Ação</option>
             <option value="comedy" data-testid="genre-option">Comédia</option>
             <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
 
-        <button type="submit" data-testid="send-button" onClick={ this.handleClick }>Adicionar filme</button>
+        <button
+          type="submit"
+          data-testid="send-button"
+          onClick={ this.handleClick }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
