@@ -182,7 +182,7 @@ describe('13 - Renderize um `select` do formulário em `<AddMovie />` para selec
     expect(genreOptions).toHaveLength(options.length);
   });
 
-  it.skip('Será validado se o component renderiza a label "Gênero" para o select de gênero', () => {
+  it('Será validado se o component renderiza a label "Gênero" para o select de gênero', () => {
     expect(genreInputLabel).toBeInTheDocument();
     expect(genreInputLabel).toHaveTextContent('Gênero');
   });
