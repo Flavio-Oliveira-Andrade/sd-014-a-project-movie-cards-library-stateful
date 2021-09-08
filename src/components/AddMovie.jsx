@@ -22,49 +22,41 @@ class AddMovie extends Component {
     this.setState({ [target.name]: target.value });
   }
 
+  createInput(tipo, value, name, dataTestid) {
+    return (
+      <input
+        type={ tipo }
+        value={ value }
+        name={ name }
+        data-testid={ dataTestid }
+        onChange={ this.handleChange }
+      />
+    );
+  }
+
   render() {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label data-testid="title-input-label" htmlFor="title-input">
           Título
-          <input
-            type="text"
-            value={ title }
-            name="title"
-            data-testid="title-input"
-            onChange={ this.handleChange }
-          />
+          { this.createInput('text', title, 'title', 'title-input') }
         </label>
         <label data-testid="subtitle-input-label" htmlFor="subtitle-input">
           Subtítulo
-          <input
-            type="text"
-            value={ subtitle }
-            name="subtitle"
-            data-testid="subtitle-input"
-            onChange={ this.handleChange }
-          />
+          { this.createInput('text', subtitle, 'subtitle', 'subtitle-input') }
         </label>
         <label data-testid="image-input-label" htmlFor="image-input">
           Imagem
-          <input
-            type="text"
-            value={ imagePath }
-            name="imagePath"
-            data-testid="image-input"
-            onChange={ this.handleChange }
-          />
+          { this.createInput('text', imagePath, 'imagePath', 'image-input') }
         </label>
         <label data-testid="storyline-input-label" htmlFor="storyline-input">
           Sinopse
-          <input
-            type="textarea"
-            value={ storyline }
-            name="storyline"
-            data-testid="storyline-input"
-            onChange={ this.handleChange }
-          />
+          { this.createInput('textarea', storyline, 'storyline', 'storyline-input') }
+        </label>
+        <label data-testid="rating-input-label" htmlFor="storyline-input">
+          Avaliação
+          { this.createInput('number', rating, 'rating', 'rating-input') }
         </label>
       </form>
     );
