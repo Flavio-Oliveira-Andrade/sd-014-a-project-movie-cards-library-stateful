@@ -3,6 +3,7 @@ import Header from './components/Header';
 import './App.css';
 import SearchBar from './components/SearchBar';
 import movies from './data';
+import AddMovie from './components/AddMovie';
 
 class App extends React.Component {
   render() {
@@ -10,6 +11,7 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <SearchBar onClick={ movies } />
+        <AddMovie />
       </div>
     );
   }
