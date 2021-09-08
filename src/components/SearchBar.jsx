@@ -26,14 +26,14 @@ class SearchBar extends Component {
       this.state.bookmarkedOnly = true;
     }
   }
-  genero(){
-    console.log('genero')
+  genero(event){
+    this.setState({selectedGenre: event.target.value})
   }
 
   render() {
+    const {searchText, onSearchTextChange, bookmarkedOnly, onBookmarkedChange, selectedGenre, onSelectedGenreChange} = this.state
 
     // const {data-testeid} = this.props
-    const {searchText, onSearchTextChange, bookmarkedOnly, onBookmarkedChange, selectedGenre, onSelectedGenreChange} = this.state
 
     return ( 
       <form data-testid="search-bar-form"> 
