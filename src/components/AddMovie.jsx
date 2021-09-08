@@ -20,6 +20,20 @@ class AddMovie extends Component {
     });
   }
 
+  handleClick = (event) => {
+    const { onClick } = this.props;
+    onClick();
+    event.preventDefault();
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  };
+
   render() {
     const {
       subtitle,
@@ -78,15 +92,35 @@ class AddMovie extends Component {
         </label>
         <label htmlFor="add-movie-rating" data-testid="rating-input-label">
           Avaliação
-          <input 
-          type="number" 
-          name="rating" 
-          id="add-movie-rating" 
-          value={rating}
-          data-testid="rating-input"
-          onChange={this.handleChange}
+          <input
+            type="number"
+            name="rating"
+            id="add-movie-rating"
+            value={rating}
+            data-testid="rating-input"
+            onChange={this.handleChange}
           />
         </label>
+        <label htmlFor="add-movie-select" data-testid="genre-input-label">
+          Gênero
+          <select
+            name="genre"
+            id="add-movie-select"
+            value={genre}
+            data-testid="genre-input"
+            onChange={this.handleChange}
+          >
+            <option value="action" data-testid="genre-option">Ação</option>
+            <option value="comedy" data-testid="genre-option">Comédia</option>
+            <option value="thriller" data-testid="genre-option">Suspense</option>
+          </select>
+        </label>
+
+        <button
+          type="submit"
+          data-testid="send-button"
+          onClick={this.handleClick}
+        >Adicionar filme</button>
       </form>
     );
   }
