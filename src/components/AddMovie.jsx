@@ -1,13 +1,15 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 
+import ImagePath from './ImagePath';
+
 class AddMovie extends React.Component {
   constructor() {
     super();
     this.state = {
       title: '',
       subtitle: '',
-      // imagePath: '',
+      imagePath: '',
       // storyline: '',
       // rating: 0,
       // genre: 'action',
@@ -54,17 +56,7 @@ class AddMovie extends React.Component {
             data-testid="subtitle-input"
           />
         </label>
-        <label htmlFor="input-image" data-testid="image-input-label">
-          Imagem
-          <input
-            type="text"
-            id="input-image"
-            name="imagem"
-            value={ imagePath }
-            onChange={ this.handleOnChange }
-            data-testid="image-input"
-          />
-        </label>
+        <ImagePath value={ imagePath } handleOnChange={ this.handleOnChange } />
       </form>
     );
   }
