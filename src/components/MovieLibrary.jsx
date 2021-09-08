@@ -24,8 +24,19 @@ class MovieLibrary extends React.Component {
     });
   }
 
-  render() {
+  filteredMovies() {
     const { movies, searchText, bookmarkedOnly, selectedGenre } = this.state;
+    console.log(selectedGenre);
+    return movies
+      .filter((movie) => (movie.title.toLowerCase().includes(searchText)
+        || movie.subtitle.toLowerCase().includes(searchText)
+        || movie.storyline.toLowerCase().includes(searchText)))
+      .filter((movie) => (bookmarkedOnly ? movie.bookmarked : true))
+      .filter((movie) => (selectedGenre ? movie.genre === selectedGenre : true));
+  }
+
+  render() {
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <main>
         <SearchBar
@@ -36,7 +47,7 @@ class MovieLibrary extends React.Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleChange }
         />
-        <MovieList movies={ movies } />
+        <MovieList movies={ this.filteredMovies() } />
       </main>
     );
   }
