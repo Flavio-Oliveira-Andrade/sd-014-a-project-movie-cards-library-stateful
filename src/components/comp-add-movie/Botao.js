@@ -6,7 +6,7 @@ class Botao extends React.Component {
     const { handleOnClick } = this.props;
     return (
       <button
-        type="submit"
+        type="button"
         data-testid="send-button"
         onClick={ handleOnClick }
       >
