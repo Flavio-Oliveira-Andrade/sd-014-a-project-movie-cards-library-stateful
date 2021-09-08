@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 class AddMovie extends Component {
   constructor() {
@@ -50,6 +50,14 @@ class AddMovie extends Component {
             data-testid="image-input"
             onChange={ this.handleChange }
             name="imagePath"
+          />
+        </label>
+        <label data-testid="storyline-input-label" htmlFor="storyline">
+          Sinopse
+          <textarea
+            value={ storyline }
+            data-testid="storyline-input"
+            onChange={ this.handleChange }
           />
         </label>
       </form>
