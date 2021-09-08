@@ -1,8 +1,8 @@
 import React from 'react';
 
 class AddMovie extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       subtitle: '',
       title: '',
@@ -12,6 +12,7 @@ class AddMovie extends React.Component {
       genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
+    this.click = this.click.bind(this);
     this.movieTitle = this.movieTitle.bind(this);
     this.movieSubtitle = this.movieSubtitle.bind(this);
     this.movieImage = this.movieImage.bind(this);
@@ -104,12 +105,42 @@ class AddMovie extends React.Component {
     return (
       <label htmlFor="genre" data-testid="genre-input-label">
         Gênero
-        <select id="genre" data-testid="genre-input" value={ genre } onChange={ this.handleChange }>
+        <select
+          id="genre"
+          data-testid="genre-input"
+          value={ genre }
+          onChange={ this.handleChange }
+        >
           <option value="action" data-testid="genre-option">Ação</option>
           <option value="comedy" data-testid="genre-option">Comédia</option>
           <option value="thriller" data-testid="genre-option">Suspense</option>
         </select>
       </label>
+    );
+  }
+
+  click() {
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
+  movieButton() {
+    return (
+      <button
+        type="submit"
+        data-testid="send-button"
+        onClick={ this.click }
+      >
+        Adicionar filme
+      </button>
     );
   }
 
@@ -123,6 +154,7 @@ class AddMovie extends React.Component {
         {this.movieStoryline(storyline)}
         {this.movieRating(rating)}
         {this.movieGenre(genre)}
+        {this.movieButton()}
       </form>
     );
   }
