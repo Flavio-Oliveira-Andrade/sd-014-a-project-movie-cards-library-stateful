@@ -24,7 +24,7 @@ class AddMovie extends Component {
 
   handleClick() {
     const { onClick } = this.props;
-    onClick();
+    onClick(this.state);
     this.setState({
       subtitle: '',
       title: '',
@@ -35,36 +35,33 @@ class AddMovie extends Component {
     });
   }
 
+  handleInput(type, value, dataTest, name) {
+    return (
+      <input
+        type={ type }
+        value={ value }
+        data-testid={ dataTest }
+        onChange={ this.handleChange }
+        name={ name }
+      />
+    );
+  }
+
   render() {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label data-testid="title-input-label" htmlFor="title">
           Título
-          <input
-            value={ title }
-            data-testid="title-input"
-            onChange={ this.handleChange }
-            name="title"
-          />
+          { this.handleInput('text', title, 'title-input', 'title') }
         </label>
         <label data-testid="subtitle-input-label" htmlFor="subtitle">
           Subtítulo
-          <input
-            value={ subtitle }
-            data-testid="subtitle-input"
-            onChange={ this.handleChange }
-            name="subtitle"
-          />
+          { this.handleInput('text', subtitle, 'subtitle-input', 'subtitle') }
         </label>
         <label data-testid="image-input-label" htmlFor="imagePath">
           Imagem
-          <input
-            value={ imagePath }
-            data-testid="image-input"
-            onChange={ this.handleChange }
-            name="imagePath"
-          />
+          { this.handleInput('text', imagePath, 'image-input', 'imagePath') }
         </label>
         <label data-testid="storyline-input-label" htmlFor="storyline">
           Sinopse
@@ -77,13 +74,7 @@ class AddMovie extends Component {
         </label>
         <label data-testid="rating-input-label" htmlFor="rating">
           Avaliação
-          <input
-            type="number"
-            value={ rating }
-            data-testid="rating-input"
-            onChange={ this.handleChange }
-            name="rating"
-          />
+          { this.handleInput('number', rating, 'rating-input', 'rating') }
         </label>
         <label data-testid="genre-input-label" htmlFor="genre">
           Gênero
