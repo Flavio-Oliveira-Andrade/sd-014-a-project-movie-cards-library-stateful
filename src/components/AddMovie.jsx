@@ -1,4 +1,3 @@
-import { render } from 'enzyme';
 import React from 'react';
 
 class AddMovie extends React.Component {
@@ -21,11 +20,11 @@ class AddMovie extends React.Component {
   createInput(type, name, value, dataTestid) {
     return (
       <input
-        type= { type }
+        type={ type }
         name={ name }
         value={ value }
         onChange={ this.handleChange }
-        data-testid= { dataTestid }
+        data-testid={ dataTestid }
       />
     );
   }
@@ -51,11 +50,27 @@ class AddMovie extends React.Component {
         <label htmlFor="storyline" data-testid="storyline-input">
           Sinopse
           <textarea
-            name='storyline'
+            name="storyline"
             value={ storyLine }
-            data-testid='storyline-input'
+            data-testid="storyline-input"
             onChange={ this.handleChange }
           />
+        </label>
+        <label htmlFor="ratingMovie" data-testid="rating-input-label">
+          Avaliação
+          { this.createInput('number', 'ratingMovie', rating, 'rating-input') }
+        </label>
+        <label htmlFor="selectGenre" data-testid="genre-input-label">
+          Gênero
+          <select
+            name="genre"
+            value={ genre }
+            data-testid="genre-input"
+          >
+            <option data-testid="genre-option" value="action">Ação</option>
+            <option data-testid="genre-option" value="comedy">Comédia</option>
+            <option data-testid="genre-option" value="thriller">Suspense</option>
+          </select>
         </label>
       </form>
     );
