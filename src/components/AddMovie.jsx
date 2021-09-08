@@ -2,16 +2,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
+import InputTitle from './InputTitle';
+import InputSubtitle from './InputSubtitle';
 
-const ti = 'title-input';
-const si = 'subtitle-input';
+//  const ti = 'title-input';
+//  const si = 'subtitle-input';
 const ip = 'image-input';
 const sli = 'storyline-input';
 const ri = 'rating-input';
 const gi = 'genre-input';
-//  const bi = 'send-button';
-const nt = 'title';
-const ns = 'subtitle';
+//  const nt = 'title';
+//  const ns = 'subtitle';
 const ni = 'imagePath';
 const nsl = 'storyline';
 const nr = 'rating';
@@ -35,7 +36,7 @@ class AddMovie extends React.Component {
 
   aE({ target }) {
     const { name } = target;
-    const value = name === 'rating' ? parseFloat(target.value, 10) : target.value;
+    const value = name === 'rating' ? parseFloat(target.value) : target.value;
     this.setState({
       [name]: value,
     });
@@ -60,14 +61,8 @@ class AddMovie extends React.Component {
 
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="t" data-testid="title-input-label">
-          Título
-          <input type="text" id="t" data-testid={ ti } value={ t } onChange={ me } name={ nt } />
-        </label>
-        <label htmlFor="s" data-testid="subtitle-input-label">
-          Subtítulo
-          <input type="text" id="s" data-testid={ si } value={ s } onChange={ me } name={ ns } />
-        </label>
+        <InputTitle value={ t } onChange={ me } />
+        <InputSubtitle value={ s } onChange={ me } />
         <label htmlFor="i" data-testid="image-input-label">
           Imagem
           <input type="text" id="i" data-testid={ ip } value={ i } onChange={ me } name={ ni } />
@@ -89,9 +84,6 @@ class AddMovie extends React.Component {
           </select>
         </label>
         <Button onClick={ onClick } estado={ this.state } metodo={ this.reset } />
-        {/* <button type="submit" onClick={ (event) => { event.preventDefault(); click(this.state); this.reset(); } } data-testid={ bi }>
-          Adicionar filme
-        </button> */}
       </form>
     );
   }
