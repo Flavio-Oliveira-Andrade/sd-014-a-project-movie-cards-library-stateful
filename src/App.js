@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import movies from './data';
+// import movies from './data';
 import Header from './components/Header';
-import MovieLibrary from './components/MovieLibrary';
+// import MovieLibrary from './components/MovieLibrary';
 import AddMovie from './components/AddMovie';
 
 class App extends React.Component {
