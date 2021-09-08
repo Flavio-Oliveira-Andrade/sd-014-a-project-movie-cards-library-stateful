@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class SearchBar extends Component {
   render() {
-    const { searchText, onSearchTextChange, bookmarkedOnly, onBookmarkedChange, selectedGenre, onSelectedGenreChange } = this.props;
+    const { searchText, onSearchTextChange } = this.props;
     return (
       <section>
         <form data-testid="search-bar-form">
@@ -24,8 +24,12 @@ class SearchBar extends Component {
   }
 }
 
+SearchBar.defaultProps = {
+  searchText: '',
+};
+
 SearchBar.propTypes = {
-  searchText: PropTypes.string.isRequired,
+  searchText: PropTypes.string,
   onSearchTextChange: PropTypes.func.isRequired,
 };
 

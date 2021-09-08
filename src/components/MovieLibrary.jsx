@@ -10,7 +10,7 @@ import movies from '../data';
 class MovieLibrary extends Component {
   constructor() {
     super();
-    this.setState = {
+    this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
