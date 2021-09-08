@@ -24,10 +24,10 @@ class MovieLibrary extends React.Component {
     this.aBO = this.aBO.bind(this);
     this.aSG = this.aSG.bind(this);
     this.add = this.add.bind(this);
-    this.filtra = this.filtra.bind(this);
+    this.filtraTexto = this.filtraTexto.bind(this);
   }
 
-  filtra(filt) {
+  filtraTexto(filt) {
     const { inicialData } = this.state;
     const filmes = inicialData.filter((mov) => {
       const tlc = mov.title.toLowerCase();
@@ -43,17 +43,31 @@ class MovieLibrary extends React.Component {
     });
   }
 
+  filtraFavorito(filt) {
+    const { inicialData } = this.state;
+    let filmes;
+    if (filt) {
+      filmes = inicialData.filter((mov) => mov.bookmarked === filt);
+    } else {
+      filmes = inicialData;
+    }
+    this.setState({
+      movies: filmes,
+    });
+  }
+
   aST({ target }) {
     this.setState({
       searchText: target.value,
     });
-    this.filtra(target.value);
+    this.filtraTexto(target.value);
   }
 
   aBO({ target }) {
     this.setState({
       bookmarkedOnly: target.checked,
     });
+    this.filtraFavorito(target.checked);
   }
 
   aSG({ target }) {
