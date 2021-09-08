@@ -6,18 +6,19 @@ import InputTitle from './InputTitle';
 import InputSubtitle from './InputSubtitle';
 import InputImagem from './InputImagem';
 import InputSinopse from './InputSinopse';
+import InputRating from './InputRating';
 
 //  const ti = 'title-input';
 //  const si = 'subtitle-input';
 //  const ip = 'image-input';
 //  const sli = 'storyline-input';
-const ri = 'rating-input';
+//  const ri = 'rating-input';
 const gi = 'genre-input';
 //  const nt = 'title';
 //  const ns = 'subtitle';
 //  const ni = 'imagePath';
 //  const nsl = 'storyline';
-const nr = 'rating';
+//  const nr = 'rating';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -58,7 +59,7 @@ class AddMovie extends React.Component {
   render() {
     const { onClick } = this.props;
     const { title, subtitle, imagePath } = this.state;
-    const { storyline, rating: r, genre: g } = this.state;
+    const { storyline, rating, genre: g } = this.state;
     const me = this.aE;
 
     return (
@@ -67,10 +68,11 @@ class AddMovie extends React.Component {
         <InputSubtitle value={ subtitle } onChange={ me } />
         <InputImagem value={ imagePath } onChange={ me } />
         <InputSinopse value={ storyline } onChange={ me } />
-        <label htmlFor="n" data-testid="rating-input-label">
+        <InputRating value={ rating } onChange={ me } />
+        {/* <label htmlFor="n" data-testid="rating-input-label">
           Avaliação
           <input type="number" name={ nr } id="n" value={ r } data-testid={ ri } onChange={ me } />
-        </label>
+        </label>  */}
         <label htmlFor="se" data-testid="genre-input-label">
           Gênero
           <select name="genre" id="se" data-testid={ gi } value={ g } onChange={ me }>
