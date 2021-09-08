@@ -20,11 +20,12 @@ class AddMovie extends React.Component {
     super();
 
     this.state = {
-      subtitle: '',
       title: '',
-      imagePath: '',
+      subtitle: '',
       storyline: '',
       rating: 0,
+      imagePath: '',
+      bookmarked: false,
       genre: 'action',
     };
 
@@ -32,8 +33,9 @@ class AddMovie extends React.Component {
     this.reset = this.reset.bind(this);
   }
 
-  aE(event) {
-    const { value, name } = event.target;
+  aE({ target }) {
+    const { name } = target;
+    const value = name === 'rating' ? parseInt(target.value, 10) : target.value;
     this.setState({
       [name]: value,
     });
@@ -86,7 +88,7 @@ class AddMovie extends React.Component {
             <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
-        <button type="submit" onClick={ () => { click(); this.reset(); } } data-testid={ bi }>
+        <button type="submit" onClick={ (event) => { event.preventDefault(); click(this.state); this.reset(); } } data-testid={ bi }>
           Adicionar filme
         </button>
       </form>
