@@ -1,6 +1,7 @@
 // implement AddMovie component here
 import React from 'react';
 import PropTypes from 'prop-types';
+import Title from './AddMovieComponens/Title';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -19,27 +20,23 @@ class AddMovie extends React.Component {
   }
 
   handleChange({ target }) {
+    const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
-      [target.name]: value });
-  }
-
-  createHandleInput(name, type, value, dataTest) {
-    return (
-      <input
-        name={ name }
-        type={ type }
-        value={ value }
-        data-testid={ dataTest }
-        onChange={ this.handleChange }
-      />
-    );
+      [name]: value,
+    });
   }
 
   render() {
+    const { onClick } = this.props;
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
-      <form data-testid="add-movie-form" />
+      <form data-testid="add-movie-form">
+        <Title
+          title={ title }
+          TitleChange={ this.handleChange }
+        />
+      </form>
     );
   }
 }
