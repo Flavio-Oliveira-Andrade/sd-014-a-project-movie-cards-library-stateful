@@ -15,6 +15,7 @@ class AddMovie extends React.Component {
       genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   // A propriedade onChange deve atualizar o estado de <AddMovie />, atribuindo a title o atual título contido no input.
@@ -23,6 +24,21 @@ class AddMovie extends React.Component {
     const valor = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: valor,
+    });
+  }
+
+  handleClick(event) {
+    event.preventDefault(); // Clicando em um botão "Enviar", evita o envio de um formulário <https://www.w3schools.com/jsref/event_preventdefault.asp>
+    const { onClick } = this.props;
+    onClick(this.state); // esse estado atual (info formulário) será enviado para o componente pai: MovieLibrary
+    // Reseta o estado de <AddMovie />, voltando para o inicial.
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
     });
   }
 
@@ -54,7 +70,7 @@ class AddMovie extends React.Component {
           {this.input('subtitle', 'text', subtitle, 'subtitle-input')}
         </label>
         {/* 10 - Renderize um input do tipo texto dentro do formulário em <AddMovie /> */}
-        <label htmlFor="image" data-testid="image-input-label">
+        <label htmlFor="imagePath" data-testid="image-input-label">
           Imagem
           {this.input('imagePath', 'text', imagePath, 'image-input')}
         </label>
@@ -68,23 +84,33 @@ class AddMovie extends React.Component {
             onChange={ this.handleChange }
           />
         </label>
-        {/* 12 - Renderize um input do tipo number */}
         <label htmlFor="rating" data-testid="rating-input-label">
           Avaliação
           {this.input('rating', 'number', rating, 'rating-input')}
         </label>
-        {/* 13 - Renderize um select do formulário em <AddMovie /> */}
-        <label htmlFor="select" data-testid="genre-input-label">
+        <label htmlFor="genre" data-testid="genre-input-label">
           Gênero
-          <select data-testid="genre-input" onChange={ this.handleChange }>
+          <select
+            name="genre"
+            value={ genre }
+            data-testid="genre-input"
+            onChange={ this.handleChange }
+          >
             <option data-testid="genre-option" value="action">Ação</option>
             <option data-testid="genre-option" value="comedy">Comédia</option>
             <option data-testid="genre-option" value="thriller">Suspense</option>
           </select>
         </label>
+        <button data-testid="send-button" onClick={ this.handleClick } type="submit">
+          Adicionar filme
+        </button>
       </form>
     );
   }
 }
+
+// AddMovie.propTypes = {
+//   onClick: PropTypes.func.isRequerid,
+// };
 
 export default AddMovie;
