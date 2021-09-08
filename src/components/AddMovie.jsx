@@ -44,11 +44,11 @@ class AddMovie extends Component {
           Título
           {this.createCustomInput('title', this.handleChange, 'text', title)}
         </label>
-        <label data-testid="title-input-label" htmlFor="title">
+        <label data-testid="subtitle-input-label" htmlFor="subtitle">
           Subtítulo
           {this.createCustomInput('subtitle', this.handleChange, 'text', subtitle)}
         </label>
-        <label data-testid="title-input-label" htmlFor="title">
+        <label data-testid="image-input-label" htmlFor="image">
           Imagem
           {this.createCustomInput('image', this.handleChange, 'text', imagePath)}
         </label>
@@ -61,6 +61,10 @@ class AddMovie extends Component {
             onChange={ this.handleChange }
             value={ storyline }
           />
+        </label>
+        <label data-testid="rating-input-label" htmlFor="rating">
+          Avaliação
+          {this.createCustomInput('rating', this.handleChange, 'number', rating)}
         </label>
       </form>
     );
