@@ -5,7 +5,7 @@ class AddMovie extends React.Component {
     super();
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleClick = this.handleSubmit.bind(this);
 
     this.state = {
       subtitle: '',
@@ -26,9 +26,20 @@ class AddMovie extends React.Component {
     });
   }
 
-  // handleClick() {
-  //   const { onClick } = this.props;
-  // }
+  handleSubmit(event) {
+    event.preventDefault(); // para que botão não salve automaticamente na url ou recarrega a página
+    const { onClick } = this.props;
+    onClick(this.sate);
+
+    this.setState({
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    })
+  }
 
   render() {
     return (
@@ -92,6 +103,25 @@ class AddMovie extends React.Component {
             onChange={ this.handleChange }
           />
         </label>
+
+        <label htmlFor="genre" data-testid="genre-input-label">
+          Gênero
+          <select
+            name="genre"
+            id="genre"
+            data-testid="genre-input"
+            value={ this.state.genre }
+            onChange={ this.handleChange }
+          >
+            <option value="action" data-testid="genre-option">Ação</option>
+            <option value="comedy" data-testid="genre-option">Comédia</option>
+            <option value="thriller" data-testid="genre-option">Suspense</option>
+          <select/>
+        </label>
+
+        <button type="submit" data-testid="send-button" onClick={ this.handleSubmit }>
+          Adicionar filme
+        </button>
 
       </form>
     );
