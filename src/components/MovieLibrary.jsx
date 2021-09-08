@@ -5,9 +5,9 @@ import MovieList from './MovieList';
 import AddMovie from './AddMovie';
 
 class MovieLibrary extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
-    const { movies } = this.props;
+    const { movies } = props;
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
