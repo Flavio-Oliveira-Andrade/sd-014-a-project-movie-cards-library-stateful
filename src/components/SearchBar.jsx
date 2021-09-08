@@ -9,7 +9,18 @@ class SearchBar extends React.Component {
       bookmarkedOnly, onBookmarkedChange,
       selectedGenre, onSelectedGenreChange } = this.props;
     return (
-      <form data-testid="search-bar-form" />
+      <form data-testid="search-bar-form">
+        <label htmlFor="a" data-testid="text-input-label">
+          Inclui o texto:
+          <input
+            type="text"
+            value={ searchText }
+            onChange={ onSearchTextChange }
+            data-testid="text-input"
+            id="a"
+          />
+        </label>
+      </form>
     );
   }
 }
@@ -24,3 +35,5 @@ SearchBar.propTypes = {
 };
 
 export default SearchBar;
+
+// https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/master/docs/rules/label-has-associated-control.md
