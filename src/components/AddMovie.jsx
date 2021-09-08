@@ -1,4 +1,5 @@
 import React from 'react';
+import Genre from './Genre';
 // import PropTypes from 'prop-types';
 
 import ImagePath from './ImagePath';
@@ -14,7 +15,7 @@ class AddMovie extends React.Component {
       imagePath: '',
       storyline: '',
       rating: 0,
-      // genre: 'action',
+      genre: 'action',
     };
     this.handleOnChange = this.handleOnChange.bind(this);
   }
@@ -34,6 +35,7 @@ class AddMovie extends React.Component {
       imagePath,
       storyline,
       rating,
+      genre,
     } = this.state;
 
     return (
@@ -63,6 +65,7 @@ class AddMovie extends React.Component {
         <ImagePath value={ imagePath } handleOnChange={ this.handleOnChange } />
         <Sinopse value={ storyline } handleOnChange={ this.handleOnChange } />
         <MovieRating value={ rating } handleOnChange={ this.handleOnChange } />
+        <Genre value={ genre } handleOnChange={ this.handleOnChange } />
       </form>
     );
   }
