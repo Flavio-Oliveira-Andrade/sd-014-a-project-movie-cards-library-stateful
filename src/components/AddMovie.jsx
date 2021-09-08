@@ -2,6 +2,7 @@
 // implement AddMovie component here
 import React from 'react';
 import PropTypes from 'prop-types';
+import NumberInput from './NumberInput';
 
 const stateInitial = {
   subtitle: '',
@@ -18,6 +19,7 @@ class AddMovie extends React.Component {
     this.state = stateInitial;
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(event) {
@@ -40,7 +42,7 @@ class AddMovie extends React.Component {
   }
 
   render() {
-    const { title, subtitle, imagePath, storyline } = this.state;
+    const { title, subtitle, imagePath, storyline, rating } = this.state;
     return (
       <form data-testid="add-movie-form" onSubmit={ this.handleSubmit }>
         <label htmlForm="title" data-testid="title-input-label">
@@ -82,6 +84,7 @@ class AddMovie extends React.Component {
             onChange={ storyline }
           />
         </label>
+        <NumberInput value={ rating } onChange={ this.handleChange } />
       </form>
     );
   }
