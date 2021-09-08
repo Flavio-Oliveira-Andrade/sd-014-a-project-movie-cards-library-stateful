@@ -5,6 +5,9 @@ import PropTypes from 'prop-types';
 import NumberInput from './NumberInput';
 import GenreInput from './genreInput';
 
+// import Button from './Button';
+import Sinopse from './Sinopse';
+
 const stateInitial = {
   subtitle: '',
   title: '',
@@ -19,8 +22,8 @@ class AddMovie extends React.Component {
     super();
     this.state = stateInitial;
 
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -46,7 +49,7 @@ class AddMovie extends React.Component {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form" onSubmit={ this.handleSubmit }>
-        <label htmlForm="title" data-testid="title-input-label">
+        <label htmlFor="title" data-testid="title-input-label">
           Título
           <input
             id="title"
@@ -74,23 +77,23 @@ class AddMovie extends React.Component {
             onChange={ imagePath }
           />
         </label>
-        <label htmlFor="sinopse" data-testid="storyline-input-label">
-          Sinopse
-          <textarea
-            data-testid="storyline-input"
-            id="sinopse"
-            type="text"
-            name="storyline"
-            value={ this.stateInitial }
-            onChange={ storyline }
-          />
-        </label>
+        <Sinopse value={ storyline } onChange={ this.handleChange } />
         <NumberInput value={ rating } onChange={ this.handleChange } />
         <GenreInput value={ genre } onChange={ this.handleChange } />
+        <button
+          type="submit"
+          data-testid="send-button"
+          onClick={ this.handleSubmit }
+        >
+          Adicionar filme
+        </button>
+
       </form>
     );
   }
 }
+
+// <Button onChange={ this.stateInitial } onClick={ this.handleSubmit } />; */}
 
 AddMovie.propTypes = {
   onClick: PropTypes.func,
