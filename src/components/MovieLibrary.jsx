@@ -1,20 +1,19 @@
 // Implement MovieLibrary component here
 import React from 'react';
-/*  import PropTypes from 'prop-types'; */
+import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
-/*  import MovieList from './MovieList';  */
+import MovieList from './MovieList';
 
 class MovieLibrary extends React.Component {
-  constructor() {
-    super();
-
-    /*  const { movies } = this.props;  */
+  //  https://overreacted.io/pt-br/why-do-we-write-super-props/
+  constructor(props) {
+    super(props); 
 
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      /*  movies, */
+      movies: this.props.movies,
     };
 
     this.aST = this.aST.bind(this);
@@ -41,8 +40,8 @@ class MovieLibrary extends React.Component {
   }
 
   render() {
-    const { searchText: s, bookmarkedOnly: b } = this.state;
-    const { selectedGenre: g /*  movies: m */ } = this.state;
+    const { searchText: s, bookmarkedOnly: b, selectedGenre: g, movies: m } = this.state;
+    
     return (
       <>
         <SearchBar
@@ -53,14 +52,14 @@ class MovieLibrary extends React.Component {
           onBookmarkedChange={ this.aBO }
           onSelectedGenreChange={ this.aSG }
         />
-        { /*  <MovieList movies={ m } />  */ }
+        <MovieList movies={ m } />         
       </>
     );
   }
 }
 
-/*  MovieLibrary.propTypes = {
+MovieLibrary.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
-};  */
+};
 
 export default MovieLibrary;
