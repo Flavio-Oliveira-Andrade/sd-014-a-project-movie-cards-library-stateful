@@ -5,21 +5,24 @@ import PropTypes from 'prop-types';
 class SearchBar extends React.Component {
   render() {
     const { listagem } = this.props;
+
     return (
-      <section>
-        { listagem}
-      </section>);
+      <form data-testid="search-bar-form">
+        teste
+        { listagem }
+      </form>
+    );
   }
 }
 
 SearchBar.propTypes = {
   listagem: PropTypes.arrayOf({
     searchText: PropTypes.string,
-    //   onSearchTextChange: PropTypes.
+    onSearchTextChange: PropTypes.func,
     bookmarkedOnly: PropTypes.bool,
-    //   onBookmarkedChange: PropTypes.
+    onBookmarkedChange: PropTypes.func,
     selectedGenre: PropTypes.string,
-    //  onSelectedGenreChange: PropTypes.
+    onSelectedGenreChange: PropTypes.func,
   }).isRequired,
 };
 
