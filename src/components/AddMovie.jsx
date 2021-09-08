@@ -3,6 +3,7 @@ import movies from '../data';
 import TitleInput from './TitleInput';
 import SubtitleInput from './SubtitleInput';
 import ImageInput from './ImageInput';
+import StorylineInput from './StorylineInput';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -55,15 +56,7 @@ class AddMovie extends React.Component {
         <TitleInput value={ title } onChange={ this.handleChange } />
         <SubtitleInput value={ subtitle } onChange={ this.handleChange } />
         <ImageInput value={ imagePath } onChange={ this.handleChange } />
-        <label data-testid="storyline-input-label" htmlFor="storyline">
-          Sinopse
-          <textarea
-            value={ storyline }
-            data-testid="storyline-input"
-            name="storyline"
-            onChange={ this.handleChange }
-          />
-        </label>
+        <StorylineInput value={ storyline } onChange={ this.handleChange } />
         <label data-testid="rating-input-label" htmlFor="rating">
           Avaliação
           <input
