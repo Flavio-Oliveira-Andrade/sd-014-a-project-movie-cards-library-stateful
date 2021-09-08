@@ -17,14 +17,14 @@ class AddMovie extends React.Component {
     [target.name]: (target.type === 'checkbox' ? target.checked : target.value),
   });
 
-  createInput(type, name, value, dataTestid) {
+  customImput(type, name, value, data) {
     return (
       <input
         type={ type }
         name={ name }
         value={ value }
         onChange={ this.handleChange }
-        data-testid={ dataTestid }
+        data-testid={ data }
       />
     );
   }
@@ -42,7 +42,11 @@ class AddMovie extends React.Component {
       <form data-testid="add-movie-form">
         <label htmlFor="title" data-testid="title-input-label">
           Título
-          { this.createInput('text', 'title', title, 'title-input') }
+          { this.customImput('text', 'title', title, 'title-input') }
+        </label>
+        <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
+          Subtítulo
+          {this.customImput('text', 'subtitle', subtitle, 'subtitle-input')}
         </label>
       </form>
     );
