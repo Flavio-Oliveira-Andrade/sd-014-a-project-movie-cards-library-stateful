@@ -38,6 +38,7 @@ class AddMovie extends React.Component {
         <label data-testid="title-input-label" htmlFor="title">
           Título
           <input
+            type="text"
             value={ title }
             data-testid="title-input"
             name="title"
@@ -46,10 +47,21 @@ class AddMovie extends React.Component {
         </label>
         <label data-testid="subtitle-input-label" htmlFor="subtitle">
           Subtítulo
-          <input 
+          <input
+            type="text"
             value={ subtitle }
             data-testid="subtitle-input"
             name="subtitle"
+            onChange={ this.handleChange }
+          />
+        </label>
+        <label data-testid="image-input-label" htmlFor="imagePath">
+          Imagem
+          <input
+            type="text"
+            value={ imagePath }
+            data-testid="image-input"
+            name="imagePath"
             onChange={ this.handleChange }
           />
         </label>
@@ -59,7 +71,7 @@ class AddMovie extends React.Component {
 }
 
 AddMovie.propTypes = {
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
 };
 
 export default AddMovie;
