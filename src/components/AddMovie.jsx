@@ -81,7 +81,7 @@ class AddMovie extends React.Component {
           data-testid="send-button"
           onClick={ onClick }
         >
-          Adicionar Filme
+          Adicionar filme
         </button>
       </form>
     );
