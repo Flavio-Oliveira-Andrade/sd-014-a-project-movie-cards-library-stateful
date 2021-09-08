@@ -1,4 +1,4 @@
-// implement MovieLibrary component here
+// Implement MovieLibrary component here
 import React from 'react';
 /*  import PropTypes from 'prop-types'; */
 import SearchBar from './SearchBar';
