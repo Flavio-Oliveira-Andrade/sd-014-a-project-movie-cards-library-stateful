@@ -58,6 +58,16 @@ class AddMovie extends React.Component {
           Imagem
           {this.input('imagePath', 'text', imagePath, 'image-input')}
         </label>
+        {/* 11 - Renderize uma textarea dentro do formulário em <AddMovie /> */}
+        <label htmlFor="storyline" data-testid="storyline-input-label">
+          Sinopse
+          <textarea
+            name="storyline"
+            data-testid="storyline-input"
+            value={ storyline }
+            onChange={ this.handleChange }
+          />
+        </label>
       </form>
     );
   }
