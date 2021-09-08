@@ -2,17 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class SearchBar extends Component {
-  constructor(){
-    super();
-    this.state = {value: ''}
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event){
-    this.setState({value:event.target.value});
-  }
-  
   render() {
     const { searchText } = this.props;
     return (
@@ -20,7 +9,14 @@ class SearchBar extends Component {
         <form data-testid="search-bar-form">
           <label htmlFor="search" data-testid="text-input-label">
             Inclui o texto:
-            <input data-testid="text-input" type="text" name="search" id="search" value={ searchText } onChange={}/>
+            <input
+              data-testid="text-input"
+              type="text"
+              name="search"
+              id="search"
+              value={ searchText }
+              onChange={ onSearchTextChange }
+            />
           </label>
         </form>
       </section>
