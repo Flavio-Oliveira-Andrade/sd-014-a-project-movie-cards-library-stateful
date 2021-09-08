@@ -1,5 +1,8 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import PropTypes from 'prop-types';
+import Input from './inputs/Input';
+import InputCheckBox from './inputs/InputCheckBox';
 
 class SearchBar extends React.Component {
   render() {
@@ -12,34 +15,26 @@ class SearchBar extends React.Component {
       onSelectedGenreChange } = this.props;
     return (
       <form data-testid="search-bar-form">
-        <label htmlFor="search" data-testid="text-input-label">
-          Inclui o texto
-          <input
-            onChange={ onSearchTextChange }
-            type="text"
-            id="search"
-            name="search"
-            value={ searchText }
-            data-testid="text-input"
-          />
-        </label>
-        <label htmlFor="favorito" data-testid="checkbox-input-label">
-          Mostrar somente favoritos
-          <input
-            onChange={ onBookmarkedChange }
-            type="checkbox"
-            id="favorito"
-            name="favorito"
-            checked={ bookmarkedOnly }
-            data-testid="checkbox-input"
-          />
-        </label>
+        <Input
+          id={ `${'text'}` }
+          value={ searchText }
+          handleChange={ onSearchTextChange }
+          titulo={ `${'Inclui o texto'}` }
+        />
+        <InputCheckBox
+          id={ `${'checkbox'}` }
+          value={ bookmarkedOnly }
+          handleChange={ onBookmarkedChange }
+          titulo={ `${' Mostrar somente favoritos'}` }
+        />
         <label htmlFor="genero" data-testid="select-input-label">
           Filtrar por gênero
           <select
+            className="form-control"
             onChange={ onSelectedGenreChange }
             value={ selectedGenre }
             id="genero"
+            name="genero"
             data-testid="select-input"
           >
             <option data-testid="select-option" value="">Todos</option>

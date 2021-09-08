@@ -4,6 +4,10 @@ body {
   font-size: 16px;
 }
 
+.movieLibrary {
+  padding: 20px;
+}
+
 .movie-card-header {
   align-items: center;
   background-color: #343a40;
@@ -22,7 +26,7 @@ body {
 .movie-list {
   display: flex;
   flex-flow: row wrap;
-  padding: 48px 30px;
+  padding: 48px 20px;
 }
 
 .movie-card {

@@ -61,7 +61,7 @@ class MovieLibrary extends React.Component {
       || storyline.toUpperCase().includes(searchText.toUpperCase()));
 
     return (
-      <div>
+      <main className="movieLibrary">
         <SearchBar
           searchText={ searchText }
           onSearchTextChange={ this.onSearchTextChange }
@@ -72,7 +72,7 @@ class MovieLibrary extends React.Component {
         />
         <MovieList movies={ movie } />
         <AddMovie onClick={ this.onClick } />
-      </div>
+      </main>
     );
   }
 }

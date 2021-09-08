@@ -5,9 +5,12 @@ class InputNumber extends React.Component {
   render() {
     const { id, value, titulo, handleChange } = this.props;
     return (
-      <label htmlFor={ id } data-testid={ `${id}-input-label` }>
-        { titulo }
+      <div className="mb-3">
+        <label className="form-label" htmlFor={ id } data-testid={ `${id}-input-label` }>
+          { titulo }
+        </label>
         <input
+          className="form-control"
           onChange={ handleChange }
           type="number"
           id={ id }
@@ -17,7 +20,7 @@ class InputNumber extends React.Component {
           max="10"
           step="0.1"
         />
-      </label>
+      </div>
     );
   }
 }

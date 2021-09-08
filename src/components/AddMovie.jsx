@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Input from './Input';
-import InputImg from './InputImg';
-import InputNumber from './InputNumber';
-import Select from './Select';
-import Textarea from './Textarea';
+import Input from './inputs/Input';
+import InputImg from './inputs/InputImg';
+import InputNumber from './inputs/InputNumber';
+import Select from './inputs/Select';
+import Textarea from './inputs/Textarea';
+import Button from './button/Button';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -83,9 +84,11 @@ class AddMovie extends React.Component {
           handleChange={ this.handleChange }
           titulo={ `${'Gênero'}` }
         />
-        <button type="submit" onClick={ this.handleClick } data-testid="send-button">
-          Adicionar filme
-        </button>
+        <Button
+          data={ `${'send-button'}` }
+          titulo={ `${'Adicionar filme'}` }
+          handleClick={ this.handleClick }
+        />
       </form>
     );
   }
