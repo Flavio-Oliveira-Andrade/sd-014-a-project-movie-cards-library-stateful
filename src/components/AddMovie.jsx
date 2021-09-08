@@ -4,6 +4,7 @@ import Subtitle from './AddMovieComponents/Subtitle';
 import ImagePath from './AddMovieComponents/ImagePath';
 import Storyline from './AddMovieComponents/Storyline';
 import Rating from './AddMovieComponents/Rating';
+import Genre from './AddMovieComponents/Genre';
 // import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
@@ -24,8 +25,9 @@ class AddMovie extends React.Component {
 
   handleChange({ target }) {
     const { name } = target;
+    const value = target.type === 'select' ? target.option : target.value;
     this.setState({
-      [name]: target.value,
+      [name]: value,
     });
   }
 
@@ -53,6 +55,10 @@ class AddMovie extends React.Component {
           <Rating
             rating={ rating }
             ratingChange={ this.handleChange }
+          />
+          <Genre
+            genre={ genre }
+            genreChange={ this.handleChange }
           />
         </form>
       </div>
