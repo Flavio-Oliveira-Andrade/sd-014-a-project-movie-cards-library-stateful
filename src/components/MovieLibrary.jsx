@@ -8,7 +8,7 @@ import AddMovie from './AddMovie';
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
-    console.log(temp);
+    console.log('temp');
   }
 
   render() {
@@ -25,7 +25,7 @@ class MovieLibrary extends Component {
 }
 
 MovieLibrary.propTypes = {
-  movies: Proptypes.arrayOf(
+  movies: PropTypes.arrayOf(
     PropTypes.object,
   ).isRequired,
 };
