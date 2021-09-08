@@ -54,6 +54,10 @@ class AddMovie extends React.Component {
           {this.input('subtitle', 'text', subtitle, 'subtitle-input')}
         </label>
         {/* 10 - Renderize um input do tipo texto dentro do formulário em <AddMovie /> */}
+        <label htmlFor="image" data-testid="image-input-label">
+          Imagem
+          {this.input('imagePath', 'text', imagePath, 'image-input')}
+        </label>
       </form>
     );
   }
