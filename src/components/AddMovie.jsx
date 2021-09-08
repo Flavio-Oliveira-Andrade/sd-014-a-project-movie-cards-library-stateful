@@ -13,13 +13,13 @@ class AddMovie extends React.Component {
       rating: 0,
       genre: 'action',
     };
-  };
+  }
 
   render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return(
-      <form>
-        wfghjmk,
+      <form data-testid="add-movie-form">
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
       </form>
     );
   }
@@ -27,6 +27,6 @@ class AddMovie extends React.Component {
 
 AddMovie.propTypes = {
   onClick: PropTypes.func.isRequired,
-}
+};
 // func because it's got to be a callback OnClick .
 export default AddMovie;
