@@ -25,6 +25,7 @@ class AddMovie extends Component {
   createInput(tipo, value, name, dataTestid) {
     return (
       <input
+        id={ dataTestid }
         type={ tipo }
         value={ value }
         name={ name }
@@ -54,13 +55,28 @@ class AddMovie extends Component {
           Sinopse
           { this.createInput('textarea', storyline, 'storyline', 'storyline-input') }
         </label>
-        <label data-testid="rating-input-label" htmlFor="storyline-input">
+        <label data-testid="rating-input-label" htmlFor="rating-input">
           Avaliação
           { this.createInput('number', rating, 'rating', 'rating-input') }
+        </label>
+        <label htmlFor="genre-input" data-testid="genre-input-label">
+          Gênero:
+          <select
+            value={ genre }
+            name="genre"
+            id="genre-input"
+            data-testid="genre-input"
+            onChange={ this.handleChange }
+          >
+            <option data-testid="genre-option" value="action">Ação</option>
+            <option data-testid="genre-option" value="comedy">Comédia</option>
+            <option data-testid="genre-option" value="thriller">Suspense</option>
+          </select>
         </label>
       </form>
     );
   }
 }
+// <Refenrênncias: https://reactjs.org/docs/forms.html>
 
 export default AddMovie;
