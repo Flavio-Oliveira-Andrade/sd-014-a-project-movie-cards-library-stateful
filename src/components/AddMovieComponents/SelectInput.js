@@ -15,9 +15,9 @@ class SelectInput extends React.Component {
           value={ value }
           onChange={ cb }
         >
-          {opt.map((e, i) => (
+          {opt.map((e) => (
             <option
-              key={ i + 1 }
+              key={ `${e[0]}-key` }
               value={ e[0] }
               data-testid={ `${name}-option` }
             >

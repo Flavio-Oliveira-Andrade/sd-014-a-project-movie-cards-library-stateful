@@ -49,9 +49,9 @@ class MovieLibrary extends React.Component {
   }
 
   onSelectedGenreChange(e) {
-    const { value } = e.target;
     const { movies } = this.props;
     const { newCards } = this.state;
+    const { value } = e.target;
     const allMovies = [...movies, ...newCards];
     const filtered = allMovies.filter((el) => el.genre === value);
     this.setState({
