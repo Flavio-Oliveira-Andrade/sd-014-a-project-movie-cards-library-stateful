@@ -7,7 +7,7 @@ class SinopseForm extends React.Component {
     return (
       <label htmlFor="sinopse" data-testid="storyline-input-label">
         Sinopse
-        <input
+        <textarea
           data-testid="storyline-input"
           type="textarea"
           name="storyline"
