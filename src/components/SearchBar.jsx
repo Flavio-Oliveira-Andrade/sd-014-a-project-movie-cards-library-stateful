@@ -8,7 +8,9 @@ class SearchBar extends React.Component {
       onBookmarkedChange, selectedGenre, onSelectedGenreChange } = this.props;
     return (
       <div>
-        ola
+        <form data-testid="search-bar-form">
+          <input />
+        </form>
       </div>
     );
   }
