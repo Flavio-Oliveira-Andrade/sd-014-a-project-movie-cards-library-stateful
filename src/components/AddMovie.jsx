@@ -46,7 +46,11 @@ class AddMovie extends React.Component {
         />
         <Image
           image={ imagePath }
-          imageTChange={ this.handleChange }
+          imageChange={ this.handleChange }
+        />
+        <Story
+          storyline={ storyline }
+          storyChange={ this.handleChange }
         />
       </form>
     );
