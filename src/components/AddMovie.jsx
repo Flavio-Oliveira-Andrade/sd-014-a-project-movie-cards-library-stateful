@@ -1,5 +1,6 @@
 // implement AddMovie component here
 import React from 'react';
+import PropTypes from 'prop-types';
 import Titulo from './comp-add-movie/Titulo';
 import Subtitulo from './comp-add-movie/Subtitulo';
 import Imagem from './comp-add-movie/Imagem';
@@ -22,7 +23,7 @@ class AddMovie extends React.Component {
     super();
     this.state = INITIAL_STATE;
     this.handleOnChange = this.handleOnChange.bind(this);
-    this.handleOnClick = this.handleOnClick.bind(this);
+    this.OnClickFunc = this.OnClickFunc.bind(this);
   }
 
   handleOnChange = ({ target }) => {
@@ -32,10 +33,11 @@ class AddMovie extends React.Component {
     });
   }
 
-  handleOnClick = (event) => {
+  OnClickFunc = (event) => {
+    const { onClick } = this.props;
     event.preventDefault();
+    onClick(this.state);
     this.setState(INITIAL_STATE);
-    console.log('ola');
   };
 
   render() {
@@ -48,10 +50,14 @@ class AddMovie extends React.Component {
         <Sinopse storyline={ storyline } handleOnChange={ this.handleOnChange } />
         <Avaliacao rating={ rating } handleOnChange={ this.handleOnChange } />
         <Genero genre={ genre } handleOnChange={ this.handleOnChange } />
-        <Botao handleOnClick={ this.handleOnClick } />
+        <Botao OnClickFunc={ this.OnClickFunc } />
       </form>
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default AddMovie;
