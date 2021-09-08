@@ -31,6 +31,7 @@ class SearchBar extends Component {
   }
 
   render() {
+    // const {search} = this.props
     const {searchText, onSearchTextChange, bookmarkedOnly, onBookmarkedChange, selectedGenre, onSelectedGenreChange} = this.state
 
     // const {data-testeid} = this.props
@@ -48,8 +49,8 @@ class SearchBar extends Component {
             <option value="action">Ação</option>
             <option value="comedy">Comédia</option>
             <option value="thriller">Suspense</option>
-            {console.log(this.state )}
           </select>
+            {console.log(this.props)}
         </fieldset>
       </form>
      );
