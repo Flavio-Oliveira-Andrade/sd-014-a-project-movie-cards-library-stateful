@@ -26,6 +26,7 @@ class AddMovie extends Component {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
+
         <label data-testid="title-input-label" htmlFor="title-input">
           Título
           <input
@@ -36,6 +37,18 @@ class AddMovie extends Component {
             onChange={ this.handleChange }
           />
         </label>
+
+        <label data-testid="subtitle-input-label" htmlFor="subtitle-input">
+          Subtítulo
+          <input
+            type="text"
+            value={ subtitle }
+            name="subtitle"
+            data-testid="subtitle-input"
+            onChange={ this.handleChange }
+          />
+        </label>
+
       </form>
     );
   }
