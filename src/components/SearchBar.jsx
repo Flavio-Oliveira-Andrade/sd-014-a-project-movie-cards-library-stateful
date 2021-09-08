@@ -1,57 +1,66 @@
 import React from 'react';
-// import MovieList from './MovieList';
+import PropTypes from 'prop-types';
 
 class SearchBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchText: '',
-      bookmarkedOnly: null,
-      // selectedGenre: '',
-    };
-    this.onSearchTextChange = this.onSearchTextChange.bind(this);
-    this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
-  }
-
-  onSearchTextChange(event) {
-    this.setState({ searchText: event.target.value });
-  }
-
-  onBookmarkedChange(checked) {
-    this.setState({ bookmarkedOnly: checked.target.checked });
-  }
-
   render() {
-    const { searchText } = this.state;
-    const { bookmarkedOnly } = this.state;
-    // const { selectedGenre } = this.state;
+    // declarando as props.
+    const {
+      searchText,
+      onSearchTextChange,
+      bookmarkedOnly,
+      onBookmarkedChange,
+      selectedGenre,
+      onSelectedGenreChange,
+    } = this.props;
+
     return (
-      <section className="searchBar">
-        <form id="search-bar-form">
-          <label data-testid="text-input-label">
-            Inclui o texto
-            <input
-              type="text"
-              name="text"
-              value={ searchText }
-              data-testid="text-input"
-              onChange={ this.onSearchTextChange }
-            />
-          </label>
-          <label data-test-id="checkbox-input-label">
-            Mostrar somente favoritos
-            <input
-              type="checkbox"
-              name="checkbox-input"
-              value={ bookmarkedOnly }
-              id="checkbok-input"
-              onChange={ this.onBookmarkedChange }
-            />
-          </label>
-        </form>
-      </section>
+      <form data-testid="search-bar-form">
+        <label htmlFor="textSearch" data-testid="text-input-label">
+          Inclui o texto:
+          <input
+            type="text"
+            name="textSearch"
+            value={ searchText }
+            data-testid="text-input"
+            onChange={ onSearchTextChange }
+          />
+        </label>
+        <label htmlFor="checkboxInputBookmark" data-test-id="checkbox-input-label">
+          Mostrar somente favoritos
+          <input
+            type="checkbox"
+            name="checkboxInputBookmark"
+            value={ bookmarkedOnly }
+            data-testid="checkbok-input"
+            onChange={ onBookmarkedChange }
+          />
+        </label>
+        <label htmlFor="selectInputGenre" data-testid="select-input-label">
+          Filtrar por gênero
+          <select
+            name="selectInputGenre"
+            value={ selectedGenre }
+            data-testid="select-input"
+            onChange={ onSelectedGenreChange }
+          >
+            <option data-testid="select-option" value="">Todos</option>
+            <option data-testid="select-option" value="action">Ação</option>
+            <option data-testid="select-option" value="comedy">Comédia</option>
+            <option data-testid="select-option" value="thriller">Suspense</option>
+          </select>
+        </label>
+      </form>
     );
   }
 }
+
+SearchBar.propTypes = {
+  searchText: PropTypes.string.isRequired,
+  onSearchTextChange: PropTypes.func.isRequired,
+  bookmarkedOnly: PropTypes.bool.isRequired,
+  onBookmarkedChange: PropTypes.func.isRequired,
+  selectedGenre: PropTypes.string.isRequired,
+  onSelectedGenreChange: PropTypes.func.isRequired,
+};
 
 export default SearchBar;
