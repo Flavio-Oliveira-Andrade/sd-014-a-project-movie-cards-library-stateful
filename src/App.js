@@ -1,21 +1,15 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
 import './App.css';
-import SearchBar from './components/SearchBar';
-import AddMovie from './components/AddMovie';
+import MovieLibrary from './components/MovieLibrary';
+import movies from './data';
 
 class App extends Component {
-
-  // onClick = (event) => {
-  //   event.preventDefault();
-  //   };
-  
   render() {
     return (
       <div className="App">
         <Header />
-        <SearchBar />
-        <AddMovie onClick={this.onClick} />
+        <MovieLibrary movies={ movies } />
       </div>
     );
   }
