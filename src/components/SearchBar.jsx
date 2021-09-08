@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
-import MovieList from "./MovieList";
 
 class SearchBar extends React.Component {
   render() {
@@ -9,16 +8,17 @@ class SearchBar extends React.Component {
       onSerarchTextChange,
       bookmarkedOnly,
       selectedGenre,
-      onSelectedGenreChange
+      onSelectedGenreChange,
     } = this.props;
-
     return (
       <form data-testid="search-bar-form">
         <label htmlFor="search">
-          <input value={ searchText }
+          <input
+            value={ searchText }
             type="text"
             name="searchText"
-            onChange={ this.handleChange } />
+            onChange={ this.handleChange }
+          />
         </label>
         <input type="submit" value="Enviar" />
       </form>
