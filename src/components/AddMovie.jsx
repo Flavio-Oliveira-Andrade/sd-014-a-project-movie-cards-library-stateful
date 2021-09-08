@@ -31,6 +31,8 @@ class AddMovie extends Component {
       title,
       subtitle,
       imagePath,
+      storyline,
+      rating,
     } = this.state;
 
     return (
@@ -72,11 +74,41 @@ class AddMovie extends Component {
           name="imagePath"
           value={ imagePath }
           id="img"
-          onChange={ this.handleChange }
           type="text"
+          data-testid="image-input"
+          onChange={ this.handleChange }
           />
         </label>
-        
+        <label
+        data-testid="storyline-input-label"
+        htmlFor="sinopse"
+        >
+          Sinopse
+          <textarea
+          name="storyline"
+          value={ storyline }
+          id="sinopse" 
+          data-testid="storyline-input"
+          cols="30" 
+          rows="10"
+          onChange= { this.handleChange }
+          >
+          </textarea>
+        </label>
+        <label
+        data-testid="rating-input-label"
+        htmlFor="rating"
+        >
+          Avaliação
+          <input 
+          type="number" 
+          name="rating" 
+          id="rating"
+          value={ rating }
+          data-testid="rating-input"
+          onChange={ this.handleChange }
+        />
+        </label>
       </form>
     );
   }
