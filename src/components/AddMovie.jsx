@@ -1,6 +1,7 @@
 // implement AddMovie component here
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from './Button';
 
 const ti = 'title-input';
 const si = 'subtitle-input';
@@ -8,7 +9,7 @@ const ip = 'image-input';
 const sli = 'storyline-input';
 const ri = 'rating-input';
 const gi = 'genre-input';
-const bi = 'send-button';
+//  const bi = 'send-button';
 const nt = 'title';
 const ns = 'subtitle';
 const ni = 'imagePath';
@@ -25,7 +26,6 @@ class AddMovie extends React.Component {
       storyline: '',
       rating: 0,
       imagePath: '',
-      bookmarked: false,
       genre: 'action',
     };
 
@@ -35,7 +35,7 @@ class AddMovie extends React.Component {
 
   aE({ target }) {
     const { name } = target;
-    const value = name === 'rating' ? parseInt(target.value, 10) : target.value;
+    const value = name === 'rating' ? parseFloat(target.value, 10) : target.value;
     this.setState({
       [name]: value,
     });
@@ -53,7 +53,7 @@ class AddMovie extends React.Component {
   }
 
   render() {
-    const { onClick: click } = this.props;
+    const { onClick } = this.props;
     const { title: t, subtitle: s, imagePath: i } = this.state;
     const { storyline: sl, rating: r, genre: g } = this.state;
     const me = this.aE;
@@ -88,9 +88,10 @@ class AddMovie extends React.Component {
             <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
-        <button type="submit" onClick={ (event) => { event.preventDefault(); click(this.state); this.reset(); } } data-testid={ bi }>
+        <Button onClick={ onClick } estado={ this.state } metodo={ this.reset } />
+        {/* <button type="submit" onClick={ (event) => { event.preventDefault(); click(this.state); this.reset(); } } data-testid={ bi }>
           Adicionar filme
-        </button>
+        </button> */}
       </form>
     );
   }
