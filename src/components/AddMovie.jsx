@@ -8,17 +8,7 @@ import InputImagem from './InputImagem';
 import InputSinopse from './InputSinopse';
 import InputRating from './InputRating';
 
-//  const ti = 'title-input';
-//  const si = 'subtitle-input';
-//  const ip = 'image-input';
-//  const sli = 'storyline-input';
-//  const ri = 'rating-input';
 const gi = 'genre-input';
-//  const nt = 'title';
-//  const ns = 'subtitle';
-//  const ni = 'imagePath';
-//  const nsl = 'storyline';
-//  const nr = 'rating';
 
 class AddMovie extends React.Component {
   constructor() {

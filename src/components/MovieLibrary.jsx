@@ -17,18 +17,37 @@ class MovieLibrary extends React.Component {
       bookmarkedOnly: false,
       selectedGenre: '',
       movies,
+      inicialData: movies,
     };
 
     this.aST = this.aST.bind(this);
     this.aBO = this.aBO.bind(this);
     this.aSG = this.aSG.bind(this);
     this.add = this.add.bind(this);
+    this.filtra = this.filtra.bind(this);
+  }
+
+  filtra(filt) {
+    const { inicialData } = this.state;
+    const filmes = inicialData.filter((mov) => {
+      const tlc = mov.title.toLowerCase();
+      const slc = mov.subtitle.toLowerCase();
+      const sllc = mov.storyline.toLowerCase();
+      filt = filt.toLowerCase();
+
+      if (tlc.includes(filt) || slc.includes(filt) || sllc.includes(filt)) return mov;
+      return false;
+    });
+    this.setState({
+      movies: filmes,
+    });
   }
 
   aST({ target }) {
     this.setState({
       searchText: target.value,
     });
+    this.filtra(target.value);
   }
 
   aBO({ target }) {
@@ -60,7 +79,8 @@ class MovieLibrary extends React.Component {
   } */
 
   render() {
-    const { searchText: s, bookmarkedOnly: b, selectedGenre: g, movies: m } = this.state;
+    const { searchText: s, bookmarkedOnly: b } = this.state;
+    const { selectedGenre: g, movies: m } = this.state;
 
     return (
       <>
@@ -72,7 +92,6 @@ class MovieLibrary extends React.Component {
           onBookmarkedChange={ this.aBO }
           onSelectedGenreChange={ this.aSG }
         />
-        {/* console.log(this.state) */}
         <MovieList movies={ m } />
         <AddMovie onClick={ this.add } />
       </>
