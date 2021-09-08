@@ -19,10 +19,9 @@ class MovieLibrary extends Component {
   }
 
   render() {
-    const { searchText } = this.state;
     return (
       <main>
-        <SearchBar searchText={ searchText } />
+        <SearchBar { ...this.state } />
         <MovieList movies={ movies } />
       </main>
     );
