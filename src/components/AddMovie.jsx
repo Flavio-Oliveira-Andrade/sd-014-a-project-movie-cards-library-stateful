@@ -25,7 +25,7 @@ class AddMovie extends React.Component {
             type="text"
             value={title}
             data-testid="title-input"
-            onChange={this.setState((prevstate, props) => {title: prevstate = props})}
+            // onChange={this.setState({title: event.target.value})}
           />
         </label>
         
