@@ -7,7 +7,7 @@ class Button extends React.Component {
     return (
       <button
         data-testid="send-button"
-        type="submit"
+        type="button"
         onClick={ funcOnClick }
       >
         Adicionar filme

@@ -37,13 +37,13 @@ class AddMovie extends React.Component {
   handleClick(event) {
     event.preventDefault();
     const { onClick } = this.props;
-
     onClick(this.state);
+
     this.setState({
       title: '',
       subtitle: '',
-      storyline: '',
       imagePath: '',
+      storyline: '',
       rating: 0,
       genre: 'action',
     });
@@ -79,7 +79,7 @@ class AddMovie extends React.Component {
           genre={ genre }
           genreChange={ this.handleChange }
         />
-        <button type="submit" onClick={ this.handleClick } data-testid="send-button">
+        <button type="submit" data-testid="send-button" onClick={ this.handleClick }>
           Adicionar filme
         </button>
       </form>
