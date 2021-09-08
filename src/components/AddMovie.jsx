@@ -16,8 +16,8 @@ class AddMovie extends React.Component {
     this.state = {
       title: '',
       subtitle: '',
-      storyline: '',
       imagePath: '',
+      storyline: '',
       rating: 0,
       genre: 'action',
     };
@@ -27,8 +27,7 @@ class AddMovie extends React.Component {
   }
 
   handleChange({ target }) {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const { name, value } = target;
     this.setState({
       [name]: value,
     });
