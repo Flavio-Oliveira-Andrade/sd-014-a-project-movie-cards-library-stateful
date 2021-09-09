@@ -16,6 +16,19 @@ class AddMovie extends Component {
     };
   }
 
+  assistClick = () => {
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
   loadText = ({ target }) => {
     const { name, value } = target;
     this.setState({ [name]: value });
@@ -63,6 +76,9 @@ class AddMovie extends Component {
           nome={ ['genre', 'Gênero', genre] }
           load={ this.loadText }
         />
+        <button type="button" data-testid="send-button" onClick={ this.assistClick }>
+          Adicionar filme
+        </button>
       </form>
     );
   }
