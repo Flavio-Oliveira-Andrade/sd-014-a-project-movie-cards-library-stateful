@@ -1,11 +1,12 @@
 import React from 'react';
+import CustomInput from './CustomInput';
 
 class AddMovie extends React.Component {
   constructor() {
     super();
     this.state = {
       // subtitle: '',
-      // title: '',
+      title: '',
       // story: '',
       // imagePath: '',
       // rating: 0,
@@ -13,11 +14,26 @@ class AddMovie extends React.Component {
     };
   }
 
+  handleChange = ({ target }) => {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
+  }
+
   render() {
     // const { onClick } = this.props;
+    const { title } = this.state;
     return (
       <form data-testid="add-movie-form">
-        AddMovie
+        <CustomInput
+          name="title"
+          type="text"
+          labelText="Título"
+          value={ title }
+          onChange={ this.handleChange }
+        />
       </form>
     );
   }
