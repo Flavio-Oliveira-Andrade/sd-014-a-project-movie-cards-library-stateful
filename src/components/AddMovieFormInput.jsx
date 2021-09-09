@@ -19,6 +19,9 @@ class AddMovieFormInput extends React.Component {
           name={ name }
           value={ value }
           onChange={ callback }
+          max="5"
+          min="0"
+          step="0.1"
         />
       </label>
     );
