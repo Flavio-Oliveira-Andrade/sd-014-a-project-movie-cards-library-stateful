@@ -202,7 +202,7 @@ describe('19 - Renderize `<AddMovie />` dentro de `<MovieLibrary />`', () => {
       subtitle: 'Harry Potter magical subtitle',
       title: 'Harry Potter VII',
       storyline: 'Harry dies',
-      rating: '4.9',
+      rating: 4.9,
       genre: 'action',
     };
 
