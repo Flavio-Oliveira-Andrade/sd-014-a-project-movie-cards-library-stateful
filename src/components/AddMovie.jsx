@@ -1,10 +1,20 @@
 import React from 'react';
 
 class AddMovie extends React.Component {
+
+// subtitle: '';
+// title: '';
+// imagePath: '';
+// storyline: '';
+// rating: 0;
+// genre: 'action'
+  
   render() {
+    <AddMovie onClick={ () => { } } />
     return (
-      
-      <AddMovie onClick={ () => (console.log('oi')) } />
+<form data-testid="add-movie-form">
+        
+</form>
     );
   }
 }
