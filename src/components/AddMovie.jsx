@@ -13,6 +13,8 @@ class AddMovie extends Component {
       genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.createInput = this.createInput.bind(this);
   }
 
   handleChange({ target }) {
@@ -59,11 +61,11 @@ class AddMovie extends Component {
     return (
       <form>
         { this.createInput({
-          label: 'Título', type: 'text', name: 'title', value: { title } }) }
+          label: 'Título', type: 'text', name: 'title', value: title }) }
         { this.createInput({
-          label: 'Subtítulo', type: 'text', name: 'subtitle', value: { subtitle } }) }
+          label: 'Subtítulo', type: 'text', name: 'subtitle', value: subtitle }) }
         { this.createInput({
-          label: 'Imagem', type: 'text', name: 'image', value: { imagePath } }) }
+          label: 'Imagem', type: 'text', name: 'image', value: imagePath }) }
         <label data-testid="storyline-input-label" htmlFor="storyline-input">
           <textarea
             value={ storyline }

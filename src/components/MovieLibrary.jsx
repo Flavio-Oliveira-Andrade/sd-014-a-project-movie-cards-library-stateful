@@ -14,10 +14,14 @@ class MovieLibrary extends Component {
       selectedGenre: '',
       movies,
     };
+    this.handleSearch = this.handleSearch.bind(this);
+    this.handleBookmarked = this.handleBookmarked.bind(this);
+    this.handleGenre = this.handleGenre.bind(this);
   }
 
   handleSearch({ target }) {
     const { name, value } = target;
+    const { movies } = this.state;
     this.setState({
       [name]: value,
       movies: movies.filter(({ title, subtitle, storyline }) => title.includes(value)
@@ -27,14 +31,16 @@ class MovieLibrary extends Component {
 
   handleBookmarked({ target }) {
     const { name, checked } = target;
+    const { movies } = this.state;
     this.setState({
       [name]: checked,
-      movies: movies.filter(({ bookmarked }) => bookmarked),
+      movies: checked ? movies.filter(({ bookmarked }) => bookmarked) : movies,
     });
   }
 
   handleGenre({ target }) {
     const { name, value } = target;
+    const { movies } = this.state;
     this.setState({
       [name]: value,
       movies: movies.filter(({ genre }) => genre === value),
