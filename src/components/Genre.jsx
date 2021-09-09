@@ -24,7 +24,7 @@ class Genre extends React.Component {
 }
 
 Genre.propTypes = {
-  onChange: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Genre;

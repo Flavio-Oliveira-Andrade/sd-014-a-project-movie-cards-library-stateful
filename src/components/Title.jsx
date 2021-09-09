@@ -22,7 +22,7 @@ class Title extends React.Component {
 }
 
 Title.propTypes = {
-  onChange: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Title;
