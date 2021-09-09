@@ -12,7 +12,7 @@ class AddMovie extends React.Component {
       imagePath: '',
       storyline: '',
       rating: 0,
-      // genre: 'action',
+      genre: 'action',
     };
   }
 
@@ -20,12 +20,12 @@ class AddMovie extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  funcInputGenerator(nomeRef, textLabel, keyState) {
+  funcInputGenerator(nomeRef, textLabel, keyState, typeRef) {
     return (
       <label htmlFor={ nomeRef } data-testid={ `${nomeRef}-input-label` }>
         {textLabel}
         <input
-          type="text"
+          type={ typeRef }
           name={ nomeRef }
           data-testid={ `${nomeRef}-input` }
           value={ keyState }
@@ -36,11 +36,11 @@ class AddMovie extends React.Component {
   }
 
   render() {
-    const { title, subtitle, imagePath, storyline, rating } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        {this.funcInputGenerator('title', 'Título', title)}
-        {this.funcInputGenerator('subtitle', 'Subtítulo', subtitle)}
+        {this.funcInputGenerator('title', 'Título', title, 'text')}
+        {this.funcInputGenerator('subtitle', 'Subtítulo', subtitle, 'text')}
         <label htmlFor="imagePath" data-testid="image-input-label">
           Imagem
           <input
@@ -61,15 +61,19 @@ class AddMovie extends React.Component {
             onChange={ this.handleInput }
           />
         </label>
-        <label htmlFor="rating" data-testid="rating-input-label">
-          Avaliação
-          <input
-            type="number"
-            name="rating"
-            data-testid="rating-input"
-            value={ rating }
+        {this.funcInputGenerator('rating', 'Avaliação', rating, 'number')}
+        <label htmlFor="genre" data-testid="genre-input-label">
+          Gênero
+          <select
+            name="genre"
+            value={ genre }
+            data-testid="genre-input"
             onChange={ this.handleInput }
-          />
+          >
+            <option value="action" data-testid="genre-option">Ação</option>
+            <option value="comedy" data-testid="genre-option">Comédia</option>
+            <option value="thriller" data-testid="genre-option">Suspense</option>
+          </select>
         </label>
       </form>
     );
