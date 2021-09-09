@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import Title from './Title';
 import Subtitle from './Subtitle';
 import ImagePath from './ImagePath';
+import Storyline from './Storyline';
+import Rating from './Rating';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -48,14 +50,8 @@ class AddMovie extends React.Component {
         <Title value={ title } />
         <Subtitle value={ subtitle } />
         <ImagePath value={ imagePath } />
-        <label htmlFor="handle-change-storyline" data-testid="storyline-input-label">
-          Sinopse
-          <textarea value={ storyline } name="storyline" data-testid="storyline-input" onChange={ this.handleChange } id="handle-change-storyline" />
-        </label>
-        <label htmlFor="handle-change-rating" data-testid="rating-input-label">
-          Avaliação
-          <input type="number" value={ rating } name="rating" data-testid="rating-input" onChange={ this.handleChange } id="handle-change-rating" />
-        </label>
+        <Storyline value={ storyline } />
+        <Rating value={ rating } />
         <label htmlFor="handle-change-genre" data-testid="genre-input-label">
           Gênero
           <select value={ genre } name="genre" data-testid="genre-input" onChange={ this.handleChange } id="handle-change-genre">
