@@ -18,7 +18,6 @@ class SearchBar extends React.Component {
     return (
       <section className="search-bar">
         <form
-          id="search-bar-form"
           data-testid="search-bar-form"
           className="search-bar-elements"
         >

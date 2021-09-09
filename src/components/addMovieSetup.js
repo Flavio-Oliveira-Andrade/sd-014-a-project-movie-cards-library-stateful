@@ -1,35 +1,35 @@
 const setupFormInputs = {
-  titleInput: {
+  tit: {
     type: 'text',
     id: 'title',
     name: 'title',
     content: 'Título',
   },
-  subtitleInput: {
+  sub: {
     type: 'text',
     id: 'subtitle',
     name: 'subtitle',
     content: 'Subtítulo',
   },
-  imageInput: {
+  img: {
     type: 'text',
     id: 'image',
     name: 'imagePath',
     content: 'Imagem',
   },
-  ratingInput: {
+  rat: {
     type: 'number',
     id: 'rating',
     name: 'rating',
     content: 'Avaliação',
   },
-  textareaInput: {
+  txt: {
     type: 'text',
     id: 'storyline',
     name: 'storyline',
     content: 'Sinopse',
   },
-  selectInput: {
+  sel: {
     id: 'genre',
     name: 'genre',
     content: 'Gênero',
@@ -38,7 +38,7 @@ const setupFormInputs = {
       optionTagContent: ['Ação', 'Comédia', 'Suspense'],
     },
   },
-  formButton: {
+  btn: {
     type: 'button',
     form: 'add-movie-form',
     id: 'send',

@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class AddMovieFormButton extends React.Component {
+class AMButton extends React.Component {
   render() {
-    const { options, callback } = this.props;
+    const { options, call } = this.props;
     const { type, form, id, content } = options;
 
     return (
@@ -12,7 +12,8 @@ class AddMovieFormButton extends React.Component {
         form={ form }
         type="submit"
         data-testid={ `${id}-${type}` }
-        onClick={ callback }
+        onClick={ call }
+        className="btn btn-primary"
       >
         { content }
       </button>
@@ -20,24 +21,24 @@ class AddMovieFormButton extends React.Component {
   }
 }
 
-AddMovieFormButton.defaultProps = {
+AMButton.defaultProps = {
   options: {
     type: '',
     form: '',
     id: '',
     content: '',
   },
-  callback: () => (undefined),
+  call: () => (undefined),
 };
 
-AddMovieFormButton.propTypes = {
+AMButton.propTypes = {
   options: PropTypes.shape({
     type: PropTypes.string,
     form: PropTypes.string,
     id: PropTypes.string,
     content: PropTypes.string,
   }),
-  callback: PropTypes.func,
+  call: PropTypes.func,
 };
 
-export default AddMovieFormButton;
+export default AMButton;

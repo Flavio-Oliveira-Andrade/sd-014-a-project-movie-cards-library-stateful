@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AddMovieFormInput from './AddMovieFormInput';
-import AddMovieFormTextarea from './AddMovieFormTextarea';
-import AddMovieFormSelect from './AddMovieFormSelect';
-import AddMovieFormButton from './AddMovieFormButton';
-import setupFormInputs from './addMovieInputSetup';
+import AMInput from './AMInput';
+import AMTextarea from './AMTextarea';
+import AMSelect from './AMSelect';
+import AMButton from './AMButton';
+import setupFormInputs from './addMovieSetup';
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -52,47 +52,25 @@ class AddMovie extends React.Component {
 
   render() {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
-    const { titleInput, subtitleInput, imageInput, ratingInput, textareaInput,
-      selectInput,
-      formButton,
-    } = setupFormInputs;
+    const { tit, sub, img, rat, txt, sel, btn } = setupFormInputs;
     return (
-      <form data-testid="add-movie-form" id="add-movie-form" name="add-movie-form">
-        <AddMovieFormInput
-          options={ titleInput }
-          value={ title }
-          callback={ this.handleChange }
-        />
-        <AddMovieFormInput
-          options={ subtitleInput }
-          value={ subtitle }
-          callback={ this.handleChange }
-        />
-        <AddMovieFormInput
-          options={ imageInput }
-          value={ imagePath }
-          callback={ this.handleChange }
-        />
-        <AddMovieFormTextarea
-          options={ textareaInput }
-          value={ storyline }
-          callback={ this.handleChange }
-        />
-        <AddMovieFormInput
-          options={ ratingInput }
-          value={ rating }
-          callback={ this.handleChange }
-        />
-        <AddMovieFormSelect
-          options={ selectInput }
-          value={ genre }
-          callback={ this.handleChange }
-        />
-        <AddMovieFormButton
-          options={ formButton }
-          callback={ this.handleClick }
-        />
-      </form>
+      <section className="add-movie-section">
+        <form data-testid="add-movie-form" className="add-movie-form">
+          <div className="add-movie-colunm">
+            <AMInput options={ tit } value={ title } call={ this.handleChange } />
+            <AMInput options={ sub } value={ subtitle } call={ this.handleChange } />
+            <AMInput options={ img } value={ imagePath } call={ this.handleChange } />
+          </div>
+          <div className="add-movie-colunm">
+            <AMTextarea options={ txt } value={ storyline } call={ this.handleChange } />
+            <AMInput options={ rat } value={ rating } call={ this.handleChange } />
+            <AMSelect options={ sel } value={ genre } call={ this.handleChange } />
+          </div>
+        </form>
+        <div>
+          <AMButton options={ btn } call={ this.handleClick } />
+        </div>
+      </section>
     );
   }
 }

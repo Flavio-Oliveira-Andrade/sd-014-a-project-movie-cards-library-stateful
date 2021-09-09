@@ -30,7 +30,10 @@ body {
   justify-content: space-around;
 }
 
+/* Efeito metálico obtido em https://www.eggradients.com/category/metal-gradient */
 .movie-list {
+  background-color: #2f4353;
+  background-image: linear-gradient(315deg, #2f4353 0%, #d2ccc4 74%);
   display: flex;
   flex-flow: row wrap;
   padding: 48px 30px;
@@ -106,4 +109,28 @@ body {
   display: flex;
   justify-content: flex-end;
   padding: 12px 20px;
+}
+
+.add-movie-section {
+  align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.add-movie-form {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.add-movie-colunm {
+  align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  width: 50%;
 }
