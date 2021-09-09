@@ -75,7 +75,7 @@ class AddMovie extends Component {
           {this.handleInput('rating', 'number', 'rating-input', rating)}
         </label>
         <label htmlFor="genero" data-testid="genre-input-label">
-          Genero:
+          Gênero:
           <select
             name="genre"
             id="genero"
@@ -90,7 +90,7 @@ class AddMovie extends Component {
         </label>
 
         <button
-          type="button"
+          type="submit"
           data-testid="send-button"
           onClick={ this.handleClick }
         >
