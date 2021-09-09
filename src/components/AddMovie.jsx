@@ -1,5 +1,6 @@
 // implement AddMovie component here
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class AddMovie extends Component {
   constructor(props) {
@@ -15,11 +16,27 @@ class AddMovie extends Component {
       genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   // Acessa a chave targe, do objeto evento e salva no state
   handleChange({ target }) {
     this.setState({ [target.name]: target.value });
+  }
+
+  handleClick(event) {
+    event.preventDefault();
+    const { onClick } = this.props;
+    console.log(this);
+    onClick(this.state);
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
   }
 
   createInput(tipo, value, name, dataTestid) {
@@ -73,10 +90,17 @@ class AddMovie extends Component {
             <option data-testid="genre-option" value="thriller">Suspense</option>
           </select>
         </label>
+        <button type="submit" data-testid="send-button" onClick={ this.handleClick }>
+          Adicionar filme
+        </button>
       </form>
     );
   }
 }
 // <Refenrênncias: https://reactjs.org/docs/forms.html>
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default AddMovie;
