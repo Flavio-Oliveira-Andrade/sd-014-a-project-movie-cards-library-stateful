@@ -84,11 +84,11 @@ SearchBar.propTypes = {
 
 SearchBar.defaultProps = {
   searchText: '',
-  onSearchTextChange: '',
+  onSearchTextChange: () => {},
   bookmarkedOnly: false,
-  onBookmarkedChange: false,
+  onBookmarkedChange: () => {},
   selectedGenre: '',
-  onSelectedGenreChange: '',
+  onSelectedGenreChange: () => {},
 };
 
 export default SearchBar;
