@@ -8,14 +8,17 @@ class AddMovie extends React.Component {
       subtitle: '',
       title: '',
       storyline: '',
-      // imagePath: '',
+      imagePath: '',
       // rating: 0,
       // genre: '',
     };
   }
 
   handleChange = ({ target }) => {
-    const { name } = target;
+    let { name } = target;
+    // TOC: Isso aqui me dá TOC! Arranjar maneira melhor de resolver!
+    if (name === 'image') { name = 'imagePath'; }
+
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
@@ -24,7 +27,7 @@ class AddMovie extends React.Component {
 
   render() {
     // const { onClick } = this.props;
-    const { title, subtitle, image, storyline } = this.state;
+    const { title, subtitle, imagePath, storyline } = this.state;
     return (
       <form data-testid="add-movie-form">
         <CustomControl
@@ -45,7 +48,7 @@ class AddMovie extends React.Component {
           name="image"
           type="text"
           labelText="Imagem"
-          value={ image }
+          value={ imagePath }
           onChange={ this.handleChange }
         />
         <CustomControl
