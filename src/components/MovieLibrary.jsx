@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
+import AddMovie from './AddMovie';
 
 class MovieLibrary extends React.Component {
   constructor() {
@@ -11,7 +13,7 @@ class MovieLibrary extends React.Component {
       bookmarkedOnly: false,
       selectedGenre: '',
       movies: movie,
-    }
+    };
   }
 
   handleChance({ target }) {
@@ -24,11 +26,18 @@ class MovieLibrary extends React.Component {
 
   render() {
     return (
-      <SearchBar
-        searchText={ searchText }
-      />
+      <main>
+        <SearchBar
+          searchText={ searchText }
+        />
+        {/* <AddMovie />  Criando uma função para passar como paramentro de adiciona os filmes */}
+      </main>
     );
   }
 }
+
+MovieLibrary.propTypes = {
+  movie: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default MovieLibrary;
