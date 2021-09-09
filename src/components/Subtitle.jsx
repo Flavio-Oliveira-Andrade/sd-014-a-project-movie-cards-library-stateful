@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class Subtitle extends Component {
   render() {
-    const { value, handleChange} = this.props;
+    const { value, handleChange } = this.props;
     return (
-
 
       <label htmlFor="add-movie-subtitle" data-testid="subtitle-input-label">
         Subtítulo
@@ -12,13 +11,13 @@ class Subtitle extends Component {
           type="text"
           name="subtitle"
           id="add-movie-subtitle"
-          value={value}
+          value={ value }
           data-testid="subtitle-input"
-          onChange={handleChange}
+          onChange={ handleChange }
         />
       </label>
 
-    )
+    );
   }
 }
 

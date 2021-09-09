@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class AddRating extends Component {
   render() {
-    const { value, handleChange} = this.props;
+    const { value, handleChange } = this.props;
     return (
       <label htmlFor="add-movie-rating" data-testid="rating-input-label">
         Avaliação
@@ -10,9 +10,9 @@ class AddRating extends Component {
           type="number"
           name="rating"
           id="add-movie-rating"
-          value={value}
+          value={ value }
           data-testid="rating-input"
-          onChange={handleChange}
+          onChange={ handleChange }
         />
       </label>
     );

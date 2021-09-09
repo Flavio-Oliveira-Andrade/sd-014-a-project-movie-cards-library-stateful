@@ -17,8 +17,8 @@ class SearchBar extends Component {
             type="text"
             name="searchText"
             id="search-bar-text"
-            value={searchText}
-            onChange={onSearchTextChange}
+            value={ searchText }
+            onChange={ onSearchTextChange }
             data-testid="text-input"
           />
         </label>
@@ -27,8 +27,8 @@ class SearchBar extends Component {
             type="checkbox"
             name="bookmarkedOnly"
             id="search-bar-bookmarked"
-            checked={bookmarkedOnly}
-            onChange={onBookmarkedChange}
+            checked={ bookmarkedOnly }
+            onChange={ onBookmarkedChange }
             data-testid="checkbox-input"
           />
           Mostrar somente favoritos
@@ -39,7 +39,7 @@ class SearchBar extends Component {
             name="selectedGenre"
             id="search-bar-genre"
             value={ selectedGenre }
-            onChange={onSelectedGenreChange}
+            onChange={ onSelectedGenreChange }
             data-testid="select-input"
           >
             <option value="" data-testid="select-option">Todos</option>

@@ -48,16 +48,16 @@ class MovieLibrary extends Component {
     return (
       <div>
         <SearchBar
-          searchText={searchText}
-          onSearchTextChange={this.handleChange}
-          bookmarkedOnly={bookmarkedOnly}
-          onBookmarkedChange={this.handleBookmarkChange}
-          selectedGenre={selectedGenre}
-          onSelectedGenreChange={this.handleChange}
+          searchText={ searchText }
+          onSearchTextChange={ this.handleChange }
+          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.handleBookmarkChange }
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ this.handleChange }
         />
-        <MovieList movies={movies} />
+        <MovieList movies={ movies } />
 
-        <AddMovie onClick={this.handleClick} />
+        <AddMovie onClick={ this.handleClick } />
       </div>
     );
   }

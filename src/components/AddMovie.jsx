@@ -52,13 +52,13 @@ class AddMovie extends Component {
     } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <Title value={title} handleChange={this.handleChange}/>
-        <Subtitle value={subtitle} handleChange={this.handleChange}/>
-        <ImagePath value={imagePath} handleChange={this.handleChange}/>
-        <Storyline value={storyline} handleChange={this.handleChange}/>
-        <AddRating value={rating} handleChange={this.handleChange}/>
-        <Select value={genre} handleChange={this.handleChange}/>
-        <SubmitBtn handleClick={this.handleClick}/>
+        <Title value={ title } handleChange={ this.handleChange } />
+        <Subtitle value={ subtitle } handleChange={ this.handleChange } />
+        <ImagePath value={ imagePath } handleChange={ this.handleChange } />
+        <Storyline value={ storyline } handleChange={ this.handleChange } />
+        <AddRating value={ rating } handleChange={ this.handleChange } />
+        <Select value={ genre } handleChange={ this.handleChange } />
+        <SubmitBtn handleClick={ this.handleClick } />
       </form>
     );
   }

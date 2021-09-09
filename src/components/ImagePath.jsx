@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class ImagePath extends Component {
   render() {
-    const { value, handleChange} = this.props;
+    const { value, handleChange } = this.props;
     return (
-
 
       <label htmlFor="add-movie-imagePath" data-testid="image-input-label">
         Imagem
@@ -12,13 +11,13 @@ class ImagePath extends Component {
           type="text"
           name="imagePath"
           id="add-movie-imagePath"
-          value={value}
+          value={ value }
           data-testid="image-input"
-          onChange={handleChange}
+          onChange={ handleChange }
         />
       </label>
 
-    )
+    );
   }
 }
 

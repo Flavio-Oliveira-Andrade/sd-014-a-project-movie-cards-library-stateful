@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class SubmitBtn extends Component {
   render() {
@@ -7,11 +7,11 @@ class SubmitBtn extends Component {
       <button
         type="submit"
         data-testid="send-button"
-        onClick={handleClick}
+        onClick={ handleClick }
       >
         Adicionar filme
       </button>
-    )
+    );
   }
 }
 
