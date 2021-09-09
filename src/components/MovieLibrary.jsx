@@ -7,7 +7,7 @@ import MovieList from './MovieList';
 function applyFilter(array, { content, marked, type }) {
   let result = array;
   const search = content.toLowerCase();
-  if (content) {
+  if (search) {
     result = result.filter(
       ({ title, subtitle, storyline }) => title.toLowerCase().includes(search)
           || subtitle.toLowerCase().includes(search)
