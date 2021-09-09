@@ -4,7 +4,12 @@ import CustomInput from './CustomInput';
 
 class SearchBar extends React.Component {
   render() {
-    const { searchText, onSearchTextChange } = this.props;
+    const {
+      searchText,
+      onSearchTextChange,
+      bookmarkedOnly,
+      onBookmarkedChange,
+    } = this.props;
     return (
       <form data-testid="search-bar-form">
         <CustomInput
@@ -14,6 +19,13 @@ class SearchBar extends React.Component {
           value={ searchText }
           onChange={ onSearchTextChange }
         />
+        <CustomInput
+          name="checkbox-input"
+          type="checkbox"
+          labelText="Mostrar somente favoritos:"
+          value={ bookmarkedOnly }
+          onChange={ onBookmarkedChange }
+        />
       </form>
     );
   }
@@ -22,6 +34,8 @@ class SearchBar extends React.Component {
 SearchBar.propTypes = {
   searchText: PropTypes.string.isRequired,
   onSearchTextChange: PropTypes.func.isRequired,
+  bookmarkedOnly: PropTypes.bool.isRequired,
+  onBookmarkedChange: PropTypes.func.isRequired,
 };
 
 export default SearchBar;
