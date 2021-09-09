@@ -23,7 +23,7 @@ class AddMovie extends Component {
     * Source https://stackoverflow.com/questions/8763396/javascript-parseint-with-leading-zeros
     */
     const stateValue = event.target.name === 'rating'
-      ? parseInt(event.target.value, BASE) : event.target.value;
+      ? parseFloat(event.target.value, BASE) : event.target.value;
     this.setState({ [event.target.name]: stateValue });
   }
 
