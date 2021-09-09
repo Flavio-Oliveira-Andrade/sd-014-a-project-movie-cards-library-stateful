@@ -1,14 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Genre extends React.Component {
   render() {
+    const { onChange } = this.props;
+
     return (
       <label htmlFor="handle-change-genre" data-testid="genre-input-label">
         Gênero
         <select
           name="genre"
           data-testid="genre-input"
-          onChange={ this.handleChange }
+          onChange={ onChange }
           id="handle-change-genre"
         >
           <option data-testid="genre-option" value="action">Ação</option>
@@ -19,5 +22,9 @@ class Genre extends React.Component {
     );
   }
 }
+
+Genre.propTypes = {
+  onChange: PropTypes.string.isRequired,
+};
 
 export default Genre;

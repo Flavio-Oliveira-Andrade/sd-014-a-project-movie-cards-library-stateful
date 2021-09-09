@@ -1,7 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Storyline extends React.Component {
   render() {
+    const { onChange } = this.props;
+
     return (
       <div>
         <label htmlFor="handle-change-storyline" data-testid="storyline-input-label">
@@ -10,7 +13,7 @@ class Storyline extends React.Component {
             type="text"
             name="storyline"
             data-testid="storyline-input"
-            onChange={ this.handleChange }
+            onChange={ onChange }
             id="handle-change-storyline"
           />
         </label>
@@ -18,5 +21,9 @@ class Storyline extends React.Component {
     );
   }
 }
+
+Storyline.propTypes = {
+  onChange: PropTypes.string.isRequired,
+};
 
 export default Storyline;

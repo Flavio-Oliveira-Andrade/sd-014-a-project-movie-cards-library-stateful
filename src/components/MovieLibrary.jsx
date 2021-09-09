@@ -7,8 +7,8 @@ import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
 
 class MovieLibrary extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     const { movies } = this.props;
 
@@ -19,6 +19,7 @@ class MovieLibrary extends React.Component {
       movies,
     };
     this.handleChange = this.handleChange.bind(this);
+    this.filterMovies = this.filterMovies.bind(this);
   }
 
   handleChange({ target }) {
@@ -30,8 +31,17 @@ class MovieLibrary extends React.Component {
     });
   }
 
+  filterMovies({ searchText, bookmarkedOnly, selectedGenre, movies }) {
+    return movies
+      .filter((movie) => movie.title.includes(searchText)
+      || movie.subtitle.includes(searchText)
+      || movie.storyline.includes(searchText))
+      .filter((movie) => (bookmarkedOnly ? movie.bookmarked : true))
+      .filter((movie) => (selectedGenre ? movie.genre === selectedGenre : true));
+  }
+
   render() {
-    const { searchText, selectedGenre, bookmarkedOnly, movies } = this.state;
+    const { searchText, selectedGenre, bookmarkedOnly } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
@@ -43,7 +53,7 @@ class MovieLibrary extends React.Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleChange }
         />
-        <MovieList movies={ movies } />
+        <MovieList movies={ this.filterMovies(this.state) } />
         <AddMovie />
       </div>
     );
@@ -55,3 +65,5 @@ MovieLibrary.propTypes = {
 };
 
 export default MovieLibrary;
+
+// https://github.com/tryber/sd-014-a-project-movie-cards-library-stateful/pull/7/commits/dc8022ac8769311c794d091387fed421e9e6abef

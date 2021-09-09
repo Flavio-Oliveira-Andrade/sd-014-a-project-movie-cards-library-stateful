@@ -9,8 +9,8 @@ import Storyline from './Storyline';
 import Genre from './Genre';
 
 class AddMovie extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       title: '',
       subtitle: '',
@@ -52,10 +52,10 @@ class AddMovie extends React.Component {
 
     return (
       <form data-testid="add-movie-form">
-        <Title value={ title } />
-        <Subtitle value={ subtitle } />
-        <ImagePath value={ imagePath } />
-        <Storyline value={ storyline } />
+        <Title value={ title } onChange={ this.handleChange } />
+        <Subtitle value={ subtitle } onChange={ this.handleChange } />
+        <ImagePath value={ imagePath } onChange={ this.handleChange } />
+        <Storyline value={ storyline } onChange={ this.handleChange } />
         <label htmlFor="handle-change-rating" data-testid="rating-input-label">
           Avaliação
           <input
@@ -67,7 +67,7 @@ class AddMovie extends React.Component {
             id="handle-change-rating"
           />
         </label>
-        <Genre value={ genre } />
+        <Genre value={ genre } onChange={ this.handleChange } />
         <button
           type="submit"
           data-testid="send-button"
