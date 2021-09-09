@@ -6,11 +6,12 @@ import MovieList from './MovieList';
 
 function applyFilter(array, { content, marked, type }) {
   let result = array;
+  const search = content.toLowerCase();
   if (content) {
     result = result.filter(
-      ({ title, subtitle, storyline }) => title.toLowerCase().includes(content)
-          || subtitle.toLowerCase().includes(content)
-          || storyline.toLowerCase().includes(content),
+      ({ title, subtitle, storyline }) => title.toLowerCase().includes(search)
+          || subtitle.toLowerCase().includes(search)
+          || storyline.toLowerCase().includes(search),
     );
   }
   if (marked) {
@@ -73,7 +74,7 @@ class MovieLibrary extends React.Component {
     const movies = applyFilter(allMovies,
       { content: search, marked: bookmarkedOnly, type: selectedGenre });
     this.setState({
-      searchText: search,
+      searchText: value,
       movies,
     });
   }
