@@ -21,7 +21,7 @@ class AddMovie extends React.Component {
       genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
-    this.addMovie = this.addMovie.bind(this);
+    this.addMovie1 = this.addMovie1.bind(this);
   }
 
   handleChange({ target }) {
@@ -31,7 +31,7 @@ class AddMovie extends React.Component {
     });
   }
 
-  addMovie() {
+  addMovie1() {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     movies.push({
       title,
