@@ -38,8 +38,8 @@ class MovieLibrary extends React.Component {
   }
 
   addNewMovie({ title, subtitle, imagePath, storyline, rating, genre }) {
-    this.setState((actualState) => ({
-      movies: actualState.movies.concat([{
+    this.setState(({ movies }) => ({
+      movies: [...movies, {
         title,
         subtitle,
         storyline,
@@ -47,7 +47,7 @@ class MovieLibrary extends React.Component {
         imagePath,
         bookmarked: false,
         genre,
-      }]),
+      }],
     }));
   }
 
