@@ -98,7 +98,7 @@ class AddMovie extends Component {
 
           </select>
         </label>
-        <button type="submit" onClick={ this.handleClickButton }>Adicionar filme</button>
+        <button data-testid="send-button" type="submit" onClick={ this.handleClickButton }>Adicionar filme</button>
       </form>
     );
   }
