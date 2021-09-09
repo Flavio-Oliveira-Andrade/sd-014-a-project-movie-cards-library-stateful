@@ -22,7 +22,7 @@ class AddRating extends React.Component {
 }
 
 AddRating.propTypes = ({
-  value: PropTypes.string,
+  value: PropTypes.number,
   onClick: PropTypes.func,
 }).isRequired;
 
