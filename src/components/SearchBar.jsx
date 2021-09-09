@@ -33,7 +33,8 @@ class SearchBar extends Component {
 
   render() {
     // const {search} = this.props
-    const { searchText, onSearchTextChange, bookmarkedOnly, onBookmarkedChange, selectedGenre, onSelectedGenreChange } = this.state;
+    const { searchText, onSearchTextChange, bookmarkedOnly, onBookmarkedChange, selectedGenre, onSelectedGenreChange } = this.props;
+    // const {searchText} = this.props
 
     // const {data-testeid} = this.props
 
@@ -45,11 +46,11 @@ class SearchBar extends Component {
           <label htmlFor="checkbox" data-testid="checkbox-input-label">Mostrar somente favoritos</label>
           <input type="checkBox" name="checkbox" id="checkbox" data-testid="checkbox-input" checked={ bookmarkedOnly } onChange={ onBookmarkedChange } />
           <label htmlFor="genero" data-testid="select-input-label">Filtrar por gênero</label>
-          <select name="genero" id="genero" value={ selectedGenre } onChange={ onSelectedGenreChange }>
-            <option value="">Todos</option>
-            <option value="action">Ação</option>
-            <option value="comedy">Comédia</option>
-            <option value="thriller">Suspense</option>
+          <select name="genero" id="genero" value={ selectedGenre } onChange={ onSelectedGenreChange } data-testid="select-input">
+            <option value="" data-testid="select-option">Todos</option>
+            <option value="action" data-testid="select-option">Ação</option>
+            <option value="comedy" data-testid="select-option">Comédia</option>
+            <option value="thriller" data-testid="select-option">Suspense</option>
           </select>
           {console.log(this.props)}
         </fieldset>
