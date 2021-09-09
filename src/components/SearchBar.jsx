@@ -8,14 +8,14 @@ export default class SearchBar extends Component {
       onBookmarkedChange, selectedGenre, onSelectedGenreChange } = this.props;
 
     return (
-      <>
+      <form data-testid="search-bar-form">
         <h1>{searchText}</h1>
         <h2>{selectedGenre}</h2>
         <h2>{onSearchTextChange}</h2>
         <h2>{bookmarkedOnly}</h2>
         <h2>{onBookmarkedChange}</h2>
         <h2>{onSelectedGenreChange}</h2>
-      </>
+      </form>
     );
   }
 }
