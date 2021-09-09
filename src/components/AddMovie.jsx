@@ -57,8 +57,8 @@ class AddMovie extends React.Component {
             type="text"
             name="subtitle"
             data-testid="subtitle-input"
-            value={ this.stateInitial }
-            onChange={ subtitle }
+            value={ title }
+            onChange={ this.handleChange }
           />
         </label>
         <label htmlFor="image" data-testid="image-input-label">
@@ -68,8 +68,8 @@ class AddMovie extends React.Component {
             id="image"
             type="text"
             name="imagePath"
-            value={ this.stateInitial }
-            onChange={ imagePath }
+            value={ imagePath }
+            onChange={ this.handleChange }
           />
         </label>
         <Sinopse value={ storyline } onChange={ this.handleChange } />
