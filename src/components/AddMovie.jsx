@@ -6,8 +6,8 @@ class AddMovie extends React.Component {
     super(props);
     // deckaração do estadoa atual do componente
     this.state = {
-      subtitle: '',
       title: '',
+      subtitle: '',
       imagePath: '',
       storyline: '',
       rating: 0,
@@ -37,14 +37,14 @@ class AddMovie extends React.Component {
 
   /* usei referência o createInput fazendo o codereview do colega Marcelo A. */
 
-  createInput(type, name, value, dataTestid) {
+  createInput(type, name, value, data) {
     return (
       <input
         type={ type }
         name={ name }
         value={ value }
         onChange={ this.handleChange }
-        data-testid={ dataTestid }
+        data-testid={ data }
       />
     );
   }
@@ -61,13 +61,13 @@ class AddMovie extends React.Component {
         </label>
         <label htmlFor="subtitle" data-testid="subtitle-input-label">
           Subtítulo
-          { this.createInput('text', 'subtitle', subtitle, 'subtitle-input-label') }
+          { this.createInput('text', 'subtitle', subtitle, 'subtitle-input') }
         </label>
         <label htmlFor="imagePath" data-testid="image-input-label">
           Imagem
           { this.createInput('text', 'imagePath', imagePath, 'image-input') }
         </label>
-        <label htmlFor="storyline" data-testid="storyline-input">
+        <label htmlFor="storyline" data-testid="storyline-input-label">
           Sinopse
           <textarea
             name="storyline"
