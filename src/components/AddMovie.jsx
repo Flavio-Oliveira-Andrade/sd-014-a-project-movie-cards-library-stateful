@@ -13,11 +13,28 @@ class AddMovie extends Component {
       genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value,
+    });
+  }
+
+  handleClick(event) {
+    event.preventDefault();
+    const { onClick } = this.props;
+
+    onClick(this.state);
+
+    this.setState({
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
     });
   }
 
@@ -92,6 +109,9 @@ class AddMovie extends Component {
             <option data-testid="genre-option" value="comedy">Comédia</option>
             <option data-testid="genre-option" value="thriller">Suspense</option>
           </select>
+          <button type="submit" data-testid="send-button" onClick={ this.handleClick }>
+            Adicionar filme
+          </button>
         </label>
       </form>
     );
