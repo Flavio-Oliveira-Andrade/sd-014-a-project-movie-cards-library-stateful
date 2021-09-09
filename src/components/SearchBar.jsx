@@ -2,6 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class SearchBar extends React.Component {
+  constructor() {
+    super();
+    this.textSearch = this.textSearch.bind(this);
+  }
+
+  textSearch(searchText, onSearchTextChange) {
+    return (
+      <label htmlFor="text-input-search" data-testid="text-input-label">
+        Inclui o texto:
+        <input
+          type="text"
+          id="text-input-search"
+          value={ searchText }
+          name="searchText"
+          onChange={ onSearchTextChange }
+          data-testid="text-input"
+        />
+      </label>
+    );
+  }
+
   render() {
     const {
       searchText,
@@ -13,16 +34,7 @@ class SearchBar extends React.Component {
     } = this.props;
     return (
       <form data-testid="search-bar-form">
-        <label htmlFor="text-input-search" data-testid="text-input-label">
-          Inclui o texto:
-          <input
-            type="text"
-            id="text-input-search"
-            value={ searchText }
-            onChange={ onSearchTextChange }
-            data-testid="text-input"
-          />
-        </label>
+        { this.textSearch(searchText, onSearchTextChange) }
         <label htmlFor="forms-input-checkbox" data-testid="checkbox-input-label">
           Mostrar somente favoritos
           <input
@@ -30,16 +42,17 @@ class SearchBar extends React.Component {
             id="forms-input-checkbox"
             data-testid="checkbox-input"
             checked={ bookmarkedOnly }
+            name="bookmarkedOnly"
             onChange={ onBookmarkedChange }
           />
         </label>
         <label htmlFor="select-form-input" data-testid="select-input-label">
           Filtrar por gênero
           <select
-            name="genre"
             id="select-form-input"
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }
+            name="selectedGenre"
             data-testid="select-input"
           >
             <option value="" data-testid="select-option">Todos</option>
