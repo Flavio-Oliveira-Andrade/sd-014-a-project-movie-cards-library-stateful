@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { genres, addGenreTestIds } from '../configData';
 
-import TextInput from './TextInput';
+import NewMovieTextInputs from './NewMovieTextInputs';
 import StoryLineInput from './StoryLineInput';
 import RatingInput from './RatingInput';
 import GenreSelectInput from './GenreSelectInput';
@@ -47,27 +47,11 @@ class AddMovie extends React.Component {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form" className="d-flex flex-column py-2 px-4">
-        <TextInput
-          name="title"
-          title="Título:"
+        <NewMovieTextInputs
           handler={ this.handleChange }
-          value={ title }
-          testIds={ { labelId: 'title-input-label', inputId: 'title-input' } }
+          values={ [title, subtitle, imagePath] }
         />
-        <TextInput
-          name="subtitle"
-          title="Subtítulo:"
-          handler={ this.handleChange }
-          value={ subtitle }
-          testIds={ { labelId: 'subtitle-input-label', inputId: 'subtitle-input' } }
-        />
-        <TextInput
-          name="imagePath"
-          title="Imagem:"
-          handler={ this.handleChange }
-          value={ imagePath }
-          testIds={ { labelId: 'image-input-label', inputId: 'image-input' } }
-        />
+
         <StoryLineInput value={ storyline } handler={ this.handleChange } />
 
         <RatingInput value={ rating } handler={ this.handleChange } />
