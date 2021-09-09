@@ -6,6 +6,7 @@ class SearchBar extends React.Component {
     return (
       <main>
         <input type="text" />
+        <form data-testid="search-bar-form" />
       </main>
     );
   }
