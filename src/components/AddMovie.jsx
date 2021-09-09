@@ -13,11 +13,27 @@ class AddMovie extends React.Component {
       genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
+    // this.buttonClick = this.buttonClick.bind(this);
+    this.createInputs = this.createInputs.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
+    // this.setState({ [event.target.name]: event.target.value });
+    // console.log(event.target.value);
+    // console.log(this.state);
   }
+
+  // buttonClick() {
+  //   const { onClick } = this.props;
+  //   onClick(this.state);
+  //   this.setState({ [subtitle]: '',
+  //     [title]: '',
+  //     [imagePath]: '',
+  //     [storyline]: '',
+  //     [rating]: 0,
+  //     [genre]: 'action',
+  //   });
+  // }
 
   createInputs(inputId, name, type) {
     return (
@@ -32,79 +48,86 @@ class AddMovie extends React.Component {
   }
 
   createSelectInputs(inputId, name, type) {
-    const dataTestId = 'data-testid';
-    const genreOption = 'genre-option';
-    const options = [
-      { value: 'action', label: 'Ação', [dataTestId]: genreOption },
-      { value: 'comedy', label: 'Comédia', [dataTestId]: genreOption },
-      { value: 'thriller', label: 'Suspense', [dataTestId]: genreOption },
-    ];
+    // const dataTestId = 'data-testid';
+    // const genreOption = 'genre-option';
+    // const options = [
+    //   { value: 'action', label: 'Ação', [dataTestId]: genreOption },
+    //   { value: 'comedy', label: 'Comédia', [dataTestId]: genreOption },
+    //   { value: 'thriller', label: 'Suspense', [dataTestId]: genreOption },
+    // ];
     return (
       <select
         data-testid={ inputId }
-        value={ this[name] }
+        value={ name }
         type={ type }
         name={ name }
         onChange={ this.handleChange }
-        options={ options }
+        // options={ options }
       >
-        <option value="action" dataTestId="genre-option">Ação</option>
-        <option value="comedy" dataTestId="genre-option">Comedia</option>
-        <option value="thriller" dataTestId="genre-option">Suspense</option>
+        <option value="action" data-testid="genre-option">Ação</option>
+        <option value="comedy" data-testid="genre-option">Comedia</option>
+        <option value="thriller" data-testid="genre-option">Suspense</option>
       </select>
     );
   }
 
   render() {
-    const { onClick, subtitle, title,
+    const { subtitle, title,
       imagePath, storyline, rating, genre } = this.props;
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="title-input-label" data-testid="title-input-label">
           Título:
-          {createInputs('title-input', 'title', 'text')}
+          {this.createInputs('title-input', title, 'text')}
         </label>
         <label htmlFor="subtitle-input-label" data-testid="subtitle-input-label">
           Subitulo:
-          {createInputs('subtitle-input', 'subtitle', 'text')}
+          {this.createInputs('subtitle-input', subtitle, 'text')}
         </label>
         <label htmlFor="image-input-label" data-testid="image-input-label">
           Imagem
-          {createInputs('image-input', 'imagePath', 'text')}
+          {this.createInputs('image-input', imagePath, 'text')}
         </label>
         <label htmlFor="storyline-input-label" data-testid="storyline-input-label">
           Sinopse
-          {createInputs('storyline-input', 'storyline', 'text')}
+          {this.createInputs('storyline-input', storyline, 'text')}
         </label>
         <label htmlFor="rating-input-label" data-testid="rating-input-label">
           Avaliação
-          {createInputs('rating-input', 'rating', 'number')}
+          {this.createInputs('rating-input', rating, 'number')}
         </label>
         <label htmlFor="genre-input-label" data-testid="genre-input-label">
           Gênero
-          {createSelectInputs('genre-input', 'genre', 'string')}
+          {this.createSelectInputs('genre-input', genre, 'string')}
         </label>
+        <button
+          type="button"
+          onClick={ this.buttonClick }
+          data-testid="send-button"
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
 }
 
 AddMovie.propTypes = {
-  searchText: PropTypes.string,
-  onSearchTextChange: PropTypes.func,
-  bookmarkedOnly: PropTypes.bool,
-  onBookmarkedChange: PropTypes.func,
-  selectedGenre: PropTypes.string,
-  onSelectedGenreChange: PropTypes.func,
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  storyline: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  imagePath: PropTypes.string.isRequired,
+  genre: PropTypes.string.isRequired,
 };
 
-AddMovie.defaultProps = {
-  searchText: 'No text',
-  // onSearchTextChange: PropTypes.func,
-  // bookmarkedOnly: PropTypes.bool,
-  // onBookmarkedChange: PropTypes.func,
-  selectedGenre: 'No text',
-  // onSelectedGenreChange: PropTypes.func,
-};
+// AddMovie.defaultProps = {
+//   title: 'titulao',
+//   subtitle: 'subtitulo',
+//   storyline: 'sinopse',
+//   rating: 0,
+//   imagePath: 'caminho-da-imagem',
+//   genre: 'action',
+// };
 
 export default AddMovie;// implement AddMovie component here
