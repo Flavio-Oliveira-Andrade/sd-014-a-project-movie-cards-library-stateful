@@ -1,0 +1,25 @@
+form {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #e2e2e2;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+  height: 100px;
+}
+
+form > input {
+  border: none;
+  border-radius: 5px;
+  width: 20rem;
+}
+/*# sourceMappingURL=components.css.map */

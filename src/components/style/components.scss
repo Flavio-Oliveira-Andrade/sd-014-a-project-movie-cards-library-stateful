@@ -1,0 +1,19 @@
+@mixin flex($align: center, $justify: center) {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  @include flex;
+  background: rgb(226, 226, 226);
+  flex-direction: column;
+  gap: 10px;
+  height: 100px;
+}
+
+form > input {
+  border: none;
+  border-radius: 5px;
+  width: 20rem;
+}
