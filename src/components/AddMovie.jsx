@@ -1,6 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
+import InputTitleAddMovie from './InputTitleAddMovie';
 import InputStorylineAddMovie from './InputStorylineAddMovie';
 import InputRatingAddMovie from './InputRatingAddMovie';
 import SelectGenreAddMovie from './SelectGenreAddMovie';
@@ -43,15 +44,7 @@ class AddMovie extends React.Component {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="titleLabel" data-testid="title-input-label">
-          Título:
-          <input
-            type="text"
-            value={ title }
-            onChange={ this.handleChange }
-            data-testid="title-input"
-          />
-        </label>
+        <InputTitleAddMovie value={ title } onChange={ this.handleChange } />
         <label htmlFor="subtitleLabel" data-testid="subtitle-input-label">
           Subtítulo:
           <input
