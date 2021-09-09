@@ -21,9 +21,9 @@ class SearchBar extends Component {
   }
   favorito(){
     if(this.state.bookmarkedOnly === true){
-      this.state.bookmarkedOnly = false;
+      this.setState({bookmarkedOnly: false})
     } else {
-      this.state.bookmarkedOnly = true;
+      this.setState({bookmarkedOnly: true});
     }
   }
   genero(event){
