@@ -21,6 +21,7 @@ class MovieLibrary extends React.Component {
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange({ target }) {
@@ -89,6 +90,7 @@ class MovieLibrary extends React.Component {
 MovieLibrary.propTypes = {
   movies: PropTypes.arrayOf(
     PropTypes.object,
-  ).isRequired };
+  ).isRequired,
+  searchText: PropTypes.string.isRequired };
 
 export default MovieLibrary;
