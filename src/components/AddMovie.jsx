@@ -5,27 +5,28 @@ class AddMovie extends React.Component {
     super();
     this.state = {
       subtitle: '',
-      title: '',
+      // title: '',
       imagePath: '',
       storyline: '',
       rating: 0,
       genre: 'action',
     };
     this.changeText = this.changeText.bind(this);
+    
   }
 
   changeText(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  onClick(e) {
-    e.preventDefault();
-    console.log('temporário');
-  }
+  // onClick(e) {
+  //   e.preventDefault();
+  //   console.log('temporário');
+  // }
 
   render() {
-    const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
-    let { newMovie, onClick } = this.props;
+    const { subtitle, imagePath, storyline, rating, genre } = this.state;
+    const { newMovie, onClick, title, change } = this.props;
     // newMovie.titulo = title
     // newMovie.subtitulo = subtitle
     // newMovie.imagem = imagePath
@@ -35,7 +36,7 @@ class AddMovie extends React.Component {
     return (<form data-testid="add-movie-form">
       <fieldset>
         <label htmlFor="titulo" data-testid="title-input-label">Título</label>
-        <input name="title" type="text" data-testid="title-input" value={ title } onChange={ this.changeText } />
+        <input name="title" type="text" data-testid="title-input" value={ title } onChange={ change } />
         <label htmlFor="subTitulo" data-testid="subtitle-input-label">Subtítulo</label>
         <input name="subtitle" type="text" data-testid="subtitle-input" value={ subtitle } onChange={ this.changeText } />
         <label htmlFor="image" data-testid="image-input-label">Imagem</label>
@@ -52,6 +53,8 @@ class AddMovie extends React.Component {
         </select>
         <button data-testid="send-button" onClick={ onClick }>Adicionar filme</button>
       </fieldset>
+      {/* {this.props.newMovie.titulo='aaa'} */}
+      {/* {console.log(newMovie)} */}
       {/* {console.log(newMovie)} */}
     </form>);
   }
