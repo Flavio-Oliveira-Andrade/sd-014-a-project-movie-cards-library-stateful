@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Option from './Option';
+import opt from '../Options';
 
 export default class SearchBar extends Component {
   render() {
-    const { searchText, onSearchTextChange, bookmarkedOnly,
-      onBookmarkedChange, selectedGenre, onSelectedGenreChange } = this.props;
-
-    const opt = [
-      { name: 'Todos', value: '' },
-      { name: 'Ação', value: 'action' },
-      { name: 'Comédia', value: 'comedy' },
-      { name: 'Suspense', value: 'thriller' },
-    ];
-
+    const {
+      searchText,
+      onSearchTextChange,
+      bookmarkedOnly,
+      onBookmarkedChange,
+      selectedGenre,
+      onSelectedGenreChange,
+    } = this.props;
     return (
-      <form data-testid="search-bar-form">
+      <form data-testid="search-bar-form" className="search-bar">
         <label htmlFor="searchInput" data-testid="text-input-label">
           Inclui o texto
           <input
@@ -46,7 +45,9 @@ export default class SearchBar extends Component {
             onChange={ onSelectedGenreChange }
             data-testid="select-input"
           >
-            {opt.map((a) => <Option key={ a.name } name={ a.name } value={ a.value } />)}
+            {opt.map(({ name, value }) => (
+              <Option key={ name } name={ name } value={ value } />
+            ))}
           </select>
         </label>
       </form>
