@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 class HeaderForm extends Component {
   render() {
-    const { title, handleChange, subtitle } = this.props;
+    const { title, subtitle, handleChange } = this.props;
     return (
       <>
         <label htmlFor="Título" data-testid="title-input-label">
@@ -22,7 +22,6 @@ class HeaderForm extends Component {
             type="text"
             data-testid="subtitle-input"
             value={ subtitle }
-            onChange={ handleChange }
           />
         </label>
       </>

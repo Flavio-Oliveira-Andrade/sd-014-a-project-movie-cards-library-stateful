@@ -7,23 +7,32 @@ class AddMovie extends Component {
   constructor() {
     super();
     this.state = {
+      genre: 'action',
+      imagePath: '',
+      rating: 0,
+      storyline: '',
       subtitle: '',
       title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
     };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ title: event.target.value });
   }
 
   render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <HeaderForm title={ title } subtitle={ subtitle } />
+        <HeaderForm
+          title={ title }
+          subtitle={ subtitle }
+          handleChange={ this.handleChange }
+        />
         <BodyForm imagePath={ imagePath } storyline={ storyline } />
         <FooterForm rating={ rating } genre={ genre } />
-        <button type="submit" data-testid="send-button" onClick>Adicionar Filme</button>
+        <button type="submit" data-testid="send-button" onClick>Adicionar filme</button>
       </form>
     );
   }
