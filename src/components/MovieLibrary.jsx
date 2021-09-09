@@ -60,9 +60,11 @@ class MovieLibrary extends Component {
       <section>
         <SearchBar
           searchText={ searchText }
-          onChangeGeneric={ this.handleChange }
+          onSearchTextChange={ this.handleChange }
           bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.handleChange }
           selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ this.handleChange }
         />
         <MovieList movies={ this.filterMovies(movies, this.state) } />
         <AddMovie addMovie={ this.addMovie } />
