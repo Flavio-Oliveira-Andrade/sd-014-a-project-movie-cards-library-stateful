@@ -16,6 +16,8 @@ class AddMovie extends React.Component {
     this.handleChangeSubtitle = this.handleChangeSubtitle.bind(this);
     this.handleChangeImage = this.handleChangeImage.bind(this);
     this.handleChangeStoryline = this.handleChangeStoryline.bind(this);
+    this.handleChangeRating = this.handleChangeRating.bind(this);
+    this.handleChangeGenero = this.handleChangeGenero.bind(this)
   }
   
   // handleChange ( { target } ) {
@@ -38,13 +40,19 @@ class AddMovie extends React.Component {
   }
 
   handleChangeStoryline(event) {
-    console.log(event)
     this.setState({ storyline: event.target.value })
   }
 
+  handleChangeRating(event) {
+    this.setState({ rating: event.target.value })
+  }
+
+  handleChangeGenero(event) {
+    this.setState({ genre: event.target.value })
+  }
 
   render() {
-    const { title, subtitle, imagePath, storyline } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     const { onClick } = this.props;
     return (
       <div>
@@ -82,6 +90,11 @@ class AddMovie extends React.Component {
             </textarea>
           </label>
           
+          <label htmlFor="" data-testid="rating-input-label">Avaliação</label>
+          <input type="number" value={ rating } data-testid="rating-input" onChange={ this.handleChangeRating } />
+
+          <label htmlFor="" data-testid="genre-input-label">Gênero</label>
+          <select name="" id="" value={genre} data-testid="genre-input" onChange={ this.handleChangeGenero }></select>
         </form>
       </div>
     )
