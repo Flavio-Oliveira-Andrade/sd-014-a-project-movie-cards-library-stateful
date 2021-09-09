@@ -5,10 +5,10 @@ class ImagePath extends React.Component {
     return (
       <div>
         <label htmlFor="handle-change-image" data-testid="image-input-label">
-          Título
+          Imagem
           <input
             type="text"
-            name="image"
+            name="imagePath"
             data-testid="image-input"
             onChange={ this.handleChange }
             id="handle-change-image"

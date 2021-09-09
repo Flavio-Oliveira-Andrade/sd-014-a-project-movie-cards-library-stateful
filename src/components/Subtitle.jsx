@@ -5,7 +5,7 @@ class Subtitle extends React.Component {
     return (
       <div>
         <label htmlFor="handle-change-subtitle" data-testid="subtitle-input-label">
-          Título
+          Subtítulo
           <input
             type="text"
             name="subtitle"

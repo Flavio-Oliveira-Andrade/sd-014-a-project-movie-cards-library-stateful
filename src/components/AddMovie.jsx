@@ -33,27 +33,17 @@ class AddMovie extends React.Component {
     });
   }
 
-  onClick() {
-    this.setState({
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    });
-  }
-
   render() {
     const { onClick } = this.props;
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
+
     return (
       <form data-testid="add-movie-form">
         <Title value={ title } />
         <Subtitle value={ subtitle } />
         <ImagePath value={ imagePath } />
         <Storyline value={ storyline } />
-        <Rating value={ rating } />
+        <Rating rating={ rating } onChange={ this.handleChange } />
         <Genre value={ genre } />
         <Button onClick={ onClick } />
       </form>

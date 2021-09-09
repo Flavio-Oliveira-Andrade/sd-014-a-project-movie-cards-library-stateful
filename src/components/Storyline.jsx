@@ -5,7 +5,7 @@ class Storyline extends React.Component {
     return (
       <div>
         <label htmlFor="handle-change-storyline" data-testid="storyline-input-label">
-          Título
+          Sinopse
           <input
             type="text"
             name="storyline"
