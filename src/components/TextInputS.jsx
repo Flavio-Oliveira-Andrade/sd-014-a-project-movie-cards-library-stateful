@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class TextInputS extends Component {
   render() {
+    const { value, onChange } = this.props;
     return (
       <div>
         <label htmlFor="text-input" data-testid="text-input-label">
@@ -9,14 +11,19 @@ class TextInputS extends Component {
           <input
             type="text"
             name="textInput"
-            // value={ searchText }
-            // onChange={ onSearchTextChange }
             data-testid="text-input"
+            value={ value }
+            onChange={ onChange }
           />
         </label>
       </div>
     );
   }
 }
+
+TextInputS.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.string,
+}.isRequired;
 
 export default TextInputS;

@@ -1,10 +1,8 @@
 import React from 'react';
 import Header from './components/Header';
-// import SearchBar from './components/SearchBar';
-import './App.css';
 import MovieLibrary from './components/MovieLibrary';
-// import AddMovie from './components/AddMovie';
 import movies from './data';
+import './App.css';
 
 function App() {
   return (
