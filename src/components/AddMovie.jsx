@@ -3,6 +3,7 @@ import Title from './Title';
 import Subtitle from './Subtitle';
 import ImagePath from './ImagePath';
 import Storyline from './Storyline';
+import AddRating from './AddRating';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -12,7 +13,7 @@ class AddMovie extends React.Component {
       title: '',
       imagePath: '',
       storyline: '',
-      // rating: 0,
+      rating: 0,
       // genre: 'action',
     };
     this.onClick = this.onClick.bind(this);
@@ -23,13 +24,14 @@ class AddMovie extends React.Component {
   }
 
   render() {
-    const { title, subtitle, imagePath, storyline } = this.state;
+    const { title, subtitle, imagePath, storyline, rating } = this.state;
     return (
       <form data-testid="add-movie-form">
         <Title value={ title } onClick={ this.onClick } />
         <Subtitle value={ subtitle } onClick={ this.onClick } />
         <ImagePath value={ imagePath } onClick={ this.onClick } />
         <Storyline value={ storyline } onClick={ this.onClick } />
+        <AddRating value={ rating } onClick={ this.onClick } />
       </form>
     );
   }
