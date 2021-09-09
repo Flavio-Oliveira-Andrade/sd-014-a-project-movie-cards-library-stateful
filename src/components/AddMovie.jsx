@@ -80,7 +80,7 @@ class AddMovie extends React.Component {
 
         <Genre
           genre={ genre }
-          handleChange={ handleChange }
+          handleChange={ this.handleChange }
         />
 
         <button type="submit" data-testid="send-button" onClick={ this.handleSubmit }>
