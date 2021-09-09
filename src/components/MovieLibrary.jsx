@@ -18,18 +18,22 @@ class MovieLibrary extends Component {
   handleChange = (event) => {
     const { movies } = this.props;
     const { name, type, checked, value } = event.target;
-    const filter = movies.filter(({ title, subtitle, storyline , genre}) => title.includes(value)
-      || subtitle.includes(value) || storyline.includes(value) || genre === value);
-    this.setState({
-      [name]: type === 'checkbox' ? checked : value,
-      movies: filter,
-    });
     if (type === 'checkbox') {
       this.setState({
+        [name]: checked,
         movies: checked ? movies.filter(({ bookmarked }) => bookmarked) : movies,
       });
+    } else {
+      this.setState({
+        [name]: value,
+        movies: movies.filter(({ title, subtitle, storyline, genre }) => title
+          .includes(value)
+          || subtitle.includes(value)
+          || storyline.includes(value)
+          || genre === value),
+      });
     }
-}
+  }
 
   render() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;

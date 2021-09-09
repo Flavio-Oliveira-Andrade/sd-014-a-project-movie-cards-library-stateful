@@ -10,7 +10,7 @@ class SearchBar extends Component {
       onSelectedGenreChange } = this.props;
 
     return (
-      <form data-testid="search-bar-form"> 
+      <form data-testid="search-bar-form">
         <label htmlFor="search-bar-text" data-testid="text-input-label">
           Inclui o texto:
           <input
@@ -36,8 +36,8 @@ class SearchBar extends Component {
         <label htmlFor="search-bar-genre" data-testid="select-input-label">
           Filtrar por gênero
           <select
-             name="selectedGenre"
-             id="search-bar-genre"
+            name="selectedGenre"
+            id="search-bar-genre"
             value={ selectedGenre }
             onChange={onSelectedGenreChange}
             data-testid="select-input"
