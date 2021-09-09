@@ -5,12 +5,12 @@ class OptionForm extends React.Component {
   render() {
     const { value, onChange } = this.props;
     return (
-      <label htmlFor="genre" data-testid="select-input-label">
+      <label htmlFor="select-genre" data-testid="select-input-label">
         Filtrar por gênero
         <select
           data-testid="select-input"
-          id="genre"
-          name="genre"
+          id="select-genre"
+          name="selectedGenre"
           value={ value }
           onChange={ onChange }
         >

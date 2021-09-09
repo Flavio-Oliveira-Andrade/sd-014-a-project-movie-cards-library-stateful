@@ -2,10 +2,10 @@
 // implement AddMovie component here
 import React from 'react';
 import PropTypes from 'prop-types';
-import NumberInput from './NumberInput';
+// import RatingInput from './RatingInput';
 import GenreInput from './genreInput';
-
-// import Button from './Button';
+import Rating from './Rating';
+import TitleInput from './TitleInput';
 import Sinopse from './Sinopse';
 
 const stateInitial = {
@@ -49,19 +49,13 @@ class AddMovie extends React.Component {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form" onSubmit={ this.handleSubmit }>
-        <label htmlFor="title" data-testid="title-input-label">
-          Título
-          <input
-            id="title"
-            data-testid="title-input"
-            value={ this.stateInitial }
-            onChange={ title }
-          />
-        </label>
+        <TitleInput value={ title } onChange={ this.handleChange } />
         <label htmlFor="subtitle" data-testid="subtitle-input-label">
           Subtítulo
           <input
             id="subtitle"
+            type="text"
+            name="subtitle"
             data-testid="subtitle-input"
             value={ this.stateInitial }
             onChange={ subtitle }
@@ -73,12 +67,14 @@ class AddMovie extends React.Component {
             data-testid="image-input"
             id="image"
             type="text"
+            name="imagePath"
             value={ this.stateInitial }
             onChange={ imagePath }
           />
         </label>
         <Sinopse value={ storyline } onChange={ this.handleChange } />
-        <NumberInput value={ rating } onChange={ this.handleChange } />
+        {/* <RatingInput value={ rating } onChange={ this.handleChange } /> */}
+        <Rating value={ rating } onChange={ this.handleChange } />
         <GenreInput value={ genre } onChange={ this.handleChange } />
         <button
           type="submit"

@@ -7,10 +7,10 @@ class Sinopse extends React.Component {
     return (
       <label htmlFor="sinopse" data-testid="storyline-input-label">
         Sinopse
-        <textarea
+        <input
           data-testid="storyline-input"
           id="sinopse"
-          type="text"
+          type="textarea"
           name="storyline"
           value={ value }
           onChange={ onChange }

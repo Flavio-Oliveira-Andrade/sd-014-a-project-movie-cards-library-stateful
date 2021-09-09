@@ -5,8 +5,8 @@ class TitleInput extends React.Component {
   render() {
     const { value, onChange } = this.props;
     return (
-      <label htmlFor="title">
-        Titulo
+      <label htmlFor="title" data-testid="title-input-label">
+        Título
         <input
           data-testid="title-input"
           type="text"
