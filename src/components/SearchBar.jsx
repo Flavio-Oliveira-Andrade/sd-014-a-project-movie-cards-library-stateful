@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CustomInput from './CustomInput';
+import CustomSelect from './CustomSelect';
 
 class SearchBar extends React.Component {
   render() {
@@ -9,6 +10,8 @@ class SearchBar extends React.Component {
       onSearchTextChange,
       bookmarkedOnly,
       onBookmarkedChange,
+      selectedGenre,
+      onSelectedGenreChange,
     } = this.props;
     return (
       <form data-testid="search-bar-form">
@@ -26,6 +29,18 @@ class SearchBar extends React.Component {
           value={ bookmarkedOnly }
           onChange={ onBookmarkedChange }
         />
+        <CustomSelect
+          name="select-input"
+          labelText="Filtrar por gênero"
+          value={ selectedGenre }
+          onChange={ onSelectedGenreChange }
+          options={ {
+            Todos: '',
+            Ação: 'action',
+            Comédia: 'comedy',
+            Suspense: 'thriller',
+          } }
+        />
       </form>
     );
   }
@@ -36,6 +51,8 @@ SearchBar.propTypes = {
   onSearchTextChange: PropTypes.func.isRequired,
   bookmarkedOnly: PropTypes.bool.isRequired,
   onBookmarkedChange: PropTypes.func.isRequired,
+  selectedGenre: PropTypes.string.isRequired,
+  onSelectedGenreChange: PropTypes.func.isRequired,
 };
 
 export default SearchBar;
