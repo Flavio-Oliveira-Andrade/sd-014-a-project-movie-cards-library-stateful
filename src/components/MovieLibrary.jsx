@@ -6,8 +6,8 @@ import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 
 class MovieLibrary extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     // <MovieLibrary /> deve receber como props:
     const { movies } = this.props;
     // 16 - Configure o estado inicial do componente MovieLibrary
@@ -18,7 +18,8 @@ class MovieLibrary extends React.Component {
       movies,
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
+    this.filter = this.filter.bind(this);
   }
 
   handleChange({ target }) {
@@ -29,10 +30,21 @@ class MovieLibrary extends React.Component {
     });
   }
 
+  filter() {
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    return movies
+      .filter((movie) => (movie.title.includes(searchText)
+      || movie.subtitle.includes(searchText) || movie.storyline.includes(searchText)))
+      .filter((movie) => (bookmarkedOnly ? movie.bookmarked : true))
+      .filter((movie) => (selectedGenre ? movie.genre === selectedGenre : true));
+  }
+
   render() {
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     return (
       <div>
-        <AddMovie />
+        {/* <AddMovie /> */}
+        {/* 17 - Renderize <SearchBar /> dentro de <MovieLibrary /> */}
         <SearchBar
           searchText={ searchText }
           onSelectedGenreChange={ this.handleChange }
@@ -41,7 +53,7 @@ class MovieLibrary extends React.Component {
           bookmarkedOnly={ bookmarkedOnly }
           onSearchTextChange={ this.handleChange }
         />
-        <MovieList />
+        <MovieList movies={ this.filter() } />
       </div>
     );
   }
