@@ -49,6 +49,16 @@ class AddMovie extends Component {
           nome={ ['storyline', 'Sinopse', storyline] }
           load={ this.loadText }
         />
+        <label htmlFor="rating" data-testid="rating-input-label">
+          Avaliação
+          <input
+            type="number"
+            value={ rating }
+            name="rating"
+            data-testid="rating-input"
+            onChange={ this.loadText }
+          />
+        </label>
       </form>
     );
   }
