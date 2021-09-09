@@ -7,15 +7,15 @@ import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
-  constructor(props) {
+  constructor(props) { // props sempre devem ser passados p constructor e p React.Component por meio do método super(). Source: https://www.w3schools.com/react/react_props.asp
     super(props);
 
-    this.onSearchTextChange = this.onSearchTextChange.bind(this);
+    this.onSearchTextChange = this.onSearchTextChange.bind(this); // para que o this possa ser visto fora da func render (p funções terem acesso ao this e ao estado)
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
     this.onClick = this.onClick.bind(this);
 
-    this.state = { // criando o estado inicial
+    this.state = { // criando o estado inicial por meio da atribuição de um objeto à chave `state` do `this`
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
@@ -23,9 +23,10 @@ class MovieLibrary extends Component {
     };
   }
 
+  // funções que redefinem o estado ao receber novas entradas:
   onSearchTextChange({ target }) { // destructuring de event.target
-    this.setState({
-      searchText: target.value,
+    this.setState({ // método assíncrono que define o novo estado para o que é passado como argumento
+      searchText: target.value, // captura a entrada digitada no input do form
     });
   }
 
@@ -41,10 +42,23 @@ class MovieLibrary extends Component {
     });
   }
 
-  onClick(event) {
-    this.setState((...arrayAnterior) => ({
-      movies: [...arrayAnterior.movies, event],
-    }));
+  // onClick(movie) {
+  //   this.setState((previousState) => ({
+  //     movies: [...previousState.movies, movie],
+  //   }));
+  // }
+
+  // onClick(movie) {
+  //   this.setState(({ movies }) => ({
+  //     movies: [...movies, movie],
+  //   }));
+  // }
+
+  onClick(movie) {
+    const { movies } = this.state;
+    this.setState({
+      movies: [...movies, movie],
+    });
   }
 
   render() {
@@ -52,9 +66,9 @@ class MovieLibrary extends Component {
     return (
       <div>
         <h2> My awesome movie library </h2>
-        <SearchBar // de acordo com as props recebidas no requisito 1:
-          searchText={ searchText }
-          onSearchTextChange={ this.onSearchTextChange }
+        <SearchBar // de acordo com as props recebidas no requisito 1 e declaradas no componente SearchBar
+          searchText={ searchText } // passando o valor para a propriedade; {} pois pega o valor de uma variável
+          onSearchTextChange={ this.onSearchTextChange } // como as funções estão dentro da classe, preciso usar o 'this'
           bookmarkedOnly={ bookmarkedOnly }
           onBookmarkedChange={ this.onBookmarkedChange }
           selectedGenre={ selectedGenre }
@@ -67,15 +81,12 @@ class MovieLibrary extends Component {
   }
 }
 
+// validação das props passadas no componente
 MovieLibrary.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string,
-    subtitle: PropTypes.string,
-    imagePath: PropTypes.string,
-    storyline: PropTypes.string,
-    rating: PropTypes.number,
-    genre: PropTypes.string,
-  })).isRequired,
-};
+  searchText: PropTypes.string,
+  bookmarkedOnly: PropTypes.bool,
+  selectedGenre: PropTypes.string,
+  movies: PropTypes.array,
+}.isRequired;
 
 export default MovieLibrary;

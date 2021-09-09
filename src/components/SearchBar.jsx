@@ -11,7 +11,7 @@ class SearchBar extends React.Component {
       onBookmarkedChange,
       selectedGenre,
       onSelectedGenreChange,
-    } = this.props;
+    } = this.props; // acessando o objeto e pegando as informações/propriedades passadas pro componente
     return (
       <form data-testid="search-bar-form">
         {/* <label htmlFor="searchText" data-testid="text-input-label"> Inclui o texto

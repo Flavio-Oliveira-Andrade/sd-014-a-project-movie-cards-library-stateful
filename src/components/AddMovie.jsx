@@ -8,11 +8,11 @@ import Rating from './componentsAddMovie/Rating';
 import Genre from './componentsAddMovie/Genre';
 
 class AddMovie extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {
       subtitle: '',
@@ -29,12 +29,12 @@ class AddMovie extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value; // para checkbox o bolleano de retorno não fica em 'value', mas sim em 'checkbox'
 
     this.setState({
-      [name]: value,
+      [name]: value, // interpolando o valor da variável p ser o nome da chave do objeto (será title, subtitle...)
     });
   }
 
   handleSubmit(event) {
-    event.preventDefault(); // para que botão não salve automaticamente na url ou recarrega a página
+    event.preventDefault(); // para que botão não salve automaticamente na url ou recarregue a página
     const { onClick } = this.props;
     onClick(this.sate);
 
