@@ -8,7 +8,6 @@ function App() {
     <div className="App">
       <Header />
       <SearchBar
-        id="search-bar"
         searchText=""
         onSearchTextChange={ () => {} }
         bookmarkedOnly={ false }
