@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -14,9 +15,24 @@ class AddMovie extends React.Component {
   }
 
   // Inspirado no codigo do Marcello Alves tanto a função handleChange quanto a customImput
-  handleChange = ({ target }) => this.setState({
-    [target.name]: (target.type === 'checkbox' ? target.checked : target.value),
+  handleChange = (event) => this.setState({
+    [event.target.name]: (event.target.type
+       === 'checkbox' ? event.target.checked : event.target.value),
   });
+
+  handleClick = (event) => {
+    event.preventDefault();
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState({
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
 
   customImput(type, name, value, data) {
     return (
@@ -32,12 +48,7 @@ class AddMovie extends React.Component {
 
   render() {
     const {
-      subtitle,
-      title,
-      imagePath,
-      storyline,
-      rating,
-      genre,
+      subtitle, title, imagePath, storyline, rating, genre,
     } = this.state;
     return (
       <form data-testid="add-movie-form">
@@ -61,9 +72,31 @@ class AddMovie extends React.Component {
           Avaliação
           {this.customImput('number', 'rating', rating, 'rating-input')}
         </label>
+        <label htmlFor="genre" data-testid="genre-input-label">
+          Gênero
+          <select
+            name="genre"
+            data-testid="genre-input"
+            value={ genre }
+            onChange={ this.handleChange }
+          >
+            <option value="action" data-testid="genre-option">Ação</option>
+            <option value="comedy" data-testid="genre-option">Comédia</option>
+            <option value="thriller" data-testid="genre-option">Suspense</option>
+          </select>
+        </label>
+        <button
+          type="submit"
+          data-testid="send-button"
+          onClick={ this.handleClick }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
 }
+
+AddMovie.propTypes = { onClick: PropTypes.func.isRequired };
 
 export default AddMovie;
