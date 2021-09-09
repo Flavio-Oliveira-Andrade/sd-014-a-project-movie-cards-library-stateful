@@ -19,8 +19,8 @@ const INITIAL_STATE = {
 };
 
 class AddMovie extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = INITIAL_STATE;
     this.handleOnChange = this.handleOnChange.bind(this);
     this.OnClickFunc = this.OnClickFunc.bind(this);
