@@ -5,7 +5,7 @@ class AddMovie extends React.Component {
   constructor() {
     super();
     this.state = {
-      // subtitle: '',
+      subtitle: '',
       title: '',
       // story: '',
       // imagePath: '',
@@ -24,7 +24,7 @@ class AddMovie extends React.Component {
 
   render() {
     // const { onClick } = this.props;
-    const { title } = this.state;
+    const { title, subtitle } = this.state;
     return (
       <form data-testid="add-movie-form">
         <CustomInput
@@ -32,6 +32,13 @@ class AddMovie extends React.Component {
           type="text"
           labelText="Título"
           value={ title }
+          onChange={ this.handleChange }
+        />
+        <CustomInput
+          name="subtitle"
+          type="text"
+          labelText="Subtítulo"
+          value={ subtitle }
           onChange={ this.handleChange }
         />
       </form>
