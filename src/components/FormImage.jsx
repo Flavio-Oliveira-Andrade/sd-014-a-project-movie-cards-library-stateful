@@ -5,15 +5,15 @@ class FormImage extends React.Component {
   render() {
     const { value, onChange } = this.props;
     return (
-      <label data-testid="image-input-label" htmlFor="image">
+      <label data-testid="image-input-label" htmlFor="imagePath">
         Imagem
         <input
           value={ value }
           onChange={ onChange }
           data-testid="image-input"
           type="text"
-          name="image"
-          id="image"
+          name="imagePath"
+          id="imagePath"
         />
       </label>
     );

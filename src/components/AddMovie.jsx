@@ -1,5 +1,6 @@
 // implement AddMovie component here
 import React from 'react';
+import PropTypes from 'prop-types';
 import FormTitle from './FormTitle';
 import FormSubtitle from './FormSubtitle';
 import FormImage from './FormImage';
@@ -21,25 +22,47 @@ class AddMovie extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange = (event) => {
+  handleChange(event) {
     const { name, value } = event.target;
     this.setState({ [name]: value });
-  };
+  }
+
+  formSubmit(event) {
+    event.preventDefault();
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
 
   render() {
     // Requisito 6 ao 13
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
-      <form data-testid="add-movie-form">
+      <form data-testid="add-movie-form" onSubmit={ this.formSubmit }>
         <FormTitle value={ title } onChange={ this.handleChange } />
         <FormSubtitle value={ subtitle } onChange={ this.handleChange } />
         <FormImage value={ imagePath } onChange={ this.handleChange } />
         <FormStoryline value={ storyline } onChange={ this.handleChange } />
         <FormRating value={ rating } onChange={ this.handleChange } />
         <FormGenre value={ genre } onChange={ this.handleChange } />
+        {/* Requisito 14 */}
+        <button data-testid="send-button" type="submit">
+          Adicionar filme
+        </button>
       </form>
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default AddMovie;
