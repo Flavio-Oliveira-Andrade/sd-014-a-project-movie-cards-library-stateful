@@ -17,7 +17,7 @@ class MovieLibrary extends Component {
       movies: mv,
     };
     this.handleChange = this.handleChange.bind(this);
-    this.addMovie = this.addMovie.bind(this);
+    // this.addMovie = this.addMovie.bind(this);
   }
 
   handleChange({ target }) {
