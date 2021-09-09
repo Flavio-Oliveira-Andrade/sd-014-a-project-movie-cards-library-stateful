@@ -30,7 +30,7 @@ class MovieLibrary extends Component {
     .filter(({ title, subtitle, storyline }) => (title.includes(searchText)
       || subtitle.includes(searchText) || storyline.includes(searchText)))
     .filter(({ bookmarked }) => (bookmarkedOnly ? bookmarked : true))
-    .filter(({ genre }) => (selectedGenre ? selectedGenre === genre : true));
+    .filter(({ genre }) => genre.includes(selectedGenre));
 
   render() {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
