@@ -1,5 +1,5 @@
 import React from 'react';
-import CustomInput from './CustomInput';
+import CustomControl from './CustomControl';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -24,21 +24,28 @@ class AddMovie extends React.Component {
 
   render() {
     // const { onClick } = this.props;
-    const { title, subtitle } = this.state;
+    const { title, subtitle, image } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <CustomInput
+        <CustomControl
           name="title"
           type="text"
           labelText="Título"
           value={ title }
           onChange={ this.handleChange }
         />
-        <CustomInput
+        <CustomControl
           name="subtitle"
           type="text"
           labelText="Subtítulo"
           value={ subtitle }
+          onChange={ this.handleChange }
+        />
+        <CustomControl
+          name="image"
+          type="text"
+          labelText="Imagem"
+          value={ image }
           onChange={ this.handleChange }
         />
       </form>

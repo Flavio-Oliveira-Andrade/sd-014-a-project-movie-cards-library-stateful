@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CustomInput from './CustomInput';
-import CustomSelect from './CustomSelect';
+import CustomControl from './CustomControl';
 
 class SearchBar extends React.Component {
   render() {
@@ -15,22 +14,23 @@ class SearchBar extends React.Component {
     } = this.props;
     return (
       <form data-testid="search-bar-form">
-        <CustomInput
+        <CustomControl
           name="text"
           type="text"
           labelText="Inclui o texto:"
           value={ searchText }
           onChange={ onSearchTextChange }
         />
-        <CustomInput
+        <CustomControl
           name="checkbox"
           type="checkbox"
           labelText="Mostrar somente favoritos:"
           value={ bookmarkedOnly }
           onChange={ onBookmarkedChange }
         />
-        <CustomSelect
+        <CustomControl
           name="select"
+          type="select"
           labelText="Filtrar por gênero"
           value={ selectedGenre }
           onChange={ onSelectedGenreChange }
