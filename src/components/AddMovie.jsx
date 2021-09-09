@@ -18,9 +18,20 @@ class AddMovie extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
+  onClick(e) {
+    e.preventDefault();
+    console.log('temporário');
+  }
+
   render() {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
-    const { onClick } = this.props;
+    let { newMovie, onClick } = this.props;
+    // newMovie.titulo = title
+    // newMovie.subtitulo = subtitle
+    // newMovie.imagem = imagePath
+    // newMovie.sinopse = storyline
+    // newMovie.nota = rating
+    // newMovie.genero = genre
     return (<form data-testid="add-movie-form">
       <fieldset>
         <label htmlFor="titulo" data-testid="title-input-label">Título</label>
@@ -41,7 +52,7 @@ class AddMovie extends React.Component {
         </select>
         <button data-testid="send-button" onClick={ onClick }>Adicionar filme</button>
       </fieldset>
-      {console.log(this.state)}
+      {/* {console.log(newMovie)} */}
     </form>);
   }
 }
