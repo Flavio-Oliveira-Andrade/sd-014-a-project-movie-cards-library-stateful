@@ -16,12 +16,21 @@ class AddMovie extends Component {
     };
   }
 
+  loadText = ({ target }) => {
+    const { name, value } = target;
+    this.setState({ [name]: value });
+  };
+
   render() {
     const { subtitle, title,
       imagePath, storyline, rating,
       genre } = this.state;
     return (
       <form data-testid="add-movie-form">
+        <FormsConstructor
+          nome={ ['title', 'Título', title] }
+          load={ this.loadText }
+        />
       </form>
     );
   }
