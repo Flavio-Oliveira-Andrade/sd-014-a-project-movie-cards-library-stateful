@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import './style/components.css';
 
 export default class SearchBar extends Component {
-  render() {
+  render({ searchText }) {
     const { id } = this;
 
-    const handleChange = (event) => {
+    // const handleChange = (event) => {
 
-    }
+    // }
 
     return (
       <form data-testid="search-bar-form">
@@ -15,7 +15,7 @@ export default class SearchBar extends Component {
           Inclui o texto
           <input
             type="text"
-            value=""
+            value={ searchText }
             onChange={ handleChange }
             id={ id }
             placeholder="Buscar"
