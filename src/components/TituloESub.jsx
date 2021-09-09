@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class TituloESub extends Component {
   render() {
@@ -27,5 +28,11 @@ class TituloESub extends Component {
     );
   }
 }
+
+TituloESub.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+};
 
 export default TituloESub;

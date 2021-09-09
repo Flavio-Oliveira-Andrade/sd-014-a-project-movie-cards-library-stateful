@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Form2 extends Component {
   render() {
@@ -37,5 +38,12 @@ class Form2 extends Component {
     );
   }
 }
+
+Form2.propTypes = {
+  imagePath: PropTypes.string.isRequired,
+  storyline: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  handleChange: PropTypes.func.isRequired,
+};
 
 export default Form2;

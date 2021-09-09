@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 import AddMovie from './AddMovie';
@@ -40,10 +41,10 @@ class MovieLibrary extends Component {
     });
   }
 
-  handleAddMovie = (filmes) => {
+  handleAddMovie = (newMovie) => {
     const { movies } = this.state;
     this.setState({
-      movies: [...movies, filmes],
+      movies: [...movies, newMovie],
     });
   }
 
@@ -65,5 +66,9 @@ class MovieLibrary extends Component {
     );
   }
 }
+
+MovieLibrary.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default MovieLibrary;
