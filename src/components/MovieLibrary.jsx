@@ -70,9 +70,8 @@ class MovieLibrary extends React.Component {
   onSearchTextChange({ target }) {
     const { value } = target;
     const { allMovies, bookmarkedOnly, selectedGenre } = this.state;
-    const search = value.toLowerCase();
     const movies = applyFilter(allMovies,
-      { content: search, marked: bookmarkedOnly, type: selectedGenre });
+      { content: value, marked: bookmarkedOnly, type: selectedGenre });
     this.setState({
       searchText: value,
       movies,
