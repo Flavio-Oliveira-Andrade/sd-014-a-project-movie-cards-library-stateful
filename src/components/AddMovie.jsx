@@ -2,9 +2,9 @@
 // implement AddMovie component here
 import React from 'react';
 import PropTypes from 'prop-types';
-// import RatingInput from './RatingInput';
+import RatingInput from './RatingInput';
 import GenreInput from './genreInput';
-import Rating from './Rating';
+// import Rating from './Rating';
 import TitleInput from './TitleInput';
 import Sinopse from './Sinopse';
 
@@ -73,8 +73,8 @@ class AddMovie extends React.Component {
           />
         </label>
         <Sinopse value={ storyline } onChange={ this.handleChange } />
-        {/* <RatingInput value={ rating } onChange={ this.handleChange } /> */}
-        <Rating value={ rating } onChange={ this.handleChange } />
+        <RatingInput value={ rating } onChange={ this.handleChange } />
+        {/* <Rating rating={ rating } onChange={ this.handleChange } /> */}
         <GenreInput value={ genre } onChange={ this.handleChange } />
         <button
           type="submit"
