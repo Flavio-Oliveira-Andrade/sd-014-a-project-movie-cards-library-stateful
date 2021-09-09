@@ -45,7 +45,10 @@ class MovieLibrary extends React.Component {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     const movieBookmark = movies.filter((movie) => {
       if (this.bookmarkedFilter(movie) && this.genreFilter(movie)) {
-        return movie.title.toLowerCase().includes(searchText.toLocaleLowerCase());
+        const { title, subtitle, storyline } = movie;
+        return title.toLowerCase().includes(searchText.toLowerCase())
+        || subtitle.toLowerCase().includes(searchText.toLowerCase())
+        || storyline.toLowerCase().includes(searchText.toLowerCase());
       }
       return false;
     });
