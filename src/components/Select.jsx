@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Select extends Component {
   render() {
@@ -21,5 +22,10 @@ class Select extends Component {
     );
   }
 }
+
+Select.propTypes = {
+  value: PropTypes.number,
+  handleChange: PropTypes.func,
+}.isRequired;
 
 export default Select;

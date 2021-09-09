@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class SubmitBtn extends Component {
   render() {
@@ -14,5 +15,9 @@ class SubmitBtn extends Component {
     );
   }
 }
+
+SubmitBtn.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+};
 
 export default SubmitBtn;

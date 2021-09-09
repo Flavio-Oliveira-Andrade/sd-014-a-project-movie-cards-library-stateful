@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Select from './Select';
 import AddRating from './AddRating';
 import Storyline from './Storyline';
@@ -63,5 +64,10 @@ class AddMovie extends Component {
     );
   }
 }
+
+AddMovie.propTypes = {
+
+  onClick: PropTypes.func.isRequired,
+};
 
 export default AddMovie;

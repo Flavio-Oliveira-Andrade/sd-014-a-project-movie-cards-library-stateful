@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Title extends Component {
   render() {
@@ -19,5 +20,10 @@ class Title extends Component {
     );
   }
 }
+
+Title.propTypes = {
+  value: PropTypes.number,
+  handleChange: PropTypes.func,
+}.isRequired;
 
 export default Title;

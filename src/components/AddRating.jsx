@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class AddRating extends Component {
   render() {
@@ -18,5 +19,10 @@ class AddRating extends Component {
     );
   }
 }
+
+AddRating.propTypes = {
+  value: PropTypes.number,
+  handleChange: PropTypes.func,
+}.isRequired;
 
 export default AddRating;
