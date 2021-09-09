@@ -43,10 +43,9 @@ class MovieLibrary extends React.Component {
     this.onFavorite = this.onFavorite.bind(this);
   }
 
-  onFavorite({ target }) {
-    const { id } = target;
+  onFavorite(name) {
     const { allMovies, searchText, bookmarkedOnly, selectedGenre } = this.state;
-    const index = allMovies.findIndex(({ title }) => title === id);
+    const index = allMovies.findIndex(({ title }) => title === name);
     allMovies[index].bookmarked = !allMovies[index].bookmarked;
     const movies = applyFilter(allMovies,
       { content: searchText, marked: bookmarkedOnly, type: selectedGenre });
@@ -71,33 +70,33 @@ class MovieLibrary extends React.Component {
     const { value } = target;
     const { allMovies, bookmarkedOnly, selectedGenre } = this.state;
     const search = value.toLowerCase();
-    const filtered = applyFilter(allMovies,
+    const movies = applyFilter(allMovies,
       { content: search, marked: bookmarkedOnly, type: selectedGenre });
     this.setState({
       searchText: value,
-      movies: filtered,
+      movies,
     });
   }
 
   onBookmarkedChange({ target }) {
     const { checked } = target;
     const { allMovies, searchText, selectedGenre } = this.state;
-    const filtered = applyFilter(allMovies,
+    const movies = applyFilter(allMovies,
       { content: searchText, marked: checked, type: selectedGenre });
     this.setState({
       bookmarkedOnly: checked,
-      movies: filtered,
+      movies,
     });
   }
 
   onSelectedGenreChange({ target }) {
     const { value } = target;
     const { allMovies, searchText, bookmarkedOnly } = this.state;
-    const filtered = applyFilter(allMovies,
+    const movies = applyFilter(allMovies,
       { content: searchText, marked: bookmarkedOnly, type: value });
     this.setState({
       selectedGenre: value,
-      movies: filtered,
+      movies,
     });
   }
 

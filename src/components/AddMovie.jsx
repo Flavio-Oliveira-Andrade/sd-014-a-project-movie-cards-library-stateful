@@ -34,7 +34,7 @@ class AddMovie extends React.Component {
     event.preventDefault();
     const movie = this.state;
     const validate = Object.entries(movie).reduce((acc, [key, value]) => (
-      (key !== 'imagePath' && value === '') ? false : acc
+      acc ? !(value === '' && key !== 'imagePath') : acc
     ), true);
     if (validate) {
       const { onClick } = this.props;

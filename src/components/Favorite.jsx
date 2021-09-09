@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 class Favorite extends React.Component {
   render() {
     const { title, bookmarked, callback } = this.props;
+    const id = title.toLowerCase().replace(/\s/g, '-');
     return (
-      <label htmlFor="favorite-checkbox">
+      <label htmlFor={ id }>
         <input
-          id={ title }
-          name={ title }
+          id={ id }
           type="checkbox"
           checked={ bookmarked }
-          onChange={ callback }
+          onChange={ () => callback(title) }
         />
         Favorito
       </label>
