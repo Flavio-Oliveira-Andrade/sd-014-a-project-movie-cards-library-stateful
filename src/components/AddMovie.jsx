@@ -10,7 +10,7 @@ class AddMovie extends React.Component {
       imagePath: '',
       storyline: '',
       rating: 0,
-      // genre: 'action',
+      genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
     this.funcInputCreator = this.funcInputCreator.bind(this);
@@ -20,14 +20,14 @@ class AddMovie extends React.Component {
     this.setState({ [event.target.id]: event.target.value });
   }
 
-  funcInputCreator(texto, stateName, stateValue) {
+  funcInputCreator(texto, stateName, stateValue, type) {
     return (
       <label htmlFor={ stateName } data-testid={ `${stateName}-input-label` }>
         {texto}
         <input
           id={ stateName }
           data-testid={ `${stateName}-input` }
-          type="text"
+          type={ type }
           onChange={ this.handleChange }
           value={ stateValue }
         />
@@ -36,12 +36,12 @@ class AddMovie extends React.Component {
   }
 
   render() {
-    const { title, subtitle, imagePath, storyline, rating } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <div>
         <form data-testid="add-movie-form">
-          {this.funcInputCreator('Título', 'title', title)}
-          {this.funcInputCreator('Subtítulo', 'subtitle', subtitle)}
+          {this.funcInputCreator('Título', 'title', title, 'text')}
+          {this.funcInputCreator('Subtítulo', 'subtitle', subtitle, 'text')}
           <label htmlFor="imagePath" data-testid="image-input-label">
             Imagem
             <input
@@ -61,15 +61,19 @@ class AddMovie extends React.Component {
               value={ storyline }
             />
           </label>
-          <label htmlFor="rating" data-testid="rating-input-label">
-            Avaliação
-            <input
-              id="rating"
-              data-testid="rating-input"
-              type="number"
+          {this.funcInputCreator('Avaliação', 'rating', rating, 'number')}
+          <label htmlFor="genre" data-testid="genre-input-label">
+            Gênero
+            <select
+              id="genre"
+              data-testid="genre-input"
+              value={ genre }
               onChange={ this.handleChange }
-              value={ rating }
-            />
+            >
+              <option value="action" data-testid="genre-option">Ação</option>
+              <option value="comedy" data-testid="genre-option">Comédia</option>
+              <option value="thriller" data-testid="genre-option">Suspense</option>
+            </select>
           </label>
         </form>
       </div>
