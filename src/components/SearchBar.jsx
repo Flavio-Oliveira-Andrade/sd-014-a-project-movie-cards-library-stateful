@@ -32,10 +32,10 @@ class SearchBar extends Component {
               onChange={ onBookmarkedChange }
             />
           </label>
-          <label htmlFor="onSelectedGenreChange" data-testid="select-input-label">
+          <label htmlFor="selectedGenre" data-testid="select-input-label">
             Filtrar por gênero
             <select
-              name="onSelectedGenreChange"
+              name="selectedGenre"
               value={ selectedGenre }
               onChange={ onSelectedGenreChange }
               data-testid="select-input"

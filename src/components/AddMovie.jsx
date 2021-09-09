@@ -25,7 +25,6 @@ class AddMovie extends Component {
 
   handleClick = (event) => {
     event.preventDefault();
-    console.log(this.props);
 
     const { onClick } = this.props;
     onClick();
@@ -41,7 +40,6 @@ class AddMovie extends Component {
   }
 
   render() {
-    console.log(this.props);
     const { title,
       subtitle,
       imagePath,
