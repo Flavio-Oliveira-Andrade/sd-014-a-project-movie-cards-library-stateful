@@ -5,7 +5,7 @@ class Form2 extends Component {
     const { imagePath, storyline, rating, handleChange } = this.props;
     return (
       <>
-        <label data-testid="image-input-label">
+        <label htmlFor="imagePath" data-testid="image-input-label">
           Imagem
           <input
             name="imagePath"
@@ -14,7 +14,7 @@ class Form2 extends Component {
             onChange={ handleChange }
           />
         </label>
-        <label data-testid="storyline-input-label">
+        <label htmlFor="storyline" data-testid="storyline-input-label">
           Sinopse
           <textarea
             name="storyline"
@@ -23,7 +23,7 @@ class Form2 extends Component {
             onChange={ handleChange }
           />
         </label>
-        <label data-testid="rating-input-label">
+        <label htmlFor="number" data-testid="rating-input-label">
           Avaliação
           <input
             type="number"
