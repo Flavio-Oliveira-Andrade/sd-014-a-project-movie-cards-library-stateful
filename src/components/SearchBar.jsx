@@ -13,6 +13,16 @@ class SearchBar extends React.Component {
     } = this.props;
     return (
       <form data-testid="search-bar-form">
+        {/* htmlFor nao precisa mas o linter reclama Oo */}
+        <label htmlFor="input" data-testid="text-input-label">
+          Inclui o texto:
+          <input
+            type="text"
+            data-testid="text-input"
+            value={ searchText }
+            onChange={ onSearchTextChange }
+          />
+        </label>
         <h1>{searchText}</h1>
         <h1>{onSearchTextChange}</h1>
         <h1>{bookmarkedOnly}</h1>

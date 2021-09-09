@@ -12,6 +12,8 @@ F
 
 # Sumário
 
+- [Boas vindas ao repositório do projeto de Movie Cards Library Stateful!](#boas-vindas-ao-repositório-do-projeto-de-movie-cards-library-stateful)
+- [Sumário](#sumário)
 - [Habilidades](#habilidades)
 - [Entregáveis](#entregáveis)
   - [O que deverá ser desenvolvido](#o-que-deverá-ser-desenvolvido)
@@ -25,7 +27,7 @@ F
   - [Estado de componentes](#estado-de-componentes)
   - [Linter](#linter)
   - [Testes](#testes)
-    - [Dica: desativando testes](#dica-desativando-testes)
+    - [Dica: desativando ou rodando apenas um teste](#dica-desativando-ou-rodando-apenas-um-teste)
     - [Dica: watch mode](#dica-watch-mode)
 - [Requisitos do projeto](#requisitos-do-projeto)
     - [1 - Crie um componente chamado `<SearchBar />`](#1---crie-um-componente-chamado-searchbar-)
@@ -41,15 +43,15 @@ F
     - [11 - Renderize uma `textarea` dentro do formulário em `<AddMovie />` para obter a sinopse do novo filme](#11---renderize-uma-textarea-dentro-do-formulário-em-addmovie--para-obter-a-sinopse-do-novo-filme)
     - [12 - Renderize um `input` do tipo `number` dentro do formulário em `<AddMovie />` para obter a avaliação do novo filme](#12---renderize-um-input-do-tipo-number-dentro-do-formulário-em-addmovie--para-obter-a-avaliação-do-novo-filme)
     - [13 - Renderize um `select` do formulário em `<AddMovie />` para selecionar o gênero do novo filme](#13---renderize-um-select-do-formulário-em-addmovie--para-selecionar-o-gênero-do-novo-filme)
-    - [14 - Renderize um botão do formulário em `<AddMovie />` para fazer uso dos dados do novo filme, contidos no estado de `<AddMovie />`](#14---renderize-um-botão-do-formulário-em-addmovie--para-fazer-uso-dos-dados-do-novo-filme-contidos-no-estado-de-addmovie)
+    - [14 - Renderize um botão do formulário em `<AddMovie />` para fazer uso dos dados do novo filme, contidos no estado de `<AddMovie />`](#14---renderize-um-botão-do-formulário-em-addmovie--para-fazer-uso-dos-dados-do-novo-filme-contidos-no-estado-de-addmovie-)
     - [15 - Crie um componente chamado `<MovieLibrary />`](#15---crie-um-componente-chamado-movielibrary-)
-    - [16 - Configure o estado inicial do componente `<MovieLibrary />`](#16---configure-o-estado-inicial-do-componente-movielibray-)
-    - [17 - Renderize `<SearchBar />` dentro de `<MovieLibrary />`](#17---renderize-searchbar-dentro-de-movielibrary-)
+    - [16 - Configure o estado inicial do componente `MovieLibray`](#16---configure-o-estado-inicial-do-componente-movielibray)
+    - [17 - Renderize `<SearchBar />` dentro de `<MovieLibrary />`](#17---renderize-searchbar--dentro-de-movielibrary-)
     - [18 - Renderize `<MovieList />` dentro de `<MovieLibrary />`](#18---renderize-movielist--dentro-de-movielibrary-)
-    - [19 - Renderize `<AddMovie />` dentro de `<MovieLibrary />`](#19---renderize-addmovie-dentro-de-movielibrary-)
+    - [19 - Renderize `<AddMovie />` dentro de `<MovieLibrary />`](#19---renderize-addmovie--dentro-de-movielibrary-)
     - [20 - Adicione proptypes a todos os componentes](#20---adicione-proptypes-a-todos-os-componentes)
-- [Depois de terminar o desenvolvimento](#depois-de-terminar-o-desenvolvimento)
-- [Revisando um pull request](#revisando-um-pull-request)
+  - [Depois de terminar o desenvolvimento](#depois-de-terminar-o-desenvolvimento)
+    - [Revisando um pull request](#revisando-um-pull-request)
 - [Avisos Finais](#avisos-finais)
 
 # Habilidades
