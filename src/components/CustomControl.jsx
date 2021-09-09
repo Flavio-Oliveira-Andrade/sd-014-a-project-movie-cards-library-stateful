@@ -2,14 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CustomInput from './CustomInput';
 import CustomSelect from './CustomSelect';
+import CustomTextarea from './CustomTextarea';
 
 class CustomControl extends React.Component {
   renderControl(props) {
     switch (props.type) {
     case 'select':
       return <CustomSelect { ...props } />;
-    // case 'textarea':
-    //   return <CustomTextarea { ...props } />;
+    case 'textarea':
+      return <CustomTextarea { ...props } />;
     default:
       return <CustomInput { ...props } />;
     }

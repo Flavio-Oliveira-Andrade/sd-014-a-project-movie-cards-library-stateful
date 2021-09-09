@@ -7,7 +7,7 @@ class AddMovie extends React.Component {
     this.state = {
       subtitle: '',
       title: '',
-      // story: '',
+      storyline: '',
       // imagePath: '',
       // rating: 0,
       // genre: '',
@@ -24,7 +24,7 @@ class AddMovie extends React.Component {
 
   render() {
     // const { onClick } = this.props;
-    const { title, subtitle, image } = this.state;
+    const { title, subtitle, image, storyline } = this.state;
     return (
       <form data-testid="add-movie-form">
         <CustomControl
@@ -46,6 +46,13 @@ class AddMovie extends React.Component {
           type="text"
           labelText="Imagem"
           value={ image }
+          onChange={ this.handleChange }
+        />
+        <CustomControl
+          name="storyline"
+          type="textarea"
+          labelText="Sinopse"
+          value={ storyline }
           onChange={ this.handleChange }
         />
       </form>
