@@ -17,35 +17,16 @@ class MovieLibrary extends React.Component {
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
-    // this.genericHandler = this.genericHandler.bind(this);
   }
-
-  // genericHandler({ target }) {
-  //   const { name } = target;
-  //   const value = target.type === 'checked' ? target.checked : target.value;
-  //   this.setState({ [name]: value });
-  // }
 
   onSearchTextChange({ target }) {
     const { value } = target;
-    const { movies } = this.props;
-    const textFilter = movies.filter(({ title, subtitle, storyline }) => (
-      title.includes(value) || subtitle.includes(value) || storyline.includes(value)
-    ));
-    this.setState(
-      { searchText: value, movies: [...textFilter] },
-    );
-    return textFilter;
+    this.setState({ searchText: value });
   }
 
   onBookmarkedChange({ target }) {
     const { checked } = target;
-    const { movies } = this.props;
-    const bookFilter = movies.filter((film) => film.bookmarked);
-    const unFilter = movies.filter((film) => film.bookmarked === false);
-    const bookCheck = checked ? bookFilter : unFilter;
-    // const bookFilter = this.onSearchTextChange.filter((film) => film.bookmarked);
-    this.setState({ bookmarkedOnly: checked, movies: bookCheck });
+    this.setState({ bookmarkedOnly: checked });
   }
 
   onSelectedGenreChange({ target }) {
@@ -55,6 +36,21 @@ class MovieLibrary extends React.Component {
 
   render() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+
+    const filmsTextFilter = movies.filter(({ title, subtitle, storyline }) => (
+      title.includes(searchText)
+      || subtitle.includes(searchText)
+      || storyline.includes(searchText)
+    ));
+
+    const filmsBookmarkFilter = bookmarkedOnly
+      ? filmsTextFilter.filter((film) => film.bookmarked)
+      : filmsTextFilter;
+
+    const filmsGenreFilter = selectedGenre.includes('', 'Todos')
+      ? filmsBookmarkFilter.filter((film) => film.genre.includes(selectedGenre))
+      : filmsBookmarkFilter;
+
     return (
       <section>
         <SearchBar
@@ -64,9 +60,8 @@ class MovieLibrary extends React.Component {
           onSearchTextChange={ this.onSearchTextChange }
           onBookmarkedChange={ this.onBookmarkedChange }
           onSelectedGenreChange={ this.onSelectedGenreChange }
-          // onChange={ this.genesricHandler }
         />
-        <MovieList movies={ movies } />
+        <MovieList movies={ filmsGenreFilter } />
       </section>
     );
   }
@@ -77,3 +72,5 @@ MovieLibrary.propTypes = {
 };
 
 export default MovieLibrary;
+
+// my man Henrique Jensen gave me a great tip on this: Instead of keeping the filtering logic within the functions, it would be best to put it all inside the render(). Why? Because in there it will make sure that everytime *anything* on the screen changes it will run render() again and ensure that every filter will be updated, so I won't be needing to have each filter call each other so that their own filters aren't mutually exclusive. Fuckin' A - that's brilliant.
