@@ -21,22 +21,27 @@ class AddMovie extends Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
+  customInput(type, id, value, dataTestId) {
+    return (
+      <input
+        type={ type }
+        id={ id }
+        value={ value }
+        onChange={ this.handleChange }
+        data-testid={ dataTestId }
+        name={ id }
+      />
+    );
+  }
+
   render() {
-    const { handleChange } = this;
     const { onClick } = this.props;
     const { title } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="input-text-addmovie" data-testid="title-input-label">
           Título
-          <input
-            type="text"
-            id="input-text-addmovie"
-            name="title"
-            value={ title }
-            data-testid="title-input"
-            onChange={ handleChange }
-          />
+          { this.customInput('text', 'title', title, 'title-input') }
         </label>
       </form>
     );
