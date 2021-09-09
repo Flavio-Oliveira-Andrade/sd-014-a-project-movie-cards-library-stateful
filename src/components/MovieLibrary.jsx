@@ -12,12 +12,11 @@ class MovieLibrary extends React.Component {
       selectedGenre: '',
       movies: props.movies,
     };
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange({ target }) {
-    this.setState({
-      [target.name]: target.value,
-    });
+    this.setState({ [target.name]: target.value });
   }
 
   render() {
