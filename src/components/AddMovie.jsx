@@ -52,7 +52,7 @@ class AddMovie extends Component {
       genre,
     } = this.state;
     return (
-      <form data-testid="add-movie-form">
+      <form data-testid="add-movie-form" className="add-movie-form">
         <Title value={ title } handleChange={ this.handleChange } />
         <Subtitle value={ subtitle } handleChange={ this.handleChange } />
         <ImagePath value={ imagePath } handleChange={ this.handleChange } />
@@ -66,7 +66,6 @@ class AddMovie extends Component {
 }
 
 AddMovie.propTypes = {
-
   onClick: PropTypes.func.isRequired,
 };
 
