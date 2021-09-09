@@ -31,6 +31,11 @@ class MovieLibrary extends React.Component {
     this.setState({ [name]: value });
   }
 
+  handleClick(movie) {
+    this.setState((previousState) => ({
+      movies: [...previousState.movies, movie] }));
+  }
+
   onSearchTextChange() {
     const { movies, searchText } = this.props;
     const arrayOfMovies = movies;
