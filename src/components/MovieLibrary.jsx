@@ -15,15 +15,26 @@ class MovieLibrary extends React.Component {
       movies,
     };
     this.handleChange = this.handleChange.bind(this);
+    this.onSearchTextChange = this.onSearchTextChange.bind(this);
   }
 
-  handleChange({ target }) {
-    const { name } = target;
-    const value = (target.type === 'checkbox' ? target.checked : target.value);
+  handleChange(event) {
+    const { name } = event.target;
+    const value = (event.target.type === 'checkbox' ? event
+      .target.checked : event.target.value);
     this.setState({
       [name]: value,
     });
-    console.log(this);
+  }
+
+  onSearchTextChange(event) {
+    const { movies } = this.props;
+    const { searchText } = this.state;
+    this.handleChange(event);
+    this.setState({
+      movies: movies.filter((filme) => filme.title.toLowerCase()
+        .includes(searchText) || filme.storyline.includes(searchText)),
+    });
   }
 
   render() {
@@ -32,7 +43,7 @@ class MovieLibrary extends React.Component {
       <section>
         <SearchBar
           searchText={ searchText }
-          onSearchTextChange={ this.handleChange }
+          onSearchTextChange={ this.onSearchTextChange }
           bookmarkedOnly={ bookmarkedOnly }
           onBookmarkedChange={ this.handleChange }
           selectedGenre={ selectedGenre }
