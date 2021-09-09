@@ -71,8 +71,6 @@ class AddMovie extends Component {
             value={ storyline }
             id="sinopse"
             data-testid="storyline-input"
-            cols="30"
-            rows="10"
             onChange={ this.handleChange }
           />
         </label>
@@ -98,7 +96,14 @@ class AddMovie extends Component {
 
           </select>
         </label>
-        <button data-testid="send-button" type="submit" onClick={ this.handleClickButton }>Adicionar filme</button>
+        <button
+          data-testid="send-button"
+          type="submit"
+          onClick={ this.handleClickButton }
+        >
+          Adicionar filme
+        </button>
+
       </form>
     );
   }
