@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './style/components.css';
 import PropTypes from 'prop-types';
 import Option from './Option';
 
