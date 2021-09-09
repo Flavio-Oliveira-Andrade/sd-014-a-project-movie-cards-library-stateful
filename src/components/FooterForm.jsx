@@ -12,10 +12,10 @@ class FooterForm extends Component {
         </label>
         <label htmlFor="genero" data-testid="genre-input-label">
           Gênero
-          <select name="" id="" value={ genre } data-testid="genre-input">
-            <option value="action">Ação</option>
-            <option value="comedy">Comédia</option>
-            <option value="thriller">Suspense</option>
+          <select name="" id="" value={ genre } data-testid="genre-input" onChange>
+            <option value="action" data-testid="genre-option">Ação</option>
+            <option value="comedy" data-testid="genre-option">Comédia</option>
+            <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
       </>
