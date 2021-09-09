@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import TextInput from './TextInput';
+import CheckboxInput from './CheckboxInput';
+import SelectInput from './SelectInput';
 
 class SearchBar extends React.Component {
   render() {
@@ -14,40 +17,9 @@ class SearchBar extends React.Component {
 
     return (
       <form data-testid="search-bar-form">
-        <label data-testid="text-input-label" htmlFor="text-input">
-          Inclui o texto
-          <input
-            type="text"
-            data-testid="text-input"
-            value={ searchText }
-            onChange={ onSearchTextChange }
-            id="text-input"
-          />
-        </label>
-        <label data-testid="checkbox-input-label" htmlFor="checkbox-input">
-          Mostrar somente favoritos
-          <input
-            type="checkbox"
-            checked={ bookmarkedOnly }
-            onChange={ onBookmarkedChange }
-            data-testid="checkbox-input"
-            id="checkbox-input"
-          />
-        </label>
-        <label data-testid="select-input-label" htmlFor="select-input">
-          Filtrar por gênero
-          <select
-            value={ selectedGenre }
-            onChange={ onSelectedGenreChange }
-            data-testid="select-input"
-            id="select-input"
-          >
-            <option data-testid="select-option" value="">Todos</option>
-            <option data-testid="select-option" value="action">Ação</option>
-            <option data-testid="select-option" value="comedy">Comédia</option>
-            <option data-testid="select-option" value="thriller">Suspense</option>
-          </select>
-        </label>
+        <TextInput value={ searchText } onChange={ onSearchTextChange } />
+        <CheckboxInput checked={ bookmarkedOnly } nChange={ onBookmarkedChange } />
+        <SelectInput value={ selectedGenre } onChange={ onSelectedGenreChange } />
       </form>
     );
   }
