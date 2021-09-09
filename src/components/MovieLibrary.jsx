@@ -14,22 +14,19 @@ class MovieLibrary extends React.Component {
       movies: allMovies,
     };
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
-    this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
-    this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
+    this.onHandleChange = this.onHandleChange.bind(this);
+  }
+
+  onHandleChange({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+
+    this.setState({ [name]: value });
   }
 
   onSearchTextChange({ target }) {
     // this.setState((state) => ({ ...state, searchText: target.value}));
     this.setState({ searchText: target.value });
-  }
-
-  onBookmarkedChange({ target }) {
-    console.log(target);
-    this.setState((state) => ({ bookmarkedOnly: !state.bookmarked }));
-  }
-
-  onSelectedGenreChange({ target }) {
-    this.setState({ selectedGenre: target.value });
   }
 
   render() {
@@ -39,11 +36,11 @@ class MovieLibrary extends React.Component {
         <h2> My awesome movie library </h2>
         <SearchBar
           searchText={ searchText }
-          onSearchTextChange={ this.onSearchTextChange }
-          bookmarked={ bookmarkedOnly }
-          onBookmarkedChange={ this.onBookmarkedChange }
+          onSearchTextChange={ this.onHandleChange }
+          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.onHandleChange }
           selectedGenre={ selectedGenre }
-          onSelectedGenreChange={ this.onSelectedGenreChange }
+          onSelectedGenreChange={ this.onHandleChange }
         />
         <MovieList movies={ movies } />
         <AddMovie />
