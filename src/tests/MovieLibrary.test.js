@@ -2,7 +2,6 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import event from '@testing-library/user-event';
-
 import MovieLibrary from '../components/MovieLibrary';
 
 const movies = [
@@ -47,7 +46,7 @@ describe('15 - Crie um componente chamado `<MovieLibrary />`', () => {
   });
 });
 
-describe.skip('16 - Configure o estado inicial do componente `<MovieLibrary />`', () => {
+describe('16 - Configure o estado inicial do componente `<MovieLibrary />`', () => {
   it('Defina o estado inicial de `searchText` como uma string vazia', () => {
     const { getByTestId } = render(<MovieLibrary movies={ movies } />);
     const searchText = getByTestId(textTestId);
@@ -73,7 +72,7 @@ describe.skip('16 - Configure o estado inicial do componente `<MovieLibrary />`'
   });
 });
 
-describe.skip('17 - Renderize `<SearchBar />` dentro de `<MovieLibrary />`', () => {
+describe('17 - Renderize `<SearchBar />` dentro de `<MovieLibrary />`', () => {
   it('Renderize o componente `<SearchBar />`', () => {
     const { getAllByTestId } = render(<MovieLibrary movies={ movies } />);
     const searchBar = getAllByTestId('search-bar-form');
@@ -106,7 +105,7 @@ describe.skip('17 - Renderize `<SearchBar />` dentro de `<MovieLibrary />`', () 
   });
 });
 
-describe.skip('18 - Renderize `<MovieList />` dentro de `<MovieLibrary />`', () => {
+describe('18 - Renderize `<MovieList />` dentro de `<MovieLibrary />`', () => {
   it('Renderize o componente `<MovieList />`', () => {
     const { getAllByTestId } = render(<MovieLibrary movies={ movies } />);
     const movieList = getAllByTestId('movie-list');
@@ -188,7 +187,7 @@ describe.skip('18 - Renderize `<MovieList />` dentro de `<MovieLibrary />`', () 
   });
 });
 
-describe.skip('19 - Renderize `<AddMovie />` dentro de `<MovieLibrary />`', () => {
+describe('19 - Renderize `<AddMovie />` dentro de `<MovieLibrary />`', () => {
   it('Renderize o componente `<AddMovie />`', () => {
     const { getAllByTestId } = render(<MovieLibrary movies={ movies } />);
     const addMovieForm = getAllByTestId('add-movie-form');
