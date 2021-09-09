@@ -17,9 +17,12 @@ class AddMovie extends Component {
   }
 
   render() {
-
+    const { subtitle, title,
+      imagePath, storyline, rating,
+      genre } = this.state;
     return (
-      <div />
+      <form data-testid="add-movie-form">
+      </form>
     );
   }
 }
