@@ -9,13 +9,12 @@ class SearchBar extends Component {
       onSearchTextChange,
       bookmarkedOnly,
       onBookmarkedChange,
-      /* selectedGenre,
-      onSelectedGenreChange, */
+      selectedGenre,
+      onSelectedGenreChange,
     } = this.props;
 
     return (
       <form data-testid="search-bar-form">
-
         <label htmlFor="text-input" data-testid="text-input-label">
           Inclui o texto:
           <input
@@ -36,6 +35,20 @@ class SearchBar extends Component {
           />
         </label>
 
+        <label htmlFor="a" data-testid="select-input-label">
+          Filtrar por gênero
+          <select
+            name="select"
+            data-testid="select-input"
+            value={ selectedGenre }
+            onChange={ onSelectedGenreChange }
+          >
+            <option data-testid="select-option" value="">Todos</option>
+            <option data-testid="select-option" value="action" selected>Ação</option>
+            <option data-testid="select-option" value="comedy">Comédia</option>
+            <option data-testid="select-option" value="thriller">Suspense</option>
+          </select>
+        </label>
       </form>
     );
   }
@@ -46,8 +59,8 @@ SearchBar.propTypes = {
   onSearchTextChange: PropTypes.func.isRequired,
   bookmarkedOnly: PropTypes.bool.isRequired,
   onBookmarkedChange: PropTypes.func.isRequired,
-  /* selectedGenre: PropTypes.string.isRequired,
-  onSelectedGenreChange: PropTypes.func.isRequired, */
+  selectedGenre: PropTypes.string.isRequired,
+  onSelectedGenreChange: PropTypes.func.isRequired,
 };
 
 export default SearchBar;
