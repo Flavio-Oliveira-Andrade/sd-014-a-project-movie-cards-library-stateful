@@ -9,28 +9,10 @@ import RatingAux from './auxAddMovie/RatingAux';
 import SelectAux from './auxAddMovie/SelectAux';
 
 class AddMovie extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.handleChange = this.handleChange.bind(this);
     this.addMovie = this.addMovie.bind(this);
-    this.initialState = this.initialState.bind(this);
-    this.initialState();
-  }
-
-  handleChange(event) {
-    const { id, value } = event.target;
-    this.setState({
-      [id]: value,
-    });
-  }
-
-  async addMovie() {
-    const { onClick } = this.props;
-    onClick(this.state);
-    this.initialState();
-  }
-
-  initialState() {
     this.state = {
       subtitle: '',
       title: '',
@@ -41,8 +23,28 @@ class AddMovie extends Component {
     };
   }
 
+  handleChange(event) {
+    const { id, value } = event.target;
+    this.setState({
+      [id]: value,
+    });
+  }
+
+  addMovie() {
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
   render() {
-    const { subtitle, title, imagePath, storyline, rating, genre } = this.props;
+    const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <TitleAux title={ title } handleChange={ this.handleChange } />
@@ -60,12 +62,6 @@ class AddMovie extends Component {
 }
 
 AddMovie.propTypes = {
-  subtitle: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  imagePath: PropTypes.string.isRequired,
-  storyline: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-  genre: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 

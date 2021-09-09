@@ -9,20 +9,12 @@ import AddMovie from './AddMovie';
 class MovieLibrary extends Component {
   constructor() {
     super();
-
-    this.initialState = this.initialState.bind(this);
-    this.initialState();
+    this.addMovie = this.addMovie.bind(this);
   }
 
-  initialState() {
-    this.state = {
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    };
+  addMovie(list) {
+    const { movies } = this.props;
+    movies.push(list);
   }
 
   render() {
@@ -32,7 +24,7 @@ class MovieLibrary extends Component {
         <h2> My awesome movie library </h2>
         <SearchBar />
         <MovieList movies={ movies } />
-        <AddMovie />
+        <AddMovie onClick={ this.addMovie } />
       </div>
     );
   }
@@ -41,5 +33,12 @@ class MovieLibrary extends Component {
 MovieLibrary.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
+
+// MovieLibrary.defaultProps = {
+//   searchText: '',
+//   bookmarkedOnly: false,
+//   selectedGenre: '',
+//   movies: [{}],
+// };
 
 export default MovieLibrary;
