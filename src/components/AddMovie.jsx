@@ -59,6 +59,10 @@ class AddMovie extends Component {
             onChange={ this.loadText }
           />
         </label>
+        <FormsConstructor
+          nome={ ['genre', 'Gênero', genre] }
+          load={ this.loadText }
+        />
       </form>
     );
   }
