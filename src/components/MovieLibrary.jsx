@@ -3,7 +3,7 @@ import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 import AddMovie from './AddMovie';
 
-const movies = require('../data');
+const allMovies = require('../data');
 
 class MovieLibrary extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class MovieLibrary extends React.Component {
       searchText: '',
       bookmarked: false,
       selectedGenre: '',
-      movies,
+      movies: allMovies,
     };
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
