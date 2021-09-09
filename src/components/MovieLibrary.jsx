@@ -9,7 +9,7 @@ import MovieList from './MovieList';
 // requisito 16
 class MovieLibrary extends React.Component {
   constructor(props) {
-    super();
+    super(props);
     const { movies } = props;
     this.state = {
       searchText: '',
@@ -87,10 +87,9 @@ class MovieLibrary extends React.Component {
   // por ultimo atualiza o setState com movies sendo tudo que vem no array movies mais a funcao criada;
 
   addNewMovie(movie) {
-    const { movies } = this.state;
-    const movieNew = movie;
-    movieNew.rating = parseFloat(movie.rating);
-    this.setState({ movies: [...movies, movieNew] });
+    // const movieNew = movie;
+    movie.rating = parseFloat(movie.rating);
+    this.setState(({ movies }) => ({ movies: [...movies, movie] }));
   }
   // abaixo no render estou fazendo uso do this props para acessar todas as propriedades passadas em state
   // e dentro de SearchBar e AddMovie e MovieList fazendo as reinderizações de todas as funcoes criadas junto as propriedades de state conforme requisito.
