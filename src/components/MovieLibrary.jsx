@@ -15,7 +15,15 @@ class MovieLibrary extends Component {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
 
     return (
-      <div />
+      <SearchBar
+        searchText={ searchText }
+        onSearchTextChange={ this.loadElement }
+        bookmarkedOnly={ bookmarkedOnly }
+        onBookmarkedChange={ this.loadElement }
+        selectedGenre={ selectedGenre }
+        onSelectedGenreChange={ this.loadElement }
+      />
+
     );
   }
 }
