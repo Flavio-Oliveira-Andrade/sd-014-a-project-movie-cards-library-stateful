@@ -11,7 +11,6 @@ class SelectInput extends React.Component {
           id={ name }
           name={ name }
           data-testid={ `${name}-input` }
-          type="number"
           value={ value }
           onChange={ cb }
         >

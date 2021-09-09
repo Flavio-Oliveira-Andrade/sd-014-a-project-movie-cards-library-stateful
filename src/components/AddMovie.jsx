@@ -20,9 +20,8 @@ class AddMovie extends React.Component {
   }
 
   addMovieBtn = () => {
-    const { onClick } = this.props;
-    const getMovie = onClick;
-    getMovie(this.state);
+    const { onClick: getMovieInfo } = this.props;
+    getMovieInfo(this.state);
     this.setState({
       subtitle: '',
       title: '',
@@ -40,7 +39,7 @@ class AddMovie extends React.Component {
         imagePath: value,
       });
     } else {
-      this.setState({ // value chega como string por ser extraído de string de html;
+      this.setState({ // value chega como string por ser extraído de html;
         [name]: (name === 'rating' ? Number(value) : value),
       });
     }
