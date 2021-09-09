@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Meus Imports:
+import SearchBarInput from './SearchBarInput';
+import SearchBarCheck from './SearchBarCheck';
+import SearchBarSelect from './SearchBarSelect';
+
 class SearchBar extends React.Component {
   render() {
     const {
@@ -13,22 +18,9 @@ class SearchBar extends React.Component {
     } = this.props;
     return (
       <form data-testid="search-bar-form">
-        {/* htmlFor nao precisa mas o linter reclama Oo */}
-        <label htmlFor="input" data-testid="text-input-label">
-          Inclui o texto:
-          <input
-            type="text"
-            data-testid="text-input"
-            value={ searchText }
-            onChange={ onSearchTextChange }
-          />
-        </label>
-        <h1>{searchText}</h1>
-        <h1>{onSearchTextChange}</h1>
-        <h1>{bookmarkedOnly}</h1>
-        <h1>{onBookmarkedChange}</h1>
-        <h1>{selectedGenre}</h1>
-        <h1>{onSelectedGenreChange}</h1>
+        <SearchBarInput value={ searchText } callbackFunc={ onSearchTextChange } />
+        <SearchBarCheck checked={ bookmarkedOnly } callbackFunc={ onBookmarkedChange } />
+        <SearchBarSelect value={ selectedGenre } callbackFunc={ onSelectedGenreChange } />
       </form>
     );
   }
@@ -36,11 +28,11 @@ class SearchBar extends React.Component {
 
 SearchBar.defaultProps = {
   searchText: '',
-  onSearchTextChange: '',
-  bookmarkedOnly: '',
-  onBookmarkedChange: '',
+  onSearchTextChange: () => (undefined),
+  bookmarkedOnly: false,
+  onBookmarkedChange: () => (undefined),
   selectedGenre: '',
-  onSelectedGenreChange: '',
+  onSelectedGenreChange: () => (undefined),
 };
 
 SearchBar.propTypes = {

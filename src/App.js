@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './components/Header';
 import './App.css';
 
-// Meus Importes:
+// Meus Imports:
 import SearchBar from './components/SearchBar';
 
 function App() {
