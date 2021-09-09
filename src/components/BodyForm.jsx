@@ -12,7 +12,7 @@ class BodyForm extends Component {
             type="text"
             data-testid="image-input"
             value={ imagePath }
-            onChange={ handleChange }
+            onChange
           />
         </label>
         <label htmlFor="sinopse" data-testid="storyline-input-label">
@@ -24,7 +24,7 @@ class BodyForm extends Component {
             rows="10"
             value={ storyline }
             data-testid="storyline-input"
-            onChange={ handleChange }
+            onChange
           />
         </label>
       </>

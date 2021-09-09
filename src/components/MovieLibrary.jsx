@@ -6,6 +6,7 @@ import SearchBar from './SearchBar';
 
 /** Data */
 import movies from '../data';
+import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
   constructor() {
@@ -23,6 +24,7 @@ class MovieLibrary extends Component {
       <main>
         <SearchBar { ...this.state } />
         <MovieList movies={ movies } />
+        <AddMovie />
       </main>
     );
   }
