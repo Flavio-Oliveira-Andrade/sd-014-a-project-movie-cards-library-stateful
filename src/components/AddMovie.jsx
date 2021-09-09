@@ -13,76 +13,61 @@ class AddMovie extends React.Component {
       genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleChange = ({ target }) => this.setState({
-    [target.name]: (target.type === 'checkbox' ? target.checked : target.value),
-  });
+  handleChange({ event }) {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  }
+
+  criarInputPadrao = (typeIn, nameIn, valueIn, dataIn) => (
+    <input
+      type={ typeIn }
+      name={ nameIn }
+      value={ valueIn }
+      data-testid={ dataIn }
+      onChange={ this.handleChange }
+    />
+  )
 
   render() {
+    const { onClick } = this.props;
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="texto" data-testid="title-input-label">
           Título
-          <input
-            type="text"
-            value="searchText"
-            id="texto"
-            data-testid="text-input"
-          />
+          { this.createInput('text', 'title', title, 'title-input') }
         </label>
         <label htmlFor="subtitle" data-testid="subtitle-input-label">
           Subtítulo
-          <input
-            type="text"
-            value="searchText"
-            id="subtitle"
-            data-testid="subtitle-input"
-          />
+          { this.createInput('text', 'subtitle', subtitle, 'subtitle-input') }
         </label>
-        <label htmlFor="texto" data-testid="title-input-label">
+        <label htmlFor="rating" data-testid="rating-input-label">
           Avaliação
-          <input
-            type="text"
-            value="searchText"
-            id="texto"
-            data-testid="rating-input"
-          />
+          { this.createInput('number', 'rating', rating, 'rating-inputl') }
         </label>
-        <label htmlFor="texto" data-testid="image-input-label">
+        <label htmlFor="image" data-testid="image-input-label">
           Imagem
-          <input
-            type="text"
-            value="searchText"
-            id="texto"
-            data-testid="image-input"
-          />
+          { this.createInput('text', 'image', imagePath, 'image-inputl') }
         </label>
         <label htmlFor="storyline" data-testid="storyline-input-label">
           Sinopse
-          <input
-            type="text"
-            value="storyline"
-            id="storyline"
-            data-testid="storyline-input"
-          />
+          { this.createInput('textarea', 'storyline', storyline, 'storyline-inputl') }
         </label>
         <label htmlFor="genre" data-testid="genre-input-label">
           Gênero
-          <input
-            type="text"
-            value="genre"
-            id="genre"
+          <select
+            value={ genre }
             data-testid="genre-input"
-          />
+            onChange={ this.handleChange }
+          >
+            <option data-testid="genre-option" value="action">Ação</option>
+            <option data-testid="genre-option" value="comedy">Comédia</option>
+            <option data-testid="genre-option" value="thriller">Suspense</option>
+          </select>
         </label>
-        <button
-          type="submit"
-          onClick={ this.handleClick }
-          data-testid="send-button"
-        >
+        <button data-testid="send-button" type="submit" onClick={ onClick }>
           Adicionar filme
         </button>
       </form>

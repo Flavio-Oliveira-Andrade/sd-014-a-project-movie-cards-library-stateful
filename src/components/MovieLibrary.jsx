@@ -7,7 +7,7 @@ import AddMovie from './AddMovie';
 class MovieLibrary extends React.Component {
   constructor(props) {
     super();
-    const { movie } = props;
+    const { movies } = props;
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
@@ -90,4 +90,5 @@ class MovieLibrary extends React.Component {
       </div>);
   }
 }
+
 export default MovieLibrary;
