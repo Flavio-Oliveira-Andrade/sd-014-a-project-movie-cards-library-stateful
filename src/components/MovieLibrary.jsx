@@ -19,12 +19,12 @@ class MovieLibrary extends React.Component {
     this.addMovieFunc = this.addMovieFunc.bind(this);
   }
 
-  handleChange({ target }) {
-    if (target.type === 'checkbox') {
-      this.setState({ [target.name]: target.checked });
+  handleChange({ target: { type, name, checked, value } }) {
+    if (type === 'checkbox') {
+      this.setState({ [name]: checked });
       return;
     }
-    this.setState({ [target.name]: target.value });
+    this.setState({ [name]: value });
   }
 
   bookmarkedFilter(movie) {

@@ -22,9 +22,9 @@ class AddMovie extends React.Component {
     this.movieGenre = this.movieGenre.bind(this);
   }
 
-  handleChange({ target }) {
+  handleChange({ target: { id, value } }) {
     this.setState({
-      [target.id]: target.value,
+      [id]: value,
     });
   }
 
