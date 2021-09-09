@@ -19,7 +19,7 @@ class SearchBar extends Component {
           />
         </label>
         <label data-testid="checkbox-input-label" htmlFor="checkbox-input">
-          Mostar somente favoritos
+          Mostrar somente favoritos
           <input
             type="checkbox"
             checked={ bookmarkedOnly }
