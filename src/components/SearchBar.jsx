@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import './style/components.css';
 import PropTypes from 'prop-types';
+import Option from './Option';
 
 export default class SearchBar extends Component {
   render() {
     const { searchText, onSearchTextChange, bookmarkedOnly,
       onBookmarkedChange, selectedGenre, onSelectedGenreChange } = this.props;
+
+    const opt = [
+      { name: 'Todos', value: '' },
+      { name: 'Ação', value: 'action' },
+      { name: 'Comédia', value: 'comedy' },
+      { name: 'Suspense', value: 'thriller' },
+    ];
 
     return (
       <form data-testid="search-bar-form">
@@ -24,18 +32,24 @@ export default class SearchBar extends Component {
           htmlFor="bookmarkedCheckbox"
           onChange={ onBookmarkedChange }
         >
-          Mostrar somente favoritos
           <input
             checked={ bookmarkedOnly }
             data-testid="checkbox-input"
             id="bookmarkedCheckbox"
             type="checkbox"
           />
+          Mostrar somente favoritos
         </label>
-        <h2>{selectedGenre}</h2>
-        <h2>{bookmarkedOnly}</h2>
-        <h2>{onBookmarkedChange}</h2>
-        <h2>{onSelectedGenreChange}</h2>
+        <label htmlFor="select" data-testid="select-input-label">
+          Filtrar por gênero
+          <select
+            value={ selectedGenre }
+            onChange={ onSelectedGenreChange }
+            data-testid="select-input"
+          >
+            {opt.map((a) => <Option key={ a.name } name={ a.name } value={ a.value } />)}
+          </select>
+        </label>
       </form>
     );
   }

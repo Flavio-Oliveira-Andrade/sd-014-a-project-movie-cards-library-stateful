@@ -12,7 +12,7 @@ function App() {
         onSearchTextChange={ () => {} }
         bookmarkedOnly={ false }
         onBookmarkedChange={ () => {} }
-        selectedGenre="string"
+        selectedGenre=""
         onSelectedGenreChange={ () => {} }
       />
     </div>
