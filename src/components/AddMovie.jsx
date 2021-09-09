@@ -22,7 +22,9 @@ class AddMovie extends Component {
     /** Descricão: Para forçar a base decimal incluindo o zero basta passa a BASE como segundo parâmetro
     * Source https://stackoverflow.com/questions/8763396/javascript-parseint-with-leading-zeros
     */
-    this.setState({ [event.target.name]: parseInt(event.target.value, BASE) });
+    const stateValue = event.target.name === 'rating'
+      ? parseInt(event.target.value, BASE) : event.target.value;
+    this.setState({ [event.target.name]: stateValue });
   }
 
   addMovie() {
@@ -48,7 +50,13 @@ class AddMovie extends Component {
           genre={ genre }
           handleChange={ this.handleChange }
         />
-        <button type="submit" data-testid="send-button" onClick={ this.addMovie }>Adicionar filme</button>
+        <button
+          type="submit"
+          data-testid="send-button"
+          onClick={ this.addMovie }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
