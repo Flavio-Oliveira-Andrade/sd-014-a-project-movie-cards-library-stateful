@@ -7,21 +7,24 @@ class HeaderForm extends Component {
     const { title, subtitle, handleChange } = this.props;
     return (
       <>
-        <label htmlFor="Título" data-testid="title-input-label">
+        <label htmlFor="title" data-testid="title-input-label">
           Título
           <input
             type="text"
+            name="title"
             data-testid="title-input"
             value={ title }
             onChange={ handleChange }
           />
         </label>
-        <label htmlFor="Subtítulo" data-testid="subtitle-input-label">
+        <label htmlFor="subtitle" data-testid="subtitle-input-label">
           Subtítulo
           <input
             type="text"
+            name="subtitle"
             data-testid="subtitle-input"
             value={ subtitle }
+            onChange={ handleChange }
           />
         </label>
       </>

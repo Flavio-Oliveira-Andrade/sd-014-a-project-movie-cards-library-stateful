@@ -18,7 +18,7 @@ class AddMovie extends Component {
   }
 
   handleChange(event) {
-    this.setState({ title: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   render() {
