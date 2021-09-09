@@ -8,6 +8,7 @@ import AddMovie from './AddMovie';
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
+    this.addMovie = this.addMovie.bind(this);
     this.filterMovies = this.filterMovies.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
@@ -34,10 +35,23 @@ class MovieLibrary extends Component {
       .filter(({ title, subtitle, storyline }) => (title.includes(searchText) || subtitle.includes(searchText) || storyline.includes(searchText))); // Returns only movies with title, subtitle or storyline containing searchText
   }
 
+  addMovie({ genre, imagePath, rating, storyline, subtitle, title }) {
+    const { movies } = this.state;
+    const newMovie = {
+      title,
+      subtitle,
+      storyline,
+      rating,
+      imagePath,
+      genre,
+    };
+
+    this.setState({ movies: [...movies, newMovie] });
+  }
+
   render() {
-    // const { movies } = this.props;
-    const { filterMovies, handleChange } = this;
-    const { bookmarkedOnly, movies, searchText, selectedGenre } = this.state;
+    const { addMovie, filterMovies, handleChange } = this;
+    const { bookmarkedOnly, searchText, selectedGenre } = this.state;
 
     return (
       <div>
@@ -51,7 +65,7 @@ class MovieLibrary extends Component {
           selectedGenre={ selectedGenre }
         />
         <MovieList movies={ filterMovies() } />
-        <AddMovie />
+        <AddMovie onClick={ addMovie } />
       </div>
     );
   }
