@@ -20,56 +20,59 @@ class MovieLibrary extends React.Component {
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
   }
 
-  handleChange(event) {
+  handleChange(event, callback) {
     const { name } = event.target;
     const value = (event.target.type === 'checkbox' ? event
       .target.checked : event.target.value);
     this.setState({
       [name]: value,
+    }, callback);
+  }
+
+  onSearchTextChange(event) {
+    this.handleChange(event, () => {
+      const { movies } = this.props;
+      const { searchText } = this.state;
+      console.log(searchText);
+      this.setState({
+        movies: movies.filter((filme) => filme.title.toLowerCase()
+          .includes(searchText.toLowerCase()) || filme.storyline.toLowerCase()
+          .includes(searchText.toLowerCase()) || filme.subtitle.toLowerCase()
+          .includes(searchText.toLowerCase())),
+      });
     });
   }
 
-  async onSearchTextChange(event) {
-    await this.handleChange(event);
-    const { movies } = this.props;
-    const { searchText } = this.state;
-    console.log(searchText);
-    this.setState({
-      movies: movies.filter((filme) => filme.title.toLowerCase()
-        .includes(searchText.toLowerCase()) || filme.storyline.toLowerCase()
-        .includes(searchText.toLowerCase()) || filme.subtitle.toLowerCase()
-        .includes(searchText.toLowerCase())),
+  onBookmarkedChange(event) {
+    this.handleChange(event, () => {
+      const { movies } = this.props;
+      const { bookmarkedOnly } = this.state;
+      if (bookmarkedOnly === true) {
+        this.setState({
+          movies: movies.filter((filme) => filme.bookmarked === bookmarkedOnly),
+        });
+      } else {
+        this.setState({
+          movies,
+        });
+      }
     });
   }
 
-  async onBookmarkedChange(event) {
-    await this.handleChange(event);
-    const { movies } = this.props;
-    const { bookmarkedOnly } = this.state;
-    if (bookmarkedOnly === true) {
-      this.setState({
-        movies: movies.filter((filme) => filme.bookmarked === bookmarkedOnly),
-      });
-    } else {
-      this.setState({
-        movies,
-      });
-    }
-  }
-
-  async onSelectedGenreChange(event) {
-    await this.handleChange(event);
-    const { movies } = this.props;
-    const { selectedGenre } = this.state;
-    if (selectedGenre === '') {
-      this.setState({
-        movies,
-      });
-    } else {
-      this.setState({
-        movies: movies.filter((filme) => filme.genre === selectedGenre),
-      });
-    }
+  onSelectedGenreChange(event) {
+    this.handleChange(event, () => {
+      const { movies } = this.props;
+      const { selectedGenre } = this.state;
+      if (selectedGenre === '') {
+        this.setState({
+          movies,
+        });
+      } else {
+        this.setState({
+          movies: movies.filter((filme) => filme.genre === selectedGenre),
+        });
+      }
+    });
   }
 
   render() {
