@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 
 class Botao extends React.Component {
   render() {
-    const { OnClickFunc } = this.props;
+    const { onClick } = this.props;
     return (
       <button
         type="button"
         data-testid="send-button"
-        onClick={ OnClickFunc }
+        onClick={ onClick }
       >
         Adicionar filme
       </button>
@@ -17,6 +17,6 @@ class Botao extends React.Component {
 }
 
 Botao.propTypes = {
-  OnClickFunc: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 export default Botao;

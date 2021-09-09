@@ -27,21 +27,21 @@ class AddMovie extends React.Component {
   }
 
   handleOnChange = ({ target }) => {
-    const { name, value } = target;
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+
     this.setState({
       [name]: value,
     });
   }
 
-  OnClickFunc = (event) => {
-    const { onClick } = this.props;
-    event.preventDefault();
-    onClick(this.state);
+  OnClickFunc = () => {
     this.setState(INITIAL_STATE);
   };
 
   render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
+    const { onClick: envia } = this.props;
     return (
       <form data-testid="add-movie-form">
         <Titulo title={ title } handleOnChange={ this.handleOnChange } />
@@ -50,7 +50,7 @@ class AddMovie extends React.Component {
         <Sinopse storyline={ storyline } handleOnChange={ this.handleOnChange } />
         <Avaliacao rating={ rating } handleOnChange={ this.handleOnChange } />
         <Genero genre={ genre } handleOnChange={ this.handleOnChange } />
-        <Botao OnClickFunc={ this.OnClickFunc } />
+        <Botao onClick={ () => { this.OnClickFunc(); envia(this.state); } } />
       </form>
     );
   }

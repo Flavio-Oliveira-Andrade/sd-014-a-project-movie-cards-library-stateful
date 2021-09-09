@@ -20,6 +20,7 @@ class MovieLibrary extends React.Component {
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
+    this.addMovie = this.addMovie.bind(this);
   }
 
   onSearchTextChange = (event) => {
@@ -58,6 +59,20 @@ class MovieLibrary extends React.Component {
     return arr;
   }
 
+  addMovie({ subtitle, title, imagePath, storyline, rating, genre }) {
+    const { movies } = this.state;
+    const newMovie = {
+      title,
+      subtitle,
+      storyline,
+      rating,
+      imagePath,
+      bookmarked: false,
+      genre,
+    };
+    this.setState({ movies: [...movies, newMovie] });
+  }
+
   render() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     return (
@@ -76,14 +91,20 @@ class MovieLibrary extends React.Component {
             searchText, bookmarkedOnly, selectedGenre, movies,
           ) }
         />
-        <AddMovie />
+        <AddMovie onClick={ this.addMovie } />
       </div>
     );
   }
 }
 
 MovieLibrary.propTypes = {
-  movies: PropTypes.shape.isRequired,
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string.isRequired,
+    storyline: PropTypes.string.isRequired,
+    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    imagePath: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
 export default MovieLibrary;
