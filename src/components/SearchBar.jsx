@@ -1,21 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import CustomInput from './CustomInput';
 
 class SearchBar extends React.Component {
   render() {
     const { searchText, onSearchTextChange } = this.props;
     return (
       <form data-testid="search-bar-form">
-        <label data-testid="text-input-label" htmlFor="search-text">
-          Inclui o texto:
-          <input
-            type="text"
-            id="search-text"
-            data-testid="text-input"
-            value={ searchText }
-            onChange={ onSearchTextChange }
-          />
-        </label>
+        <CustomInput
+          name="text-input"
+          type="text"
+          labelText="Inclui o texto:"
+          value={ searchText }
+          onChange={ onSearchTextChange }
+        />
       </form>
     );
   }
