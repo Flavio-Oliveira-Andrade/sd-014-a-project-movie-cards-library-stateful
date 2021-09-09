@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import Subtitle from './Subtitle';
 import Title from './Title';
 import ImagePath from './ImagePath';
+import Storyline from './Storyline';
 
 class AddMovie extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       subtitle: '',
       title: '',
@@ -42,20 +43,11 @@ class AddMovie extends React.Component {
   render() {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     return (
-      <form data-testid="add-movie-form">
+      <form data-testid="add-movie-form" onSubmit={ this.addMovieAndReset }>
         <Title handleChange={ this.handleChange } value={ title } />
         <Subtitle handleChange={ this.handleChange } value={ subtitle } />
         <ImagePath handleChange={ this.handleChange } value={ imagePath } />
-        <label htmlFor="storyline-input" data-testid="storyline-input-label">
-          Sinopse
-          <input
-            name="storyline"
-            value={ storyline }
-            type="textarena"
-            onChange={ this.handleChange }
-            data-testid="storyline-input"
-          />
-        </label>
+        <Storyline handleChange={ this.handleChange } value={ storyline } />
         <label htmlFor="rating-input" data-testid="rating-input-label">
           Avaliação
           <input
@@ -79,11 +71,7 @@ class AddMovie extends React.Component {
             <option data-testid="genre-option" value="thriller">Suspense</option>
           </select>
         </label>
-        <button
-          type="button"
-          onClick={ this.addMovieAndReset }
-          data-testid="send-button"
-        >
+        <button type="submit" data-testid="send-button">
           Adicionar filme
         </button>
       </form>

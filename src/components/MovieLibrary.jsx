@@ -7,7 +7,7 @@ import AddMovie from './AddMovie';
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
-    const { movies } = this.props;
+    const { movies } = props;
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
@@ -30,22 +30,23 @@ class MovieLibrary extends Component {
     }));
   }
 
-  render() {
-    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+  moviesFilter({ searchText, bookmarkedOnly, selectedGenre, movies }) {
     const textFilterMovies = movies
       .filter((movie) => movie.title.toLowerCase().includes(searchText)
       || movie.subtitle.toLowerCase().includes(searchText)
       || movie.storyline.toLowerCase().includes(searchText));
     const genreFilterMovies = textFilterMovies
       .filter((movie) => movie.genre.includes(selectedGenre));
-    let bookmarkedFilterMovies = [];
     if (bookmarkedOnly === true) {
-      bookmarkedFilterMovies = genreFilterMovies
+      return genreFilterMovies
         .filter((movie) => movie.bookmarked === true);
-    } else { bookmarkedFilterMovies = genreFilterMovies; }
+    } return genreFilterMovies;
+  }
+
+  render() {
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
-        <h2> My awesome movie library </h2>
         <SearchBar
           searchText={ searchText }
           onSearchTextChange={ this.handleChange }
@@ -54,7 +55,7 @@ class MovieLibrary extends Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleChange }
         />
-        <MovieList movies={ bookmarkedFilterMovies } />
+        <MovieList movies={ this.moviesFilter(this.state) } />
         <AddMovie onClick={ this.newMovie } />
       </div>
     );
@@ -62,7 +63,7 @@ class MovieLibrary extends Component {
 }
 
 MovieLibrary.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.any)).isRequired,
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default MovieLibrary;
