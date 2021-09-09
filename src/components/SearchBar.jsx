@@ -4,9 +4,23 @@ import './style/components.css';
 export default class SearchBar extends Component {
   render() {
     const { id } = this;
+
+    const handleChange = (event) => {
+
+    }
+
     return (
       <form data-testid="search-bar-form">
-        <input type="text" value="" placeholder="Buscar" />
+        <label htmlFor={ id } data-testid="text-input-label">
+          Inclui o texto
+          <input
+            type="text"
+            value=""
+            onChange={ handleChange }
+            id={ id }
+            placeholder="Buscar"
+          />
+        </label>
         <label htmlFor={ id }>
           <input id={ id } type="checkbox" value="" />
           Mostrar favoritos
