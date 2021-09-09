@@ -16,8 +16,8 @@ body {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  padding-top: 48px;
   justify-content: space-evenly;
+  padding-top: 48px;
 }
 
 .search-bar {
