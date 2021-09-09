@@ -1,7 +1,7 @@
 import React from 'react';
 import Proptypes from 'prop-types';
-import MovieList from './MovieList';
 import SearchBar from './SearchBar';
+import MovieList from './MovieList';
 import AddMovie from './AddMovie';
 
 class MovieLibrary extends React.Component {
@@ -14,18 +14,19 @@ class MovieLibrary extends React.Component {
       selectedGenre: '',
       movies,
     };
-    this.onSearchTextChange = this.handleChange.bind(this);
-    this.onBookmarkedChange = this.handleChange.bind(this);
-    this.onSelectedGenreChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.clickHandler = this.clickHandler.bind(this);
   }
 
   handleChange({ target }) { // gerencia as alterações dentro da SearchBar.
     this.setState({
-      [target.name]: (target.type === checkbox ? target.checked : target.value) }); // de acordo com o nome do campo selecionado, faz a alteração de seu conteúdo.
-  } // Caso seja uma checkbox, altera o atributo checked, caso não seja, altera para o valor selecionado/digitado.
+      [target.name]: (target.type === 'checkbox' ? target.checked : target.value), // de acordo com o nome do campo selecionado, faz a alteração de seu conteúdo.
+    }); // Caso seja uma checkbox, altera o atributo checked, caso não seja, altera para o valor selecionado/digitado.
+  }
 
   movieFilter = ({ searchText, selectedGenre, bookmarkedOnly, movies }) => movies
-    .filter((movie) => movie.title.includes(searchText))
+    .filter((movie) => movie.title.includes(searchText)
+    || movie.subtitle.includes(searchText) || movie.storyline.includes(searchText))
     .filter((movie) => (bookmarkedOnly ? movie.bookmarked : true))
     .filter((movie) => (selectedGenre ? movie.genre === selectedGenre : true));
 
