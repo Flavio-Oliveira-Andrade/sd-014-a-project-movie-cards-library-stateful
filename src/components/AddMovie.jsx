@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import BodyForm from './BodyForm';
+import FooterForm from './FooterForm';
+import HeaderForm from './HeaderForm';
 
 class AddMovie extends Component {
   constructor() {
@@ -14,34 +17,13 @@ class AddMovie extends Component {
   }
 
   render() {
-    const { title, subtitle } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
-      <form data-testid="add-movie-form">
-        <label htmlFor="titulo" data-testid="title-input-label">
-          Título
-          <input
-            type="text"
-            name="titulo"
-            id="titulo"
-            value={ title }
-            data-testid="title-input"
-            onChange={ handleChangeTitle }
-          />
-        </label>
-
-        <label htmlFor="subtitulo" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            type="text"
-            name="subtitulo"
-            id="subtitulo"
-            value={ subtitle }
-            data-testid="subtitle-input"
-            onChange={ handleChangeSubtitle }
-          />
-        </label>
+      <form>
+        <HeaderForm title={ title } subtitle={ subtitle } />
+        <BodyForm imagePath={ imagePath } storyline={ storyline } />
+        <FooterForm rating={ rating } genre={ genre } />
       </form>
-
     );
   }
 }
