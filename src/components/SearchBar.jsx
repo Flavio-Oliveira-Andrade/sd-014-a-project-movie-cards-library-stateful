@@ -16,20 +16,20 @@ class searchBar extends Component {
     return (
       <div>
         <form data-testid="search-bar-form">
-          <label htmlFor="text-input" data-testid="text-input-label">
+          <label htmlFor="searchText" data-testid="text-input-label">
             Inclui o texto
             <input
-              id="text-input"
+              id="searchText"
               type="text"
               value={ searchText }
               onChange={ onSearchTextChange }
               data-testid="text-input"
             />
           </label>
-          <label htmlFor="checkbox-input" data-testid="checkbox-input-label">
+          <label htmlFor="bookmarkedOnly" data-testid="checkbox-input-label">
             Mostrar somente favoritos
             <input
-              id="checkbox-input"
+              id="bookmarkedOnly"
               type="checkbox"
               checked={ bookmarkedOnly }
               onChange={ onBookmarkedChange }
@@ -54,14 +54,5 @@ searchBar.propTypes = {
   selectedGenre: PropTypes.string.isRequired,
   onSelectedGenreChange: PropTypes.func.isRequired,
 };
-
-// searchBar.defaultProps = {
-//   searchText: '',
-//   onSearchTextChange,
-//   bookmarkedOnly,
-//   onBookmarkedChange,
-//   selectedGenre,
-//   onSelectedGenreChange,
-// };
 
 export default searchBar;
