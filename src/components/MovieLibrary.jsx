@@ -23,9 +23,25 @@ class MovieLibrary extends Component {
 		});
 	}
 
+	searchGeneric( valueSearch, movie ) { 
+		if (movie.title.includes(valueSearch )){ 
+			return movie;
+		} else if (movie.subtitle.includes(valueSearch)){ 
+			return movie;
+		} else if ( movie.storyline.includes(valueSearch)){
+			return movie;
+		} else { 
+			return '';
+		}
+	}
+
 	filterMovies(arrayMovies, search) { 
+		const { searchText, bookmarkedOnly, selectedGenre } = search
 		return arrayMovies
-		.filter((movie) => movie.title.includes(search.searchText));
+		.filter((movie) => bookmarkedOnly === true ? movie.bookmarked : movie)
+		.filter((movie) => selectedGenre === '' ? 
+		movie: selectedGenre === movie.genre)
+		.filter((movie) => this.searchGeneric(searchText, movie))
 	}
 
 	render() { 
