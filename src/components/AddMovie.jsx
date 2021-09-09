@@ -2,24 +2,22 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class AddMovie extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.state = {
+      genre: 'action',
+      imagePath: '',
+      rating: 0,
+      storyline: '',
       subtitle: '',
       title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
     };
   }
 
   handleChange({ target: { name, value } }) {
-    this.setState({
-      [name]: value,
-    });
+    this.setState({ [name]: value });
   }
 
   handleClick(event) {
@@ -30,12 +28,12 @@ class AddMovie extends Component {
     onClick(this.state);
 
     this.setState({
+      genre: 'action',
+      imagePath: '',
+      rating: 0,
+      storyline: '',
       subtitle: '',
       title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
     });
   }
 

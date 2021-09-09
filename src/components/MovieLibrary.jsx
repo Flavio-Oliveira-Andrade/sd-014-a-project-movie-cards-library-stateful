@@ -44,18 +44,8 @@ class MovieLibrary extends Component {
       ); // Returns only movies with title, subtitle or storyline containing searchText
   }
 
-  addMovie({ genre, imagePath, rating, storyline, subtitle, title }) {
-    const { movies } = this.state;
-    const newMovie = {
-      title,
-      subtitle,
-      storyline,
-      rating,
-      imagePath,
-      genre,
-    };
-
-    this.setState({ movies: [...movies, newMovie] });
+  addMovie(movie) {
+    this.setState(({ movies }) => ({ movies: [...movies, movie] }));
   }
 
   render() {
