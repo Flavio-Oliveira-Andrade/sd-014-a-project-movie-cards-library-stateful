@@ -19,6 +19,17 @@ body {
   text-align: center;
 }
 
+.search-bar {
+  margin-top: 10px;
+}
+
+.search-bar-elements {
+  align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}
+
 .movie-list {
   display: flex;
   flex-flow: row wrap;
@@ -65,6 +76,23 @@ body {
   text-align: justify;
 }
 
+.movie-card-footer {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}
+
+.movie-card-footer label {
+  margin-bottom: 0;
+}
+
+.movie-card-footer input {
+  margin-right: 4px;
+}
+
 .rating {
   background-color: #007bff;
   border-radius: 25px;
@@ -75,8 +103,6 @@ body {
 }
 
 .movie-card-rating {
-  background-color: rgba(0, 0, 0, 0.03);
-  border-top: 1px solid rgba(0, 0, 0, 0.125);
   display: flex;
   justify-content: flex-end;
   padding: 12px 20px;

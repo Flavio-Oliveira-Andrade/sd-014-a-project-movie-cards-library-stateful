@@ -16,8 +16,12 @@ class SearchBar extends React.Component {
       onSelectedGenreChange, // uma callback
     } = this.props;
     return (
-      <section>
-        <form data-testid="search-bar-form">
+      <section className="search-bar">
+        <form
+          id="search-bar-form"
+          data-testid="search-bar-form"
+          className="search-bar-elements"
+        >
           <SearchFormInputText
             value={ searchText }
             callback={ onSearchTextChange }
