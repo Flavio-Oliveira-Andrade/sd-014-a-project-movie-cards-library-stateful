@@ -1,5 +1,6 @@
 // implement MovieLibrary component here
 import React from 'react';
+import PropTypes from 'prop-types';
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
@@ -17,7 +18,7 @@ class MovieLibrary extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
-    this.onSearchTextChange = this.handleChanonSearchTextChangege.bind(this);
+    this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.addMovie = this.addMovie.bind(this);
   }
 
@@ -83,12 +84,15 @@ class MovieLibrary extends React.Component {
             selectedGenre={ selectedGenre }
             onSelectedGenreChange={ this.onSelectedGenreChange }
           />
-          <br />
           <AddMovie onClick={ this.addMovie } />
         </nav>
         <MovieList movies={ movies } />
       </div>);
   }
 }
+
+MovieLibrary.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default MovieLibrary;
