@@ -23,7 +23,7 @@ class NumberInput extends React.Component {
 
 NumberInput.propTypes = {
   n: PropTypes.string.isRequired,
-  v: PropTypes.string.isRequired,
+  v: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   l: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };

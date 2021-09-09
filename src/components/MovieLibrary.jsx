@@ -39,8 +39,11 @@ class MovieLibrary extends React.Component {
     this.setState({ selectedGenre: value });
   }
 
-  onClick() {
-    console.log('click');
+  onClick(newMovie) {
+    const { movies } = this.state;
+    this.setState({
+      movies: [...movies, newMovie],
+    });
   }
 
   render() {
