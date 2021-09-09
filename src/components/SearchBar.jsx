@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// import MovieLibrary from './MovieLibrary';
 
 class SearchBar extends React.Component {
   render() {
@@ -64,4 +65,3 @@ SearchBar.propTypes = {
 };
 
 export default SearchBar;
-// aaaa
