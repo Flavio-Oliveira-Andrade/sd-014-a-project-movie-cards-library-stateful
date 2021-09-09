@@ -18,7 +18,7 @@ class SearchBar extends React.Component {
             type="text"
             id="text"
             className="text"
-            value={ searchText.toLowerCase() }
+            value={ searchText }
             onChange={ onSearchTextChange }
             data-testid="text-input"
           />

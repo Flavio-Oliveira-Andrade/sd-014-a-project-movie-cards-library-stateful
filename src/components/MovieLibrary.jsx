@@ -1,7 +1,7 @@
 // implement MovieLibrary component here
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import AddMovie from './AddMovie';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 
@@ -14,6 +14,7 @@ class MovieLibrary extends React.Component {
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
     this.filteredMovies = this.filteredMovies.bind(this);
+    this.renderNewMovie = this.renderNewMovie.bind(this);
 
     this.state = {
       searchText: '',
@@ -37,11 +38,31 @@ class MovieLibrary extends React.Component {
     this.setState({ selectedGenre: target.value });
   }
 
-  filteredMovies() {
-    const { searchText, movies } = this.state;
-    const filteredMovies = movies
-      .filter((movie) => movie.title.toLowerCase().includes(searchText));
+  filteredMovies(movies) {
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    let filteredMovies = movies;
+    if (searchText) {
+      filteredMovies = movies
+        .filter((movie) => movie.title.toLowerCase().includes(searchText.toLowerCase())
+      || movie.subtitle.toLowerCase().includes(searchText.toLowerCase()));
+    }
+    if (bookmarkedOnly) {
+      filteredMovies = movies.filter((movie) => movie.bookmarked === true);
+    }
+
+    if (selectedGenre) {
+      filteredMovies = movies.filter((movie) => movie.genre === selectedGenre);
+    }
     return filteredMovies;
+  }
+
+  // Retirei deste site a ideia de como passar data do componente filho para o componente pai https://www.geeksforgeeks.org/how-to-pass-data-from-child-component-to-its-parent-in-reactjs/
+
+  renderNewMovie(newMovie) {
+    const { movies } = this.state;
+    this.setState({
+      movies: [...movies, newMovie],
+    });
   }
 
   render() {
@@ -56,8 +77,8 @@ class MovieLibrary extends React.Component {
           onBookmarkedChange={ this.onBookmarkedChange }
           onSelectedGenreChange={ this.onSelectedGenreChange }
         />
-        {console.log(selectedGenre)}
-        <MovieList movies={ movies } />
+        <MovieList movies={ this.filteredMovies(movies) } />
+        <AddMovie onClick={ this.renderNewMovie } />
       </div>
 
     );
