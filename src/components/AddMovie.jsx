@@ -8,8 +8,8 @@ class AddMovie extends Component {
     super(props);
     // Criando estado e definindo estado inicial
     this.state = {
-      subtitle: '',
       title: '',
+      subtitle: '',
       imagePath: '',
       storyline: '',
       rating: 0,
@@ -27,7 +27,8 @@ class AddMovie extends Component {
   handleClick(event) {
     event.preventDefault();
     const { onClick } = this.props;
-    console.log(this);
+    console.log(this.props, 'this.props');
+    console.log(onClick, 'onClick');
     onClick(this.state);
     this.setState({
       subtitle: '',
@@ -42,7 +43,6 @@ class AddMovie extends Component {
   createInput(tipo, value, name, dataTestid) {
     return (
       <input
-        id={ dataTestid }
         type={ tipo }
         value={ value }
         name={ name }
@@ -56,32 +56,36 @@ class AddMovie extends Component {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <label data-testid="title-input-label" htmlFor="title-input">
+        <label data-testid="title-input-label" htmlFor="title">
           Título
           { this.createInput('text', title, 'title', 'title-input') }
         </label>
-        <label data-testid="subtitle-input-label" htmlFor="subtitle-input">
+        <label data-testid="subtitle-input-label" htmlFor="subtitle">
           Subtítulo
           { this.createInput('text', subtitle, 'subtitle', 'subtitle-input') }
         </label>
-        <label data-testid="image-input-label" htmlFor="image-input">
+        <label data-testid="image-input-label" htmlFor="image">
           Imagem
           { this.createInput('text', imagePath, 'imagePath', 'image-input') }
         </label>
-        <label data-testid="storyline-input-label" htmlFor="storyline-input">
+        <label data-testid="storyline-input-label" htmlFor="storyline">
           Sinopse
-          { this.createInput('textarea', storyline, 'storyline', 'storyline-input') }
+          <textarea
+            name="storyline"
+            value={ storyline }
+            onChange={ this.handleChange }
+            data-testid="storyline-input"
+          />
         </label>
-        <label data-testid="rating-input-label" htmlFor="rating-input">
+        <label data-testid="rating-input-label" htmlFor="rating">
           Avaliação
           { this.createInput('number', rating, 'rating', 'rating-input') }
         </label>
-        <label htmlFor="genre-input" data-testid="genre-input-label">
+        <label htmlFor="genre" data-testid="genre-input-label">
           Gênero:
           <select
             value={ genre }
             name="genre"
-            id="genre-input"
             data-testid="genre-input"
             onChange={ this.handleChange }
           >

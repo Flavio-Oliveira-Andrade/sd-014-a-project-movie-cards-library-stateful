@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
-import MovieList from './MovieList';
+// import MovieList from './MovieList';
 
 class MovieLibrary extends Component {
   constructor(props) {
@@ -17,14 +17,24 @@ class MovieLibrary extends Component {
     };
   }
 
+  handleChange = ({ target }) => {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
+  }
+
   render() {
-    const { searchText } = this.props;
+    const { searchText, selectedGenre, bookmarkedOnly } = this.state;
+    console.log(this.state, 'BB');
+    console.log(this.props, 'CC');
     return (
       <div>
         <SearchBar
           searchText={ searchText }
-          bookmarkedOnly={ this.state }
-          selectedGenre={ this.state }
+          bookmarkedOnly={ bookmarkedOnly }
+          selectedGenre={ selectedGenre }
         />
       </div>
     );
