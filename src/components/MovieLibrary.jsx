@@ -19,13 +19,13 @@ class MovieLibrary extends React.Component {
   }
 
   onSearchTextChange({ target }) {
-    this.setState((state) => ({...state, searchText: target.value}))
+    this.setState((state) => ({ ...state, searchText: target.value }));
   }
 
   onBookmarkedChange() {}
 
   onSelectedGenreChange({ target }) {
-    this.setState((state) => ({...state, selectedGenre: target.value}))
+    this.setState((state) => ({ ...state, selectedGenre: target.value }));
   }
 
   render() {

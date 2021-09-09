@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class InputOtherInfos extends Component {
   render() {
@@ -45,5 +46,12 @@ class InputOtherInfos extends Component {
     );
   }
 }
+
+InputOtherInfos.propTypes = {
+  imagePath: PropTypes.string.isRequired,
+  storyline: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  onHandleChange: PropTypes.func.isRequired,
+};
 
 export default InputOtherInfos;
