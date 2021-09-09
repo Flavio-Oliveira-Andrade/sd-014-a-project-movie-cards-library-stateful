@@ -56,7 +56,7 @@ class AddMovie extends Component {
           { this.handleInput('text', title, 'title-input', 'title') }
         </label>
         <label data-testid="subtitle-input-label" htmlFor="subtitle">
-          <span>Subtítulo: </span>
+          <span>Diretor: </span>
           { this.handleInput('text', subtitle, 'subtitle-input', 'subtitle') }
         </label>
         <label data-testid="image-input-label" htmlFor="imagePath">
