@@ -21,10 +21,10 @@ class AddMovie extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange({ event }) {
+  handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
-  }
+  };
 
   render() {
     // Requisito 6 ao 13
