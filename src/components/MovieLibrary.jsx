@@ -9,10 +9,14 @@ import AddMovie from './AddMovie';
 class MovieLibrary extends React.Component {
   constructor() {
     super();
+
+    const { movies } = this.props;
+
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
+      movies,
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -27,14 +31,17 @@ class MovieLibrary extends React.Component {
   }
 
   render() {
-    const { movies } = this.props;
-    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
-
+    const { searchText, selectedGenre, bookmarkedOnly, movies } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
         <SearchBar
-          bookmarkedOnly={ bookmarkedOnly === false ? bookmarkedOnly : this.handleChange }
+          searchText={ searchText }
+          onSearchTextChange={ this.handleChange }
+          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.handleChange }
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ this.handleChange }
         />
         <MovieList movies={ movies } />
         <AddMovie />
