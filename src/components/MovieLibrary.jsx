@@ -73,7 +73,7 @@ class MovieLibrary extends React.Component {
     const movies = applyFilter(allMovies,
       { content: search, marked: bookmarkedOnly, type: selectedGenre });
     this.setState({
-      searchText: value,
+      searchText: search,
       movies,
     });
   }
