@@ -9,51 +9,52 @@ class SearchBar extends Component {
       bookmarkedOnly: true,
       onBookmarkedChange: this.favorito.bind(this),
       selectedGenre: '',
-      onSelectedGenreChange: this.genero.bind(this)
+      onSelectedGenreChange: this.genero.bind(this),
     };
-    
   }
 
-  changeSearchText(event){
+  changeSearchText(event) {
     this.setState({
-      searchText: event.target.value
-    })
+      searchText: event.target.value,
+    });
   }
-  favorito(){
-    if(this.state.bookmarkedOnly === true){
-      this.setState({bookmarkedOnly: false})
+
+  favorito() {
+    if (this.state.bookmarkedOnly === true) {
+      this.setState({ bookmarkedOnly: false });
     } else {
-      this.setState({bookmarkedOnly: true});
+      this.setState({ bookmarkedOnly: true });
     }
   }
-  genero(event){
-    this.setState({selectedGenre: event.target.value})
+
+  genero(event) {
+    this.setState({ selectedGenre: event.target.value });
   }
 
   render() {
     // const {search} = this.props
-    const {searchText, onSearchTextChange, bookmarkedOnly, onBookmarkedChange, selectedGenre, onSelectedGenreChange} = this.state
+    const { searchText, onSearchTextChange, bookmarkedOnly, onBookmarkedChange, selectedGenre, onSelectedGenreChange } = this.state;
 
     // const {data-testeid} = this.props
 
-    return ( 
-      <form data-testid="search-bar-form"> 
+    return (
+      <form data-testid="search-bar-form">
         <fieldset>
-          <label htmlFor="texto" data-testid="text-input-label" data-testid="text-input-label">Inclui o texto:</label>
-          <input type="text" value={searchText} onChange={onSearchTextChange} data-testid="text-input"/>
+          <label htmlFor="texto" data-testid="text-input-label">Inclui o texto:</label>
+          <input type="text" value={ searchText } onChange={ onSearchTextChange } data-testid="text-input" />
           <label htmlFor="checkbox" data-testid="checkbox-input-label">Mostrar somente favoritos</label>
-          <input type="checkBox" name="checkbox" id="checkbox" data-testid="checkbox-input" checked={bookmarkedOnly} onChange={onBookmarkedChange} />
+          <input type="checkBox" name="checkbox" id="checkbox" data-testid="checkbox-input" checked={ bookmarkedOnly } onChange={ onBookmarkedChange } />
           <label htmlFor="genero" data-testid="select-input-label">Filtrar por gênero</label>
-          <select name="genero" id="genero" value={selectedGenre} onChange={onSelectedGenreChange}>
+          <select name="genero" id="genero" value={ selectedGenre } onChange={ onSelectedGenreChange }>
             <option value="">Todos</option>
             <option value="action">Ação</option>
             <option value="comedy">Comédia</option>
             <option value="thriller">Suspense</option>
           </select>
-            {console.log(this.props)}
+          {console.log(this.props)}
         </fieldset>
       </form>
-     );
+    );
   }
 }
 

@@ -11,17 +11,24 @@ class MovieLibrary extends Component {
       bookmarkedOnly: false,
       selectedGenre: '',
       movies: [],
-    }
+    };
+    this.clicked = this.clicked.bind(this)
   }
-  render() {
 
-    const {movies} = this.props;
+  clicked(e){
+    e.preventDefault()
+    console.log(this.state)
+    
+  }
+
+  render() {
+    const { movies } = this.props;
 
     return (
       <>
-        <SearchBar searchText={''}/>
-        <MovieList movies={movies}/>
-        <AddMovie />
+        <SearchBar searchText="" />
+        <MovieList movies={ movies } />
+        <AddMovie onClick={this.clicked}/>
         {console.log(this.props)}
       </>
     );
