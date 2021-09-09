@@ -8,8 +8,8 @@ import Rating from './AddMovieComponents/Rating';
 import Genre from './AddMovieComponents/Genre';
 
 class AddMovie extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       subtitle: '',
@@ -89,6 +89,7 @@ class AddMovie extends React.Component {
     );
   }
 }
-AddMovie.propTypes = { onClick: PropTypes.func.isRequired };
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired };
 
 export default AddMovie;
