@@ -11,6 +11,7 @@ import Genre from './Genre';
 class AddMovie extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       title: '',
       subtitle: '',
