@@ -15,6 +15,8 @@ class MovieLibrary extends React.Component {
       movies,
     };
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
+    this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
+    this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
     // this.genericHandler = this.genericHandler.bind(this);
   }
 
@@ -31,8 +33,24 @@ class MovieLibrary extends React.Component {
       title.includes(value) || subtitle.includes(value) || storyline.includes(value)
     ));
     this.setState(
-      { searchText: value, movies: textFilter },
+      { searchText: value, movies: [...textFilter] },
     );
+    return textFilter;
+  }
+
+  onBookmarkedChange({ target }) {
+    const { checked } = target;
+    const { movies } = this.props;
+    const bookFilter = movies.filter((film) => film.bookmarked);
+    const unFilter = movies.filter((film) => film.bookmarked === false);
+    const bookCheck = checked ? bookFilter : unFilter;
+    // const bookFilter = this.onSearchTextChange.filter((film) => film.bookmarked);
+    this.setState({ bookmarkedOnly: checked, movies: bookCheck });
+  }
+
+  onSelectedGenreChange({ target }) {
+    const { value } = target;
+    this.setState({ selectedGenre: value });
   }
 
   render() {
@@ -46,7 +64,7 @@ class MovieLibrary extends React.Component {
           onSearchTextChange={ this.onSearchTextChange }
           onBookmarkedChange={ this.onBookmarkedChange }
           onSelectedGenreChange={ this.onSelectedGenreChange }
-          // onChange={ this.genericHandler }
+          // onChange={ this.genesricHandler }
         />
         <MovieList movies={ movies } />
       </section>
