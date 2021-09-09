@@ -20,11 +20,11 @@ class SearchBar extends Component {
 
   render() {
     const {
-      onSearchTextChange,
+      bookmarkedOnly,
       onBookmarkedChange,
+      onSearchTextChange,
       onSelectedGenreChange,
       searchText,
-      bookmarkedOnly,
       selectedGenre,
     } = this.props;
     return (
@@ -34,7 +34,7 @@ class SearchBar extends Component {
           <input
             data-testid="text-input"
             id="text"
-            name="text"
+            name="searchText"
             onChange={ onSearchTextChange }
             type="text"
             value={ searchText }
@@ -46,7 +46,7 @@ class SearchBar extends Component {
             checked={ bookmarkedOnly }
             data-testid="checkbox-input"
             id="checkbox"
-            name="checkbox"
+            name="bookmarkedOnly"
             onChange={ onBookmarkedChange }
             type="checkbox"
           />
@@ -56,7 +56,7 @@ class SearchBar extends Component {
           <select
             data-testid="select-input"
             id="select"
-            name="select"
+            name="selectedGenre"
             onChange={ onSelectedGenreChange }
             value={ selectedGenre }
           >
