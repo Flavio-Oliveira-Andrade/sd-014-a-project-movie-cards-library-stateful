@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { Component } from 'react';
 import './style/components.css';
 import PropTypes from 'prop-types';
@@ -9,9 +10,14 @@ export default class SearchBar extends Component {
 
     return (
       <form data-testid="search-bar-form">
-        <h1>{searchText}</h1>
+        <label htmlFor="searchInput" data-testid="text-input-label">Inclui o texto</label>
+        <input
+          id="searchInput"
+          data-testid="text-input"
+          value={ searchText }
+          onChange={ onSearchTextChange }
+        />
         <h2>{selectedGenre}</h2>
-        <h2>{onSearchTextChange}</h2>
         <h2>{bookmarkedOnly}</h2>
         <h2>{onBookmarkedChange}</h2>
         <h2>{onSelectedGenreChange}</h2>
