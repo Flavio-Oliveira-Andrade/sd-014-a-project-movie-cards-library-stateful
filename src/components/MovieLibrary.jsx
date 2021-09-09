@@ -16,6 +16,7 @@ class MovieLibrary extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
+    this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
   }
 
   handleChange(event) {
@@ -39,6 +40,21 @@ class MovieLibrary extends React.Component {
     });
   }
 
+  async onBookmarkedChange(event) {
+    await this.handleChange(event);
+    const { movies } = this.props;
+    const { bookmarkedOnly } = this.state;
+    if (bookmarkedOnly === true) {
+      this.setState({
+        movies: movies.filter((filme) => filme.bookmarked === bookmarkedOnly),
+      });
+    } else {
+      this.setState({
+        movies,
+      });
+    }
+  }
+
   render() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     return (
@@ -47,7 +63,7 @@ class MovieLibrary extends React.Component {
           searchText={ searchText }
           onSearchTextChange={ this.onSearchTextChange }
           bookmarkedOnly={ bookmarkedOnly }
-          onBookmarkedChange={ this.handleChange }
+          onBookmarkedChange={ this.onBookmarkedChange }
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleChange }
         />
