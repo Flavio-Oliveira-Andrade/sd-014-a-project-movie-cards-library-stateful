@@ -26,9 +26,10 @@ class AddMovie extends Component {
   }
 
   handleClickButton(event) {
+    const { addMovie } = this.props;
+    const { state } = this;
     event.preventDefault();
-    const { onClick } = this.props;
-    onClick(this.state);
+    addMovie(state);
     this.setState({
       subtitle: '',
       title: '',
@@ -110,7 +111,7 @@ class AddMovie extends Component {
 }
 
 AddMovie.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  addMovies: PropTypes.func.isRequired,
 };
 
 export default AddMovie;

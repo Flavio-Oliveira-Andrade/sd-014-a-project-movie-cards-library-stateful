@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
+import AddMovie from './AddMovie';
+import movies from '../data'
 
 class MovieLibrary extends Component {
 	constructor(props) { 
@@ -13,6 +15,7 @@ class MovieLibrary extends Component {
 			movies: this.props.movies,
 		}
 		this.handleChange = this.handleChange.bind(this);
+		this.addMovie = this.addMovie.bind(this);
 	}
 
 	handleChange({ target }) { 
@@ -24,14 +27,14 @@ class MovieLibrary extends Component {
 	}
 
 	searchGeneric( valueSearch, movie ) { 
-		if (movie.title.includes(valueSearch )){ 
-			return movie;
-		} else if (movie.subtitle.includes(valueSearch)){ 
-			return movie;
-		} else if ( movie.storyline.includes(valueSearch)){
-			return movie;
-		} else { 
-			return '';
+	if (movie.title.includes(valueSearch )){ 
+		return movie;
+	} else if (movie.subtitle.includes(valueSearch)){ 
+		return movie;
+	} else if ( movie.storyline.includes(valueSearch)){
+		return movie;
+	} else { 
+		return '';
 		}
 	}
 
@@ -43,10 +46,15 @@ class MovieLibrary extends Component {
 		movie: selectedGenre === movie.genre)
 		.filter((movie) => this.searchGeneric(searchText, movie))
 	}
-
+	addMovie(newMovie) { 
+		const { subtitle, title, imagePath, storyline, rating, genre } = newMovie;
+		movies.push(newMovie);
+		console.log(movies);
+	}	
 	render() { 
-		const { movies } =this.props;
+		const { movies }=this.props;
 		const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+
 		return ( 
 		<section>
 			<SearchBar 
@@ -56,6 +64,7 @@ class MovieLibrary extends Component {
 			selectedGenre={ selectedGenre }
 			/>
 			<MovieList movies={this.filterMovies(movies, this.state)} />
+			<AddMovie addMovie={ this.addMovie }/>
 		</section>
 		)
 	}
