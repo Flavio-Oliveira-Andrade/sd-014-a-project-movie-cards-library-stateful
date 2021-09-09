@@ -2,6 +2,8 @@ import React from 'react';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import AddMovie from './components/AddMovie';
+import MovieLibrary from './components/MovieLibrary';
+import movies from './data';
 import './App.css';
 
 class App extends React.Component {
@@ -9,14 +11,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header />
-        <SearchBar
-          searchText=""
-          onSearchTextChange=""
-          bookmarkedOnly=""
-          selectedGenre=""
-          onSelectedGenreChange=""
-        />
-        <AddMovie />
+        <MovieLibrary movies={ movies } />
       </div>
     );
   }

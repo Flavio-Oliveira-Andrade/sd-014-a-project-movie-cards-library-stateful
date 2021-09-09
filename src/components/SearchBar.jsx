@@ -1,6 +1,7 @@
 import React from 'react';
 
 class SearchBar extends React.Component {
+  // componentizar os inputs de render
   render() {
     const {
       searchText,

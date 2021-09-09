@@ -37,11 +37,20 @@ class AddMovie extends React.Component {
     this.setState({ genre: event.target.value });
   }
 
+  // onClick = (event) => {
+  //   // event.preventDefault();
+  //   const { onClick } = this.props;
+
+  // }
+
   // eslint-disable-next-line max-lines-per-function
   render() {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
+
+    const { onClick } = this.props;
+
     return (
-      <form data-testid="add-movie-form">
+      <form onSubmit={ onClick } data-testid="add-movie-form">
         <label htmlFor="add-movie-form" data-testid="title-input-label">
           Título
           <input
@@ -105,6 +114,14 @@ class AddMovie extends React.Component {
 
           </select>
         </label>
+
+        <button
+          type="submit"
+          data-testid="send-button"
+          onClick={ onClick }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
