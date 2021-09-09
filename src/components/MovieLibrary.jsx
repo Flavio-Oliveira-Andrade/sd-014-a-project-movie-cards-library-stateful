@@ -16,6 +16,31 @@ class MovieLibrary extends Component {
     };
   }
 
+  handleSearch({ target }) {
+    const { name, value } = target;
+    this.setState({
+      [name]: value,
+      movies: movies.filter(({ title, subtitle, storyline }) => title.includes(value)
+      || subtitle.includes(value) || storyline.includes(value)),
+    });
+  }
+
+  handleBookmarked({ target }) {
+    const { name, checked } = target;
+    this.setState({
+      [name]: checked,
+      movies: movies.filter(({ bookmarked }) => bookmarked),
+    });
+  }
+
+  handleGenre({ target }) {
+    const { name, value } = target;
+    this.setState({
+      [name]: value,
+      movies: movies.filter(({ genre }) => genre === value),
+    });
+  }
+
   render() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     return (
@@ -23,11 +48,11 @@ class MovieLibrary extends Component {
         <h2> My awesome movie library </h2>
         <SearchBar
           searchText={ searchText }
-          onSearchTextChange={ this.handleChange }
+          onSearchTextChange={ this.handleSearch }
           bookmarkedOnly={ bookmarkedOnly }
-          onBookmarkedChange={ this.handleChange }
+          onBookmarkedChange={ this.handleBookmarked }
           selectedGenre={ selectedGenre }
-          onSelectedGenreChange={ this.handleChange }
+          onSelectedGenreChange={ this.handleGenre }
         />
         <MovieList movies={ movies } />
         <AddMovie />
