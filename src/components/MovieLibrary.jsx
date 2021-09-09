@@ -12,23 +12,28 @@ class MovieLibrary extends Component {
       selectedGenre: '',
       movies: [],
     };
-    this.clicked = this.clicked.bind(this)
+    this.clicked = this.clicked.bind(this);
+    this.searching = this.searching.bind(this);
   }
 
-  clicked(e){
-    e.preventDefault()
-    console.log(this.state)
-    
+  clicked(e) {
+    e.preventDefault();
+    console.log(this.state);
+  }
+
+  searching(e) {
+    this.setState({ searchText: e.target.value });
   }
 
   render() {
+    const { searchText } = this.state;
     const { movies } = this.props;
-
+    const movie = movies.filter((cur) => cur.title.includes(searchText) === true);
     return (
       <>
-        <SearchBar searchText="" onSearchTextChange='' bookmarkedOnly={true} onBookmarkedChange='' selectedGenre='' onSelectedGenreChange='' />
-        <MovieList movies={ movies } />
-        <AddMovie onClick={this.clicked}/>
+        <SearchBar searchText={ searchText } onSearchTextChange={ this.searching } bookmarkedOnly={ false } onBookmarkedChange="" selectedGenre="" onSelectedGenreChange="" />
+        <MovieList movies={ movie } />
+        <AddMovie onClick={ this.clicked } />
         {console.log(this.props)}
       </>
     );
