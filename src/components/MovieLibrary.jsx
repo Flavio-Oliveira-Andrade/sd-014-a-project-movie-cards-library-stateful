@@ -96,7 +96,7 @@ class MovieLibrary extends React.Component {
   // e dentro de SearchBar e AddMovie e MovieList fazendo as reinderizações de todas as funcoes criadas junto as propriedades de state conforme requisito.
 
   render() {
-    const { searchText, brookmarkedOnly, selectedGenre, movies } = this.props;
+    const { searchText, brookmarkedOnly, selectedGenre, movies } = this.state;
     return (
       <section>
         {/* requisito 17 e 18 */}
