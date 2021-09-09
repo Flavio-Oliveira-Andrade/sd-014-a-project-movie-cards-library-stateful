@@ -8,42 +8,40 @@ class AddMovie extends React.Component {
       subtitle: '',
       title: '',
       imagePath: '',
-      // storyline: '',
+      storyline: '',
       // rating: 0,
       // genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
+    this.funcInputCreator = this.funcInputCreator.bind(this);
   }
 
   handleChange(event) {
     this.setState({ [event.target.id]: event.target.value });
   }
 
+  funcInputCreator(texto, stateName, stateValue) {
+    return (
+      <label htmlFor={ stateName } data-testid={ `${stateName}-input-label` }>
+        {texto}
+        <input
+          id={ stateName }
+          data-testid={ `${stateName}-input` }
+          type="text"
+          onChange={ this.handleChange }
+          value={ stateValue }
+        />
+      </label>
+    );
+  }
+
   render() {
-    const { title, subtitle, imagePath } = this.state;
+    const { title, subtitle, imagePath, storyline } = this.state;
     return (
       <div>
         <form data-testid="add-movie-form">
-          <label htmlFor="title" data-testid="title-input-label">
-            Título
-            <input
-              id="title"
-              data-testid="title-input"
-              type="text"
-              onChange={ this.handleChange }
-              value={ title }
-            />
-          </label>
-          <label htmlFor="subtitle" data-testid="subtitle-input-label">
-            Subtítulo
-            <input
-              id="subtitle"
-              data-testid="subtitle-input"
-              type="text"
-              onChange={ this.handleChange }
-              value={ subtitle }
-            />
-          </label>
+          {this.funcInputCreator('Título', 'title', title)}
+          {this.funcInputCreator('Subtítulo', 'subtitle', subtitle)}
           <label htmlFor="imagePath" data-testid="image-input-label">
             Imagem
             <input
@@ -52,6 +50,15 @@ class AddMovie extends React.Component {
               type="text"
               onChange={ this.handleChange }
               value={ imagePath }
+            />
+          </label>
+          <label htmlFor="storyline" data-testid="storyline-input-label">
+            Sinopse
+            <textarea
+              id="storyline"
+              data-testid="storyline-input"
+              onChange={ this.handleChange }
+              value={ storyline }
             />
           </label>
         </form>
