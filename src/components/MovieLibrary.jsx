@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
+import MovieList from './MovieList';
 
 class MovieLibrary extends React.Component {
   constructor(props) {
     super(props);
-
     const { movies } = this.props;
 
     this.state = {
@@ -14,12 +14,36 @@ class MovieLibrary extends React.Component {
       selectedGenre: '',
       movies,
     };
+    this.genericHandler = this.genericHandler.bind(this);
+    this.onSearchTextChange = this.onSearchTextChange.bind(this);
   }
 
+  genericHandler({ target }) {
+    const { name } = target;
+    const value = target.type === 'checked' ? target.checked : target.value;
+    this.setState({ [name]: value });
+  }
+
+  // onSearchTextChange({ target }) {
+  //   const { name } = target;
+  //   const value = target.type === 'checked' ? target.checked : target.value;
+  //   this.setState({ [name]: value });
+  // }
+
   render() {
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     return (
       <section>
-        <SearchBar />
+        <SearchBar
+          searchText={ searchText }
+          bookmarkedOnly={ bookmarkedOnly }
+          selectedGenre={ selectedGenre }
+          onSearchTextChange={ this.onSearchTextChange }
+          onBookmarkedChange={ this.onBookmarkedChange }
+          onSelectedGenreChange={ this.onSelectedGenreChange }
+          onChange={ this.genericHandler }
+        />
+        <MovieList movies={ movies } />
       </section>
     );
   }
