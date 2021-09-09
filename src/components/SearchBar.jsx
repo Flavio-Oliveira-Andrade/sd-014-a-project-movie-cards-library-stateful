@@ -57,15 +57,6 @@ SearchBar.propTypes = {
   onBookmarkedChange: propTypes.func,
   selectedGenre: propTypes.string,
   onSelectedGenreChange: propTypes.func,
-};
-
-SearchBar.defaultProps = {
-  searchText: '',
-  onSearchTextChange: () => console.log('oi'),
-  bookmarkedOnly: false,
-  onBookmarkedChange: () => console.log('oi'),
-  selectedGenre: '',
-  onSelectedGenreChange: () => console.log('oi'),
-};
+}.isRequired;
 
 export default SearchBar;
