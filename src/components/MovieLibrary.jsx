@@ -40,6 +40,20 @@ class MovieLibrary extends React.Component {
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
+    this.onFavorite = this.onFavorite.bind(this);
+  }
+
+  onFavorite({ target }) {
+    const { id } = target;
+    const { allMovies, searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const index = allMovies.findIndex(({ title }) => title === id);
+    allMovies[index].bookmarked = !allMovies[index].bookmarked;
+    const movies = applyFilter(allMovies,
+      { content: searchText, marked: bookmarkedOnly, type: selectedGenre });
+    this.setState({
+      movies,
+      allMovies,
+    });
   }
 
   onClick(movie) {
@@ -106,6 +120,7 @@ class MovieLibrary extends React.Component {
         />
         <MovieList
           movies={ movies }
+          callback={ this.onFavorite }
         />
         <AddMovie
           onClick={ this.onClick }

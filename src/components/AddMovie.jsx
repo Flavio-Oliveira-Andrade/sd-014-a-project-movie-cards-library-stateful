@@ -33,15 +33,12 @@ class AddMovie extends React.Component {
   handleClick(event) {
     event.preventDefault();
     const movie = this.state;
-    let test = true;
-    Object.entries(movie).forEach(([key, value]) => {
-      if (value === '' && key !== 'imagePath') {
-        test = false;
-      }
-    });
-    if (test) {
+    const validate = Object.entries(movie).reduce((acc, [key, value]) => (
+      (key !== 'imagePath' && value === '') ? false : acc
+    ), true);
+    if (validate) {
       const { onClick } = this.props;
-      onClick(movie);
+      onClick({ ...movie, bookmarked: false });
       this.setState({
         subtitle: '',
         title: '',
