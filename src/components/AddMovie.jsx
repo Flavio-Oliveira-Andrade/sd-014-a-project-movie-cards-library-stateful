@@ -15,9 +15,8 @@ class AddMovie extends React.Component {
   }
 
   // Inspirado no codigo do Marcello Alves tanto a função handleChange quanto a customImput
-  handleChange = (event) => this.setState({
-    [event.target.name]: (event.target.type
-       === 'checkbox' ? event.target.checked : event.target.value),
+  handleChange = ({ target }) => this.setState({
+    [target.name]: target.value,
   });
 
   handleClick = (event) => {
