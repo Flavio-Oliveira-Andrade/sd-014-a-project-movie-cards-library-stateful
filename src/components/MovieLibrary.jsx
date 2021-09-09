@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
+import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class MovieLibrary extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.filter = this.filter.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange(event) {
@@ -28,6 +30,12 @@ class MovieLibrary extends Component {
         [event.target.name]: event.target.value,
       });
     }
+  }
+
+  handleClick(event) {
+    this.setState(({ movies }) => ({
+      movies: [...movies, event],
+    }));
   }
 
   filter({ movies, searchText, bookmarkedOnly, selectedGenre }) {
@@ -58,6 +66,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ this.handleChange }
         />
         <MovieList movies={ this.filter(this.state) } />
+        <AddMovie onClick={ this.handleClick } />
       </div>
     );
   }
