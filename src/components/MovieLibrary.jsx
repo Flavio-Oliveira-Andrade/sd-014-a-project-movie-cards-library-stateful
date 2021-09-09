@@ -38,7 +38,7 @@ class MovieLibrary extends React.Component {
   }
 
   filteredMovies() {
-    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    const { searchText, movies } = this.state;
     const filteredMovies = movies
       .filter((movie) => movie.title.toLowerCase().includes(searchText));
     return filteredMovies;
