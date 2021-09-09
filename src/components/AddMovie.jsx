@@ -14,8 +14,11 @@ class AddMovie extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  // Preferi fazer com  bind ao invés de arrow functions porque na aula, a Maitê diz que algumas versões de react e de eslint podem recusar a arrow function. Pensando em projetos em todas as versões de eslint e react fiz dessa forma
+  // handleChange = (event) => { [event.target.name]: event.target.value }
+
   handleChange(event) {
-    this.setState({ title: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   render() {
@@ -32,12 +35,23 @@ class AddMovie extends React.Component {
 
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="title-input-label" data-testid="title-input-label">
+        <label htmlFor="title-input" data-testid="title-input-label">
           Título
           <input
             type="text"
+            name="title"
             data-testid="title-input"
             value={ title }
+            onChange={ this.handleChange }
+          />
+        </label>
+        <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
+          Subtítulo
+          <input
+            type="text"
+            name="subtitle"
+            data-testid="subtitle-input"
+            value={ subtitle }
             onChange={ this.handleChange }
           />
         </label>

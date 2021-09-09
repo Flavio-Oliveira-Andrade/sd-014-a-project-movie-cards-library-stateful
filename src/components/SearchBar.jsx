@@ -14,26 +14,28 @@ class SearchBar extends React.Component {
 
     return (
       <form data-testid="search-bar-form">
-        {/* https://stackoverflow.com/questions/54446655/eslint-rule-for-label */}
-        <label htmlFor="text-input-label" data-testid="text-input-label">
+        {/* Referência: https://stackoverflow.com/questions/54446655/eslint-rule-for-label */}
+        <label htmlFor="text-input" data-testid="text-input-label">
           Inclui o texto:
           <input
             type="text"
+            name="text-input"
             value={ searchText }
             onChange={ onSearchTextChange }
             data-testid="text-input"
           />
         </label>
-        <label htmlFor="checkbox-input-label" data-testid="checkbox-input-label">
+        <label htmlFor="checkbox-input" data-testid="checkbox-input-label">
           Mostrar somente favoritos:
           <input
             type="checkbox"
+            name="checkbox-input"
             checked={ bookmarkedOnly }
             onChange={ onBookmarkedChange }
             data-testid="checkbox-input"
           />
         </label>
-        <label htmlFor="select-input-label" data-testid="select-input-label">
+        <label htmlFor="select-input" data-testid="select-input-label">
           <select
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }
