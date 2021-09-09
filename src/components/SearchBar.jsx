@@ -14,7 +14,7 @@ class SearchBar extends Component {
       <section>
         <form action="" data-testid="search-bar-form">
           <label htmlFor="search" data-test-id="text-input-label">
-            Inclui o texto:
+            Inclui o texto
             <input
               type="text"
               id="search"
@@ -27,6 +27,7 @@ class SearchBar extends Component {
             <input
               type="checkbox"
               id="favorite"
+              data-testid="checkbox-input"
               checked={ bookmarkedOnly }
               onChange={ onBookmarkedChange }
             />
