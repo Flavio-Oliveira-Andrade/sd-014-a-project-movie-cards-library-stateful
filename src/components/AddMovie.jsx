@@ -30,7 +30,11 @@ class AddMovie extends Component {
           subtitle={ subtitle }
           handleChange={ this.handleChange }
         />
-        <BodyForm imagePath={ imagePath } storyline={ storyline } />
+        <BodyForm
+          imagePath={ imagePath }
+          storyline={ storyline }
+          handleChange={ this.handleChange }
+        />
         <FooterForm rating={ rating } genre={ genre } />
         <button type="submit" data-testid="send-button" onClick>Adicionar filme</button>
       </form>
