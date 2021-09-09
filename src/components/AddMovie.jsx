@@ -1,11 +1,12 @@
 import React from 'react';
-import Titulo from './Titulo';
+import Title from './Title';
+import Subtitle from './Subtitle';
 
 class AddMovie extends React.Component {
   constructor() {
     super();
     this.state = {
-      // subtitle: '',
+      subtitle: '',
       title: '',
       // imagePath: '',
       // storyline: '',
@@ -20,10 +21,11 @@ class AddMovie extends React.Component {
   }
 
   render() {
-    const { title } = this.state;
+    const { title, subtitle } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <Titulo value={ title } onClick={ this.onClick } />
+        <Title value={ title } onClick={ this.onClick } />
+        <Subtitle value={ subtitle } onClick={ this.onClick } />
       </form>
     );
   }
