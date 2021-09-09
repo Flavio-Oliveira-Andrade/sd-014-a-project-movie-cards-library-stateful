@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TitleInputA from './TitleInputA';
 import SubtitleInputA from './SubtitleInputA';
+import ImageInputA from './ImageInputA';
 
 class AddMovie extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class AddMovie extends Component {
     this.state = {
       subtitle: '',
       title: '',
-      // imagePath: '',
+      imagePath: '',
       // storyline: '',
       // rating: 0,
       // genre: 'action',
@@ -22,11 +23,12 @@ class AddMovie extends Component {
   }
 
   render() {
-    const { title, subtitle } = this.state;
+    const { title, subtitle, imagePath } = this.state;
     return (
       <form data-testid="add-movie-form">
         <TitleInputA value={ title } onChange={ this.handleChange } />
         <SubtitleInputA value={ subtitle } onChange={ this.handleChange } />
+        <ImageInputA value={ imagePath } onChange={ this.handleChange } />
       </form>
     );
   }
