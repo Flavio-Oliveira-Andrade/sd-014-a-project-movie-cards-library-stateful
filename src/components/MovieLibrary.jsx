@@ -13,8 +13,10 @@ class MovieLibrary extends React.Component {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies: movies,
+      movies,
     };
+    this.handleChance = this.handleChance.bind(this);
+    this.addMovie = this.addMovie.bind(this);
   }
 
   handleChance({ target }) {
@@ -27,16 +29,23 @@ class MovieLibrary extends React.Component {
 
   handleFilter() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
-    return movies.filter((movie) => movie.title.toLowerCase().icludes(searchText)
+    return movies.filter((movie) => movie.title.toLowerCase().includes(searchText)
     || movie.subtitle.toLowerCase().includes(searchText)
     || movie.storyLine.toLowerCase().includes(searchText))
       .filter((movie) => (selectedGenre ? movie.genre === selectedGenre : movie))
       .filter((movie) => (bookmarkedOnly ? movie.bookmarked : movie));
   }
 
+  addMovie(movie) {
+    const { movies } = this.state;
+    this.state({
+      movies: [...movies, movie],
+    });
+  }
+
   render() {
     // Desestruturando o state
-    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
 
     return (
       <main>
@@ -44,8 +53,12 @@ class MovieLibrary extends React.Component {
           searchText={ searchText }
           bookmarkedOnly={ bookmarkedOnly }
           selectedGenre={ selectedGenre }
+          onSearchTextChange={ this.handleChance }
+          onBookmarkedChange={ this.handleChance }
+          onSelectedGenreChange={ this.handleChance }
         />
-        <AddMovie movies={ this.handleFilter } />
+        <MovieList movies={ this.handleFilter(movies) } />
+        <AddMovie movies={ this.addMovie } />
       </main>
     );
   }

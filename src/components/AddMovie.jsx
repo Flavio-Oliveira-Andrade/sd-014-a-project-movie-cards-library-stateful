@@ -31,9 +31,9 @@ class AddMovie extends Component {
     });
   }
 
-  handleInput = (title, type, dataTest, value) => (
+  handleInput = (name, type, dataTest, value) => (
     <input
-      name={ title }
+      name={ name }
       type={ type }
       data-testid={ dataTest }
       value={ value }
@@ -90,7 +90,7 @@ class AddMovie extends Component {
         </label>
 
         <button
-          type="submit"
+          type="button"
           data-testid="send-button"
           onClick={ this.handleClick }
         >
