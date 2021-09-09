@@ -16,16 +16,31 @@ class MovieLibrary extends Component {
       movies,
     };
     this.handleChange = this.handleChange.bind(this);
+    this.filterMovies = this.filterMovies.bind(this);
   }
 
   handleChange({ target }) {
-    this.setState({
+    return this.setState({
       [target.name]: (target.type === 'checkbox' ? target.checked : target.value),
     });
   }
 
+  filterMovies({ searchText, bookmarkedOnly, movies, selectedGenre }) {
+    const filteredMovies = movies.filter(
+      (movie) => movie.title.includes(searchText)
+      || movie.subtitle.includes(searchText)
+      || movie.storyline.includes(searchText),
+    );
+    if (bookmarkedOnly) {
+      return filteredMovies.filter((movie) => movie.bookmarked);
+    } if (selectedGenre) {
+      return filteredMovies.filter((movie) => movie.genre === selectedGenre);
+    }
+    return filteredMovies;
+  }
+
   render() {
-    const { searchText, selectedGenre, bookmarkedOnly, movies } = this.state;
+    const { searchText, selectedGenre, bookmarkedOnly } = this.state;
     return (
       <main>
         <SearchBar
@@ -36,7 +51,7 @@ class MovieLibrary extends Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleChange }
         />
-        <MovieList movies={ movies } />
+        <MovieList movies={ this.filterMovies(this.state) } />
       </main>
     );
   }
