@@ -29,7 +29,7 @@ class MovieLibrary extends React.Component {
     .filter((movie) => (bookmarkedOnly ? movie.bookmarked : true))
     .filter((movie) => (selectedGenre ? movie.genre === selectedGenre : true));
 
-  clickHandler(movie) { // gerencia o evento onClick.
+  clickHandler(movie) { // gerencia parcialmente o evento onClick.
     this.setState(({ movies }) => ({ // faz a alteração do objeto movies, recebido via prop, para incrementar o array existente com o novo filme.
       movies: [...movies, movie],
     }));
@@ -42,8 +42,11 @@ class MovieLibrary extends React.Component {
         <h2> My awesome movie library </h2>
         <SearchBar
           searchText={ searchText }
+          onSearchTextChange={ this.handleChange }
           bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.handleChange }
           selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ this.handleChange }
         />
         <MovieList movies={ this.movieFilter(this.state) } />
         <AddMovie onClick={ this.clickHandler } />

@@ -1,4 +1,5 @@
 import React from 'react';
+import Proptypes from 'prop-types';
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -12,12 +13,27 @@ class AddMovie extends React.Component {
       genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
+    this.clickHandler = this.clickHandler.bind(this);
   }
 
   handleChange({ target }) { // gerencia as alterações dentro da SearchBar.
     this.setState({
       [target.name]: target.value }); // de acordo com o nome do campo selecionado, faz a alteração de seu conteúdo.
   } // Caso seja uma checkbox, altera o atributo checked, caso não seja, altera para o valor selecionado/digitado.
+
+  clickHandler(event) { // gerencia o envio de dados para o elemento pai como prop e retorna os dados para o estado inicial.
+    const { onClick } = this.props;
+    event.preventDefault();
+    onClick(this.state);
+    this.setState({
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
 
   inputCreator(type, name, value, dataTestid) { // cria os campos de input de acordo com as informações dos campos
     return (
@@ -73,12 +89,14 @@ class AddMovie extends React.Component {
             <option data-testid="genre-option" value="thriller">Suspense</option>
           </select>
         </label>
-        <button type="submit" data-testid="send-button" onClick={ this.handleClick }>
+        <button type="submit" data-testid="send-button" onClick={ this.clickHandler }>
           Adicionar filme
         </button>
       </form>
     );
   }
 }
-
+AddMovie.propTypes = {
+  onClick: Proptypes.func.isRequired,
+};
 export default AddMovie;
