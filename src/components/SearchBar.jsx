@@ -16,7 +16,6 @@ class SearchBar extends React.Component {
         <label htmlFor="searchText" data-testid="text-input-label">
           Inclui o texto:
           <input
-            id="searchText"
             name="searchText"
             type="text"
             value={ searchText }
@@ -24,10 +23,11 @@ class SearchBar extends React.Component {
             data-testid="text-input"
           />
         </label>
-        <label htmlFor="searchText" data-testid="checkbox-input-label">
+        <label htmlFor="bookmarkedOnly" data-testid="checkbox-input-label">
           Mostrar somente favoritos:
           <input
             type="checkbox"
+            name="bookmarkedOnly"
             checked={ bookmarkedOnly }
             onChange={ onBookmarkedChange }
             data-testid="checkbox-input"
