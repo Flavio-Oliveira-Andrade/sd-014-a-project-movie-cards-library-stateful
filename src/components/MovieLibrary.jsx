@@ -2,8 +2,7 @@ import React from 'react';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 import AddMovie from './AddMovie';
-
-const allMovies = require('../data');
+import allMovies from '../data';
 
 class MovieLibrary extends React.Component {
   constructor(props) {
@@ -19,11 +18,15 @@ class MovieLibrary extends React.Component {
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
   }
 
-  onSearchTextChange() {}
+  onSearchTextChange({ target }) {
+    this.setState((state) => ({...state, searchText: target.value}))
+  }
 
   onBookmarkedChange() {}
 
-  onSelectedGenreChange() {}
+  onSelectedGenreChange({ target }) {
+    this.setState((state) => ({...state, selectedGenre: target.value}))
+  }
 
   render() {
     const { state: { searchText, bookmarked, selectedGenre, movies } } = this;
