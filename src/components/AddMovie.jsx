@@ -1,4 +1,6 @@
 import React from 'react';
+import Avaliação from './Avaliacao';
+import Sinopse from './Sinopse';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -8,7 +10,6 @@ class AddMovie extends React.Component {
       subtitle: '',
       imagePath: '',
       storyline: '',
-      rating: 0,
       genre: 'action',
     };
   }
@@ -31,8 +32,19 @@ class AddMovie extends React.Component {
     />
   )
 
+  onClick = () => (
+    this.setState({
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      genre: 'action',
+
+    })
+  )
+
   render() {
-    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
+    const { title, subtitle, imagePath, storyline, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label data-testid="title-input-label" htmlFor="title">
@@ -47,20 +59,8 @@ class AddMovie extends React.Component {
           Imagem
           {this.creatInput('imagePath', 'text', 'image-input', imagePath)}
         </label>
-        <label data-testid="storyline-input-label" htmlFor="storyline">
-          Sinopse
-          <textarea
-            type="text"
-            value={ storyline }
-            name="storyline"
-            data-testid="storyline-input"
-            onChange={ this.updateState }
-          />
-        </label>
-        <label data-testid="rating-input-label" htmlFor="rating">
-          Avaliação
-          {this.creatInput('rating', 'number', 'rating-input', rating)}
-        </label>
+        <Sinopse />
+        <Avaliação />
         <label data-testid="genre-input-label" htmlFor="genre">
           Gênero
           <select
@@ -74,6 +74,13 @@ class AddMovie extends React.Component {
             <option data-testid="genre-option" value="thriller">Suspense</option>
           </select>
         </label>
+        <button
+          type="button"
+          data-testid="send-button"
+          onClick={ this.onClick }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
