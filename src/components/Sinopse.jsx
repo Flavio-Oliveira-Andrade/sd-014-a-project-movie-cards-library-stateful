@@ -1,23 +1,9 @@
 import React from 'react';
 
 class Sinopse extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      storyline: '',
-    };
-  }
-
-  updateState = ({ target }) => {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({
-      [name]: value,
-    });
-  }
 
   render() {
-    const { storyline } = this.state;
+    const { storyline , update } = this.props;
     return (
       <label data-testid="storyline-input-label" htmlFor="storyline">
         Sinopse
@@ -26,7 +12,7 @@ class Sinopse extends React.Component {
           value={ storyline }
           name="storyline"
           data-testid="storyline-input"
-          onChange={ this.updateState }
+          onChange={ update }
         />
       </label>
     );
