@@ -36,16 +36,20 @@ class AddMovie extends Component {
 
   render() {
     const { onClick } = this.props;
-    const { title, subtitle } = this.state;
+    const { title, subtitle, imagePath } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="input-text-addmovie" data-testid="title-input-label">
+        <label htmlFor="title" data-testid="title-input-label">
           Título
           { this.customInput('text', 'title', title, 'title-input') }
         </label>
-        <label htmlFor="input-text-addmovie" data-testid="subtitle-input-label">
+        <label htmlFor="subtitle" data-testid="subtitle-input-label">
           Subtítulo
           { this.customInput('text', 'subtitle', subtitle, 'subtitle-input') }
+        </label>
+        <label htmlFor="image" data-testid="image-input-label">
+          Imagem
+          { this.customInput('text', 'imagePath', imagePath, 'image-input') }
         </label>
       </form>
     );
