@@ -4,22 +4,20 @@ import PropTypes from 'prop-types';
 export default class AddMovie extends Component {
   constructor() {
     super();
-    this.state = {
-      title: '',
-      subtitle: '',
-      imagePath: '',
-    };
+    this.state = { title: '', subtitle: '', imagePath: '', storyline: '' };
   }
 
-  handleTitleChange = ({ target }) => this.setState({ title: target.value });
+  handleTitleChange = ({ target }) => this.setState({ title: target.value });;
 
   handleSubtitleChange = ({ target }) => this.setState({ subtitle: target.value });
 
   handleImageChange = ({ target }) => this.setState({ imagePath: target.value });
 
+  handleStorylineChange = ({ target }) => this.setState({ storyline: target.value });
+
   render() {
     const { onClick } = this.props;
-    const { title, subtitle, imagePath } = this.state;
+    const { title, subtitle, imagePath, storyline } = this.state;
 
     return (
       <form data-testid="add-movie-form">
@@ -33,7 +31,6 @@ export default class AddMovie extends Component {
             onChange={ this.handleTitleChange }
           />
         </label>
-
         <label htmlFor="subtitleInput" data-testid="subtitle-input-label">
           Subtítulo
           <input
@@ -44,7 +41,6 @@ export default class AddMovie extends Component {
             onChange={ this.handleSubtitleChange }
           />
         </label>
-
         <label htmlFor="imageInput" data-testid="image-input-label">
           Imagem
           <input
@@ -55,7 +51,16 @@ export default class AddMovie extends Component {
             onChange={ this.handleImageChange }
           />
         </label>
-
+        <label htmlFor="storylineInput" data-testid="storyline-input-label">
+          Sinopse
+          <textarea
+            id="storylineInput"
+            type="text"
+            value={ storyline }
+            data-testid="storyline-input"
+            onChange={ this.handleStorylineChange }
+          />
+        </label>
         <button type="submit" onClick={ onClick }>Adicionar filme</button>
       </form>
     );
