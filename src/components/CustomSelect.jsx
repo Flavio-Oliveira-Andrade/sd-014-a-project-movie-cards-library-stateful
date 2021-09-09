@@ -1,15 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// TODO: refatorar para aproveitar código do CustomInput
 class CustomSelect extends React.Component {
   render() {
     const { name, value, onChange, labelText, options } = this.props;
+    const id = `${name}-input`;
+    const labelId = `${id}-label`;
     return (
-      <label data-testid={ `${name}-label` } htmlFor={ name }>
+      <label data-testid={ labelId } htmlFor={ id }>
         { labelText }
         <select
-          id={ name }
-          data-testid={ name }
+          id={ id }
+          data-testid={ id }
           value={ value }
           onChange={ onChange }
         >

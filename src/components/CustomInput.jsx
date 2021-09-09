@@ -4,14 +4,16 @@ import PropTypes from 'prop-types';
 class CustomInput extends React.Component {
   render() {
     const { name, type, value, onChange, labelText } = this.props;
-
+    const id = `${name}-input`;
+    const labelId = `${id}-label`;
     return (
-      <label data-testid={ `${name}-label` } htmlFor={ name }>
+      <label data-testid={ labelId } htmlFor={ id }>
         { labelText }
         <input
+          name={ name }
           type={ type }
-          id={ name }
-          data-testid={ name }
+          id={ id }
+          data-testid={ id }
           value={ type !== 'checkbox' ? value : false }
           checked={ type === 'checkbox' ? value : false }
           onChange={ onChange }
