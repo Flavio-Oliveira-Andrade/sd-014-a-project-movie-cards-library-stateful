@@ -54,8 +54,7 @@ class MovieLibrary extends Component {
     const { bookmarkedOnly, searchText, selectedGenre } = this.state;
 
     return (
-      <div>
-        <h2> My awesome movie library </h2>
+      <>
         <SearchBar
           bookmarkedOnly={ bookmarkedOnly }
           onBookmarkedChange={ handleChange }
@@ -66,7 +65,7 @@ class MovieLibrary extends Component {
         />
         <MovieList movies={ filterMovies() } />
         <AddMovie onClick={ addMovie } />
-      </div>
+      </>
     );
   }
 }
