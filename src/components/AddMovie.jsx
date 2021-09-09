@@ -7,7 +7,7 @@ class AddMovie extends Component {
       title: '',
       subtitle: '',
       imagePath: '',
-      // storyline: '',
+      storyline: '',
       // rating: 0,
       // genre: 'action',
     };
@@ -76,6 +76,24 @@ class AddMovie extends Component {
     );
   }
 
+  textAreaInput() {
+    const { storyline } = this.state;
+    return (
+      <label data-testid="storyline-input-label" htmlFor="storyline">
+        Sinopse
+        <input
+          name="storyline"
+          onChange={ this.handleChange }
+          value={ storyline }
+          type="text"
+          id="storyline"
+          data-testid="storyline-input"
+        />
+
+      </label>
+    );
+  }
+
   render() {
     return (
       <div>
@@ -83,6 +101,7 @@ class AddMovie extends Component {
           { this.titleInput() }
           { this.subtitleInput() }
           { this.imageInput() }
+          { this.textAreaInput() }
         </form>
       </div>
     );
