@@ -14,6 +14,8 @@ class AddMovie extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.inputGenerator = this.inputGenerator.bind(this);
+    this.textareaGenerator = this.textareaGenerator.bind(this);
   }
 
   // handle genérico utilizado para atualizar o estado de todos os componentes com a mesma lógica.
@@ -48,6 +50,7 @@ class AddMovie extends Component {
         name={ name }
         value={ value }
         data-testid={ data }
+        onChange={ this.handleChange }
       />
     );
   }
@@ -59,6 +62,7 @@ class AddMovie extends Component {
         name={ name }
         value={ value }
         data-testid={ data }
+        onChange={ this.handleChange }
       />
     );
   }
@@ -77,7 +81,7 @@ class AddMovie extends Component {
         </label>
         <label data-testid="image-input-label" htmlFor="image-input">
           Imagem
-          { this.inputGenerator('text', 'image', imagePath, 'image-input') }
+          { this.inputGenerator('text', 'imagePath', imagePath, 'image-input') }
         </label>
         <label data-testid="storyline-input-label" htmlFor="storyline-input">
           Sinopse
@@ -87,7 +91,7 @@ class AddMovie extends Component {
           Avaliação
           { this.inputGenerator('number', 'rating', rating, 'rating-input') }
         </label>
-        <label data-testid="genre-imput-label" htmlFor="genre">
+        <label data-testid="genre-input-label" htmlFor="genre">
           Gênero
           <select
             data-testid="genre-input"
