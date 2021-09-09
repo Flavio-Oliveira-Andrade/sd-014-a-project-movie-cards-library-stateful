@@ -45,7 +45,7 @@ class MovieLibrary extends React.Component {
   }
 
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
         <AddMovie onClick={ this.handleClick } />
@@ -64,4 +64,5 @@ class MovieLibrary extends React.Component {
   }
 }
 
+MovieLibrary.propTypes = { movies: PropTypes.arrayOf(PropTypes.object).isRequired };
 export default MovieLibrary;
