@@ -5,7 +5,7 @@ class SearchBarSelect extends React.Component {
   render() {
     const { callbackFunc, value } = this.props;
     return (
-      <label htmlFor="select" data-testid="text-input-label">
+      <label htmlFor="select" data-testid="select-input-label">
         Filtrar por gênero
         <select
           id="select"

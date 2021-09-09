@@ -5,7 +5,7 @@ class SearchBarCheck extends React.Component {
   render() {
     const { callbackFunc, checked } = this.props;
     return (
-      <label htmlFor="checkbox" data-testid="text-input-label">
+      <label htmlFor="checkbox" data-testid="checkbox-input-label">
         Mostrar somente favoritos
         <input
           id="checkbox"
