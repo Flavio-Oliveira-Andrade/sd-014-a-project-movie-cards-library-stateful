@@ -31,6 +31,10 @@ class AddMovie extends Component {
           nome={ ['title', 'Título', title] }
           load={ this.loadText }
         />
+        <FormsConstructor
+          nome={ ['subtitle', 'Subtítulo', subtitle] }
+          load={ this.loadText }
+        />
       </form>
     );
   }
