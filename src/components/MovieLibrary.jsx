@@ -21,7 +21,7 @@ class MovieLibrary extends React.Component {
   }
 
   handleChange = ({ target }) => {
-    console.log(target);
+    // console.log(target);
     this.setState({
       [target.name]: (target.type === 'checkbox' ? target.checked : target.value),
     });
@@ -36,7 +36,7 @@ class MovieLibrary extends React.Component {
   moviesFilter = ({ searchText, selectedGenre, bookmarkedOnly, movies }) => movies
     .filter((movie) => (movie.title.includes(searchText)
     || movie.subtitle.includes(searchText) || movie.storyline.includes(searchText)))
-    .filter((movie) => (bookmarkedOnly ? movie.bookmarkedOnly : true))
+    .filter((movie) => (bookmarkedOnly ? movie.bookmarked : true))
     .filter((movie) => (selectedGenre ? movie.genre === selectedGenre : true));
 
   render() {
