@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 
-class SubtitleInputA extends Component {
+class SubtitleForm extends Component {
   render() {
     return (
       <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
         Subtítulo
-        <input type="text" data-testid="subtitle-input" />
+        <input
+          type="text"
+          name="subtitle"
+          data-testid="subtitle-input"
+        />
       </label>
     );
   }
 }
 
-export default SubtitleInputA;
+export default SubtitleForm;

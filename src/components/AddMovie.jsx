@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import TitleInputA from './TitleInputA';
-import SubtitleInputA from './SubtitleInputA';
-import ImageInputA from './ImageInputA';
+import TitleForm from './TitleForm';
+import SubtitleForm from './SubtitleForm';
+import ImagePathForm from './ImagePathForm';
+import StorylineForm from './StorylineForm';
+import RatingForm from './RatingForm';
+import GenreForm from './GenreForm';
 
 class AddMovie extends Component {
   constructor(props) {
@@ -11,9 +14,9 @@ class AddMovie extends Component {
       subtitle: '',
       title: '',
       imagePath: '',
-      // storyline: '',
-      // rating: 0,
-      // genre: 'action',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
     };
   }
 
@@ -23,12 +26,15 @@ class AddMovie extends Component {
   }
 
   render() {
-    const { title, subtitle, imagePath } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <TitleInputA value={ title } onChange={ this.handleChange } />
-        <SubtitleInputA value={ subtitle } onChange={ this.handleChange } />
-        <ImageInputA value={ imagePath } onChange={ this.handleChange } />
+        <TitleForm value={ title } onChange={ this.handleChange } />
+        <SubtitleForm value={ subtitle } onChange={ this.handleChange } />
+        <ImagePathForm value={ imagePath } onChange={ this.handleChange } />
+        <StorylineForm value={ storyline } onChange={ this.handleChange } />
+        <RatingForm value={ rating } onChange={ this.handleChange } />
+        <GenreForm value={ genre } onChange={ this.handleChange } />
       </form>
     );
   }

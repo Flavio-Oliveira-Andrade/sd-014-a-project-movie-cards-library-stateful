@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class TitleInputA extends Component {
+class TitleForm extends Component {
   render() {
     return (
       <label htmlFor="title-input" data-testid="title-input-label">
@@ -15,4 +15,4 @@ class TitleInputA extends Component {
   }
 }
 
-export default TitleInputA;
+export default TitleForm;
