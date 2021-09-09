@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Title from './Title';
 import Subtitle from './Subtitle';
+import ImagePath from './ImagePath';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -46,10 +47,7 @@ class AddMovie extends React.Component {
       <form data-testid="add-movie-form">
         <Title value={ title } />
         <Subtitle value={ subtitle } />
-        <label htmlFor="handle-change-image" data-testid="image-input-label">
-          Imagem
-          <input type="text" value={ imagePath } name="imagePath" data-testid="image-input" onChange={ this.handleChange } id="handle-change-image" />
-        </label>
+        <ImagePath value={ imagePath } />
         <label htmlFor="handle-change-storyline" data-testid="storyline-input-label">
           Sinopse
           <textarea value={ storyline } name="storyline" data-testid="storyline-input" onChange={ this.handleChange } id="handle-change-storyline" />
