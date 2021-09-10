@@ -66,7 +66,7 @@ inputTitle = (title) => (
 inputStoryline = (storyline) => (
   <label data-testid="storyline-input-label" htmlFor="storyline">
     Sinopse
-    <input
+    <textarea
       type="textarea"
       id="storyline"
       value={ storyline }
