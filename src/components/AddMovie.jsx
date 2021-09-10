@@ -37,11 +37,14 @@ class AddMovie extends Component {
 
   createCustomInput(id, onChange, type, value) {
     const name = id === 'image' ? 'imagePath' : id;
+    const maxRating = 5;
 
     return (
       <input
         data-testid={ `${id}-input` }
         id={ id }
+        max={ type === 'number' ? maxRating : null }
+        min={ type === 'number' ? 0 : null }
         name={ name }
         onChange={ onChange }
         type={ type }
