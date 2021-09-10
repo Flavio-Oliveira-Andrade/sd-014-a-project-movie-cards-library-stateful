@@ -20,7 +20,7 @@ class TitleInput extends React.Component {
 }
 
 TitleInput.propTypes = {
-  value: PropTypes.number,
+  value: PropTypes.string,
   handleChange: PropTypes.func,
 }.isRequired;
 

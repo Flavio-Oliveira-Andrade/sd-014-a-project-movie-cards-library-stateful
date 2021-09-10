@@ -40,8 +40,8 @@ class AddMovie extends React.Component {
     return (
       <form data-testid="add-movie-form">
         <TitleInput value={ title } handleChange={ this.handleChange } />
-        {/* <SubtitleInput value={ subtitle } handleChange={ this.handleChange } />
-        <ImageInput value={ imagePath } handleChange={ this.handleChange } />
+        <SubtitleInput value={ subtitle } handleChange={ this.handleChange } />
+        {/* <ImageInput value={ imagePath } handleChange={ this.handleChange } />
         <StorylineInput value={ storyline } handleCHange={ this.handleChange } /> */}
       </form>
     );
