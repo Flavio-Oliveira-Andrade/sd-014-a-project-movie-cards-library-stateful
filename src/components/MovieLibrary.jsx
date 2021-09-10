@@ -1,7 +1,6 @@
 // implement MovieLibrary component here
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
@@ -14,6 +13,7 @@ class MovieLibrary extends Component {
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
     this.onClick = this.onClick.bind(this);
+    this.filterMovies = this.filterMovies.bind(this);
 
     this.state = { // criando o estado inicial por meio da atribuição de um objeto à chave `state` do `this`
       searchText: '',
@@ -44,6 +44,7 @@ class MovieLibrary extends Component {
 
   onClick(movie) {
     const { movies } = this.state; // Destruturing na chave 'movies'; Atualiza estado do componente
+    console.log(movie);
     this.setState({
       movies: [...movies, movie], // Na lista de filmes prévia, insere informações do filme adicionado
     });
@@ -51,16 +52,18 @@ class MovieLibrary extends Component {
 
   filterMovies() {
     const { searchText, selectedGenre, bookmarkedOnly, movies } = this.state;
-    let filteredMovies = movies
-      .filter((movie) => movie.title.includes(searchText)
+    let filteredMovies = movies;
+    if (searchText) {
+      filteredMovies = movies.filter((movie) => movie.title.includes(searchText)
       || movie.subtitle.includes(searchText)
       || movie.storyline.includes(searchText));
+    }
 
     if (bookmarkedOnly) {
-      filteredMovies = movies.filter((movie) => movie.bookmarked === bookmarkedOnly);
+      filteredMovies = movies.filter(({ bookmarked }) => bookmarked === bookmarkedOnly);
     }
     if (selectedGenre) {
-      filteredMovies = movies.filter((movie) => movie.genre === selectedGenre);
+      filteredMovies = movies.filter(({ genre }) => genre === selectedGenre);
     }
     return filteredMovies;
   }

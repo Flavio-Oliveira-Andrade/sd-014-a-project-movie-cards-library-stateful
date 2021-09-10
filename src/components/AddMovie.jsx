@@ -7,6 +7,15 @@ import Storyline from './componentsAddMovie/Storyline';
 import Rating from './componentsAddMovie/Rating';
 import Genre from './componentsAddMovie/Genre';
 
+const estado = {
+  subtitle: '',
+  title: '',
+  imagePath: '',
+  storyline: '',
+  rating: 0,
+  genre: 'action',
+};
+
 class AddMovie extends React.Component {
   constructor() {
     super();
@@ -14,14 +23,7 @@ class AddMovie extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
-    this.state = {
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    };
+    this.state = estado;
   }
 
   handleChange({ target }) { // desestrutura 'event.target' para 'target'
@@ -36,16 +38,9 @@ class AddMovie extends React.Component {
   handleSubmit(event) {
     event.preventDefault(); // para que botão não salve automaticamente na url ou recarregue a página
     const { onClick } = this.props;
-    onClick(this.sate);
+    onClick(this.state);
 
-    this.setState({
-      title: '',
-      subtitle: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    });
+    this.setState(estado);
   }
 
   render() {

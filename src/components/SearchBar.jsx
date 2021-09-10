@@ -14,9 +14,7 @@ class SearchBar extends React.Component {
     } = this.props; // acessando o objeto e pegando as informações/propriedades passadas pro componente
     return (
       <form data-testid="search-bar-form">
-        {/* <label htmlFor="searchText" data-testid="text-input-label"> Inclui o texto
-          <input name="searchText" type="text" id="searchText" data-testid="text-input" value={ searchText } onChange={ onSearchTextChange } />
-        </label> */}
+
         <SearchText
           searchText={ searchText }
           onSearchTextChange={ onSearchTextChange }
