@@ -4,9 +4,8 @@ import PropTypes from 'prop-types';
 class AddMovie extends Component {
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.state = {
+
+    this.initialState = {
       genre: 'action',
       imagePath: '',
       rating: 0,
@@ -14,6 +13,11 @@ class AddMovie extends Component {
       subtitle: '',
       title: '',
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+
+    this.state = this.initialState;
   }
 
   handleChange({ target: { name, value } }) {
@@ -27,14 +31,7 @@ class AddMovie extends Component {
 
     onClick(this.state);
 
-    this.setState({
-      genre: 'action',
-      imagePath: '',
-      rating: 0,
-      storyline: '',
-      subtitle: '',
-      title: '',
-    });
+    this.setState(this.initialState);
   }
 
   createCustomInput(id, onChange, type, value) {
