@@ -15,6 +15,8 @@ class AddRating extends React.Component {
           id="rating"
           data-testid="rating-input"
           onChange={ onClick }
+          min="0"
+          max="10"
         />
       </label>
     );

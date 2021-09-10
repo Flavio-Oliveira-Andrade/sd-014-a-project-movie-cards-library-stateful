@@ -5,11 +5,37 @@ import AddMovie from './AddMovie';
 import MovieList from './MovieList';
 
 class MovieLibrary extends React.Component {
+  constructor(props) {
+    super(props);
+    const { movies } = props;
+    this.state = {
+      searchText: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
+      movies,
+    };
+    this.handelChange = this.handelChange.bind(this);
+  }
+
+  handelChange(event) {
+    this.setState({
+      [event.target.name]: event.target.type === 'checkbox'
+        ? event.target.checked : event.target.value,
+    });
+  }
+
   render() {
-    const { movies } = this.props;
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     return (
       <div>
-        <SearchBar />
+        <SearchBar
+          searchText={ searchText }
+          onSearchTextChange={ this.handelChange }
+          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.handelChange }
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ this.handelChange }
+        />
         <MovieList movies={ movies } />
         <AddMovie />
       </div>
