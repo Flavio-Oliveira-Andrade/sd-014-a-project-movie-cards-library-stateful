@@ -1,6 +1,6 @@
-.search-bar-for {
+.search-bar-form {
   align-items: center;
-  background-color: #fff;
+  background-color: #fafafa;
   border-radius: 5px;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -12,12 +12,12 @@
   width: 80%;
 }
 
-.search-bar-for > * {
+.search-bar-form > * {
   margin: 5px;
 }
 
-.search-bar-for label input,
-.search-bar-for label select {
+.search-bar-form label input,
+.search-bar-form label select {
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 5px;

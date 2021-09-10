@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import '../styles/AddMovie.css';
+
 class AddMovie extends Component {
   constructor(props) {
     super(props);
@@ -41,6 +43,7 @@ class AddMovie extends Component {
 
     return (
       <input
+        className="add-movie-inputs"
         data-testid={ `${id}-input` }
         id={ id }
         max={ type === 'number' ? maxRating : null }
@@ -56,6 +59,7 @@ class AddMovie extends Component {
   createGenreInput(onChange, value) {
     return (
       <select
+        className="add-movie-inputs"
         data-testid="genre-input"
         id="genre"
         name="genre"
@@ -79,7 +83,8 @@ class AddMovie extends Component {
     const { handleChange, handleClick, createCustomInput, createGenreInput } = this;
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     return (
-      <form data-testid="add-movie-form">
+      <form className="add-movie-form" data-testid="add-movie-form">
+        <h4>Add Movie</h4>
         <label data-testid="title-input-label" htmlFor="title">
           Título
           {createCustomInput('title', handleChange, 'text', title)}
@@ -95,6 +100,7 @@ class AddMovie extends Component {
         <label data-testid="storyline-input-label" htmlFor="storyline">
           Sinopse
           <textarea
+            className="add-movie-inputs"
             data-testid="storyline-input"
             id="storyline"
             name="storyline"
@@ -110,7 +116,12 @@ class AddMovie extends Component {
           Gênero
           {createGenreInput(handleChange, genre)}
         </label>
-        <button data-testid="send-button" onClick={ handleClick } type="submit">
+        <button
+          className="send-button"
+          data-testid="send-button"
+          onClick={ handleClick }
+          type="submit"
+        >
           Adicionar filme
         </button>
       </form>
