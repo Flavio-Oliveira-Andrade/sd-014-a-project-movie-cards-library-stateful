@@ -15,7 +15,6 @@ class SearchBar extends React.Component {
         type={ type }
         data-testid={ datatestid }
         value={ value }
-        checked={ onchange }
         name="searchText"
         onChange={ onchange }
         id={ datatestid }
