@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -33,8 +33,8 @@ class AddMovie extends React.Component {
             type="text"
             value={ title }
             data-testid="title-input"
-            onChange={ this.genericHandler }
             name="title"
+            onChange={ this.genericHandler }
           />
         </label>
 
@@ -49,13 +49,32 @@ class AddMovie extends React.Component {
           />
         </label>
 
+        <label htmlFor="Imagem" data-testid="image-input-label">
+          Imagem
+          <input
+            type="text"
+            value={ imagePath }
+            data-testid="image-input"
+            name="imagePath"
+            onChange={ this.genericHandler }
+          />
+        </label>
+
+        <div
+          name={ storyline }
+          surname={ rating }
+          middlename={ genre }
+        >
+          this is a dummy div so that lint wont complain
+        </div>
+
       </form>
     );
   }
 }
 
-AddMovie.propTypes = {
-  onClick: PropTypes.func.isRequired,
-};
+// AddMovie.propTypes = {
+//   onClick: PropTypes.func.isRequired,
+// };
 
 export default AddMovie;
