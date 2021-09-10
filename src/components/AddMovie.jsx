@@ -2,14 +2,23 @@ import React from 'react';
 import CustomControl from './CustomControl';
 
 class AddMovie extends React.Component {
+  formFields = [
+    { name: 'title', type: 'text', labelText: 'Título' },
+    { name: 'subtitle', type: 'text', labelText: 'Subtítulo' },
+    { name: 'image', type: 'text', labelText: 'Imagem' },
+    { name: 'storyline', type: 'storyline', labelText: 'Sinopse' },
+    { name: 'rating', type: 'number', labelText: 'Avaliação' },
+    // { name: 'genre', type: 'select', labelText: 'Gênero' },
+  ]
+
   constructor() {
     super();
     this.state = {
-      subtitle: '',
       title: '',
-      storyline: '',
+      subtitle: '',
       imagePath: '',
-      // rating: 0,
+      storyline: '',
+      rating: 0,
       // genre: '',
     };
   }
@@ -27,37 +36,18 @@ class AddMovie extends React.Component {
 
   render() {
     // const { onClick } = this.props;
-    const { title, subtitle, imagePath, storyline } = this.state;
+    const stateValues = Object.values(this.state);
     return (
       <form data-testid="add-movie-form">
-        <CustomControl
-          name="title"
-          type="text"
-          labelText="Título"
-          value={ title }
-          onChange={ this.handleChange }
-        />
-        <CustomControl
-          name="subtitle"
-          type="text"
-          labelText="Subtítulo"
-          value={ subtitle }
-          onChange={ this.handleChange }
-        />
-        <CustomControl
-          name="image"
-          type="text"
-          labelText="Imagem"
-          value={ imagePath }
-          onChange={ this.handleChange }
-        />
-        <CustomControl
-          name="storyline"
-          type="textarea"
-          labelText="Sinopse"
-          value={ storyline }
-          onChange={ this.handleChange }
-        />
+        {this.formFields.map(({ name, ...otherFields }, index) => (
+          <CustomControl
+            key={ name }
+            name={ name }
+            value={ stateValues[index] }
+            onChange={ this.handleChange }
+            { ...otherFields }
+          />
+        ))}
       </form>
     );
   }

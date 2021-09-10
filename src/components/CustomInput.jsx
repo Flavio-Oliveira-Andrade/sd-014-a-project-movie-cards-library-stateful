@@ -22,7 +22,9 @@ class CustomInput extends React.Component {
 CustomInput.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
+  value: PropTypes.oneOfType(
+    [PropTypes.string, PropTypes.bool, PropTypes.number],
+  ).isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
