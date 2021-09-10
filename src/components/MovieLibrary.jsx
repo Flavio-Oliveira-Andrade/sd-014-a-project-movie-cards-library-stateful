@@ -34,13 +34,13 @@ class MovieLibrary extends React.Component {
       .toLowerCase().includes(searchText.toLowerCase())
       || movie.subtitle.toLowerCase().includes(searchText.toLowerCase())
       || movie.storyline.toLowerCase().includes(searchText.toLowerCase()))
-      .filter((movie) => (selectedGenre === true ? movie.genre === selectedGenre : movie))
+      .filter((movie) => (selectedGenre ? movie.genre === selectedGenre : movie))
       .filter((movie) => (bookmarkedOnly ? movie.bookmarked : movie));
   }
 
   addMovie(movie) {
     const { movies } = this.state;
-    this.state({
+    this.setState({
       movies: [...movies, movie],
     });
   }
