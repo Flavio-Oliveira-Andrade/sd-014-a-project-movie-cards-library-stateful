@@ -1,6 +1,7 @@
 // implement AddMovie component here
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+import Inputs from './Inputs';
 
 const inicialState = {
   subtitle: '',
@@ -27,11 +28,19 @@ class AddMovie extends React.Component {
   }
 
   render() {
-    const { onClick } = this.props;
+    // const { onClick } = this.props;
     const { title } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <label
+        <Inputs
+          name="title"
+          type="text"
+          handleChange={ this.handleChange }
+          value={ title }
+          labelText="Título"
+          id="title-input"
+        />
+        {/* <label
           htmlFor="title"
           data-testid="title-input-label"
         >
@@ -43,14 +52,14 @@ class AddMovie extends React.Component {
             data-testid="title-input"
             onChange={ this.handleChange }
           />
-        </label>
+        </label> */}
       </form>
     );
   }
 }
 
-AddMovie.propTypes = {
-  onClick: PropTypes.func.isRequired,
-};
+// AddMovie.propTypes = {
+//   onClick: PropTypes.func.isRequired,
+// };
 
 export default AddMovie;
