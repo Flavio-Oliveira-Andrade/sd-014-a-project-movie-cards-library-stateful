@@ -11,10 +11,22 @@ class SearchBar extends React.Component {
       selectedGenre,
       onSelectedGenreChange,
     } = this.props;
+
     return (
-      
+      <form data-testid="search-bar-form">
+        <label data-testid="text-input-label" htmlFor="searchText">
+          Incluir o texto:
+          <input
+            type="text"
+            data-testid="text-input"
+            name="searchText"
+            value={ searchText }
+            onChange={ onSearchTextChange }
+          />
+        </label>
+      </form>
     );
   }
 }
 
-export default SearchBar; 
+export default SearchBar;
