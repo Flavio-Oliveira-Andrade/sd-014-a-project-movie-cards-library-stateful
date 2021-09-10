@@ -17,6 +17,7 @@ class MovieLibrary extends Component {
     this.handleSearch = this.handleSearch.bind(this);
     this.handleBookmarked = this.handleBookmarked.bind(this);
     this.handleGenre = this.handleGenre.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleSearch({ target }) {
@@ -47,6 +48,12 @@ class MovieLibrary extends Component {
     });
   }
 
+  handleClick(film) {
+    this.setState((state) => ({
+      movies: state.movies.push({ ...film, bookmarked: true }),
+    }));
+  }
+
   render() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     return (
@@ -61,7 +68,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ this.handleGenre }
         />
         <MovieList movies={ movies } />
-        <AddMovie />
+        <AddMovie onClick={ this.handleClick } />
       </div>
     );
   }
