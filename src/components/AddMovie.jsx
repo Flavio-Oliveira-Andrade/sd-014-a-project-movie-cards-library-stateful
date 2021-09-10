@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import PropTypes from 'prop-types';
 
 class AddMovie extends Component {
   constructor() {
@@ -59,6 +60,10 @@ class AddMovie extends Component {
     );
   }
 
+  clickAction(event) {
+    event.preventDefault();
+  }
+
   render() {
     // Resolve => Must use destructuring state assignment [ERRO Linter]
     const { title, subtitle, image, storyline, rating, genre } = this.state;
@@ -77,6 +82,14 @@ class AddMovie extends Component {
         {this.inputCreator('Avaliação', 'rating', 'number', rating)}
         {/* Requisito 13 */}
         {this.selectCreator('Gênero', 'genre', 'text', genre)}
+        {/* Requisito 14 */}
+        <button
+          type="submit"
+          data-testid="send-button"
+          onClick={ this.clickAction }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
