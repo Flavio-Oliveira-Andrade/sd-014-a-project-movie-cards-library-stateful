@@ -53,7 +53,7 @@ class MovieLibrary extends Component {
 
   handleClick(film) {
     this.setState((state) => ({
-      movies: state.movies.push({ ...film, bookmarked: true }),
+      movies: [...state.movies, { ...film, bookmarked: true }],
     }));
   }
 
