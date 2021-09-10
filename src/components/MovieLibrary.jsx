@@ -7,7 +7,7 @@ import AddMovie from './AddMovie';
 class MovieLibrary extends React.Component {
   constructor(props) {
     super(props);
-    const { movies } = this.props;
+    const { movies } = props;
     this.handleChange = this.handleChange.bind(this);
     this.movieFilter = this.movieFilter.bind(this);
     this.handleClick = this.handleClick.bind(this);
