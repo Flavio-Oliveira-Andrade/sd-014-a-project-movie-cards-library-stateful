@@ -99,3 +99,32 @@ form {
 .favorites {
   margin: 10px;
 }
+
+.inputsMovie {
+  border: 1px solid rgb(196, 193, 193);
+  border-radius: 5px;
+  height: 40px;
+  margin: 5px 0;
+  width: 100%;
+}
+
+.inputStoryline {
+  border: 1px solid rgb(196, 193, 193);
+  border-radius: 5px;
+  height: 80px;
+  margin: 5px 0;
+  width: 100%;
+}
+
+.sendButton {
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  height: 40px;
+  margin: 5px 0;
+  width: 150px;
+
+}

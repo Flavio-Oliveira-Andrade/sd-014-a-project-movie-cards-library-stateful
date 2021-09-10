@@ -30,6 +30,7 @@ inputTitle = (title) => (
     <input
       type="text"
       id="title"
+      className="inputsMovie"
       value={ title }
       data-testid="title-input"
       onChange={ this.handleChange }
@@ -43,6 +44,7 @@ inputTitle = (title) => (
       <input
         type="text"
         id="subtitle"
+        className="inputsMovie"
         value={ subtitle }
         data-testid="subtitle-input"
         onChange={ this.handleChange }
@@ -56,6 +58,7 @@ inputTitle = (title) => (
      <input
        type="text"
        id="imagePath"
+       className="inputsMovie"
        value={ imagePath }
        data-testid="image-input"
        onChange={ this.handleChange }
@@ -69,6 +72,7 @@ inputStoryline = (storyline) => (
     <textarea
       type="textarea"
       id="storyline"
+      className="inputStoryline"
       value={ storyline }
       data-testid="storyline-input"
       onChange={ this.handleChange }
@@ -83,6 +87,7 @@ inputStoryline = (storyline) => (
       <select
         value={ genre }
         id="genre"
+        className="inputsMovie"
         onChange={ this.handleChange }
         data-testid="genre-input"
       >
@@ -100,7 +105,10 @@ inputRating = (rating) => (
     <input
       type="number"
       max="5"
+      min="0"
+      step=".1"
       id="rating"
+      className="inputsMovie"
       value={ rating }
       data-testid="rating-input"
       onChange={ this.handleChange }
@@ -134,6 +142,7 @@ render() {
       {this.inputRating(rating)}
       {this.inputGenre(genre)}
       <button
+        className="sendButton"
         type="button"
         data-testid="send-button"
         onClick={ this.resetState }
