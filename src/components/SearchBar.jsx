@@ -3,11 +3,11 @@ import React from 'react';
 import Proptypes from 'prop-types';
 
 class SearchBar extends React.Component {
-  handleChange(event) {
-    this.setState({
-      [event.target.name]:
-      (event.target.type === 'checkbox' ? event.target.checked : event.target.value) });
-  }
+  // handleChange(event) {
+  //   this.setState({
+  //     [event.target.name]:
+  //     (event.target.type === 'checkbox' ? event.target.checked : event.target.value) });
+  // }
 
   inputs(type, datatestid, value, onchange) {
     return (
@@ -15,7 +15,25 @@ class SearchBar extends React.Component {
         type={ type }
         data-testid={ datatestid }
         value={ value }
+        checked={ onchange }
+        name="searchText"
         onChange={ onchange }
+        id={ datatestid }
+      />
+    );
+  }
+
+  inputCheck(type, datatestid, value, onchange) {
+    const { bookmarkedOnly } = this.props;
+    return (
+      <input
+        type={ type }
+        data-testid={ datatestid }
+        value={ value }
+        name="bookmarkedOnly"
+        checked={ bookmarkedOnly }
+        onChange={ onchange }
+        id={ datatestid }
       />
     );
   }
@@ -30,24 +48,20 @@ class SearchBar extends React.Component {
       onSelectedGenreChange } = this.props;
     return (
       <form data-testid="search-bar-form">
-        <label htmlFor="inputSearch" data-testid="text-input-label">
+        <label htmlFor="title-input" data-testid="text-input-label">
           Inclui o texto:
           { this.inputs('text', 'title-input', searchText, onSearchTextChange)}
         </label>
-        <label htmlFor="inputCheckSearch" data-testid="checkbox-input-label">
+        <label htmlFor="checkbox-input" data-testid="checkbox-input-label">
           Mostrar somente favoritos
-          <input
-            type="checkbox"
-            id="inputCheckSearch"
-            checked={ bookmarkedOnly }
-            onChange={ onBookmarkedChange }
-            data-testid="checkbox-input"
-          />
+          { this.inputCheck(
+            'checkbox', 'checkbox-input', bookmarkedOnly, onBookmarkedChange,
+          )}
         </label>
         <label htmlFor="selectSearch" data-testid="select-input-label">
           Filtrar por gênero
           <select
-            name=""
+            name="selectedGenre"
             id="selectSearch"
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }
