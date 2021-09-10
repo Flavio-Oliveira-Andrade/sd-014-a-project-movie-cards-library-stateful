@@ -19,7 +19,7 @@ class RatingInput extends React.Component {
       <label htmlFor data-testid="rating-input-label">
         Avaliação
         <input
-          type = "number"
+          type="number"
           value={ rating }
           data-testid="rating-input"
           onChange={ this.handleChange }

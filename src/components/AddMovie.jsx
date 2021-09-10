@@ -1,5 +1,6 @@
 // implement AddMovie component here
 import React from 'react';
+import Genero from './Genero';
 import Imagem from './Imagem';
 import RatingInput from './RatingInput';
 import Subtitle from './Subtitle';
@@ -15,6 +16,7 @@ class AddMovie extends React.Component {
         <Imagem />
         <Textarea />
         <RatingInput />
+        <Genero />
       </form>
     );
   }
