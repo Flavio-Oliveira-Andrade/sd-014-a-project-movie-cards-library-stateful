@@ -29,10 +29,12 @@ class MovieLibrary extends React.Component {
 
   handleFilter() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
-    return movies.filter((movie) => movie.title.toLowerCase().includes(searchText)
-    || movie.subtitle.toLowerCase().includes(searchText)
-    || movie.storyLine.toLowerCase().includes(searchText))
-      .filter((movie) => (selectedGenre ? movie.genre === selectedGenre : movie))
+
+    return movies.filter((movie) => movie.title
+      .toLowerCase().includes(searchText.toLowerCase())
+      || movie.subtitle.toLowerCase().includes(searchText.toLowerCase())
+      || movie.storyline.toLowerCase().includes(searchText.toLowerCase()))
+      .filter((movie) => (selectedGenre === true ? movie.genre === selectedGenre : movie))
       .filter((movie) => (bookmarkedOnly ? movie.bookmarked : movie));
   }
 

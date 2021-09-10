@@ -18,9 +18,10 @@ class AddMovie extends Component {
     this.handleInput = this.handleInput.bind(this);
   }
 
-  handleClick() {
+  handleClick(event) {
     const { onClick } = this.props;
     onClick(this.state);
+    event.preventDefault();
     this.setState({
       subtitle: '',
       title: '',
