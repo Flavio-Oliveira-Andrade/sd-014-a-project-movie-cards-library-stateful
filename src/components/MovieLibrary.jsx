@@ -16,6 +16,14 @@ class MovieLibrary extends Component {
     };
   }
 
+  filterMovies = ({ searchText, bookmarkedOnly, selectedGenre, movies }) => (
+    movies
+      .filter(({ bookmarked }) => !bookmarkedOnly || bookmarked)
+      .filter(({ genre }) => genre.includes(selectedGenre))
+      .filter(({ title, subtitle, storyline }) => [title, subtitle, storyline]
+        .join().toLowerCase().includes(searchText.toLowerCase()))
+  )
+
   updateSearchStates = ({ target }) => {
     const stateKeys = {
       text: 'searchText',
@@ -38,8 +46,8 @@ class MovieLibrary extends Component {
       <div>
         <h2> My awesome movie library </h2>
         <SearchBar { ...searchStates } { ...searchHandlers } />
-        <MovieList movies={ movies } />
-        <AddMovie />
+        <MovieList movies={ this.filterMovies(this.state) } />
+        <AddMovie onClick={ () => { /* TODO */ } } />
       </div>
     );
   }
