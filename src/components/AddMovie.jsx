@@ -1,5 +1,6 @@
 // implement AddMovie component here
 import React from 'react';
+import Subtitle from './Subtitle';
 import Title from './Title';
 
 class AddMovie extends React.Component {
@@ -7,6 +8,7 @@ class AddMovie extends React.Component {
     return (
       <form data-testid="add-movie-form">
         <Title />
+        <Subtitle />
       </form>
     );
   }
