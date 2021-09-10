@@ -18,7 +18,7 @@ class AddMovie extends Component {
   }
 
   handleChange({ target }) {
-    const { value } = target;
+    const value = target.name === 'rating' ? +target.value : target.value;
     const name = target.name === 'image' ? 'imagePath' : target.name;
     this.setState({
       [name]: value,
@@ -67,6 +67,7 @@ class AddMovie extends Component {
         { this.createInput({
           label: 'Imagem', type: 'text', name: 'image', value: imagePath }) }
         <label data-testid="storyline-input-label" htmlFor="storyline-input">
+          Sinopse
           <textarea
             value={ storyline }
             data-testid="storyline-input"
@@ -75,8 +76,9 @@ class AddMovie extends Component {
           />
         </label>
         { this.createInput({
-          label: 'Avaliação', type: 'number', name: 'rating', value: rating }) }
+          label: 'Avaliação', type: 'number', name: 'rating', value: +rating }) }
         <label data-testid="genre-input-label" htmlFor="genre-input">
+          Gênero
           <select
             value={ genre }
             data-testid="genre-input"
