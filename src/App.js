@@ -10,8 +10,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {/* Requisito 01-05 */}
+      {/* Requisito 01 ao 05 */}
       <SearchBar />
+      {/* Requisito 06 ao 14 */}
       <AddMovie />
     </div>
   );
