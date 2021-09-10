@@ -8,7 +8,7 @@ class AddMovie extends Component {
     this.state = {
       subtitle: '',
       title: '',
-      // imagePath: '',
+      image: '', // <=== mudei imagePath para image, caso de erro no futuro
       // storyline: '',
       // rating: 0,
       // genre: 'action',
@@ -42,7 +42,7 @@ class AddMovie extends Component {
 
   render() {
     // Resolve => Must use destructuring state assignment [ERRO Linter]
-    const { title, subtitle } = this.state;
+    const { title, subtitle, image } = this.state;
     return (
       // Renderizando um formulario (Requisito 07)
       <form data-testid="add-movie-form">
@@ -50,6 +50,8 @@ class AddMovie extends Component {
         {this.inputCreator('Título', 'title', 'text', title)}
         {/* Adicianando um input do tipo Text (Requisito 09) */}
         {this.inputCreator('Subtítulo', 'subtitle', 'text', subtitle)}
+        {/* Adicianando um input do tipo Text (Requisito 10) */}
+        {this.inputCreator('Imagem', 'image', 'text', image)}
       </form>
     );
   }
