@@ -6,7 +6,7 @@ class Sinopse extends React.Component {
     const { value, onChange } = this.props;
     return (
       <label htmlFor="sinopse" data-testid="storyline-input-label">
-        Sinopse
+        Sinopse:
         <textarea
           data-testid="storyline-input"
           id="sinopse"

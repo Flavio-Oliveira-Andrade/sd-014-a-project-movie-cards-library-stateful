@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class TitleInput extends React.Component {
+class Subtitle extends React.Component {
   render() {
     const { value, onChange } = this.props;
     return (
-      <label htmlFor="title" data-testid="title-input-label">
-        Título:
+      <label htmlFor="subtitle" data-testid="subtitle-input-label">
+        Subtítulo:
         <input
-          data-testid="title-input"
+          id="subtitle"
           type="text"
-          name="title"
-          id="title"
+          name="subtitle"
+          data-testid="subtitle-input"
           value={ value }
           onChange={ onChange }
         />
@@ -20,9 +20,9 @@ class TitleInput extends React.Component {
   }
 }
 
-TitleInput.propTypes = {
+Subtitle.propTypes = {
   value: PropTypes.string,
-  onChange: PropTypes.func,
+  onChange: PropTypes.string,
 }.isRequired;
 
-export default TitleInput;
+export default Subtitle;

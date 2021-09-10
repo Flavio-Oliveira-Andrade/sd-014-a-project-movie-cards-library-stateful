@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class OptionForm extends React.Component {
+class OptionGenre extends React.Component {
   render() {
     const { value, onChange } = this.props;
     return (
@@ -24,9 +24,9 @@ class OptionForm extends React.Component {
   }
 }
 
-OptionForm.propTypes = {
+OptionGenre.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func,
 }.isRequired;
 
-export default OptionForm;
+export default OptionGenre;

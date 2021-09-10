@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class TitleInput extends React.Component {
+class Image extends React.Component {
   render() {
     const { value, onChange } = this.props;
     return (
-      <label htmlFor="title" data-testid="title-input-label">
-        Título:
+      <label htmlFor="image" data-testid="image-input-label">
+        Imagem:
         <input
-          data-testid="title-input"
+          data-testid="image-input"
+          id="image"
           type="text"
-          name="title"
-          id="title"
+          name="imagePath"
           value={ value }
           onChange={ onChange }
         />
@@ -19,10 +19,9 @@ class TitleInput extends React.Component {
     );
   }
 }
-
-TitleInput.propTypes = {
+Image.propTypes = {
   value: PropTypes.string,
-  onChange: PropTypes.func,
+  onChange: PropTypes.string,
 }.isRequired;
 
-export default TitleInput;
+export default Image;

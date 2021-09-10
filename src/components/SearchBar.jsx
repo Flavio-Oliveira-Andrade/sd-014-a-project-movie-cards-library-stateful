@@ -1,10 +1,8 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextInput from './TextInput';
-import OptionForm from './OptionForm';
-// import { string } from 'yargs';
+import OptionGenre from './OptionGenre';
+import Checked from './Checkbox';
 
 class SearchBar extends React.Component {
   render() {
@@ -18,20 +16,10 @@ class SearchBar extends React.Component {
     } = this.props;
 
     return (
-      <form data-testid="search-bar-form">
+      <form data-testid="search-bar-form" className="form">
         <TextInput value={ searchText } onChange={ onSearchTextChange } />
-        <label htmlFor="checked" data-testid="checkbox-input-label">
-          Mostrar somente favoritos
-          <input
-            data-testid="checkbox-input"
-            id="checked"
-            name="bookmarkedOnly"
-            type="checkbox"
-            checked={ bookmarkedOnly }
-            onChange={ onBookmarkedChange }
-          />
-        </label>
-        <OptionForm value={ selectedGenre } onChange={ onSelectedGenreChange } />
+        <Checked checked={ bookmarkedOnly } onChange={ onBookmarkedChange } />
+        <OptionGenre value={ selectedGenre } onChange={ onSelectedGenreChange } />
       </form>
     );
   }

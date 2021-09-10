@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -7,7 +6,7 @@ class RatingInput extends React.Component {
     const { value, onChange } = this.props;
     return (
       <label htmlFor="rating" data-testid="rating-input-label">
-        Avaliação
+        Avaliação:
         <input
           data-testid="rating-input"
           type="number"
