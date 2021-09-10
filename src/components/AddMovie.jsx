@@ -18,13 +18,13 @@ class AddMovie extends React.Component {
   render() {
     const { onClick } = this.props;
     return (
-      
+      <form data-testid="add-movie-form" />
     );
-  }   
+  }
 }
 
 AddMovie.propTypes = {
   onClick: PropTypes.func.isRequired,
-}
+};
 
 export default AddMovie;
