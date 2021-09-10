@@ -38,7 +38,6 @@ class AddMovie extends React.Component {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-
         <label htmlFor="Título" data-testid="title-input-label">
           Título
           {this.inputMaker('title', 'text', title, 'title-input')}
@@ -66,14 +65,13 @@ class AddMovie extends React.Component {
             onChange={ this.genericHandler }
           />
         </label>
-
-        <div
-          surname={ rating }
-          middlename={ genre }
-        >
+        <label htmlFor="Avaliação" data-testid="rating-input-label">
+          Avaliação
+          {this.inputMaker('rating', 'number', rating, 'rating-input')}
+        </label>
+        <div middlename={ genre }>
           this is a dummy div so that lint wont complain
         </div>
-
       </form>
     );
   }
