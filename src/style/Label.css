@@ -1,0 +1,33 @@
+.add-movie {
+  align-items: center;
+  background-color: rgb(230, 230, 230);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-size: 14px;
+  justify-content: center;
+  width: 100%;
+}
+
+.add-movie input, textarea {
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  min-height: 30px;
+  width: 80vw;
+}
+
+.add-movie button {
+  background-color: rgb(255, 107, 22);
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-weight: 500;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 80vw;
+}
+
+textarea {
+  height: 100px;
+}
