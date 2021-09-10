@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TitleInput from './TitleInput';
 import SubtitleInput from './SubtitleInput';
 import ImageInput from './ImageInput';
 import StorylineInput from './StorylineInput';
 import RatingInput from './RatingInput';
 import GenreInput from './GenreInput';
+import SendButton from './SendButton';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -20,12 +22,23 @@ class AddMovie extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  // Preferi fazer com  bind ao invés de arrow functions porque na aula, a Maitê diz que algumas versões de react e de eslint podem recusar a arrow function. Pensando em projetos em todas as versões de eslint e react fiz dessa forma
-  // handleChange = (event) => { [event.target.name]: event.target.value }
-
   handleChange(event) {
     const { name, value } = event.target;
     this.setState({ [name]: value });
+  }
+
+  handleClick = (event) => {
+    const { onClick } = this.props; // callback
+    onClick(this.state);
+    event.preventDefault();
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
   }
 
   render() {
@@ -38,7 +51,6 @@ class AddMovie extends React.Component {
       genre,
     } = this.state;
 
-    const { onClick } = this.props; // callback
     return (
       <form data-testid="add-movie-form">
         <TitleInput value={ title } handleChange={ this.handleChange } />
@@ -47,9 +59,14 @@ class AddMovie extends React.Component {
         <StorylineInput value={ storyline } handleChange={ this.handleChange } />
         <RatingInput value={ rating } handleChange={ this.handleChange } />
         <GenreInput value={ genre } handleChange={ this.handleChange } />
+        <SendButton handleClick={ this.handleClick } />
       </form>
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func,
+}.isRequired;
 
 export default AddMovie;
