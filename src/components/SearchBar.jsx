@@ -13,8 +13,6 @@ class SearchBar extends Component {
     };
   }
 
-  
-
   changeSearchText(event) {
     this.setState({
       searchText: event.target.value,
