@@ -6,7 +6,7 @@ class AddMovie extends Component {
     super();
     // Requisito 06
     this.state = {
-      // subtitle: '',
+      subtitle: '',
       title: '',
       // imagePath: '',
       // storyline: '',
@@ -16,21 +16,24 @@ class AddMovie extends Component {
     this.handleChanges = this.handleChanges.bind(this);
   }
 
-  handleChanges = (event) => {
-    this.setState({ title: event.target.value });
+  handleChanges = ({ target }) => {
+    const { name, value } = target;
+    this.setState({
+      [name]: value,
+    });
   }
 
   // Criador dinamico de Input com label:
   inputCreator(text, name, type, value) {
     return (
-      <label htmlFor={ `addmovie-${type}` } data-testid={ `${name}-input-label` }>
+      <label htmlFor={ `add-${type}-${name}` } data-testid={ `${name}-input-label` }>
         { text }
         <input
           type={ type }
-          name={ name }
+          name={ name } // <= Passar este parametro para handleChanges
           data-testid={ `${name}-input` }
-          id={ `addmovie-${type}` }
-          value={ value }
+          id={ `add-${type}-${name}` }
+          value={ value } // <= Passar este parametro para handleChanges
           onChange={ this.handleChanges }
         />
       </label>
@@ -39,13 +42,14 @@ class AddMovie extends Component {
 
   render() {
     // Resolve => Must use destructuring state assignment [ERRO Linter]
-    const { title } = this.state;
+    const { title, subtitle } = this.state;
     return (
       // Renderizando um formulario (Requisito 07)
       <form data-testid="add-movie-form">
         {/* Adicianando um input do tipo Text (Requisito 08) */}
         {this.inputCreator('Título', 'title', 'text', title)}
-
+        {/* Adicianando um input do tipo Text (Requisito 09) */}
+        {this.inputCreator('Subtítulo', 'subtitle', 'text', subtitle)}
       </form>
     );
   }
