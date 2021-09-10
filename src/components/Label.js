@@ -7,7 +7,7 @@ export default class Label extends Component {
     const { name, id, type, state, funcName } = this.props;
 
     return (
-      <label htmlFor={`${id}Input`} data-testid={`${id}-input-label`}>
+      <label htmlFor={ `${id}Input` } data-testid={ `${id}-input-label` }>
         { name }
         <input
           id={ `${id}Input` }
