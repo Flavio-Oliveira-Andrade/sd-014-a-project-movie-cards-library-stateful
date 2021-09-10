@@ -8,6 +8,7 @@ class CustomSelect extends React.Component {
     const id = `${name}-input`;
     return (
       <select
+        name={ name }
         id={ id }
         data-testid={ id }
         value={ value }
@@ -18,7 +19,7 @@ class CustomSelect extends React.Component {
             <option
               key={ optionValue }
               value={ optionValue }
-              data-testid="select-option"
+              data-testid={ `${name}-option` }
             >
               { optionName }
             </option>

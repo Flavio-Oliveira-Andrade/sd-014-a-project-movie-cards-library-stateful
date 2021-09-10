@@ -8,7 +8,16 @@ class AddMovie extends React.Component {
     { name: 'image', type: 'text', labelText: 'Imagem' },
     { name: 'storyline', type: 'storyline', labelText: 'Sinopse' },
     { name: 'rating', type: 'number', labelText: 'Avaliação' },
-    // { name: 'genre', type: 'select', labelText: 'Gênero' },
+    {
+      name: 'genre',
+      type: 'select',
+      labelText: 'Gênero',
+      options: {
+        Ação: 'action',
+        Comédia: 'comedy',
+        Suspense: 'thriller',
+      },
+    },
   ]
 
   constructor() {
@@ -19,7 +28,7 @@ class AddMovie extends React.Component {
       imagePath: '',
       storyline: '',
       rating: 0,
-      // genre: '',
+      genre: '',
     };
   }
 
