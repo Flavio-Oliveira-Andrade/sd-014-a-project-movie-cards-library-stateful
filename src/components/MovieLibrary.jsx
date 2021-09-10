@@ -9,19 +9,35 @@ class MovieLibrary extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // searchText: '',
-      // bookmarkedOnly: false,
-      // selectedGenre: '',
+      searchText: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
       movies: props.movies,
     };
   }
 
+  updateSearchStates = ({ target }) => {
+    const stateKeys = {
+      text: 'searchText',
+      checkbox: 'bookmarkedOnly',
+      select: 'selectedGenre',
+    };
+    const key = stateKeys[target.name];
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({ [key]: value });
+  }
+
   render() {
-    const { movies } = this.state;
+    const { movies, ...searchStates } = this.state;
+    const searchHandlers = {
+      onSearchTextChange: this.updateSearchStates,
+      onBookmarkedChange: this.updateSearchStates,
+      onSelectedGenreChange: this.updateSearchStates,
+    };
     return (
       <div>
         <h2> My awesome movie library </h2>
-        <SearchBar />
+        <SearchBar { ...searchStates } { ...searchHandlers } />
         <MovieList movies={ movies } />
         <AddMovie />
       </div>
