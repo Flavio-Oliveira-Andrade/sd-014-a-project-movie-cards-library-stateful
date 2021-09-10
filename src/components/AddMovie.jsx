@@ -1,5 +1,8 @@
 // implement AddMovie component here
 import React from 'react';
+import InputComp from './Inputs/InputComponnet';
+import TextAreaComp from './Inputs/TextAreaComponent';
+import SelectComp from './Inputs/SelectComponent';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -18,7 +21,8 @@ class AddMovie extends React.Component {
   }
 
   handleChange({ target }) {
-    const { id, value } = target;
+    const { id } = target;
+    const value = id === 'rating' ? Number(target.value) : target.value;
     this.setState({
       [id]: value,
     });
@@ -28,45 +32,46 @@ class AddMovie extends React.Component {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <label data-testid="title-input-label" htmlFor="title">
-          Título
-          <input
-            type="text"
-            id="title"
-            value={ title }
-            data-testid="title-input"
-            onChange={ this.handleChange }
-          />
-        </label>
-        <label data-testid="subtitle-input-label" htmlFor="subtitle">
-          Subtítulo
-          <input
-            type="text"
-            id="subtitle"
-            value={ subtitle }
-            data-testid="subtitle-input"
-            onChange={ this.handleChange }
-          />
-        </label>
-        <label data-testid="image-input-label" htmlFor="imagePath">
-          Imagem
-          <input
-            type="text"
-            id="imagePath"
-            value={ imagePath }
-            data-testid="image-input"
-            onChange={ this.handleChange }
-          />
-        </label>
-        <label data-testid="storyline-input-label" htmlFor="storyline">
-          Sinopse
-          <textarea
-            id="storyline"
-            value={ storyline }
-            data-testid="storyline-input"
-            onChange={ this.handleChange }
-          />
-        </label>
+        <InputComp
+          type="text"
+          id="title"
+          titulo="Título"
+          value={ title }
+          callback={ this.handleChange }
+        />
+        <InputComp
+          type="text"
+          id="subtitle"
+          titulo="Subtítulo"
+          value={ subtitle }
+          callback={ this.handleChange }
+        />
+        <InputComp
+          type="text"
+          id="image"
+          titulo="Imagem"
+          value={ imagePath }
+          callback={ this.handleChange }
+        />
+        <TextAreaComp
+          id="storyline"
+          titulo="Sinopse"
+          value={ storyline }
+          callback={ this.handleChange }
+        />
+        <InputComp
+          type="number"
+          id="rating"
+          titulo="Avaliação"
+          value={ rating }
+          callback={ this.handleChange }
+        />
+        <SelectComp
+          id="genre"
+          titulo="Gênero"
+          value={ genre }
+          callback={ this.handleChange }
+        />
       </form>
     );
   }
