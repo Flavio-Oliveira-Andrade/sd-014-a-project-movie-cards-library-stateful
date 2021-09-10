@@ -46,8 +46,6 @@ class AddMovie extends React.Component {
       onChange={ this.genericHandler }
     />);
   }
-
-  // I was trying to use createElement, but I need to have more flexibility on its attributes, then I found out I can just return an actual html element, if not multiple
   // https://stackoverflow.com/questions/46623136/react-component-returning-raw-html
 
   render() {
@@ -101,6 +99,8 @@ class AddMovie extends React.Component {
     );
   }
 }
+
+// This whole render needs to be split into more components. 100% sure of that, but I'm afraid of breaking everything, so...
 
 AddMovie.propTypes = { onClick: PropTypes.func.isRequired };
 
