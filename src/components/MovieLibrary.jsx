@@ -22,7 +22,7 @@ class MovieLibrary extends Component {
 
   handleSearch({ target }) {
     const { name, value } = target;
-    const { movies } = this.state;
+    const { movies } = this.props;
     this.setState({
       [name]: value,
       movies: movies.filter(({ title, subtitle, storyline }) => title.includes(value)
@@ -32,7 +32,7 @@ class MovieLibrary extends Component {
 
   handleBookmarked({ target }) {
     const { name, checked } = target;
-    const { movies } = this.state;
+    const { movies } = this.props;
     this.setState({
       [name]: checked,
       movies: checked ? movies.filter(({ bookmarked }) => bookmarked) : movies,
@@ -41,10 +41,13 @@ class MovieLibrary extends Component {
 
   handleGenre({ target }) {
     const { name, value } = target;
-    const { movies } = this.state;
+    const { movies } = this.props;
     this.setState({
       [name]: value,
-      movies: movies.filter(({ genre }) => genre === value),
+      movies: movies.filter(({ genre }) => {
+        if (value !== '') return genre === value;
+        return true;
+      }),
     });
   }
 
