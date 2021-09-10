@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import CustomControl from './CustomControl';
 
 class AddMovie extends React.Component {
@@ -6,7 +7,7 @@ class AddMovie extends React.Component {
     { name: 'title', type: 'text', labelText: 'Título' },
     { name: 'subtitle', type: 'text', labelText: 'Subtítulo' },
     { name: 'image', type: 'text', labelText: 'Imagem' },
-    { name: 'storyline', type: 'storyline', labelText: 'Sinopse' },
+    { name: 'storyline', type: 'textarea', labelText: 'Sinopse' },
     { name: 'rating', type: 'number', labelText: 'Avaliação' },
     {
       name: 'genre',
@@ -20,16 +21,18 @@ class AddMovie extends React.Component {
     },
   ]
 
+  initialState = {
+    title: '',
+    subtitle: '',
+    imagePath: '',
+    storyline: '',
+    rating: 0,
+    genre: 'action',
+  }
+
   constructor() {
     super();
-    this.state = {
-      title: '',
-      subtitle: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: '',
-    };
+    this.state = this.initialState;
   }
 
   handleChange = ({ target }) => {
@@ -43,8 +46,13 @@ class AddMovie extends React.Component {
     });
   }
 
+  handleAddMovie = () => {
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState(this.initialState);
+  }
+
   render() {
-    // const { onClick } = this.props;
     const stateValues = Object.values(this.state);
     return (
       <form data-testid="add-movie-form">
@@ -57,9 +65,20 @@ class AddMovie extends React.Component {
             { ...otherFields }
           />
         ))}
+        <button
+          type="button"
+          data-testid="send-button"
+          onClick={ this.handleAddMovie }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default AddMovie;

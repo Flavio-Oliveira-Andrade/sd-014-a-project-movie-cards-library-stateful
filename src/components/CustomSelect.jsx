@@ -17,7 +17,7 @@ class CustomSelect extends React.Component {
         {Object.entries(options).map(
           ([optionName, optionValue]) => (
             <option
-              key={ optionValue }
+              key={ optionName }
               value={ optionValue }
               data-testid={ `${name}-option` }
             >
