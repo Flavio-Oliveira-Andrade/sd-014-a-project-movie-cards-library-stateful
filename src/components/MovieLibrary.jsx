@@ -48,7 +48,7 @@ class MovieLibrary extends Component {
   randonClick() {
     const { movies } = this.state;
     const maxIndex = (movies.length) - 1;
-    const randomIndex = 2;
+    const randomIndex = Math.floor(Math.random() * (maxIndex + 1));
     this.setState({ randomIndex: [randomIndex] });
 
     console.log(`max index ${maxIndex}`);
@@ -65,6 +65,8 @@ class MovieLibrary extends Component {
       ))
       .filter(({ bookmarked }) => (bookmarkedOnly ? bookmarked : true))
       .filter(({ genre }) => ((selectedGenre !== '') ? (genre === selectedGenre) : true))
+      .filter((_, index) => ((randomIndex !== '') ? (index === randomIndex[0]) : true));
+      // .filter((_, index) => ((randomIndex !== '') && (index === randomIndex)));
       // .find(({ index }) => ((randomIndex !== '') ? (index === randomIndex) : true));
     return (
       <div>
