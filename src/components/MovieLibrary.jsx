@@ -4,15 +4,6 @@ import MovieList from './MovieList';
 import AddMovie from './AddMovie';
 // import movies from '../data';
 
-const addState = () => ({
-  subtitle: '',
-  title: '',
-  imagePath: '',
-  storyline: '',
-  rating: 0,
-  genre: 'action',
-});
-
 class MovieLibrary extends React.Component {
   constructor() {
     super();
@@ -20,12 +11,16 @@ class MovieLibrary extends React.Component {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies: [],
     };
   }
 
   onCLick = () => {
-    this.setState({ ...addState() });
+    // event.preventDefault();
+    this.state = {
+      searchText: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
+    };
   }
 
   handleTextChange = (event) => {
@@ -53,7 +48,15 @@ class MovieLibrary extends React.Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleGenreChange }
         />
-        <MovieList movies={ movies } />
+        <MovieList
+          movies={
+            movies
+              .filter((movie) => movie.title.includes(searchText)
+              || movie.subtitle.includes(searchText)
+              || movie.storyline.includes(searchText))
+              // .map(())
+          }
+        />
         <AddMovie onClick={ this.onCLick } />
       </div>
     );
