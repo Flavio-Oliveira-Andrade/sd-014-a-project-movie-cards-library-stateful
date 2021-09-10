@@ -50,7 +50,7 @@ class InputOtherInfos extends Component {
 InputOtherInfos.propTypes = {
   imagePath: PropTypes.string.isRequired,
   storyline: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
+  rating: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   onHandleChange: PropTypes.func.isRequired,
 };
 

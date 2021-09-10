@@ -14,6 +14,7 @@ class MovieLibrary extends React.Component {
       movies: props.movies,
     };
     this.onHandleChange = this.onHandleChange.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
   onHandleChange({ target }) {
@@ -21,6 +22,11 @@ class MovieLibrary extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
 
     this.setState({ [name]: value });
+  }
+
+  onClick(movie) {
+    const { state: { movies } } = this;
+    this.setState({ movies: [...movies, movie] });
   }
 
   filters = (movies) => {
@@ -67,7 +73,7 @@ class MovieLibrary extends React.Component {
           onSelectedGenreChange={ this.onHandleChange }
         />
         <MovieList movies={ this.filters(movies) } />
-        <AddMovie />
+        <AddMovie onClick={ this.onClick } />
       </div>
     );
   }
@@ -78,11 +84,15 @@ MovieLibrary.propTypes = {
     title: PropTypes.string,
     subtitle: PropTypes.string,
     storyline: PropTypes.string,
-    rating: PropTypes.number,
+    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     imagePath: PropTypes.string,
     bookmarked: PropTypes.bool,
     genre: PropTypes.string,
   })).isRequired,
 };
+
+// MovieLibrary.propTypes = {
+//   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+// };
 
 export default MovieLibrary;
