@@ -11,6 +11,7 @@ class Rating extends React.Component {
           name="rating"
           type="number"
           id="rating"
+          className="input-config"
           data-testid="rating-input"
           value={ rating }
           onChange={ handleChange }

@@ -11,6 +11,7 @@ class Subtitle extends React.Component {
           name="subtitle"
           type="text"
           id="subtitle"
+          className="input-config"
           data-testid="subtitle-input"
           value={ subtitle } // lint pediu destructuring
           onChange={ handleChange }

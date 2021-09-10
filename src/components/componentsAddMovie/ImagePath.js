@@ -11,6 +11,7 @@ class ImagePath extends React.Component {
           name="imagePath"
           type="text"
           id="imagePath"
+          className="input-config"
           data-testid="image-input"
           value={ imagePath } // lint pediu destructuring
           onChange={ handleChange }

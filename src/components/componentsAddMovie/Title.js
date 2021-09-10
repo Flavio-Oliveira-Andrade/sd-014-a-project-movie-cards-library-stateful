@@ -11,6 +11,7 @@ class Title extends React.Component {
           name="title"
           type="text"
           id="title"
+          className="input-config"
           data-testid="title-input"
           value={ title } // lint pediu destructuring
           onChange={ handleChange }

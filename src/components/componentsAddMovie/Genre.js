@@ -10,6 +10,7 @@ class Genre extends React.Component {
         <select
           name="genre"
           id="genre"
+          className="input-config"
           data-testid="genre-input"
           value={ genre }
           onChange={ handleChange }

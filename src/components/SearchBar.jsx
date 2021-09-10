@@ -13,7 +13,7 @@ class SearchBar extends React.Component {
       onSelectedGenreChange,
     } = this.props; // acessando o objeto e pegando as informações/propriedades passadas pro componente
     return (
-      <form data-testid="search-bar-form">
+      <form data-testid="search-bar-form" className="search-bar-form">
 
         <SearchText
           searchText={ searchText }
@@ -26,6 +26,7 @@ class SearchBar extends React.Component {
             name="bookmarkedOnly"
             type="checkbox"
             id="bookmarkedOnly"
+            className="input-config"
             data-testid="checkbox-input"
             checked={ bookmarkedOnly }
             onChange={ onBookmarkedChange }
@@ -38,6 +39,7 @@ class SearchBar extends React.Component {
             name="selectedGenre"
             id="selectedGenre"
             data-testid="select-input"
+            className="input-config"
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }
           >

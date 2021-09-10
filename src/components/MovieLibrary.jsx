@@ -72,7 +72,6 @@ class MovieLibrary extends Component {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
-        <h2> My awesome movie library </h2>
         <SearchBar // de acordo com as props recebidas no requisito 1 e declaradas no componente SearchBar
           searchText={ searchText } // passando o valor para a propriedade; {} pois pega o valor de uma variável
           onSearchTextChange={ this.onSearchTextChange } // como as funções estão dentro da classe, preciso usar o 'this'

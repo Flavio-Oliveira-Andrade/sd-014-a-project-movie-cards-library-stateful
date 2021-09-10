@@ -11,6 +11,7 @@ class SearchText extends React.Component {
           name="searchText"
           type="text"
           id="searchText"
+          className="input-config"
           data-testid="text-input"
           value={ searchText }
           onChange={ onSearchTextChange }
