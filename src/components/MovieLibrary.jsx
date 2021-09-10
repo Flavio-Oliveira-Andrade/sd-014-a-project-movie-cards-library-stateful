@@ -15,3 +15,10 @@ class MovieLibrary extends React.Component {
 }
 
 export default MovieLibrary;
+
+// searchText={}
+// onSearchTextChange={}
+// bookMarkedOnly={}
+// onBookmarkedChange={}
+// selectedGenre={}
+// onSelectedGenreChange={}
