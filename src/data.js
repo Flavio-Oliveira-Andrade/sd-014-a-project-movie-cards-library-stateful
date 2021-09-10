@@ -6,6 +6,8 @@ const movies = [
     rating: 4.7,
     imagePath:
       'https://terrigen-cdn-dev.marvel.com/content/prod/1x/ironman_lob_mas_hlf_02.jpg',
+    bookmarked: true,
+    genre: 'action',
   },
   {
     title: 'The Incredible Hulk',
@@ -14,6 +16,8 @@ const movies = [
     rating: 3.4,
     imagePath:
       'https://terrigen-cdn-dev.marvel.com/content/prod/1x/theincrediblehulk_lob_mas_hlf_02_0.jpg',
+    bookmarked: false,
+    genre: 'action',
   },
   {
     title: 'Iron Man 2',
@@ -22,6 +26,8 @@ const movies = [
     rating: 3.6,
     imagePath:
       'https://terrigen-cdn-dev.marvel.com/content/prod/1x/ironman2_lob_mas_hlf_01_1.jpg',
+    bookmarked: false,
+    genre: 'action',
   },
   {
     title: 'Thor',
@@ -30,15 +36,19 @@ const movies = [
     rating: 3.9,
     imagePath:
       'https://terrigen-cdn-dev.marvel.com/content/prod/1x/thor_lob_mas_hlf_01_3.jpg',
+    bookmarked: false,
+    genre: 'action',
   },
   {
     title: 'Captain America',
     subtitle: 'The First Avenger',
     storyline:
-      'Steve Rogers, a rejected military soldier, transforms into Captain America after taking a dose of a "Super-Soldier serum". But being Captain America comes at a price as he attempts to take down a war monger and a terrorist organization',
+      'Steve Rogers, a rejected military soldier, transforms into Captain America after taking a dose of a "Super-Soldier serum". But being Captain America comes at a price as he attempts to take down a war monger and a terrorist organization.',
     rating: 4,
     imagePath:
       'https://terrigen-cdn-dev.marvel.com/content/prod/1x/captainamericathefirstavenger_lob_mas_hlf_03.jpg',
+    bookmarked: true,
+    genre: 'action',
   },
   {
     title: 'The Avengers',
@@ -47,6 +57,8 @@ const movies = [
     rating: 4.6,
     imagePath:
       'https://terrigen-cdn-dev.marvel.com/content/prod/1x/theavengers_lob_mas_dsk_03.jpg',
+    bookmarked: true,
+    genre: 'action',
   },
 ];
 
