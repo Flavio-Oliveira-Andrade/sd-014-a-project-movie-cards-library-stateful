@@ -6,11 +6,37 @@ import MovieList from './MovieList';
 class MovieLibrary extends React.Component {
   constructor(props) {
     super(props);
+    const { movies } = this.props;
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
+      movies,
     };
+  }
+
+  fillFilm = ({ searchText, movies, bookmarkedOnly, selectedGenre }) => {
+    let fillFilm = movies;
+
+    if (bookmarkedOnly) {
+      fillFilm = movies.filter((movie) => movie.bookmarked === true)
+        .filter((movie) => movie.title.toLowerCase()
+          .includes(searchText.toLowerCase()));
+      return fillFilm;
+    }
+    if (selectedGenre !== '') {
+      fillFilm = movies.filter((movie) => movie.genre === selectedGenre)
+        .filter((movie) => movie.title.toLowerCase()
+          .includes(searchText.toLowerCase()));
+      return fillFilm;
+    }
+
+    fillFilm = movies.filter((movie) => movie
+      .title.toLowerCase().includes(searchText)
+      || movie.subtitle.toLowerCase().includes(searchText)
+      || movie.storyline.toLowerCase().includes(searchText));
+
+    return fillFilm;
   }
 
   handleChange = ({ target }) => {
@@ -20,7 +46,6 @@ class MovieLibrary extends React.Component {
   }
 
   render() {
-    const { movies } = this.props;
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <>
@@ -32,7 +57,7 @@ class MovieLibrary extends React.Component {
           onSearchTextChange={ this.handleChange }
           onSelectedGenreChange={ this.handleChange }
         />
-        <MovieList movies={ movies } />
+        <MovieList movies={ this.fillFilm(this.state) } />
       </>
     );
   }
