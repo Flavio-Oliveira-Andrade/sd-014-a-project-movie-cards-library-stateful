@@ -4,20 +4,19 @@ import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 import AddMovie from './AddMovie';
-// import movies from '../data';
 
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
-    const { movies: mv } = this.props;
+    const { movies } = props;
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies: mv,
+      movies,
     };
     this.handleChange = this.handleChange.bind(this);
-    // this.addMovie = this.addMovie.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
   handleChange({ target }) {
@@ -25,6 +24,13 @@ class MovieLibrary extends Component {
     const value = type === 'checkbox' ? checked : target.value;
     this.setState({
       [name]: value,
+    });
+  }
+
+  onClick(newMovie) {
+    const { movies } = this.state;
+    this.setState({
+      movies: [...movies, newMovie],
     });
   }
 
@@ -47,13 +53,9 @@ class MovieLibrary extends Component {
         ? movie : selectedGenre === movie.genre))
       .filter((movie) => this.searchGeneric(searchText, movie));
   }
-  // addMovie(newMovie){
-  // const { subtitle, title, imagePath, storyline, rating, genre } = newMovie;
-  // movies.push(newMovie);
-  // }
 
   render() {
-    const { movies } = this.props;
+    const { movies } = this.state;
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
 
     return (
@@ -67,7 +69,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ this.handleChange }
         />
         <MovieList movies={ this.filterMovies(movies, this.state) } />
-        <AddMovie addMovie={ this.addMovie } />
+        <AddMovie onClick={ this.onClick } />
       </section>
     );
   }

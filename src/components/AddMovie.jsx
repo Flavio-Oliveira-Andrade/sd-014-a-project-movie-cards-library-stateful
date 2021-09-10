@@ -1,11 +1,12 @@
 // implement AddMovie component here
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class AddMovie extends Component {
   constructor() {
     super();
     this.state = {
+      bookmarked: false,
       subtitle: '',
       title: '',
       imagePath: '',
@@ -26,10 +27,11 @@ class AddMovie extends Component {
   }
 
   handleClickButton(event) {
-    // const { addMovie } = this.props;
+    const { onClick } = this.props;
     event.preventDefault();
-    // addMovie(state);
+    onClick(this.state);
     this.setState({
+      bookmarked: false,
       subtitle: '',
       title: '',
       imagePath: '',
@@ -110,7 +112,7 @@ class AddMovie extends Component {
 }
 
 AddMovie.propTypes = {
-  // addMovies: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default AddMovie;
