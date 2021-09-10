@@ -9,6 +9,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      {/* Requisito 01-05 */}
       <SearchBar />
     </div>
   );

@@ -8,6 +8,7 @@ import SearchBarSelect from './SearchBarSelect';
 
 class SearchBar extends React.Component {
   render() {
+    // Criando os componentes chamados (Requisito 01)
     const {
       searchText,
       onSearchTextChange,
@@ -17,15 +18,21 @@ class SearchBar extends React.Component {
       onSelectedGenreChange,
     } = this.props;
     return (
+      // Renderizando um formulario (Requisito 02)
       <form data-testid="search-bar-form">
+        {/* Adicianando um input do tipo Text (Requisito 03) */}
         <SearchBarInput value={ searchText } callbackFunc={ onSearchTextChange } />
+        {/* Adicianando um check box (Requisito 04) */}
         <SearchBarCheck checked={ bookmarkedOnly } callbackFunc={ onBookmarkedChange } />
+        {/* Adicianando um select (Requisito 05) */}
         <SearchBarSelect value={ selectedGenre } callbackFunc={ onSelectedGenreChange } />
       </form>
     );
   }
 }
 
+// onSearchTextChange, onBookmarkedChange, onSelectedGenreChange
+// estão com esse defautProps pois foram ditas como função no propTypes
 SearchBar.defaultProps = {
   searchText: '',
   onSearchTextChange: () => (undefined),
@@ -37,11 +44,11 @@ SearchBar.defaultProps = {
 
 SearchBar.propTypes = {
   searchText: PropTypes.string,
-  onSearchTextChange: PropTypes.func,
+  onSearchTextChange: PropTypes.func, // <===
   bookmarkedOnly: PropTypes.bool,
-  onBookmarkedChange: PropTypes.func,
+  onBookmarkedChange: PropTypes.func, // <===
   selectedGenre: PropTypes.string,
-  onSelectedGenreChange: PropTypes.func,
+  onSelectedGenreChange: PropTypes.func, // <===
 };
 
 export default SearchBar;
