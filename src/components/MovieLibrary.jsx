@@ -17,26 +17,54 @@ class MovieLibrary extends React.Component {
       movies,
     };
 
+    this.handleChange = this.handleChange.bind(this);
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
     this.onClick = this.onClick.bind(this);
   }
 
-  onSearchTextChange(event) {
-    const { value } = event.target;
+  handleChange(event) {
+    const { name, value, type, checked } = event.target;
+    const updatedValue = type === 'checkbox' ? checked : value;
 
-    this.setState({ searchText: value });
+    this.setState({ [name]: updatedValue });
   }
 
-  onBookmarkedChange() {
-    this.setState((state) => ({ bookmarkedOnly: !state.bookmarkedOnly }));
+  onSearchTextChange(event) {
+    this.handleChange(event);
+    const { movies } = this.props;
+
+    this.setState((state) => ({
+      movies: !state.searchText
+        ? movies
+        : movies.filter((movie) => movie.title.toLowerCase()
+          .includes(state.searchText.toLowerCase())
+          || movie.subtitle.toLowerCase().includes(state.searchText.toLowerCase())
+          || movie.storyline.toLowerCase().includes(state.searchText.toLowerCase())),
+    }));
+  }
+
+  onBookmarkedChange(event) {
+    this.handleChange(event);
+    const { movies } = this.props;
+
+    this.setState((state) => ({
+      movies: state.bookmarkedOnly
+        ? movies.filter((movie) => movie.bookmarked)
+        : movies,
+    }));
   }
 
   onSelectedGenreChange(event) {
-    const { value } = event.target;
+    this.handleChange(event);
+    const { movies } = this.props;
 
-    this.setState({ selectedGenre: value });
+    this.setState((state) => ({
+      movies: !state.selectedGenre
+        ? movies
+        : movies.filter((movie) => movie.genre.includes(state.selectedGenre)),
+    }));
   }
 
   onClick(newMovie) {
