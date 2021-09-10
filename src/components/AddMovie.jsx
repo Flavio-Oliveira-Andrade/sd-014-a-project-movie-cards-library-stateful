@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TitleForm from './TitleForm';
-import SubtitleForm from './SubtitleForm';
-import ImageForm from './ImageForm';
-import SinopseForm from './SinopseForm';
 import RatingForm from './RatingForm';
 import GenreForm from './GenreForm';
+import TextInput from './TextInput';
+import TextAreaInput from './TextAreaInput';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -45,10 +43,34 @@ class AddMovie extends React.Component {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form" onSubmit={ this.handleSubmit }>
-        <TitleForm value={ title } onChange={ this.handleChange } />
-        <SubtitleForm value={ subtitle } onChange={ this.handleChange } />
-        <ImageForm value={ imagePath } onChange={ this.handleChange } />
-        <SinopseForm value={ storyline } onChange={ this.handleChange } />
+        <TextInput
+          value={ title }
+          onChange={ this.handleChange }
+          dataID="title-input"
+          name="title"
+          title="Título"
+        />
+        <TextInput
+          value={ subtitle }
+          onChange={ this.handleChange }
+          dataID="subtitle-input"
+          name="subtitle"
+          title="Subtítulo"
+        />
+        <TextInput
+          value={ imagePath }
+          onChange={ this.handleChange }
+          dataID="image-input"
+          name="imagePath"
+          title="Imagem"
+        />
+        <TextAreaInput
+          value={ storyline }
+          onChange={ this.handleChange }
+          dataID="storyline-input"
+          name="storyline"
+          title="Sinopse"
+        />
         <RatingForm value={ rating } onChange={ this.handleChange } />
         <GenreForm value={ genre } onChange={ this.handleChange } />
         <button type="submit" data-testid="send-button">

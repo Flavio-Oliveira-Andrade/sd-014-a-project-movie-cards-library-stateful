@@ -7,7 +7,7 @@ class TextInput extends React.Component {
     return (
       <label htmlFor={ `${dataID}` } data-testid={ `${dataID}-label` }>
         { `${title}` }
-        <input
+        <textarea
           data-testid={ `${dataID}` }
           id={ `${dataID}` }
           name={ `${name}` }
