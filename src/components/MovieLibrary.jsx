@@ -21,6 +21,7 @@ class MovieLibrary extends Component {
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
+    this.randonClick = this.randonClick.bind(this);
   }
 
   onSearchTextChange(event) {
@@ -43,6 +44,14 @@ class MovieLibrary extends Component {
     this.setState({ movies: [...movies, newMovie] });
   }
 
+  randonClick() {
+    const { filter } = this.state;
+    const total = filter.length;
+    const randonIndex = filter.length;
+    console.log(total);
+    console.log(randonIndex);
+  }
+
   render() {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     const filterMovies = movies
@@ -53,6 +62,8 @@ class MovieLibrary extends Component {
       ))
       .filter(({ bookmarked }) => (bookmarkedOnly ? bookmarked : true))
       .filter(({ genre }) => ((selectedGenre !== '') ? (genre === selectedGenre) : true));
+    this.setState({ filter: [filterMovies] });
+
     return (
       <div>
         <h2> My awesome movie library </h2>
@@ -63,6 +74,7 @@ class MovieLibrary extends Component {
           onBookmarkedChange={ this.onBookmarkedChange }
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.onSelectedGenreChange }
+          randonClick= { this.randonClick }
         />
         <MovieList movies={ filterMovies } />
         <AddMovie onClick={ this.onClick } />

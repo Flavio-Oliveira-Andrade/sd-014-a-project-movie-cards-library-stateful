@@ -10,6 +10,7 @@ class SearchBar extends Component {
       onBookmarkedChange,
       selectedGenre,
       onSelectedGenreChange,
+      randonClick,
     } = this.props;
     return (
       <form onSubmit={ this.handleSubmit } data-testid="search-bar-form">
@@ -46,6 +47,7 @@ class SearchBar extends Component {
             <option data-testid="select-option" value="thriller">Suspense</option>
           </select>
         </label>
+        <button type="button" onClick={ randonClick }> Escolhe para mim </button>
       </form>
 
     );
@@ -59,6 +61,7 @@ SearchBar.propTypes = {
   onBookmarkedChange: PropTypes.func.isRequired,
   selectedGenre: PropTypes.string.isRequired,
   onSelectedGenreChange: PropTypes.func.isRequired,
+  randonClick: PropTypes.func.isRequired,
 };
 
 export default SearchBar;
