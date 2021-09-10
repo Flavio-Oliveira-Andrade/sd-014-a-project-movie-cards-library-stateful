@@ -35,13 +35,16 @@ class MovieLibrary extends Component {
     } = this.state;
 
     return movies
-      .filter(({ bookmarked }) => (bookmarkedOnly ? bookmarked : true)) // If bookmarkedOnly is true, returns only bookmarked movies, if bookmarkedOnly is false, returns all movies
-      .filter(({ genre }) => (Genre.length !== 0 ? Genre === genre : true)) // If selectedGenre is not empty, returns only movies with selected genre, if selectedGenre is empty, returns all movies
+      .filter(({ bookmarked }) => (bookmarkedOnly ? bookmarked : true))
+      // If bookmarkedOnly is true, returns only bookmarked movies, if bookmarkedOnly is false, returns all movies
+      .filter(({ genre }) => (Genre.length !== 0 ? Genre === genre : true))
+      // If selectedGenre is not empty, returns only movies with selected genre, if selectedGenre is empty, returns all movies
       .filter(
         ({ title, subtitle, storyline }) => title.includes(searchText)
           || subtitle.includes(searchText)
           || storyline.includes(searchText),
-      ); // Returns only movies with title, subtitle or storyline containing searchText
+      );
+    // Returns only movies with title, subtitle or storyline containing searchText
   }
 
   addMovie(movie) {

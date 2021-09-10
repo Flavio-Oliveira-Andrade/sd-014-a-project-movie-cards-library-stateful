@@ -30,6 +30,7 @@ class AddMovie extends Component {
     event.preventDefault();
 
     onClick(this.state);
+    // Runs addMovie function, which adds a movie to the movies array declared in the parent component's state
 
     this.setState(this.initialState);
   }

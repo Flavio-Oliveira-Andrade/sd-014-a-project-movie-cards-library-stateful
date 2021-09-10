@@ -18,6 +18,7 @@ class SearchBar extends Component {
       </option>
     </>
   );
+  // Required function due to eslint's lines limitation
 
   render() {
     const {
