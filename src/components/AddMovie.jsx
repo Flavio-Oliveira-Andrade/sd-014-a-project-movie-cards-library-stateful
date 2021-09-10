@@ -6,7 +6,7 @@ import Inputs from './Inputs';
 const inicialState = {
   subtitle: '',
   title: '',
-  imagePath: '',
+  image: '',
   storyline: '',
   rating: '',
   genre: '',
@@ -29,7 +29,7 @@ class AddMovie extends React.Component {
 
   render() {
     // const { onClick } = this.props;
-    const { title, subtitle } = this.state;
+    const { title, subtitle, image } = this.state;
     return (
       <form data-testid="add-movie-form">
         <Inputs
@@ -47,6 +47,14 @@ class AddMovie extends React.Component {
           value={ subtitle }
           labelText="Subtítulo"
           id="subtitle-input"
+        />
+        <Inputs
+          name="image"
+          type="text"
+          handleChange={ this.handleChange }
+          value={ image }
+          labelText="Imagem"
+          id="image-input"
         />
         {/* <label
           htmlFor="title"
