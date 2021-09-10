@@ -42,17 +42,14 @@ class AddMovie extends React.Component {
           Título
           {this.inputMaker('title', 'text', title, 'title-input')}
         </label>
-
         <label htmlFor="Subtítulo" data-testid="subtitle-input-label">
           Subtítulo
           {this.inputMaker('subtitle', 'text', subtitle, 'subtitle-input')}
         </label>
-
         <label htmlFor="Imagem" data-testid="image-input-label">
           Imagem
           {this.inputMaker('imagePath', 'text', imagePath, 'image-input')}
         </label>
-
         <label htmlFor="Sinopse" data-testid="storyline-input-label">
           Sinopse
           <textarea
@@ -69,9 +66,19 @@ class AddMovie extends React.Component {
           Avaliação
           {this.inputMaker('rating', 'number', rating, 'rating-input')}
         </label>
-        <div middlename={ genre }>
-          this is a dummy div so that lint wont complain
-        </div>
+        <label htmlFor="Gênero" data-testid="genre-input-label">
+          Gênero
+          <select
+            name="genre"
+            value={ genre }
+            data-testid="genre-input"
+            onChange={ this.genericHandler }
+          >
+            <option value="action" data-testid="genre-option">Ação</option>
+            <option value="comedy" data-testid="genre-option">Comédia</option>
+            <option value="thriller" data-testid="genre-option">Suspense</option>
+          </select>
+        </label>
       </form>
     );
   }
