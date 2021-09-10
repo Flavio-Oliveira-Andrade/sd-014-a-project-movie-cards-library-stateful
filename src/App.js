@@ -4,6 +4,7 @@ import './App.css';
 
 // Meus Imports:
 import SearchBar from './components/SearchBar';
+import AddMovie from './components/AddMovie';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Header />
       {/* Requisito 01-05 */}
       <SearchBar />
+      <AddMovie />
     </div>
   );
 }

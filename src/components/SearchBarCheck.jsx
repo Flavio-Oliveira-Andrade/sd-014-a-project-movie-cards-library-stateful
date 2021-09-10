@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class SearchBarCheck extends React.Component {
+class SearchBarCheck extends Component {
   render() {
     const { callbackFunc, checked } = this.props;
     return (

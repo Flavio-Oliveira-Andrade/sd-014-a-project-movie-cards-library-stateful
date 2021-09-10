@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class SearchBarInput extends React.Component {
+class SearchBarInput extends Component {
   render() {
     const { value, callbackFunc } = this.props;
     return (

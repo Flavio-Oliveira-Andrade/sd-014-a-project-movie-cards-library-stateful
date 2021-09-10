@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 // Meus Imports:
@@ -6,7 +6,7 @@ import SearchBarInput from './SearchBarInput';
 import SearchBarCheck from './SearchBarCheck';
 import SearchBarSelect from './SearchBarSelect';
 
-class SearchBar extends React.Component {
+class SearchBar extends Component {
   render() {
     // Criando os componentes chamados (Requisito 01)
     const {
