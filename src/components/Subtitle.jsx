@@ -17,7 +17,6 @@ class Subtitle extends Component {
           onChange={ handleChange }
         />
       </label>
-
     );
   }
 }

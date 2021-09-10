@@ -7,10 +7,10 @@ import movies from './data';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <main className="App">
         <Header />
         <MovieLibrary movies={ movies } />
-      </div>
+      </main>
     );
   }
 }

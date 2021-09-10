@@ -5,7 +5,6 @@ class ImagePath extends Component {
   render() {
     const { value, handleChange } = this.props;
     return (
-
       <label htmlFor="add-movie-imagePath" data-testid="image-input-label">
         Imagem
         <input
@@ -17,7 +16,6 @@ class ImagePath extends Component {
           onChange={ handleChange }
         />
       </label>
-
     );
   }
 }
