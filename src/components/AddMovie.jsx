@@ -10,7 +10,7 @@ class AddMovie extends Component {
       image: '', // <=== mudei imagePath para image, caso de erro no futuro
       storyline: '',
       rating: 0,
-      // genre: 'action',
+      genre: 'action',
     };
     this.handleChanges = this.handleChanges.bind(this);
   }
@@ -39,9 +39,29 @@ class AddMovie extends Component {
     );
   }
 
+  selectCreator(text, name, type, value) {
+    return (
+      <label htmlFor={ `add-${type}-${name}` } data-testid={ `${name}-input-label` }>
+        { text }
+        <select
+          type={ type }
+          name={ name }
+          data-testid={ `${name}-input` }
+          id={ `add-${type}-${name}` }
+          value={ value }
+          onChange={ this.handleChanges }
+        >
+          <option data-testid={ `${name}-option` } value="action">Ação</option>
+          <option data-testid={ `${name}-option` } value="comedy">Comédia</option>
+          <option data-testid={ `${name}-option` } value="thriller">Suspense</option>
+        </select>
+      </label>
+    );
+  }
+
   render() {
     // Resolve => Must use destructuring state assignment [ERRO Linter]
-    const { title, subtitle, image, storyline, rating } = this.state;
+    const { title, subtitle, image, storyline, rating, genre } = this.state;
     return (
       // Renderizando um formulario (Requisito 07)
       <form data-testid="add-movie-form">
@@ -55,6 +75,8 @@ class AddMovie extends Component {
         {this.inputCreator('Sinopse', 'storyline', 'text', storyline)}
         {/* Requisito 12 */}
         {this.inputCreator('Avaliação', 'rating', 'number', rating)}
+        {/* Requisito 13 */}
+        {this.selectCreator('Gênero', 'genre', 'text', genre)}
       </form>
     );
   }
