@@ -47,9 +47,9 @@ class SearchBar extends React.Component {
       onSelectedGenreChange } = this.props;
     return (
       <form data-testid="search-bar-form">
-        <label htmlFor="title-input" data-testid="text-input-label">
+        <label htmlFor="text-input" data-testid="text-input-label">
           Inclui o texto
-          { this.inputs('text', 'title-input', searchText, onSearchTextChange)}
+          { this.inputs('text', 'text-input', searchText, onSearchTextChange)}
         </label>
         <label htmlFor="checkbox-input" data-testid="checkbox-input-label">
           Mostrar somente favoritos
