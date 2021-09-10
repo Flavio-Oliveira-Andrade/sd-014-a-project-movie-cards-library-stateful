@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -15,6 +15,21 @@ class AddMovie extends React.Component {
     };
 
     this.genericHandler = this.genericHandler.bind(this);
+    this.newMovie = this.newMovie.bind(this);
+  }
+
+  newMovie = (event) => {
+    event.preventDefault();
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState({
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
   }
 
   genericHandler({ target }) {
@@ -31,6 +46,7 @@ class AddMovie extends React.Component {
       onChange={ this.genericHandler }
     />);
   }
+
   // I was trying to use createElement, but I need to have more flexibility on its attributes, then I found out I can just return an actual html element, if not multiple
   // https://stackoverflow.com/questions/46623136/react-component-returning-raw-html
 
@@ -56,9 +72,8 @@ class AddMovie extends React.Component {
             name="storyline"
             data-testid="storyline-input"
             value={ storyline }
-            type="textarea"
-            cols="30"
             rows="10"
+            cols="30"
             onChange={ this.genericHandler }
           />
         </label>
@@ -79,13 +94,14 @@ class AddMovie extends React.Component {
             <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
+        <button type="reset" data-testid="send-button" onClick={ this.newMovie }>
+          Adicionar filme
+        </button>
       </form>
     );
   }
 }
 
-// AddMovie.propTypes = {
-//   onClick: PropTypes.func.isRequired,
-// };
+AddMovie.propTypes = { onClick: PropTypes.func.isRequired };
 
 export default AddMovie;
