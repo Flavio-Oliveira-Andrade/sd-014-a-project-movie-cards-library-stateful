@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 
 class AddMovie extends Component {
   constructor() {
@@ -10,7 +9,7 @@ class AddMovie extends Component {
       title: '',
       image: '', // <=== mudei imagePath para image, caso de erro no futuro
       storyline: '',
-      // rating: 0,
+      rating: 0,
       // genre: 'action',
     };
     this.handleChanges = this.handleChanges.bind(this);
@@ -42,18 +41,20 @@ class AddMovie extends Component {
 
   render() {
     // Resolve => Must use destructuring state assignment [ERRO Linter]
-    const { title, subtitle, image, storyline } = this.state;
+    const { title, subtitle, image, storyline, rating } = this.state;
     return (
       // Renderizando um formulario (Requisito 07)
       <form data-testid="add-movie-form">
-        {/* Adicianando um input do tipo Text (Requisito 08) */}
+        {/* Requisito 08 */}
         {this.inputCreator('Título', 'title', 'text', title)}
-        {/* Adicianando um input do tipo Text (Requisito 09) */}
+        {/* Requisito 09 */}
         {this.inputCreator('Subtítulo', 'subtitle', 'text', subtitle)}
-        {/* Adicianando um input do tipo Text (Requisito 10) */}
+        {/* Requisito 10 */}
         {this.inputCreator('Imagem', 'image', 'text', image)}
-        {/* Adicianando um input do tipo Text (Requisito 11) */}
+        {/* Requisito 11 */}
         {this.inputCreator('Sinopse', 'storyline', 'text', storyline)}
+        {/* Requisito 12 */}
+        {this.inputCreator('Avaliação', 'rating', 'number', rating)}
       </form>
     );
   }
