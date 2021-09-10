@@ -1,48 +1,52 @@
 const movies = [
   {
-    title: 'Kingsglaive',
-    subtitle: 'Final Fantasy XV',
-    storyline: "King Regis, who oversees the land of Lucis, commands his army of soldiers to protect the kingdom from the Niflheim empire's plans to steal the sacred crystal.",
-    rating: 4.5,
-    imagePath: 'images/Kingsglaive_Final_Fantasy_XV.jpg',
-    bookmarked: true,
-    genre: 'action',
+    title: 'Iron Man',
+    storyline:
+      'After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.',
+    rating: 4.7,
+    imagePath:
+      'https://terrigen-cdn-dev.marvel.com/content/prod/1x/ironman_lob_mas_hlf_02.jpg',
   },
   {
-    title: 'Final Fantasy',
-    subtitle: 'Spirits Within',
-    storyline: 'A scientist makes a last stand on Earth with the help of a ragtag team of soldiers against an invasion of alien phantoms.',
-    rating: 4.5,
-    imagePath: 'images/Final_Fantasy_Spirits_Within.jpg',
-    bookmarked: false,
-    genre: 'fantasy',
+    title: 'The Incredible Hulk',
+    storyline:
+      'Bruce Banner, a scientist on the run from the U.S. Government, must find a cure for the monster he turns into whenever he loses his temper.',
+    rating: 3.4,
+    imagePath:
+      'https://terrigen-cdn-dev.marvel.com/content/prod/1x/theincrediblehulk_lob_mas_hlf_02_0.jpg',
   },
   {
-    title: 'Ghost In The Shell',
-    subtitle: 'Ghost In The Shell',
-    storyline: 'A hacker known as the Puppet Master is hunted by a female cyborg cop and her partner. This film is a revised version of Ghost in the Shell (1995).',
-    rating: 5,
-    imagePath: 'images/Ghost_In_The_Shell_2_0.jpg',
-    bookmarked: false,
-    genre: 'comedy',
+    title: 'Iron Man 2',
+    storyline:
+      "With the world now aware of his identity as Iron Man, Tony Stark must contend with both his declining health and a vengeful mad man with ties to his father's legacy.",
+    rating: 3.6,
+    imagePath:
+      'https://terrigen-cdn-dev.marvel.com/content/prod/1x/ironman2_lob_mas_hlf_01_1.jpg',
   },
   {
-    title: 'Appleseed Alpha',
-    subtitle: 'Appleseed Alpha',
-    storyline: "A young female soldier Deunan and her cyborg partner Briareos survive through the post World War 3 apocalyptic New York in search of human's future hope, the legendary city of Olympus.",
-    rating: 3.8,
-    imagePath: 'images/Appleseed_Alpha.jpg',
-    bookmarked: true,
-    genre: 'action',
+    title: 'Thor',
+    storyline:
+      'The powerful but arrogant god Thor is cast out of Asgard to live amongst humans in Midgard (Earth), where he soon becomes one of their finest defenders.',
+    rating: 3.9,
+    imagePath:
+      'https://terrigen-cdn-dev.marvel.com/content/prod/1x/thor_lob_mas_hlf_01_3.jpg',
   },
   {
-    title: 'Resident Evil',
-    subtitle: 'Vendetta',
-    storyline: 'Chris Redfield enlists the help of Leon S. Kennedy and Rebecca Chambers to stop a death merchant, with a vengeance, from spreading a deadly virus in New York.',
-    rating: 4.2,
-    imagePath: 'images/Resident_Evil_Vendetta.jpg',
-    bookmarked: true,
-    genre: 'fantasy',
+    title: 'Captain America',
+    subtitle: 'The First Avenger',
+    storyline:
+      'Steve Rogers, a rejected military soldier, transforms into Captain America after taking a dose of a "Super-Soldier serum". But being Captain America comes at a price as he attempts to take down a war monger and a terrorist organization',
+    rating: 4,
+    imagePath:
+      'https://terrigen-cdn-dev.marvel.com/content/prod/1x/captainamericathefirstavenger_lob_mas_hlf_03.jpg',
+  },
+  {
+    title: 'The Avengers',
+    storyline:
+      "Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity",
+    rating: 4.6,
+    imagePath:
+      'https://terrigen-cdn-dev.marvel.com/content/prod/1x/theavengers_lob_mas_dsk_03.jpg',
   },
 ];
 
