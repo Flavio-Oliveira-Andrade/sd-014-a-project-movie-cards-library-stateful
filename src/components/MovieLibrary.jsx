@@ -35,6 +35,10 @@ class MovieLibrary extends Component {
     this.setState({ [key]: value });
   }
 
+  addMovie = (movie) => {
+    this.setState((state) => ({ movies: [...state.movies, movie] }));
+  }
+
   render() {
     const { movies, ...searchStates } = this.state;
     const searchHandlers = {
@@ -47,7 +51,7 @@ class MovieLibrary extends Component {
         <h2> My awesome movie library </h2>
         <SearchBar { ...searchStates } { ...searchHandlers } />
         <MovieList movies={ this.filterMovies(this.state) } />
-        <AddMovie onClick={ () => { /* TODO */ } } />
+        <AddMovie onClick={ this.addMovie } />
       </div>
     );
   }
