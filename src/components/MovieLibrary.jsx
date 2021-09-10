@@ -7,10 +7,10 @@ import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
-  constructor(props) { // props sempre devem ser passados p constructor e p React.Component por meio do método super(). Source: https://www.w3schools.com/react/react_props.asp
+  constructor(props) {
     super(props);
 
-    this.onSearchTextChange = this.onSearchTextChange.bind(this); // para que o this possa ser visto fora da func render (p funções terem acesso ao this e ao estado)
+    this.onSearchTextChange = this.onSearchTextChange.bind(this); // para que o this possa ser visto fora da func render (funções terão acesso ao this e ao estado)
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
     this.onClick = this.onClick.bind(this);
@@ -32,7 +32,7 @@ class MovieLibrary extends Component {
 
   onBookmarkedChange({ target }) {
     this.setState({
-      bookmarkedOnly: target.checked,
+      bookmarkedOnly: target.checked, // o booleano não fica no value, mas na chave checked
     });
   }
 
@@ -42,27 +42,31 @@ class MovieLibrary extends Component {
     });
   }
 
-  // onClick(movie) {
-  //   this.setState((previousState) => ({
-  //     movies: [...previousState.movies, movie],
-  //   }));
-  // }
-
-  // onClick(movie) {
-  //   this.setState(({ movies }) => ({
-  //     movies: [...movies, movie],
-  //   }));
-  // }
-
   onClick(movie) {
-    const { movies } = this.state;
+    const { movies } = this.state; // Destruturing na chave 'movies'; Atualiza estado do componente
     this.setState({
-      movies: [...movies, movie],
+      movies: [...movies, movie], // Na lista de filmes prévia, insere informações do filme adicionado
     });
   }
 
+  filterMovies() {
+    const { searchText, selectedGenre, bookmarkedOnly, movies } = this.state;
+    let filteredMovies = movies
+      .filter((movie) => movie.title.includes(searchText)
+      || movie.subtitle.includes(searchText)
+      || movie.storyline.includes(searchText));
+
+    if (bookmarkedOnly) {
+      filteredMovies = movies.filter((movie) => movie.bookmarked === bookmarkedOnly);
+    }
+    if (selectedGenre) {
+      filteredMovies = movies.filter((movie) => movie.genre === selectedGenre);
+    }
+    return filteredMovies;
+  }
+
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
@@ -74,14 +78,13 @@ class MovieLibrary extends Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.onSelectedGenreChange }
         />
-        <MovieList movies={ movies } />
+        <MovieList movies={ this.filterMovies() } />
         <AddMovie onClick={ this.onClick } />
       </div>
     );
   }
 }
 
-// validação das props passadas no componente
 MovieLibrary.propTypes = {
   searchText: PropTypes.string,
   bookmarkedOnly: PropTypes.bool,

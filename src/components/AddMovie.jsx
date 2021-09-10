@@ -8,8 +8,8 @@ import Rating from './componentsAddMovie/Rating';
 import Genre from './componentsAddMovie/Genre';
 
 class AddMovie extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -83,7 +83,11 @@ class AddMovie extends React.Component {
           handleChange={ this.handleChange }
         />
 
-        <button type="submit" data-testid="send-button" onClick={ this.handleSubmit }>
+        <button
+          type="submit"
+          data-testid="send-button"
+          onClick={ this.handleSubmit }
+        >
           Adicionar filme
         </button>
 
