@@ -1,5 +1,12 @@
 // implement AddMovie component here
 import React from 'react';
+import Title from './sub-components/Title'
+import Subtitle from './sub-components/Subtitle';
+import ImagePath from './sub-components/ImagePath';
+import StoryLine from './sub-components/StoryLine';
+import Rating from './sub-components/Rating';
+import Genre from './sub-components/Genre';
+import Button from './sub-components/Button';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -14,49 +21,49 @@ class AddMovie extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
   }
-
-  handleChange({ target }) {
-    const { name, value } = target;
+  
+  handleChange({ target  }) {
+    const { name } = target;
+    const oshiro = target.type === "checkbox" ? target.checked : target.value;
+   
 
     this.setState({
-      [name]: value });
+      [name]: oshiro });
   }
 
+    handleSubmit(event) {
+    event.preventDefault();
+    onClick(this.state);
+      this.setState({
+        subtitle: '',
+        title: '',
+        imagePath: '',
+        storyLine: '',
+        rating: 0,
+        genre: 'action',
+      })
+      const { onClick } = this.props;
+    }  
+  
+
+
   render() {
-    // const { onClick } = this.props;
-    const { state } = this;
     return (
       <form data-testid="add-movie-form">
-        <label data-testid="title-input-label" htmlFor="title">
-          Título
-          <input
-            data-testid="title-input"
-            type="text"
-            name="title"
-            onChange={ this.handleChange }
-            value={ state.title }
-          />
-        </label>
-        <label data-testid="subtitle-input-label" htmlFor="subtitle">
-          Subtítulo
-          <input
-            data-testid="subtitle-input"
-            type="text"
-            name="subtitle"
-            onChange={ this.handleChange }
-            value={ state.subtitle }
-          />
-        </label>
-        <label data-testid="image-input-label" htmlFor="imagePath">
-          Imagem
-          <input
-            name="imagePath"
-            type="text"
-            data-testid="image-input"
-            onChange={ this.handleChange }
-            value={ state.imagePath }
-          />
-        </label>
+
+       <Title handleChange={this.handleChange} value={this.state.title}/>
+
+       <Subtitle handleChange={this.handleChange} value={this.state.subtitle} />
+    
+       <ImagePath handleChange={this.handleChange} value={this.state.imagePath} />
+       
+       <StoryLine handleChange={this.handleChange} value={this.state.storyLine} />
+
+       <Rating handleChange={this.handleChange} value={this.state.rating} />
+
+       <Genre handleChange={this.handleChange} value={this.state.genre} />
+
+       <Button  onClick={this.onClick}/>
       </form>
     );
   }
