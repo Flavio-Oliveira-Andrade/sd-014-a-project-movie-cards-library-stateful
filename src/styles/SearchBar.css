@@ -1,0 +1,25 @@
+.search-bar-for {
+  align-items: center;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 10px auto;
+  padding: 10px;
+  width: 80%;
+}
+
+.search-bar-for > * {
+  margin: 5px;
+}
+
+.search-bar-for label input,
+.search-bar-for label select {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 0 10px;
+}

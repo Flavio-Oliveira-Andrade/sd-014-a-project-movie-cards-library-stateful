@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import '../styles/SearchBar.css';
+
 class SearchBar extends Component {
   fetchOptions = () => (
     <>
@@ -30,7 +32,7 @@ class SearchBar extends Component {
       selectedGenre,
     } = this.props;
     return (
-      <form data-testid="search-bar-form">
+      <form className="search-bar-for" data-testid="search-bar-form">
         <label data-testid="text-input-label" htmlFor="text">
           Inclui o texto:
           <input
