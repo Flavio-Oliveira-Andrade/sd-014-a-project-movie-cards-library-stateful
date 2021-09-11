@@ -55,14 +55,14 @@ class AddMovie extends React.Component {
 
     return (
       <form data-testid="add-movie-form">
-        {this.addTextField('Titulo', 'title', title, this.handleChange)}
+        {this.addTextField('Título', 'title', title, this.handleChange)}
         {this.addTextField('Subtítulo', 'subtitle', subtitle, this.handleChange)}
         {this.addTextField('Imagem', 'image', imagePath, this.handleChange)}
         {this.addTextField('Sinopse', 'storyline', storyline, this.handleChange)}
         <label htmlFor="rating" data-testid="rating-input-label">
           Avaliação
           <input
-            type="text"
+            type="number"
             name="rating"
             value={ rating }
             id="rating"
