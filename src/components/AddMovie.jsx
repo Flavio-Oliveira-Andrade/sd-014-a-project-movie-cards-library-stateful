@@ -17,6 +17,12 @@ class AddMovie extends React.Component {
         <Textarea />
         <RatingInput />
         <Genero />
+        <button
+          type="reset"
+          data-testid="send-button"
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
