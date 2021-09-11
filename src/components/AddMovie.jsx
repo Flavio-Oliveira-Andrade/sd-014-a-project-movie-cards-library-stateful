@@ -56,7 +56,7 @@ class AddMovie extends React.Component {
     return (
       <form data-testid="add-movie-form">
         {this.addTextField('Titulo', 'title', title, this.handleChange)}
-        {this.addTextField('Subtitulo', 'subtitle', subtitle, this.handleChange)}
+        {this.addTextField('Subtítulo', 'subtitle', subtitle, this.handleChange)}
         {this.addTextField('Imagem', 'image', imagePath, this.handleChange)}
         {this.addTextField('Sinopse', 'storyline', storyline, this.handleChange)}
         <label htmlFor="rating" data-testid="rating-input-label">
@@ -73,6 +73,7 @@ class AddMovie extends React.Component {
         <label htmlFor="genre" data-testid="genre-input-label">
           Gênero
           <select
+            data-testid="genre-input"
             name="genre"
             id="genre"
             value={ genre }
