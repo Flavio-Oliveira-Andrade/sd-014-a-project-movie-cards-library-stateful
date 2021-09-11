@@ -1,13 +1,14 @@
 // implement MovieLibrary component here
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import SearchBar from './SearchBar';
+import MovieList from './MovieList';
 
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
     const { movies } = this.props;
-    console.log(this.props, 'this.props');
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
@@ -27,9 +28,7 @@ class MovieLibrary extends Component {
   }
 
   render() {
-    const { searchText, selectedGenre, bookmarkedOnly } = this.state;
-    console.log(this.state, 'this.state');
-    console.log(this, 'this');
+    const { searchText, selectedGenre, bookmarkedOnly, movies } = this.state;
     return (
       <div>
         <SearchBar
@@ -41,6 +40,7 @@ class MovieLibrary extends Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleChange }
         />
+        <MovieList movies={ movies } />
       </div>
     );
   }
