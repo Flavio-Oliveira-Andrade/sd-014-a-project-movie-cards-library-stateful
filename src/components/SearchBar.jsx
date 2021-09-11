@@ -13,6 +13,7 @@ class SearchBar extends Component {
             <input
               id="search"
               type="text"
+              name="searchText"
               value={ searchText }
               onChange={ onSearchTextChange }
             />
