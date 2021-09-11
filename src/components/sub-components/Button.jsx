@@ -1,15 +1,17 @@
 import React from 'react';
 
 class Button extends React.Component {
-  render(){
-    return(
+  render() {
+    return (
       <button
-      type="submit" 
-      onClick data-testid="send-button">
-      Adicionar filme
-      
+        type="submit"
+        onClick
+        data-testid="send-button"
+      >
+        Adicionar filme
+
       </button>
-    )
+    );
   }
 }
 

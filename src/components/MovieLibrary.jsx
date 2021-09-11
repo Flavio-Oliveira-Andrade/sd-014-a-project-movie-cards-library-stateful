@@ -1,9 +1,10 @@
 // implement MovieLibrary component here
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
-import AddMovie from './AddMovie';
+// import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
   constructor(props) {
@@ -14,38 +15,34 @@ class MovieLibrary extends Component {
       bookmarkedOnly: false,
       selectedGenre: '',
       movies,
-      //ryan, boladasso, boladinho, boladao
-    }
+    };
     this.oshiroDoMalText = this.oshiroDoMalText.bind(this);
     this.filterChanges = this.filterChanges.bind(this);
   }
 
-  oshiroDoMalText({ target }){
+  oshiroDoMalText({ target }) {
     const { name } = target;
-    const oshiro = target.type === "checkbox" ? target.checked : target.value;
+    const oshiro = target.type === 'checkbox' ? target.checked : target.value;
 
     this.setState({
-      [name]: oshiro
-    })
+      [name]: oshiro,
+    });
   }
 
-  
-  
-  filterChanges({movies, bookmarkedOnly, selectedGenre, searchText}){
-    const oshiroDoBem = movies.filter((movie)=>{
-     const textFiltered = `${movie.title} ${movie.subtitle} ${movie.storyline}`
+  filterChanges({ movies, bookmarkedOnly, selectedGenre, searchText }) {
+    const oshiroDoBem = movies.filter((movie) => {
+      const textFiltered = `${movie.title} ${movie.subtitle} ${movie.storyline}`;
 
-    return textFiltered.includes(searchText);
+      return textFiltered.includes(searchText);
+    });
 
-    })
-
-    if(bookmarkedOnly) {
-      return oshiroDoBem.filter((movie)=> movie.bookmarked);
+    if (bookmarkedOnly) {
+      return oshiroDoBem.filter((movie) => movie.bookmarked);
     }
 
-    if(selectedGenre) {
-      return oshiroDoBem.filter(({genre})=> genre === selectedGenre);
-    };
+    if (selectedGenre) {
+      return oshiroDoBem.filter(({ genre }) => genre === selectedGenre);
+    }
 
     return oshiroDoBem;
   }
@@ -56,19 +53,25 @@ class MovieLibrary extends Component {
     return (
       <div>
         <h2> My awesome movie library </h2>
-        <SearchBar 
+        <SearchBar
           searchText={ searchText }
           onSearchTextChange={ this.oshiroDoMalText }
           bookmarkedOnly={ bookmarkedOnly }
           onBookmarkedChange={ this.oshiroDoMalText }
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.oshiroDoMalText }
-         />
-        <MovieList movies={ this.filterChanges(this.state) }  />
-        <AddMovie />
+        />
+        <MovieList movies={ this.filterChanges(this.state) } />
+        {/* <AddMovie onClick={}/> */}
       </div>
     );
   }
 }
+
+MovieLibrary.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.object,
+  ).isRequired,
+};
 
 export default MovieLibrary;
