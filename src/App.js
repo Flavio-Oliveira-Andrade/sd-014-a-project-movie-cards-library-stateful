@@ -6,28 +6,30 @@ import './App.css';
 class App extends React.Component {
   constructor() {
     super();
-
     this.handleChange = this.handleChange.bind(this);
-
     // O componente pai é o dono do estado!
     this.state = {
-      inputText: "",
+      inputText: '',
+      inputCheckboxFavorites: false,
     };
   }
 
-  handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value }); // interpolando o valor da variável para ser o nome da chave do objeto
+  handleChange({ target }) { // desestruturação do event para não precisar escrever event.target
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value; // necessário para conseguir pegar o valor do checkbox, se for checkbox pega o checked e se não for pega o value
+    this.setState({ [name]: value }); // interpolando o valor da variável para ser o nome da chave do objeto
   }
 
   render() {
+    const { inputText, inputCheckboxFavorites } = this.state;
     return (
       <div className="App">
         <Header />
         <SearchBar
-          searchText={this.state.inputText}
+          searchText={ inputText }
           onSearchTextChange={ this.handleChange }
-          bookmarkedOnly={ false }
-          onBookmarkedChange={ () => {} }
+          bookmarkedOnly={ inputCheckboxFavorites }
+          onBookmarkedChange={ this.handleChange }
           selectedGenre=""
           onSelectedGenreChange={ () => {} }
         />
