@@ -7,39 +7,39 @@ import FormImage from './FormImage';
 import FormStoryline from './FormStoryline';
 import FormRating from './FormRating';
 import FormGenre from './FormGenre';
+import FormButton from './FormButton';
+
+const initialState = {
+  title: '',
+  subtitle: '',
+  imagePath: '',
+  storyline: '',
+  rating: 0,
+  genre: 'action',
+};
 
 class AddMovie extends React.Component {
   constructor() {
     super();
-    this.state = {
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    };
+    this.state = (initialState);
     this.handleChange = this.handleChange.bind(this);
-    this.formSubmit = this.formSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    const { name, value } = event.target;
+    const { name } = event.target; // acessa name de value
+    const value = event.target.type === 'checkbox'
+      ? event.target.checked
+      : event.target.value;
+
     this.setState({ [name]: value });
   }
 
-  formSubmit(event) {
+  handleSubmit(event) {
     event.preventDefault();
     const { onClick } = this.props;
     onClick(this.state);
-    this.setState({
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    });
+    this.setState(initialState);
   }
 
   render() {
@@ -54,9 +54,14 @@ class AddMovie extends React.Component {
         <FormRating value={ rating } onChange={ this.handleChange } />
         <FormGenre value={ genre } onChange={ this.handleChange } />
         {/* Requisito 14 */}
-        <button data-testid="send-button" type="submit" onClick={ this.formSubmit }>
+        <FormButton onClick={ this.handleSubmit } />
+        {/* <button
+          type="submit"
+          onClick={ this.handleSubmit }
+          data-testid="send-button"
+        >
           Adicionar filme
-        </button>
+        </button> */}
       </form>
     );
   }
