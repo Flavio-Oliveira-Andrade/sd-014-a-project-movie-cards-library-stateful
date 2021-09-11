@@ -1,4 +1,9 @@
 import React from 'react';
+import TitleInput from './inputs/TitleInput';
+import SubInput from './inputs/SubInput';
+import ImagePath from './inputs/ImageInput';
+import TextareaInput from './inputs/Textarea';
+import RatingInput from './inputs/RatingInput';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -23,42 +28,14 @@ class AddMovie extends React.Component {
   }
 
   render() {
-    const { title, subtitle, imagePath } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="title" data-testid="title-input-label">
-          Título
-          <input
-            name="title"
-            value={ title }
-            id="title"
-            type="text"
-            data-testid="title-input"
-            onChange={ this.handleChange }
-          />
-        </label>
-        <label htmlFor="subtitle" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            name="subtitle"
-            value={ subtitle }
-            id="subtitle"
-            type="text"
-            data-testid="subtitle-input"
-            onChange={ this.handleChange }
-          />
-        </label>
-        <label htmlFor="imagePath" data-testid="image-input-label">
-          Imagem
-          <input
-            name="imagePath"
-            value={ imagePath }
-            id="imagePath"
-            type="text"
-            data-testid="image-input"
-            onChange={ this.handleChange }
-          />
-        </label>
+        <TitleInput title={ title } handleChange={ this.handleChange } />
+        <SubInput subtitle={ subtitle } handleChange={ this.handleChange } />
+        <ImagePath ImagePath={ imagePath } handleChange={ this.handleChange } />
+        <TextareaInput storyline={ storyline } handleChange={ this.handleChange } />
+        <RatingInput rating={ rating } handleChange={ this.handleChange } />
       </form>
     );
   }
