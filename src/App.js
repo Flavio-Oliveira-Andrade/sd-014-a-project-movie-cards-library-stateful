@@ -4,7 +4,7 @@ import './App.css';
 import MovieList from './components/MovieList';
 import movies from './data';
 import SearchBar from './components/SearchBar';
-import SearchBar from './components/AddMovie';
+import AddMovie from './components/AddMovie';
 
 class App extends React.Component {
 
@@ -14,9 +14,10 @@ class App extends React.Component {
   return (
     <div className="App">
       <Header />
-      <MovieList movies = { movies }/>
       <SearchBar/>
-      <AddMovie/>
+      <AddMovie />
+      <MovieList movies = { movies }/>
+      
     </div>
   );
 }
