@@ -51,13 +51,13 @@ class SearchBar extends React.Component {
           <option value="thriller" data-testid="select-option">Suspense</option>
         </select>
       </label>
-
+        
       </form>
     );
   }
 }
 
-SearchBar.PropTypes={
+SearchBar.propTypes={
   searchText:PropTypes.string.isRequired,
   onSearchTextChange:PropTypes.func.isRequired,
   onBookmarkedChange:PropTypes.func.isRequired,
