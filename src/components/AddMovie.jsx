@@ -25,7 +25,7 @@ class AddMovie extends Component {
     const { onClick } = this.props;
     const { subtitle } = this.state;
     return (
-      <form>
+      <form data-testid="add-movie-form">
         <label htmlFor="subtitle">
           <input
             id="subtitle"
