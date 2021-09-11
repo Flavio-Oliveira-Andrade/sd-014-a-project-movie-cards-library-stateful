@@ -11,6 +11,7 @@ class App extends React.Component {
     this.state = {
       inputText: '',
       inputCheckboxFavorites: false,
+      selectGenre: '',
     };
   }
 
@@ -21,7 +22,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { inputText, inputCheckboxFavorites } = this.state;
+    const { inputText, inputCheckboxFavorites, selectGenre } = this.state;
     return (
       <div className="App">
         <Header />
@@ -30,8 +31,8 @@ class App extends React.Component {
           onSearchTextChange={ this.handleChange }
           bookmarkedOnly={ inputCheckboxFavorites }
           onBookmarkedChange={ this.handleChange }
-          selectedGenre=""
-          onSelectedGenreChange={ () => {} }
+          selectedGenre={ selectGenre }
+          onSelectedGenreChange={ this.handleChange }
         />
       </div>
     );
