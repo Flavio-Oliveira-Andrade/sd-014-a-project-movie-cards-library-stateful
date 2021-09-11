@@ -55,13 +55,6 @@ class AddMovie extends React.Component {
         <FormGenre value={ genre } onChange={ this.handleChange } />
         {/* Requisito 14 */}
         <FormButton onClick={ this.handleSubmit } />
-        {/* <button
-          type="submit"
-          onClick={ this.handleSubmit }
-          data-testid="send-button"
-        >
-          Adicionar filme
-        </button> */}
       </form>
     );
   }
