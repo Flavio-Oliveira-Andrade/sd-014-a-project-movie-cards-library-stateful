@@ -21,11 +21,11 @@ class AddMovie extends React.Component {
   }
 
   handleChange(evento) {
-    const valor = evento.target.nome === 'rating'
-      ? (parseFloat(evento.target.valor || 0)) : evento.target.valor;
-    const nome = evento.target.nome === 'image' ? 'imagePath' : evento.target.nome;
+    const value = evento.target.name === 'rating'
+      ? (parseFloat(evento.target.value || 0)) : evento.target.value;
+    const name = evento.target.name === 'image' ? 'imagePath' : evento.target.name;
 
-    this.setState({ [nome]: valor });
+    this.setState({ [name]: value });
   }
 
   handleSubmit() {
