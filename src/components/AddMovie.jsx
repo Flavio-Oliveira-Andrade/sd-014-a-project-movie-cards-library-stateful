@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class AddMovie extends Component {
   constructor() {
@@ -28,6 +29,9 @@ class AddMovie extends Component {
 
   handleClick(event) {
     event.preventDefault();
+
+    const { addMovieFunc } = this.props;
+    addMovieFunc(this.state);
 
     // Reset para o Valor Inicial estabelecido no construtor
     this.setState(this.initialState);
@@ -100,5 +104,9 @@ class AddMovie extends Component {
     );
   }
 }
+
+AddMovie.propTypes = {
+  addMovieFunc: PropTypes.func.isRequired,
+};
 
 export default AddMovie;

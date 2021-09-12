@@ -47,6 +47,14 @@ class MovieLibrary extends Component {
       || st.includes(text));
   }
 
+  // Requisito 19
+  // Adiciona o Filme na lista this.state.movie:
+  addMovie = (movie) => {
+    this.setState((existente) => ({
+      movies: [...existente.movies, movie],
+    }));
+  }
+
   render() {
     const {
       searchText,
@@ -65,8 +73,8 @@ class MovieLibrary extends Component {
         />
         {/* Requisito 18 */}
         <MovieList movies={ this.filtro() } />
-        {/* Requisito 06 ao 14 */}
-        <AddMovie />
+        {/* Requisito 06 ao 14 e 19 */}
+        <AddMovie addMovieFunc={ this.addMovie } />
       </div>
     );
   }
