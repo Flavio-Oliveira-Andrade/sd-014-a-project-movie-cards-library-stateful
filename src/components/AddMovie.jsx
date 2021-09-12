@@ -5,6 +5,7 @@ import Titulo from './Titulo';
 import SubTitulo from './Subtitulo';
 import Imagem from './Imagem';
 import Sinopse from './Sinopse';
+import Avaliacao from './Avaliacao';
 
 class AddMovie extends Component {
   constructor() {
@@ -15,7 +16,7 @@ class AddMovie extends Component {
       subtitle: '',
       imagePath: '',
       storyline: '',
-      // rating: 0,
+      rating: 0,
       // genre: 'action',
     };
   }
@@ -27,13 +28,14 @@ class AddMovie extends Component {
 
   render() {
     const { onClick } = this.props;
-    const { title, subtitle, imagePath, storyline } = this.state;
+    const { title, subtitle, imagePath, storyline, rating } = this.state;
     return (
       <form data-testid="add-movie-form">
         <Titulo value={ title } handleChange={ this.handleChange } />
         <SubTitulo value={ subtitle } handleChange={ this.handleChange } />
         <Imagem value={ imagePath } handleChange={ this.handleChange } />
         <Sinopse value={ storyline } handleChange={ this.handleChange } />
+        <Avaliacao value={ rating } handleChange={ this.handleChange } />
         <button type="button" onClick={ onClick }>texto</button>
       </form>
     );
