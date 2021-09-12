@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Title from './Title';
 import Subtitle from './Subtitle';
 import ImagePath from './ImagePath';
@@ -19,11 +20,19 @@ class AddMovie extends React.Component {
       genre: 'action',
     };
     this.onClick = this.onClick.bind(this);
+    // this.submitNewMovie = this.submitNewMovie.bind(this);
   }
 
   onClick(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
+
+  // submitNewMovie(event) {
+  //   event.preventDefault();
+  //   const { movies } = this.props;
+  //   movies.push(this.state);
+  //   console.log(movies);
+  // }
 
   render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
@@ -35,10 +44,20 @@ class AddMovie extends React.Component {
         <Storyline value={ storyline } onClick={ this.onClick } />
         <AddRating value={ rating } onClick={ this.onClick } />
         <Genre value={ genre } onClick={ this.onClick } />
-        <Button onClick={ this.onClick } />
+        <Button onClick={ this.submitNewMovie } />
       </form>
     );
   }
 }
+
+AddMovie.propTypes = {
+  movies: PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    imagePath: PropTypes.string,
+  }).isRequired,
+};
 
 export default AddMovie;
