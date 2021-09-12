@@ -56,7 +56,6 @@ class MovieLibrary extends React.Component {
               || movie.storyline.includes(searchText))
               .filter((movie) => (bookmarkedOnly ? movie.bookmarked : true))
               .filter((movie) => (selectedGenre ? movie.genre === selectedGenre : true))
-              // .map(())
           }
         />
         <AddMovie onClick={ this.onCLick } />

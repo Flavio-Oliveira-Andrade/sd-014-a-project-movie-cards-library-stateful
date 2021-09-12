@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Sel extends React.Component {
   render() {
@@ -20,5 +21,11 @@ class Sel extends React.Component {
     );
   }
 }
+
+Sel.propTypes = {
+  DataS: PropTypes.objectOf(PropTypes.string).isRequired,
+  val: PropTypes.string.isRequired,
+  change: PropTypes.func.isRequired,
+};
 
 export default Sel;
