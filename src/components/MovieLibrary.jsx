@@ -15,7 +15,9 @@ class MovieLibrary extends Component {
       selectedGenre: '',
       movies: props.movies, // Nao precisa do this neste caso
     };
+    this.filtro = this.filtro.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    // this.filter = this.filter.bind(this);
   }
 
   // Problema para "desclicar o checkbox"
@@ -26,9 +28,27 @@ class MovieLibrary extends Component {
     });
   }
 
+  // Filtro dos Filmes:
+  filtro = () => {
+    const {
+      searchText,
+      bookmarkedOnly: checkBox,
+      selectedGenre: g,
+      movies } = this.state;
+
+    return movies
+    // Favoritos: é true ? sim : não
+      .filter(({ bookmarked }) => (checkBox ? bookmarked : true))
+    // Gênero:
+      .filter(({ genre }) => (g.length === 0 ? true : g === genre))
+    // Pelo o que for digitado: Esta dando errado
+      .filter(({ title, subtitle, storyline }) => title.includes(searchText)
+        || subtitle.includes(searchText)
+        || storyline.include(searchText));
+  }
+
   render() {
     const {
-      movies,
       searchText,
       bookmarkedOnly,
       selectedGenre } = this.state;
@@ -43,7 +63,8 @@ class MovieLibrary extends Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleChange }
         />
-        <MovieList movies={ movies } />
+        {/* Requisito 18 */}
+        <MovieList movies={ this.filtro() } />
         {/* Requisito 06 ao 14 */}
         <AddMovie />
       </div>
