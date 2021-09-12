@@ -23,14 +23,11 @@ class MovieLibrary extends React.Component {
   }
 
   handleChange(event) {
-  //   const { name } = event.target;
-  //   const value = 
-  //   event.target.type === 'checkbox' ? event.target.checked : event.target.value;
-  //   this.setState({ [name]: value });
-  // }
-  handleChange = ({ target }) => this.setState({
-    [target.name]: (target.type === 'checkbox' ? target.checked : target.value),
-  });
+    const { name } = event.target;
+    const value = event.target.type === 'checkbox' 
+    ? event.target.checked : event.target.value;
+    this.setState({ [name]: value });
+  }
 
   onSearchTextChange(event) {
     const { movies } = this.props;
