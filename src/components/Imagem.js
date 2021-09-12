@@ -1,27 +1,15 @@
 import React from 'react';
 
 class Imagem extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      imagePath: '',
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({ imagePath: event.target.value });
-  }
-
   render() {
-    const { imagePath } = this.state;
+    const { value, handleChange } = this.props;
     return (
       <label htmlFor data-testid="image-input-label">
         Imagem
         <input
-          value={ imagePath }
+          value={ value }
           data-testid="image-input"
-          onChange={ this.handleChange }
+          onChange={ handleChange }
         />
       </label>
     );

@@ -1,27 +1,15 @@
 import React from 'react';
 
 class Genero extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      genre: 'action',
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({ genre: event.target.value });
-  }
-
   render() {
-    const { genre } = this.state;
+    const { value, handleChange} = this.props;
     return (
       <label htmlFor data-testid="genre-input-label">
         Gênero
         <select
-          value={ genre }
+          value={ value }
           data-testid="genre-input"
-          onChange={ this.handleChange }
+          onChange={ handleChange }
         >
           <option value="action" data-testid="genre-option">Ação</option>
           <option value="comedy" data-testid="genre-option">Comédia</option>

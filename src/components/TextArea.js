@@ -1,27 +1,15 @@
 import React from 'react';
 
 class Textarea extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      storyline: '',
-    };
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({ storyline: event.target.value });
-  }
-
   render() {
-    const { storyline } = this.state;
+    const { value, handleChange} = this.props;
     return (
       <label htmlFor data-testid="storyline-input-label">
         Sinopse
         <textarea
-          value={ storyline }
+          value={ value}
           data-testid="storyline-input"
-          onChange={ this.handleChange }
+          onChange={handleChange }
         />
       </label>
     );
