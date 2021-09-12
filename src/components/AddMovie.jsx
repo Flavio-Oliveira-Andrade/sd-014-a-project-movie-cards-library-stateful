@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import TitleInput from './TitleInput';
 import SubtitleInput from './SubtitleInput';
 import ImageInput from './ImageInput';
+import StorylineInput from './StorylineInput';
+import RatingInput from './RatingInput';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -33,6 +35,8 @@ class AddMovie extends React.Component {
           <TitleInput title={ title } handleChange={ this.handleChange } />
           <SubtitleInput subtitle={ subtitle } handleChange={ this.handleChange } />
           <ImageInput imagePath={ imagePath } handleChange={ this.handleChange } />
+          <StorylineInput storyline={ storyline } handleChange={ this.handleChange } />
+          <RatingInput rating={ rating } handleChange={ this.handleChange } />
         </form>
       </div>
     );
