@@ -77,15 +77,15 @@ class MovieLibrary extends React.Component {
     return (
       <section>
         <SearchBar
-          searchText={searchText}
-          onSearchTextChange={this.onSearchTextChange}
-          brookmarkedOnly={brookmarkedOnly}
-          onBookmarkedChange={this.onBookmarkedChange}
-          selectedGenre={selectedGenre}
-          onSelectedGenreChange={this.onSelectedGenreChange}
+          searchText={ searchText }
+          onSearchTextChange={ this.onSearchTextChange }
+          brookmarkedOnly={ brookmarkedOnly }
+          onBookmarkedChange={ this.onBookmarkedChange }
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ this.onSelectedGenreChange }
         />
-        <AddMovie onClick={this.addNewMovie} />
-        <MovieList movies={movies} />
+        <AddMovie onClick={ this.addNewMovie } />
+        <MovieList movies={ movies } />
       </section>
     );
   }
