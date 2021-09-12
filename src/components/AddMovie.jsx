@@ -2,6 +2,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import Inputs from './Inputs';
+import TextArea from './TextArea';
 
 const inicialState = {
   subtitle: '',
@@ -29,7 +30,7 @@ class AddMovie extends React.Component {
 
   render() {
     // const { onClick } = this.props;
-    const { title, subtitle, image } = this.state;
+    const { title, subtitle, image, storyline } = this.state;
     return (
       <form data-testid="add-movie-form">
         <Inputs
@@ -56,19 +57,13 @@ class AddMovie extends React.Component {
           labelText="Imagem"
           id="image-input"
         />
-        {/* <label
-          htmlFor="title"
-          data-testid="title-input-label"
-        >
-          Título
-          <input
-            type="text"
-            name="title"
-            value={ title }
-            data-testid="title-input"
-            onChange={ this.handleChange }
-          />
-        </label> */}
+        <TextArea
+          name="storyline"
+          handleChange={ this.handleChange }
+          value={ storyline }
+          labelText="Sinopse"
+          id="storyline-input"
+        />
       </form>
     );
   }
