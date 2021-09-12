@@ -31,7 +31,7 @@ class MovieLibrary extends Component {
   // Filtro dos Filmes:
   filtro = () => {
     const {
-      searchText,
+      searchText: text,
       bookmarkedOnly: checkBox,
       selectedGenre: g,
       movies } = this.state;
@@ -41,10 +41,10 @@ class MovieLibrary extends Component {
       .filter(({ bookmarked }) => (checkBox ? bookmarked : true))
     // Gênero:
       .filter(({ genre }) => (g.length === 0 ? true : g === genre))
-    // Pelo o que for digitado: Esta dando errado
-      .filter(({ title, subtitle, storyline }) => title.includes(searchText)
-        || subtitle.includes(searchText)
-        || storyline.include(searchText));
+    // Pelo o que for digitado:
+      .filter(({ title: t, subtitle: s, storyline: st }) => t.includes(text)
+      || s.includes(text)
+      || st.includes(text));
   }
 
   render() {
