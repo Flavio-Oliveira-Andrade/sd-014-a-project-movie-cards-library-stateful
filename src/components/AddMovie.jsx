@@ -1,18 +1,22 @@
 import React from 'react';
 
+const INITIAL_STATE = {
+  subtitle: '',
+  title: '',
+  imagePath: '',
+  storyline: '',
+  rating: 0,
+  genre: 'action',
+};
+
 class AddMovie extends React.Component {
   constructor() {
     super();
 
-    this.state = {
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    };
+    this.state = INITIAL_STATE;
+
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange({ target }) {
@@ -23,8 +27,13 @@ class AddMovie extends React.Component {
     });
   }
 
-  render() {
+  handleSubmit() {
     const { onClick } = this.props;
+    onClick();
+    this.setState(INITIAL_STATE);
+  }
+
+  render() {
     const { title,
       subtitle,
       imagePath,
@@ -98,6 +107,12 @@ class AddMovie extends React.Component {
               <option value="thriller" data-testid="genre-option">Suspense</option>
             </select>
           </label>
+          <button
+            data-testid="send-button"
+            onClick={ this.handleSubmit }
+          >
+            Adicionar filme
+          </button>
       </form>
     );
   }
