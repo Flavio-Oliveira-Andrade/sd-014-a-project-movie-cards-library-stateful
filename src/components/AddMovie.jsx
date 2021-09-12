@@ -9,7 +9,7 @@ const inicialState = {
   title: '',
   image: '',
   storyline: '',
-  rating: '',
+  rating: 0,
   genre: '',
 };
 
@@ -30,7 +30,7 @@ class AddMovie extends React.Component {
 
   render() {
     // const { onClick } = this.props;
-    const { title, subtitle, image, storyline } = this.state;
+    const { title, subtitle, image, storyline, rating } = this.state;
     return (
       <form data-testid="add-movie-form">
         <Inputs
@@ -63,6 +63,14 @@ class AddMovie extends React.Component {
           value={ storyline }
           labelText="Sinopse"
           id="storyline-input"
+        />
+        <Inputs
+          name="rating"
+          type="number"
+          handleChange={ this.handleChange }
+          value={ rating }
+          labelText="Avaliação"
+          id="rating-input"
         />
       </form>
     );
