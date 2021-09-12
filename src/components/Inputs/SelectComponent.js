@@ -31,8 +31,14 @@ class SelectComp extends React.Component {
           onChange={ callback }
           value={ value }
         >
-          {options.map((g) => <option key={ g.pt } value={ g.en }>{ g.pt }</option>) }
-          );
+          {options.map((g) => (
+            <option
+              key={ g.pt }
+              data-testid="genre-option"
+              value={ g.en }
+            >
+              { g.pt }
+            </option>)) }
         </select>
       </label>
     );

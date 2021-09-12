@@ -1,14 +1,16 @@
 // implement AddMovie component here
 import React from 'react';
-import InputComp from './Inputs/InputComponnet';
+import InputTextComp from './Inputs/InputTextComponent';
 import TextAreaComp from './Inputs/TextAreaComponent';
 import SelectComp from './Inputs/SelectComponent';
+import InputNumberComp from './Inputs/InputNumberComponent';
 
 class AddMovie extends React.Component {
   constructor() {
     super();
 
     this.handleChange = this.handleChange.bind(this);
+    this.reset = this.reset.bind(this);
 
     this.state = {
       subtitle: '',
@@ -28,39 +30,43 @@ class AddMovie extends React.Component {
     });
   }
 
+  reset(event) {
+    const { onClick } = this.props;
+    console.log(onClick);
+    event.preventDefault();
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
   render() {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
+    const inputs = [
+      { id: 'title', titulo: 'Título', value: title },
+      { id: 'subtitle', titulo: 'Subtítulo', value: subtitle },
+      { id: 'image', titulo: 'Imagem', value: imagePath },
+    ];
     return (
       <form data-testid="add-movie-form">
-        <InputComp
-          type="text"
-          id="title"
-          titulo="Título"
-          value={ title }
+        {inputs.map((comp) => (<InputTextComp
+          key={ comp.id }
+          id={ comp.id }
+          titulo={ comp.titulo }
+          value={ comp.value }
           callback={ this.handleChange }
-        />
-        <InputComp
-          type="text"
-          id="subtitle"
-          titulo="Subtítulo"
-          value={ subtitle }
-          callback={ this.handleChange }
-        />
-        <InputComp
-          type="text"
-          id="image"
-          titulo="Imagem"
-          value={ imagePath }
-          callback={ this.handleChange }
-        />
+        />))}
         <TextAreaComp
           id="storyline"
           titulo="Sinopse"
           value={ storyline }
           callback={ this.handleChange }
         />
-        <InputComp
-          type="number"
+        <InputNumberComp
           id="rating"
           titulo="Avaliação"
           value={ rating }
@@ -72,6 +78,13 @@ class AddMovie extends React.Component {
           value={ genre }
           callback={ this.handleChange }
         />
+        <button
+          type="button"
+          data-testid="send-button"
+          onClick={ this.reset }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }

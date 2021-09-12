@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class TC extends React.Component {
+class InputNumberComp extends React.Component {
   render() {
     const { id, titulo, value, callback } = this.props;
     return (
       <label
         data-testid={ `${id}-input-label` }
-        htmlFor={ id === 'image' ? 'imagePath' : id }
+        htmlFor={ id }
       >
         { titulo }
         <input
-          type="text"
-          id={ id === 'image' ? 'imagePath' : id }
+          type="number"
+          id={ id }
           value={ value }
           data-testid={ `${id}-input` }
           onChange={ callback }
@@ -22,4 +22,4 @@ class TC extends React.Component {
   }
 }
 
-export default TC;
+export default InputNumberComp;
