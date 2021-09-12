@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import AddForm from './AddForm';
 
 const INITIAL_STATE = {
   subtitle: '',
@@ -44,36 +46,9 @@ class AddMovie extends React.Component {
 
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="title" data-testid="title-input-label">
-          Título
-          <input
-            type="text"
-            name="title"
-            onChange={ this.handleChange }
-            value={ title }
-            data-testid="title-input"
-          />
-        </label>
-        <label htmlFor="subtitle" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            type="text"
-            name="subtitle"
-            onChange={ this.handleChange }
-            value={ subtitle }
-            data-testid="subtitle-input"
-          />
-        </label>
-        <label htmlFor="imagePath" data-testid="image-input-label">
-          Imagem
-          <input
-            type="text"
-            name="imagePath"
-            onChange={ this.handleChange }
-            value={ imagePath }
-            data-testid="image-input"
-          />
-        </label>
+        <AddForm name="title" handle={ this.handleChange } value={ title } />
+        <AddForm name="subtitle" handle={ this.handleChange } value={ subtitle } />
+        <AddForm name="image" handle={ this.handleChange } value={ imagePath } />
         <label htmlFor="storyline" data-testid="storyline-input-label">
           Sinopse
           <textarea
@@ -84,16 +59,7 @@ class AddMovie extends React.Component {
             data-testid="storyline-input"
           />
         </label>
-        <label htmlFor="rating" data-testid="rating-input-label">
-          Avaliação
-          <input
-            type="number"
-            name="rating"
-            onChange={ this.handleChange }
-            value={ rating }
-            data-testid="rating-input"
-          />
-        </label>
+        <AddForm name="rating" handle={ this.handleChange } value={ rating } />
         <label htmlFor="genre" data-testid="genre-input-label">
           Gênero
           <select
@@ -102,8 +68,8 @@ class AddMovie extends React.Component {
             value={ genre }
             onChange={ this.handleChange }
           >
-            <option value="action" data-testid="genre-option">Ação</option>
-            <option value="comedy" data-testid="genre-option" selected>Comédia</option>
+            <option value="action" data-testid="genre-option" defaultValue>Ação</option>
+            <option value="comedy" data-testid="genre-option">Comédia</option>
             <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
@@ -118,5 +84,13 @@ class AddMovie extends React.Component {
     );
   }
 }
+
+AddMovie.defaultProps = {
+  onClick: null,
+};
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func,
+};
 
 export default AddMovie;

@@ -8,13 +8,17 @@ import AddMovie from './AddMovie';
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
+    const { movies } = this.props;
+
     this.state = {
+      allMovies: movies,
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-    }
-
+      currentMovies: movies,
+    };
     this.handleChange = this.handleChange.bind(this);
+    this.filterMovies = this.filterMovies.bind(this);
   }
 
   handleChange({ target }) {
@@ -22,24 +26,39 @@ class MovieLibrary extends Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
+      currentMovies: this.filterMovies(),
     });
   }
 
+  filterMovies() {
+    const { searchText, bookmarkedOnly, selectedGenre, allMovies } = this.state;
+    let filtered = [{}];
+    if (searchText !== '') {
+      filtered = allMovies.filter(
+        (mov) => mov.title.includes(searchText) || mov.subtitle.includes(searchText),
+      );
+    }
+    console.log(filtered);
+    filtered = filtered.filter((mov) => mov.bookmarked === bookmarkedOnly);
+    filtered = filtered.filter((mov) => mov.genre === selectedGenre);
+    console.log(filtered);
+    return filtered;
+  }
+
   render() {
-    const { movies } = this.props;
-    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre, currentMovies } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
-        <SearchBar 
-          searchText={ searchText } 
-          onSearchTextChange={ this.handleChange } 
+        <SearchBar
+          searchText={ searchText }
+          onSearchTextChange={ this.handleChange }
           bookmarkedOnly={ bookmarkedOnly }
           onBookmarkedChange={ this.handleChange }
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleChange }
         />
-        <MovieList movies={ movies } />
+        <MovieList movies={ currentMovies } />
         <AddMovie />
       </div>
     );
