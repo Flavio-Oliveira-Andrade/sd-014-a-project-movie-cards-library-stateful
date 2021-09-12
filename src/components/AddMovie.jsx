@@ -1,4 +1,5 @@
 import React from 'react';
+import TitleInput from './TitleInput';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -24,7 +25,9 @@ class AddMovie extends React.Component {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     return (
       <div>
-        <form data-testid="add-movie-form"></form>
+        <form data-testid="add-movie-form">
+          <TitleInput title={ title } handleChange={ this.handleChange } />
+        </form>
       </div>
     );
   }
