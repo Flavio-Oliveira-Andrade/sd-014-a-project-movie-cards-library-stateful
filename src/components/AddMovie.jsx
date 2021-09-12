@@ -2,14 +2,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Titulo from './Titulo';
+import SubTitulo from './Subtitulo';
 
 class AddMovie extends Component {
   constructor() {
     super();
 
     this.state = {
-      // subtitle: '',
       title: '',
+      subtitle: '',
       // imagePath: '',
       // storyline: '',
       // rating: 0,
@@ -24,11 +25,11 @@ class AddMovie extends Component {
 
   render() {
     const { onClick } = this.props;
-    const { title } = this.state;
+    const { title, subtitle } = this.state;
     return (
       <form data-testid="add-movie-form">
         <Titulo value={ title } handleChange={ this.handleChange } />
-
+        <SubTitulo value={ subtitle } handleChange={ this.handleChange } />
         <button type="button" onClick={ onClick }>texto</button>
       </form>
     );
