@@ -22,4 +22,11 @@ class InputNumberComp extends React.Component {
   }
 }
 
+InputNumberComp.propTypes = {
+  id: PropTypes.string.isRequired,
+  titulo: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  callback: PropTypes.string.isRequired,
+};
+
 export default InputNumberComp;

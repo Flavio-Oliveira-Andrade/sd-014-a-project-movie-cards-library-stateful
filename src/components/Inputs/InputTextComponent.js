@@ -22,4 +22,11 @@ class InputTextComp extends React.Component {
   }
 }
 
+InputTextComp.propTypes = {
+  id: PropTypes.string.isRequired,
+  titulo: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  callback: PropTypes.string.isRequired,
+};
+
 export default InputTextComp;

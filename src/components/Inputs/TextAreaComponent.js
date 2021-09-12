@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class TAC extends React.Component {
+class TextAreaComp extends React.Component {
   render() {
     const { id, titulo, value, callback } = this.props;
     return (
@@ -21,4 +21,11 @@ class TAC extends React.Component {
   }
 }
 
-export default TAC;
+TextAreaComp.propTypes = {
+  id: PropTypes.string.isRequired,
+  titulo: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  callback: PropTypes.string.isRequired,
+};
+
+export default TextAreaComp;
