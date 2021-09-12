@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 // Meus Imports:
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
+import MovieList from './MovieList';
 
 class MovieLibrary extends Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class MovieLibrary extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  // Problema para "desclicar o checkbox"
   handleChange = ({ target }) => {
     const { name, value, checked } = target;
     this.setState({
@@ -30,7 +32,6 @@ class MovieLibrary extends Component {
       searchText,
       bookmarkedOnly,
       selectedGenre } = this.state;
-    console.log(movies);
     return (
       <div>
         {/* Requisito 01 ao 05 */}
@@ -42,6 +43,7 @@ class MovieLibrary extends Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleChange }
         />
+        <MovieList movies={ movies } />
         {/* Requisito 06 ao 14 */}
         <AddMovie />
       </div>
