@@ -21,7 +21,6 @@ class AddMovie extends React.Component {
   constructor(props) {
     super(props);
     this.state = (initialState);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -29,7 +28,7 @@ class AddMovie extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
     const { onClick } = this.props;
     onClick(this.state);
