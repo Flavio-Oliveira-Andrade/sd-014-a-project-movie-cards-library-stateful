@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 import AddMovie from './AddMovie';
-// import movies from '../data';
 
 class MovieLibrary extends React.Component {
   constructor() {
@@ -54,6 +54,8 @@ class MovieLibrary extends React.Component {
               .filter((movie) => movie.title.includes(searchText)
               || movie.subtitle.includes(searchText)
               || movie.storyline.includes(searchText))
+              .filter((movie) => (bookmarkedOnly ? movie.bookmarked : true))
+              .filter((movie) => (selectedGenre ? movie.genre === selectedGenre : true))
               // .map(())
           }
         />
@@ -62,5 +64,10 @@ class MovieLibrary extends React.Component {
     );
   }
 }
+
+MovieLibrary.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+
+};
 
 export default MovieLibrary;

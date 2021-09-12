@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DataS from './DataS';
 import Sel from './Sel';
 
@@ -55,7 +56,6 @@ class AddMovie extends React.Component {
     );
   }
 
-  // eslint-disable-next-line max-lines-per-function
   render() {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     const { onClick } = this.props;
@@ -99,5 +99,9 @@ class AddMovie extends React.Component {
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default AddMovie;
