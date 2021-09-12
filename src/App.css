@@ -3,7 +3,6 @@ body {
   box-sizing: border-box;
   font-size: 16px;
 }
-
 .movie-card-header {
   align-items: center;
   background-color: #343a40;
@@ -11,20 +10,17 @@ body {
   height: 100px;
   justify-content: center;
 }
-
 .page-title {
   color: #f8f9fa;
   font-size: 28px;
   font-weight: 500;
   text-align: center;
 }
-
 .movie-list {
   display: flex;
   flex-flow: row wrap;
   padding: 48px 30px;
 }
-
 .movie-card {
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.125);
@@ -36,35 +32,28 @@ body {
   overflow: hidden;
   width: 300px;
 }
-
-
 .movie-card-image {
   width: 100%;
 }
-
 .movie-card-body {
   flex: 1 1 auto;
   padding: 20px;
 }
-
 .movie-card-title {
   font-size: 24px;
   font-weight: 500;
   margin: 0 0 12px;
 }
-
 .movie-card-subtitle {
   color: #6c757d;
   font-size: 16px;
   font-weight: 500;
   margin: 0 0 8px;
 }
-
 .movie-card-storyline {
   font-size: 14px;
   text-align: justify;
 }
-
 .rating {
   background-color: #007bff;
   border-radius: 25px;
@@ -73,11 +62,37 @@ body {
   font-weight: 700;
   padding: 3px 9px;
 }
-
 .movie-card-rating {
   background-color: rgba(0, 0, 0, 0.03);
   border-top: 1px solid rgba(0, 0, 0, 0.125);
   display: flex;
   justify-content: flex-end;
   padding: 12px 20px;
+}
+
+.button {
+  border: solid 1px black;
+  border-radius: 5px;
+}
+
+.App {
+  background-color: rgb(156, 156, 161);
+}
+
+.form {
+  margin-top: 30px;
+}
+
+.add {
+  margin: 15px;
+}
+
+label {
+  padding: 15px;
+}
+
+input {
+  border: solide 2px rgba(0, 0, 0, 0.125);
+  border-radius: 4px;
+  padding: 15px;
 }
