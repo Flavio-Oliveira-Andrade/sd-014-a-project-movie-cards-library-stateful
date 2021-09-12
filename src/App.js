@@ -7,22 +7,16 @@ import SearchBar from './components/SearchBar';
 import AddMovie from './components/AddMovie';
 
 class App extends React.Component {
-
-
-
   render() {
-  return (
-    <div className="App">
-      <Header />
-      <SearchBar/>
-      <AddMovie />
-      <MovieList movies = { movies }/>
-      
-    </div>
-  );
+    return (
+      <div className="App">
+        <Header />
+        <SearchBar />
+        <AddMovie />
+        <MovieList movies={ movies } />
+      </div>
+    );
+  }
 }
-}
-
-
 
 export default App;
