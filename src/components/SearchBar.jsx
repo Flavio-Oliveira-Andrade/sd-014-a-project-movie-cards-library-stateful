@@ -1,8 +1,7 @@
-/* eslint-disable max-lines-per-function */
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class SearchBar extends React.Component {
+class SearchBar extends Component {
   render() {
     const {
       searchText,
@@ -14,13 +13,9 @@ class SearchBar extends React.Component {
     } = this.props;
     return (
       // item 1
-      <form
-        data-testid="search-bar-form"
-      >
-        <label // item 2
-          htmlFor="searchText"
-          data-testid="text-input-label"
-        >
+      <form data-testid="search-bar-form">
+        {/*  item 2 */}
+        <label htmlFor="searchText" data-testid="text-input-label">
           Inclui o texto:
           <input
             value={ searchText }
@@ -28,10 +23,7 @@ class SearchBar extends React.Component {
           />
         </label>
 
-        <label
-          htmlFor="checkbox"
-          data-testid="checkbox-input-label"
-        >
+        <label htmlFor="checkbox" data-testid="checkbox-input-label">
           <input
             data-testid="checkbox-input"
             type="checkbox"
