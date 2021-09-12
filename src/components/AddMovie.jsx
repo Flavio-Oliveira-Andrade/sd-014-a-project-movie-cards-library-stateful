@@ -6,7 +6,7 @@ import ImagePath from './ImagePath';
 import Storyline from './Storyline';
 import AddRating from './AddRating';
 import Genre from './Genre';
-import Button from './Button';
+// import Button from './Button';
 
 class AddMovie extends React.Component {
   constructor() {
