@@ -1,7 +1,16 @@
 import React from 'react';
+import PropTypes, { func } from 'prop-types';
 import PutInput from './PutInput';
 
+
+
 class AddMovie extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      rating: 0
+    }
+  }
   render() {
     const {
       onClick,
@@ -14,78 +23,12 @@ class AddMovie extends React.Component {
       change } = this.props;
     return (<form data-testid="add-movie-form">
       <fieldset>
-        {/* <PutInput for={} id='' type='' name='' value='' onChange={ change }/> */}
-        <label
-          htmlFor="titulo"
-          data-testid="title-input-label"
-        >
-          Título
-        </label>
-        <input
-          id="titulo"
-          name="title"
-          type="text"
-          data-testid="title-input"
-          value={ title }
-          onChange={ change }
-        />
-        <label
-          htmlFor="subTitulo"
-          data-testid="subtitle-input-label"
-        >
-          Subtítulo
-        </label>
-        <input
-          id="subTitulo"
-          name="subtitle"
-          type="text"
-          data-testid="subtitle-input"
-          value={ subtitle }
-          onChange={ change }
-        />
-        <label
-          htmlFor="image"
-          data-testid="image-input-label"
-        >
-          Imagem
-        </label>
-        <input
-          id="image"
-          name="imagePath"
-          type="text"
-          value={ imagePath }
-          data-testid="image-input"
-          onChange={ change }
-        />
-        <label
-          htmlFor="storyline"
-          data-testid="storyline-input-label"
-        >
-          Sinopse
-        </label>
-        <textarea
-          name="storyline"
-          id="storyline"
-          cols="30"
-          rows="10"
-          data-testid="storyline-input"
-          value={ storyline }
-          onChange={ change }
-        />
-        <label
-          htmlFor="avaliation"
-          data-testid="rating-input-label"
-        >
-          Avaliação
-        </label>
-        <input
-          id="avaliation"
-          type="number"
-          value={ rating }
-          data-testid="rating-input"
-          name="rating"
-          onChange={ change }
-        />
+
+        <PutInput data='title' name={'title'} type={'text'} value={title} onChange={change} label={'Título'} />
+        <PutInput data='subtitle' name={'subtitle'} type={'text'} value={subtitle} onChange={change} label={'Subtítulo'} />
+        <PutInput data='image' name={'imagePath'} type={'text'} value={imagePath} onChange={change} label={'Imagem'} />
+        <PutInput data='storyline' name={'storyline'} type={'textarea'} value={storyline} onChange={change} label={'Sinopse'} />
+        <PutInput data='rating' name={'avaliation'} type={'number'} value={rating} onChange={change} label={'Avaliação'} />
         <label
           htmlFor="genero"
           data-testid="genre-input-label"
@@ -95,22 +38,39 @@ class AddMovie extends React.Component {
         <select
           name="genre"
           id="genero"
-          onChange={ change }
-          value={ genre }
+          onChange={change}
+          value={genre}
           data-testid="genre-input"
         >
           <option value="action" data-testid="genre-option">Ação</option>
           <option value="comedy" data-testid="genre-option">Comédia</option>
           <option value="thriller" data-testid="genre-option">Suspense</option>
         </select>
-        <button data-testid="send-button" onClick={ onClick }>Adicionar filme</button>
+        <button type="submit" data-testid="send-button" onClick={onClick}>Adicionar filme</button>
       </fieldset>
-      {/* {console.log(rating)} */}
-      {/* {this.props.newMovie.titulo='aaa'} */}
-      {/* {console.log(newMovie)} */}
-      {/* {console.log(newMovie)} */}
     </form>);
   }
 }
 
+AddMovie.propTypes = {
+  onClick: PropTypes.func,
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  rating: PropTypes.number,
+  imagePath: PropTypes.string,
+  storyline: PropTypes.string,
+  genre: PropTypes.string,
+  change: PropTypes.func,
+};
+
+// AddMovie.defaultProps = {
+//   // onClick: func,
+//   title: '',
+//   subtitle: '',
+//   rating: 0,
+//   imagePath: '',
+//   storyline: '',
+//   genre: '',
+//   // change: func,
+// };
 export default AddMovie;

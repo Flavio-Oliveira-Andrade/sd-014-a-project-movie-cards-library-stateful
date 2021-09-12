@@ -48,7 +48,7 @@ class MovieLibrary extends Component {
       rating: 0,
       genre: 'action',
     });
-    // console.log(this.state)
+    // console.log(this.state);
   }
 
   searching(e) {

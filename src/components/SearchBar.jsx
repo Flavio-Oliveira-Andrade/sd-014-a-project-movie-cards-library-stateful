@@ -52,7 +52,6 @@ class SearchBar extends Component {
             <option value="comedy" data-testid="select-option">Comédia</option>
             <option value="thriller" data-testid="select-option">Suspense</option>
           </select>
-          {/* {console.log(this.props)} */}
         </fieldset>
       </form>
     );
