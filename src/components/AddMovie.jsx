@@ -3,6 +3,7 @@ import React from 'react';
 class AddMovie extends React.Component {
   constructor() {
     super();
+
     this.state = {
       subtitle: '',
       title: '',
@@ -10,7 +11,16 @@ class AddMovie extends React.Component {
       storyline: '',
       rating: 0,
       genre: 'action',
-    }
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange({ target }) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
   }
 
   render() {
@@ -23,7 +33,8 @@ class AddMovie extends React.Component {
           Título
           <input
             type="text"
-            id="title"
+            name="title"
+            onChange={ this.handleChange }
             value={ title }
             data-testid="title-input"
           />

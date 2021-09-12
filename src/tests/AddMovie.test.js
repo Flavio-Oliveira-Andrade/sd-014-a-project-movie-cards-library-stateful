@@ -79,7 +79,7 @@ describe('8 - Renderize um input do tipo texto dentro do formulário em `<AddMov
     expect(titleInput).toHaveValue(initialState.title);
   });
 
-  it('Altere o valor do input de título quando algo for digitado nele', () => {
+  it.only('Altere o valor do input de título quando algo for digitado nele', () => {
     event.type(titleInput, 'my awesome movie title');
 
     expect(titleInput).toHaveValue('my awesome movie title');
