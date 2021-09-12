@@ -49,20 +49,20 @@ class AddMovie extends React.Component {
     return (
       <form
         data-testid="add-movie-form"
-        onSubmit={this.handleSubmit}
+        onSubmit={ this.handleSubmit }
         className="add"
       >
-        <TitleInput value={title} onChange={this.handleChange} />
-        <Subtitle value={subtitle} onChange={this.handleChange} />
-        <Image value={imagePath} onChange={this.handleChange} />
-        <Sinopse value={storyline} onChange={this.handleChange} />
-        <RatingInput value={rating} onChange={this.handleChange} />
-        <GenreInput value={genre} onChange={this.handleChange} />
+        <TitleInput value={ title } onChange={ this.handleChange } />
+        <Subtitle value={ subtitle } onChange={ this.handleChange } />
+        <Image value={ imagePath } onChange={ this.handleChange } />
+        <Sinopse value={ storyline } onChange={ this.handleChange } />
+        <RatingInput value={ rating } onChange={ this.handleChange } />
+        <GenreInput value={ genre } onChange={ this.handleChange } />
         <button
           className="button"
           type="submit"
           data-testid="send-button"
-          onClick={this.handleSubmit}
+          onClick={ this.handleSubmit }
         >
           Adicionar filme
         </button>
