@@ -4,6 +4,7 @@ import AddMovieTitle from './AddMovieTitle';
 import AddMovieSubtitle from './AddMovieSubtitle';
 import AddMovieImage from './AddMovieImage';
 import AddMovieStoryline from './AddMovieStoryline';
+import AddMovieRating from './AddMovieRating';
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class AddMovie extends React.Component {
         <AddMovieSubtitle subtitle={ subtitle } handleChange={ this.handleChange } />
         <AddMovieImage imagePath={ imagePath } handleChange={ this.handleChange } />
         <AddMovieStoryline storyline={ storyline } handleChange={ this.handleChange } />
+        <AddMovieRating rating={ rating } handleChange={ this.handleChange } />
       </form>
     );
   }
