@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 
 class AddMovie extends Component {
   constructor() {
     super();
     // Requisito 06
-    this.state = {
+    // Fonte: https://stackoverflow.com/questions/45200535/reset-initial-state-in-react-es6/45200755
+    this.initialState = {
       subtitle: '',
       title: '',
       image: '', // <=== mudei imagePath para image, caso de erro no futuro
@@ -13,14 +13,24 @@ class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     };
-    this.handleChanges = this.handleChanges.bind(this);
+    this.state = this.initialState;
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleChanges = ({ target }) => {
+  handleChange = ({ target }) => {
     const { name, value } = target;
     this.setState({
       [name]: value,
     });
+  }
+
+  handleClick(event) {
+    event.preventDefault();
+
+    // Reset para o Valor Inicial estabelecido no construtor
+    this.setState(this.initialState);
   }
 
   // Criador dinamico de Input com label:
@@ -34,7 +44,7 @@ class AddMovie extends Component {
           data-testid={ `${name}-input` }
           id={ `add-${type}-${name}` }
           value={ value } // <= Passar este parametro para handleChanges
-          onChange={ this.handleChanges }
+          onChange={ this.handleChange }
         />
       </label>
     );
@@ -50,7 +60,7 @@ class AddMovie extends Component {
           data-testid={ `${name}-input` }
           id={ `add-${type}-${name}` }
           value={ value }
-          onChange={ this.handleChanges }
+          onChange={ this.handleChange }
         >
           <option data-testid={ `${name}-option` } value="action">Ação</option>
           <option data-testid={ `${name}-option` } value="comedy">Comédia</option>
@@ -60,16 +70,12 @@ class AddMovie extends Component {
     );
   }
 
-  clickAction(event) {
-    event.preventDefault();
-  }
-
   render() {
     // Resolve => Must use destructuring state assignment [ERRO Linter]
     const { title, subtitle, image, storyline, rating, genre } = this.state;
     return (
       // Renderizando um formulario (Requisito 07)
-      <form data-testid="add-movie-form">
+      <form data-testid="add-movie-form" onSubmit={ this.handleSubmit }>
         {/* Requisito 08 */}
         {this.inputCreator('Título', 'title', 'text', title)}
         {/* Requisito 09 */}
@@ -86,7 +92,7 @@ class AddMovie extends Component {
         <button
           type="submit"
           data-testid="send-button"
-          onClick={ this.clickAction }
+          onClick={ this.handleClick }
         >
           Adicionar filme
         </button>
