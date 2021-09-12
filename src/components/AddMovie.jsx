@@ -8,10 +8,10 @@ class AddMovie extends Component {
     this.state = {
       title: '',
       subtitle: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
+      // imagePath: '',
+      // storyline: '',
+      // rating: 0,
+      // genre: 'action',
     };
   }
 
