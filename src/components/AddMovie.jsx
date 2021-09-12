@@ -95,24 +95,25 @@ class AddMovie extends React.Component {
           />
         </label>
         <label htmlFor="genre" data-testid="genre-input-label">
-            Gênero
-            <select
-              name="genre"
-              data-testid="genre-input"
-              value={ genre }
-              onChange={ this.handleChange }
-            >
-              <option value="action" data-testid="genre-option">Ação</option>
-              <option value="comedy" data-testid="genre-option" selected>Comédia</option>
-              <option value="thriller" data-testid="genre-option">Suspense</option>
-            </select>
-          </label>
-          <button
-            data-testid="send-button"
-            onClick={ this.handleSubmit }
+          Gênero
+          <select
+            name="genre"
+            data-testid="genre-input"
+            value={ genre }
+            onChange={ this.handleChange }
           >
-            Adicionar filme
-          </button>
+            <option value="action" data-testid="genre-option">Ação</option>
+            <option value="comedy" data-testid="genre-option" selected>Comédia</option>
+            <option value="thriller" data-testid="genre-option">Suspense</option>
+          </select>
+        </label>
+        <button
+          type="submit"
+          data-testid="send-button"
+          onClick={ this.handleSubmit }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
