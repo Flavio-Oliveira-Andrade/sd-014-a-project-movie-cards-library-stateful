@@ -23,13 +23,15 @@ class MovieLibrary extends React.Component {
   }
 
   handleChange(event) {
-    const { name } = event.target;
-    const value = 
-      event.target.type === 
-        'checkbox' ?
-           event.target.checked :
-             event.target.value;
-    this.setState({ [name]: value });
+    if (event.target.type === 'checkbox') {
+      this.setState({
+        [event.target.name]: event.target.checked,
+      });
+    } else {
+      this.setState({
+        [event.target.name]: event.target.value,
+      });
+    }
   }
 
   onSearchTextChange(event) {
