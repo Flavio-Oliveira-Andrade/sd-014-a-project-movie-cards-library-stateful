@@ -9,6 +9,8 @@ class SearchBarInput extends Component {
         Inclui o texto:
         <input
           id="input-text"
+          name="searchText"
+          type="text"
           data-testid="text-input"
           value={ value }
           onChange={ callbackFunc }

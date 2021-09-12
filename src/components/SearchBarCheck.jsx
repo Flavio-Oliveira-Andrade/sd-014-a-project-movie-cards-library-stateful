@@ -9,6 +9,7 @@ class SearchBarCheck extends Component {
         Mostrar somente favoritos
         <input
           id="checkbox"
+          name="bookmarkedOnly"
           type="checkbox"
           checked={ checked }
           data-testid="checkbox-input"

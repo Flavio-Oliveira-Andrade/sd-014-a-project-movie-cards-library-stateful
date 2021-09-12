@@ -17,15 +17,20 @@ class SearchBar extends Component {
       selectedGenre,
       onSelectedGenreChange,
     } = this.props;
+
     return (
       // Renderizando um formulario (Requisito 02)
       <form data-testid="search-bar-form">
+
         {/* Adicianando um input do tipo Text (Requisito 03) */}
         <SearchBarInput value={ searchText } callbackFunc={ onSearchTextChange } />
+
         {/* Adicianando um check box (Requisito 04) */}
         <SearchBarCheck checked={ bookmarkedOnly } callbackFunc={ onBookmarkedChange } />
+
         {/* Adicianando um select (Requisito 05) */}
         <SearchBarSelect value={ selectedGenre } callbackFunc={ onSelectedGenreChange } />
+
       </form>
     );
   }

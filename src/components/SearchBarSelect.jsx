@@ -9,7 +9,8 @@ class SearchBarSelect extends Component {
         Filtrar por gênero
         <select
           id="select"
-          type="checkbox"
+          name="selectedGenre"
+          type="select"
           value={ value }
           data-testid="select-input"
           onChange={ callbackFunc }
