@@ -198,7 +198,7 @@ describe('13 - Renderize um `select` do formulário em `<AddMovie />` para selec
     expect(genreInput).toHaveValue(initialState.genre);
   });
 
-  it('Altere o valor do gênero quando um gênero diferente é escolhido no select', () => {
+  it.only('Altere o valor do gênero quando um gênero diferente é escolhido no select', () => {
     event.selectOptions(genreInput, options[1].value);
     expect(genreInput).toHaveValue(genreOptions[1].value);
   });
