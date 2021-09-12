@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class Imagem extends Component {
+class Sinopse extends Component {
   render() {
     const { value, handleChange } = this.props;
     return (
-      <label htmlFor="imagem" data-testid="image-input-label">
-        Imagem
-        <input
-          id="imagem"
-          name="imagePath"
+      <label htmlFor="sinopse" data-testid="storyline-input-label">
+        Sinopse
+        <textarea
+          id="sinopse"
+          name="storyline"
           value={ value }
-          data-testid="image-input"
+          data-testid="storyline-input"
           onChange={ handleChange }
         />
       </label>
     );
   }
 }
-Imagem.propTypes = {
+Sinopse.propTypes = {
   value: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
 };
-export default Imagem;
+export default Sinopse;

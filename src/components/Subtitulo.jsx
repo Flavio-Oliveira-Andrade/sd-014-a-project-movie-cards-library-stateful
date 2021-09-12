@@ -9,7 +9,6 @@ class SubTitulo extends Component {
         Subtítulo
         <input
           id="subtitle"
-          type="subtitle"
           name="subtitle"
           value={ value }
           data-testid="subtitle-input"
