@@ -9,6 +9,15 @@ import Avaliacao from './Avaliacao';
 import Genero from './Genero';
 
 class AddMovie extends Component {
+  resetValues={
+    title: '',
+    subtitle: '',
+    imagePath: '',
+    storyline: '',
+    rating: 0,
+    genre: 'action',
+  }
+
   constructor() {
     super();
 
@@ -27,8 +36,13 @@ class AddMovie extends Component {
     this.setState({ [name]: value });
   }
 
-  render() {
+  handleAdd= () => {
     const { onClick } = this.props;
+    onClick(this.state);
+    this.setState(this.resetValues);
+  }
+
+  render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
@@ -38,7 +52,13 @@ class AddMovie extends Component {
         <Sinopse value={ storyline } handleChange={ this.handleChange } />
         <Avaliacao value={ rating } handleChange={ this.handleChange } />
         <Genero value={ genre } handleChange={ this.handleChange } />
-        <button type="button" onClick={ onClick }>Adicionar Filme</button>
+        <button
+          type="submit"
+          data-testid="send-button"
+          onClick={ this.handleAdd }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
@@ -46,7 +66,6 @@ class AddMovie extends Component {
 
 AddMovie.propTypes = {
   onClick: PropTypes.func.isRequired,
-
 };
 
 export default AddMovie;
