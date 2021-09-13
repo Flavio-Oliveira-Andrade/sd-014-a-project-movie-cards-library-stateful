@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Form from './Form';
 
 class SearchBar extends React.Component {
   render() {
@@ -20,11 +21,13 @@ class SearchBar extends React.Component {
         {onBookmarkedChange}
         {selectedGenre}
         {onSelectedGenreChange}
+        <Form />
       </div>
     );
   }
 }
 
+// Referência: https://pt-br.reactjs.org/docs/typechecking-with-proptypes.html
 SearchBar.propTypes = {
   searchText: PropTypes.string,
   onSearchTextChange: PropTypes.func,
