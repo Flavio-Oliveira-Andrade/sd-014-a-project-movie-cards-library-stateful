@@ -5,6 +5,8 @@ import AddMovie from './AddMovie';
 import MovieList from './MovieList';
 import lista from '../data';
 
+let filterFavorit;
+let filterGenre;
 class MovieLibrary extends Component {
   constructor() {
     super();
@@ -26,12 +28,18 @@ class MovieLibrary extends Component {
     this.bookmarking = this.bookmarking.bind(this);
     this.genre = this.genre.bind(this);
     this.changeText = this.changeText.bind(this);
+    // this.filtroA = this.filtroA.bind(this);
   }
 
+  // filtroA(atual){
+  //   const {title,subtitle,storyline,searchText} = this.state;
+  //   atual[title].includes(searchText) === true
+  //   || atual[subtitle].includes(searchText) === true
+  //   || atual[storyline].includes(searchText) === true;
+  // }
+
   changeText(event) {
-    event.target.name === 'rating'
-      ? this.setState({ [event.target.name]: parseFloat(event.target.value) })
-      : this.setState({ [event.target.name]: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   clicked(e) {
@@ -75,11 +83,20 @@ class MovieLibrary extends Component {
   }
 
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre, mov, title, subtitle, imagePath, storyline, rating, genre } = this.state;
+    const { searchText,
+      bookmarkedOnly,
+      selectedGenre,
+      mov,
+      title,
+      subtitle,
+      imagePath,
+      storyline,
+      rating,
+      genre } = this.state;
     const { movies } = this.props;
-    const titleFilter = movies.filter((cur) => cur.title.includes(searchText) === true || cur.subtitle.includes(searchText) === true || cur.storyline.includes(searchText) === true);
-    let filterFavorit;
-    let filterGenre;
+    const titleFilter = movies.filter((atual) => atual.title.includes(searchText) === true
+      || atual.subtitle.includes(searchText) === true
+      || atual.storyline.includes(searchText) === true);
     if (bookmarkedOnly === true) {
       filterFavorit = titleFilter.filter((cur) => cur.bookmarked === true);
     } else {
@@ -92,16 +109,33 @@ class MovieLibrary extends Component {
     }
     return (
       <>
-        <SearchBar searchText={ searchText } onSearchTextChange={ this.searching } bookmarkedOnly={ bookmarkedOnly } onBookmarkedChange={ this.bookmarking } selectedGenre={ selectedGenre } onSelectedGenreChange={ this.genre } />
+        <SearchBar
+          searchText={ searchText }
+          onSearchTextChange={ this.searching }
+          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.bookmarking }
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ this.genre }
+        />
         <MovieList movies={ filterGenre } />
-        <AddMovie onClick={ this.clicked } newMovie={ mov } title={ title } subtitle={ subtitle } imagePath={ imagePath } storyline={ storyline } rating={ rating } genre={ genre } change={ this.changeText } />
+        <AddMovie
+          onClick={ this.clicked }
+          newMovie={ mov }
+          title={ title }
+          subtitle={ subtitle }
+          imagePath={ imagePath }
+          storyline={ storyline }
+          rating={ rating }
+          genre={ genre }
+          change={ this.changeText }
+        />
       </>
     );
   }
 }
 
 MovieLibrary.propTypes = {
-  movies: PropTypes.array.isRequired,
+  movies: PropTypes.arrayOf.isRequired,
 };
 
 export default MovieLibrary;
