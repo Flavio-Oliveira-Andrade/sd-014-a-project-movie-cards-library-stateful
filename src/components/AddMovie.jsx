@@ -17,7 +17,7 @@ class AddMovie extends React.Component {
     };
   }
 
-  handlechange({target}) {
+  handlechange({ target }) {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
@@ -63,6 +63,9 @@ class AddMovie extends React.Component {
             value={ storyline }
             onChange={ storyline }
           />
+        </label>
+        <label htmlFor="rating" data-testid="rating-input-label">
+          { this.inputConstructor('number', 'rating', 'rating-input', rating) }
         </label>
       </form>
     );
