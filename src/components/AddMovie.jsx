@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PersonalData from './PersonalData';
 
 class AddMovie extends Component {
   constructor() {
@@ -8,8 +9,8 @@ class AddMovie extends Component {
       subtitle: '',
       title: '',
       imagePath: '',
-      /* storyline: '',
-            rating: 0,
+      storyline: '',
+      /* rating: 0,
             genre: 'action', */
     };
   }
@@ -23,40 +24,23 @@ class AddMovie extends Component {
 
   render() {
     // const { onclick } = this.props;
-    const { title, subtitle, imagePath } = this.state;
+    const { title, subtitle, imagePath, storyline } = this.state;
     return (
-
       <form action="" data-testid="add-movie-form">
-        <label htmlFor="titleInput" data-testid="title-input-label">
-          Título
-          <input
-            type="text"
-            name="title"
-            value={ title }
-            onChange={ this.changeState }
-            data-testid="title-input"
-          />
-
-        </label>
-
-        <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            type="text"
-            name="subtitle"
-            value={ subtitle }
-            data-testid="subtitle-input"
-            onChange={ this.changeState }
-          />
-        </label>
-
-        <label htmlFor="image-input" data-testid="image-input-label">
-          Imagem
-          <input
-            type="text"
-            name="imagePath"
-            value={ imagePath }
-            data-testid="image-input"
+        <PersonalData
+          titleValue={ title }
+          subtitleValue={ subtitle }
+          imagePathValue={ imagePath }
+          handleChange={ this.changeState }
+        />
+        <label htmlFor="storyline-input" data-testid="storyline-input-label">
+          Sinopse
+          <textarea
+            name="storyline"
+            value={ storyline }
+            cols="30"
+            rows="10"
+            data-testid="storyline-input"
             onChange={ this.changeState }
           />
         </label>
