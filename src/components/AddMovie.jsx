@@ -1,4 +1,9 @@
 import React from 'react';
+import InputTitle from './formAddMovie/InputTitle';
+import InputSubtitle from './formAddMovie/InputSubtitle';
+import InputImagePath from './formAddMovie/InputImagePath';
+import TextareaStoryline from './formAddMovie/TextareaStoryline';
+// import InputRating from './formAddMovie/InputRating';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -8,7 +13,7 @@ class AddMovie extends React.Component {
       inputSubtitle: '',
       inputTitle: '',
       inputImagePath: '',
-      // inputStoryline: '',
+      textareaStoryline: '',
       // inputRating: 0,
       // inputGenre: 'action',
     };
@@ -20,43 +25,37 @@ class AddMovie extends React.Component {
     this.setState({ [name]: value }); // interpolando o valor da variável para ser o nome da chave do objeto
   }
 
+  // handleChangeInputRating({ target }) {
+  //   const { name } = target;
+  //   let value = target.value;
+  //   if( value !== null || value !== '') value = parseInt(target.value);
+  //   this.setState({ [name]: value });
+  // }
+
   render() {
-    const { inputSubtitle, inputTitle, inputImagePath } = this.state;
+    const { inputSubtitle, inputTitle, inputImagePath, textareaStoryline } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <label data-testid="title-input-label" htmlFor="inputTitle">
-          Título
-          <input
-            type="text"
-            name="inputTitle"
-            id="inputTitle"
-            data-testid="title-input"
-            value={ inputTitle }
-            onChange={ this.handleChange }
-          />
-        </label>
-        <label data-testid="subtitle-input-label" htmlFor="inputSubtitle">
-          Subtítulo
-          <input
-            type="text"
-            name="inputSubtitle"
-            id="inputSubtitle"
-            data-testid="subtitle-input"
-            value={ inputSubtitle }
-            onChange={ this.handleChange }
-          />
-        </label>
-        <label data-testid="image-input-label" htmlFor="inputImagePath">
-          Imagem
-          <input
-            type="text"
-            name="inputImagePath"
-            id="inputImagePath"
-            data-testid="image-input"
-            value={ inputImagePath }
-            onChange={ this.handleChange }
-          />
-        </label>
+        <InputTitle
+          inputTitle={ inputTitle }
+          handleChange={ this.handleChange }
+        />
+        <InputSubtitle
+          inputSubtitle={ inputSubtitle }
+          handleChange={ this.handleChange }
+        />
+        <InputImagePath
+          inputImagePath={ inputImagePath }
+          handleChange={ this.handleChange }
+        />
+        <TextareaStoryline
+          textareaStoryline={ textareaStoryline }
+          handleChange={ this.handleChange }
+        />
+        {/* <InputRating
+          inputRating={ inputRating }
+          handleChange={ this.handleChangeInputRating }
+        /> */}
       </form>
     );
   }
