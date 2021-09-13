@@ -18,7 +18,10 @@ export default class AddMovie extends Component {
 
   setAttribute(titulo, name, type, value) {
     return (
-      <label htmlFor="control" data-testid={ name === 'imagePath' ? 'image-input-label' : `${name}-input-label` }>
+      <label
+        htmlFor="control"
+        data-testid={ name === 'imagePath' ? 'image-input-label' : `${name}-input-label` }
+      >
         { titulo }
         { name !== 'storyline' ? (
           <input
