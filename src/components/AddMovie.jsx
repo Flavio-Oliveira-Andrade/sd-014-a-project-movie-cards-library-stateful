@@ -27,11 +27,9 @@ class AddMovie extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  // submitNewMovie(event) {
-  //   event.preventDefault();
-  //   const { movies } = this.props;
-  //   movies.push(this.state);
-  //   console.log(movies);
+  // submitNewMovie() {
+  //   const { onClick } = this.props;
+  //   onClick(this.state);
   // }
 
   render() {
