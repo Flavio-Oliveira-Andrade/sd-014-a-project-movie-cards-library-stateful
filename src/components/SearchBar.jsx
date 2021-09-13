@@ -39,7 +39,7 @@ class SearchBar extends Component {
             data-testid="select-input"
           >
             <option value="" data-testid="select-option">Todos</option>
-            <option value="action" data-testid="select-option">Acão</option>
+            <option value="action" data-testid="select-option">Ação</option>
             <option value="comedy" data-testid="select-option">Comédia</option>
             <option value="thriller" data-testid="select-option">Suspense</option>
           </select>
