@@ -15,8 +15,8 @@ const inicialState = {
 };
 
 class AddMovie extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = inicialState;
     this.handleChange = this.handleChange.bind(this);
     this.sendState = this.sendState.bind(this);
