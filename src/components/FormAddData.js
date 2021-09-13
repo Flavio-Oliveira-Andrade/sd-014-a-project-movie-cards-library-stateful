@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class PersonalData extends Component {
+class FormAddData extends Component {
   render() {
-    const { titleValue, subtitleValue, imagePathValue,
+    const { titleValue, subtitleValue, imagePathValue, storylineValue,
       handleChange } = this.props;
-
     return (
       <>
         <label htmlFor="titleInput" data-testid="title-input-label">
@@ -38,16 +37,29 @@ class PersonalData extends Component {
             onChange={ handleChange }
           />
         </label>
+
+        <label htmlFor="storyline-input" data-testid="storyline-input-label">
+          Sinopse
+          <textarea
+            name="storyline"
+            value={ storylineValue }
+            cols="30"
+            rows="10"
+            data-testid="storyline-input"
+            onChange={ handleChange }
+          />
+        </label>
       </>
     );
   }
 }
 
-PersonalData.propTypes = {
+FormAddData.propTypes = {
   handleChange: PropTypes.func.isRequired,
   titleValue: PropTypes.string.isRequired,
   subtitleValue: PropTypes.string.isRequired,
   imagePathValue: PropTypes.string.isRequired,
+  storylineValue: PropTypes.string.isRequired,
 };
 
-export default PersonalData;
+export default FormAddData;

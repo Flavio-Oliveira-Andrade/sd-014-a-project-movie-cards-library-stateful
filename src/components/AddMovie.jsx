@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import PersonalData from './PersonalData';
+import FormAddData from './FormAddData';
+import SecondFormData from './SecondFormData';
 
 class AddMovie extends Component {
   constructor() {
@@ -10,8 +11,8 @@ class AddMovie extends Component {
       title: '',
       imagePath: '',
       storyline: '',
-      /* rating: 0,
-            genre: 'action', */
+      rating: 0,
+      genre: 'action',
     };
   }
 
@@ -24,26 +25,21 @@ class AddMovie extends Component {
 
   render() {
     // const { onclick } = this.props;
-    const { title, subtitle, imagePath, storyline } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form action="" data-testid="add-movie-form">
-        <PersonalData
+        <FormAddData
           titleValue={ title }
           subtitleValue={ subtitle }
           imagePathValue={ imagePath }
+          storylineValue={ storyline }
           handleChange={ this.changeState }
         />
-        <label htmlFor="storyline-input" data-testid="storyline-input-label">
-          Sinopse
-          <textarea
-            name="storyline"
-            value={ storyline }
-            cols="30"
-            rows="10"
-            data-testid="storyline-input"
-            onChange={ this.changeState }
-          />
-        </label>
+        <SecondFormData
+          ratingValue={ rating }
+          genreValue={ genre }
+          handleChange={ this.changeState }
+        />
       </form>
 
     );
