@@ -66,20 +66,20 @@ describe('7 - Renderize um formulário dentro de `<AddMovie />`', () => {
 });
 
 describe('8 - Renderize um input do tipo texto dentro do formulário em `<AddMovie />` para obter o título do novo filme', () => {
-  it.only('Renderize um input de texto para quem usa escrever o titulo do filme', () => {
+  it('Renderize um input de texto para quem usa escrever o titulo do filme', () => {
     expect(titleInput).toBeInTheDocument();
   });
 
-  it.only('Renderize a label "Título" para o input de titulo', () => {
+  it('Renderize a label "Título" para o input de titulo', () => {
     expect(titleInputLabel).toBeInTheDocument();
     expect(titleInputLabel).toHaveTextContent('Título');
   });
 
-  it.only('Defina o estado inicial do titulo como "", ou seja, uma string vazia', () => {
+  it('Defina o estado inicial do titulo como "", ou seja, uma string vazia', () => {
     expect(titleInput).toHaveValue(initialState.title);
   });
 
-  it.only('Altere o valor do input de título quando algo for digitado nele', () => {
+  it('Altere o valor do input de título quando algo for digitado nele', () => {
     event.type(titleInput, 'my awesome movie title');
 
     expect(titleInput).toHaveValue('my awesome movie title');
@@ -87,20 +87,20 @@ describe('8 - Renderize um input do tipo texto dentro do formulário em `<AddMov
 });
 
 describe('9 - Renderize um input do tipo texto dentro do formulário em `<AddMovie />` para obter o subtítulo do novo filme', () => {
-  it('Renderize um input de texto para quem usa escrever o subtítulo do filme', () => {
+  it.only('Renderize um input de texto para quem usa escrever o subtítulo do filme', () => {
     expect(subtitleInput).toBeInTheDocument();
   });
 
-  it('Renderize a label "Subtítulo" para o input de subtitulo', () => {
+  it.only('Renderize a label "Subtítulo" para o input de subtitulo', () => {
     expect(subtitleInputLabel).toBeInTheDocument();
     expect(subtitleInputLabel).toHaveTextContent('Subtítulo');
   });
 
-  it('Defina o  estado inicial do subtitulo como "", ou seja, uma string vazia', () => {
+  it.only('Defina o  estado inicial do subtitulo como "", ou seja, uma string vazia', () => {
     expect(subtitleInput).toHaveValue(initialState.subtitle);
   });
 
-  it('Altere o valor do input de subtitulo quando algo é digitado nele', () => {
+  it.only('Altere o valor do input de subtitulo quando algo é digitado nele', () => {
     event.type(subtitleInput, 'my awesome movie subtitle');
 
     expect(subtitleInput).toHaveValue('my awesome movie subtitle');
