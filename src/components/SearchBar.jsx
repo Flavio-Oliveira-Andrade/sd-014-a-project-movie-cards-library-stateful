@@ -21,7 +21,7 @@ class SearchBar extends React.Component {
         {onBookmarkedChange}
         {selectedGenre}
         {onSelectedGenreChange}
-        <Form />
+        <Form searchText={ searchText } onSearchTextChange={ onSearchTextChange } />
       </div>
     );
   }
