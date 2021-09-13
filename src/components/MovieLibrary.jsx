@@ -42,7 +42,9 @@ class MovieLibrary extends React.Component {
   handleMovieAdding(newMovieData) {
     this.setState((prevState) => {
       const moviesList = [...prevState.movies];
+      console.log(moviesList);
       moviesList.push({ ...newMovieData });
+      console.log(moviesList);
       return { movies: moviesList };
     });
   }
