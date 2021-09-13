@@ -41,7 +41,6 @@ class MovieLibrary extends Component {
     console.log(filtered);
     filtered = filtered.filter((mov) => mov.bookmarked === bookmarkedOnly);
     filtered = filtered.filter((mov) => mov.genre === selectedGenre);
-    console.log(filtered);
     return filtered;
   }
 
