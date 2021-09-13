@@ -36,9 +36,38 @@ class AddMovie extends Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
+  makeOptions(valor, text) {
+    return (
+      <>
+        <option
+          className="inputs"
+          value={ valor[0] }
+          data-testid="genre-option"
+        >
+          { text[0] }
+        </option>
+        <option
+          className="inputs"
+          value={ valor[1] }
+          data-testid="genre-option"
+        >
+          { text[1] }
+        </option>
+        <option
+          className="inputs"
+          value={ valor[2] }
+          data-testid="genre-option"
+        >
+          { text[2] }
+        </option>
+      </>
+    );
+  }
+
   makeInput(type, idtest, valor, nome) {
     return (
       <input
+        className="inputs"
         type={ type }
         data-testeid={ idtest }
         defaultValue={ valor }
@@ -52,37 +81,39 @@ class AddMovie extends Component {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <label data-testid="title-input-label">
+        <label data-testid="title-input-label" htmlFor="inputs">
           Título
           { this.makeInput('text', 'title-input', title, 'title') }
         </label>
-        <label data-testid="subtitle-input-label">
+        <label data-testid="subtitle-input-label" htmlFor="inputs">
           Subtítulo
           { this.makeInput('text', 'subtitle-input', subtitle, 'subtitle') }
         </label>
-        <label data-testid="image-input-label">
+        <label data-testid="image-input-label" htmlFor="inputs">
           Imagem
           { this.makeInput('text', 'image-input', imagePath, 'imagePath') }
         </label>
-        <label data-testid="storyline-input-label">
+        <label data-testid="storyline-input-label" htmlFor="inputs">
           Sinopse
           { this.makeInput('text-area', 'storyline-input', storyline, 'storyline')}
         </label>
-        <label data-testid="rating-input-label">
+        <label data-testid="rating-input-label" htmlFor="inputs">
           Avaliação
           { this.makeInput('number', 'rating-input', rating, 'rating') }
         </label>
-        <label data-testid="genre-input-label">Gênero</label>
-        <select
-          name="genre"
-          data-testid="genre-input"
-          defaultValue={ genre }
-          onChange={ this.haddleChange }
-        >
-          <option data-testid="genre-option" value="action">Ação</option>
-          <option data-testid="genre-option" value="comedy">Comédia</option>
-          <option data-testid="genre-option" value="thriller">Suspense</option>
-        </select>
+        <label data-testid="genre-input-label" htmlFor="inputs">
+          Gênero
+          <select
+            name="genre"
+            data-testid="genre-input"
+            defaultValue={ genre }
+            onChange={ this.haddleChange }
+          >
+            { this.makeOptions(
+              ['action', 'comedy', 'thriller'], ['Ação', 'Comédia', 'Suspense'],
+            )}
+          </select>
+        </label>
         <button type="submit" data-testid="send-button" onClick="">
           Adicionar filme
         </button>
