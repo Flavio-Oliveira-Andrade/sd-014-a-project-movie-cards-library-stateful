@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../style/Input.css';
+import PropTypes from 'prop-types';
 
 export default class AddMovie extends Component {
   constructor() {
@@ -45,7 +46,19 @@ export default class AddMovie extends Component {
 
   createMovie = ({ target }) => this.setState({ [target.name]: target.value });
 
+  buttonReset() {
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
   render() {
+    const { onClick } = this.props;
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
 
     return (
@@ -68,7 +81,18 @@ export default class AddMovie extends Component {
             <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
+        <button
+          data-testid="send-button"
+          type="button"
+          onClick={ () => { onClick(this.state); this.buttonReset(); } }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
