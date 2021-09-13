@@ -1,9 +1,27 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
+  constructor() {
+    super();
+    this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      inputSubtitle: '',
+      inputTitle: '',
+      // inputImagePath: '',
+      // inputStoryline: '',
+      // inputRating: 0,
+      // inputGenre: 'action',
+    };
+  }
+
+  handleChange({ target }) { // desestruturação do event para não precisar escrever event.target
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value; // necessário para conseguir pegar o valor do checkbox, se for checkbox pega o checked e se não for pega o value
+    this.setState({ [name]: value }); // interpolando o valor da variável para ser o nome da chave do objeto
+  }
+
   render() {
-    const { title, subtitle, handleChange } = this.props;
+    const { inputSubtitle, inputTitle } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label data-testid="title-input-label" htmlFor="inputTitle">
@@ -13,8 +31,8 @@ class AddMovie extends React.Component {
             name="inputTitle"
             id="inputTitle"
             data-testid="title-input"
-            value={ title }
-            onChange={ handleChange }
+            value={ inputTitle }
+            onChange={ this.handleChange }
           />
         </label>
         <label data-testid="subtitle-input-label" htmlFor="inputSubtitle">
@@ -24,35 +42,13 @@ class AddMovie extends React.Component {
             name="inputSubtitle"
             id="inputSubtitle"
             data-testid="subtitle-input"
-            value={ subtitle }
-            onChange={ handleChange }
+            value={ inputSubtitle }
+            onChange={ this.handleChange }
           />
         </label>
       </form>
     );
   }
 }
-
-AddMovie.propTypes = {
-  title: PropTypes.string,
-  subtitle: PropTypes.string,
-  // imagePath: PropTypes.string,
-  // storyline: PropTypes.string,
-  // rating: PropTypes.number,
-  // genre: PropTypes.string,
-  // onClick: PropTypes.func,
-  handleChange: PropTypes.func,
-};
-
-AddMovie.defaultProps = {
-  title: '',
-  subtitle: '',
-  // imagePath: '',
-  // storyline: '',
-  // rating: 0,
-  // genre: 'action',
-  // onClick: () => {},
-  handleChange: () => {},
-};
 
 export default AddMovie;

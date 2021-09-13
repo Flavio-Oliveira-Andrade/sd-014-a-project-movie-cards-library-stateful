@@ -12,12 +12,6 @@ class App extends React.Component {
       inputText: '',
       inputCheckboxFavorites: false,
       selectGenre: '',
-      inputSubtitle: '',
-      inputTitle: '',
-      inputImagePath: '',
-      inputStoryline: '',
-      inputRating: 0,
-      inputGenre: 'action',
     };
   }
 
@@ -32,8 +26,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { inputTitle, inputSubtitle, inputImagePath, inputStoryline, inputRating,
-      inputGenre, inputText, inputCheckboxFavorites, selectGenre } = this.state;
+    const { inputText, inputCheckboxFavorites, selectGenre } = this.state;
     return (
       <div className="App">
         <Header />
@@ -45,16 +38,7 @@ class App extends React.Component {
           selectedGenre={ selectGenre }
           onSelectedGenreChange={ this.handleChange }
         />
-        <AddMovie
-          title={ inputTitle }
-          subtitle={ inputSubtitle }
-          imagePath={ inputImagePath }
-          storyline={ inputStoryline }
-          rating={ inputRating }
-          genre={ inputGenre }
-          onClick={ this.handleClick }
-          handleChange={ this.handleChange }
-        />
+        <AddMovie onClick={ this.handleClick } />
       </div>
     );
   }
