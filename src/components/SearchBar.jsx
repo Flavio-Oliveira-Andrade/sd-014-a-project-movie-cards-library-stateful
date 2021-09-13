@@ -34,7 +34,10 @@ class SearchBar extends Component {
               onChange={ onBookmarkedChange }
             />
           </label>
-          <GenreComp valor={ selectedGenre } onChange={ onSelectedGenreChange } />
+          <GenreComp
+            valor={ selectedGenre }
+            onSelectedGenreChange={ onSelectedGenreChange }
+          />
         </fieldset>
       </form>
     );

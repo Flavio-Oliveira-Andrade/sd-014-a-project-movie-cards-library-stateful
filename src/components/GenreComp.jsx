@@ -4,7 +4,7 @@ import generos from './generos';
 
 class GenreComp extends React.Component {
   render() {
-    const { valor, change } = this.props;
+    const { valor, onSelectedGenreChange } = this.props;
     return (
       <label htmlFor="genero" data-testid="select-input-label">
         Filtrar por gênero
@@ -12,7 +12,7 @@ class GenreComp extends React.Component {
           name="genero"
           id="genero"
           value={ valor }
-          onChange={ change }
+          onChange={ onSelectedGenreChange }
           data-testid="select-input"
         >
           {generos.map((opcao) => (
@@ -31,6 +31,6 @@ class GenreComp extends React.Component {
 }
 GenreComp.propTypes = {
   valor: PropTypes.func.isRequired,
-  change: PropTypes.func.isRequired,
+  onSelectedGenreChange: PropTypes.func.isRequired,
 };
 export default GenreComp;
