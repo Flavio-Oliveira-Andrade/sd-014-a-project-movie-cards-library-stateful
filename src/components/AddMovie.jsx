@@ -20,7 +20,6 @@ class AddMovie extends React.Component {
     [target.name]: (target.type === 'checkbox' ? target.checked : target.value),
   });
 
-  // handleClick: event handler para o evento onClick
   onClickHandle = (event) => {
     event.preventDefault();
     const { onClick } = this.props;
@@ -36,7 +35,7 @@ class AddMovie extends React.Component {
     });
   }
 
-  // createInput: cria um elemento input customizado e seu label associado
+  // input customizado relacionado ao elemento pai
   input(type, name, value, dataTestid) {
     return (
       <input
@@ -50,7 +49,6 @@ class AddMovie extends React.Component {
   }
 
   render() {
-    // desestrutura this.state
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
@@ -92,7 +90,7 @@ class AddMovie extends React.Component {
             <option data-testid="genre-option" value="thriller">Suspense</option>
           </select>
         </label>
-        <button type="submit" data-testid="send-button" onClick={ this.onClickHandle  }>
+        <button type="submit" data-testid="send-button" onClick={ this.onClickHandle }>
           Adicionar filme
         </button>
       </form>
