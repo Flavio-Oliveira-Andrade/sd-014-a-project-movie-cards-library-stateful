@@ -2,7 +2,7 @@ import React from 'react';
 
 class SubInput extends React.Component {
   render() {
-    const { subtitle } = this.props;
+    const { subtitle, handleChange } = this.props;
     return (
       <label htmlFor="subtitle" data-testid="subtitle-input-label">
         Subtítulo
@@ -12,7 +12,7 @@ class SubInput extends React.Component {
           id="subtitle"
           type="text"
           data-testid="subtitle-input"
-          onChange={ this.handleChange }
+          onChange={ handleChange }
         />
       </label>
     );

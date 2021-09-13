@@ -2,7 +2,7 @@ import React from 'react';
 
 class ImagePath extends React.Component {
   render() {
-    const { imagePath } = this.props;
+    const { imagePath, handleChange } = this.props;
     return (
       <label htmlFor="imagePath" data-testid="image-input-label">
         Imagem
@@ -12,7 +12,7 @@ class ImagePath extends React.Component {
           id="imagePath"
           type="text"
           data-testid="image-input"
-          onChange={ this.handleChange }
+          onChange={ handleChange }
         />
       </label>
     );

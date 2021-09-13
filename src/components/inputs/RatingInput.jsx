@@ -2,7 +2,7 @@ import React from 'react';
 
 class RatingInput extends React.Component {
   render() {
-    const { rating } = this.props;
+    const { rating, handleChange } = this.props;
     return (
       <label htmlFor="rating" data-testid="rating-input-label">
         Avaliação
@@ -11,8 +11,8 @@ class RatingInput extends React.Component {
           value={ rating }
           id="rating"
           type="number"
-          data-testid="ranting-input"
-          onChange={ this.handleChange }
+          data-testid="rating-input"
+          onChange={ handleChange }
         />
       </label>
     );
