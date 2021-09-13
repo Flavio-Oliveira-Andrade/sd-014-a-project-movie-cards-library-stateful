@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
+import AddMovie from './components/AddMovie';
 import './App.css';
 
 class App extends React.Component {
@@ -21,6 +22,10 @@ class App extends React.Component {
     this.setState({ [name]: value }); // interpolando o valor da variável para ser o nome da chave do objeto
   }
 
+  onClick() {
+    
+  }
+
   render() {
     const { inputText, inputCheckboxFavorites, selectGenre } = this.state;
     return (
@@ -34,6 +39,7 @@ class App extends React.Component {
           selectedGenre={ selectGenre }
           onSelectedGenreChange={ this.handleChange }
         />
+        <AddMovie onClick={ this.onClick } />
       </div>
     );
   }
