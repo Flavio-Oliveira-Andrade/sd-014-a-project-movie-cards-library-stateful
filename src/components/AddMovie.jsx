@@ -48,7 +48,7 @@ class AddMovie extends React.Component {
         </label>
         <label htmlFor="subtitle" data-testid="subtitle-input-label">
           Subtítulo
-          { this.inputConstructor() }
+          { this.inputConstructor('text', 'subtitle', 'subtitle-input', subtitle) }
         </label>
         <label htmlFor="imagePath" data-testid="image-input-label">
           Imagem
