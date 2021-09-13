@@ -19,7 +19,6 @@ class MovieLibrary extends React.Component {
     this.handleBookmarkedChange = this.handleBookmarkedChange.bind(this);
     this.handleSelectedGenreChange = this.handleSelectedGenreChange.bind(this);
     this.handleMovieAdding = this.handleMovieAdding.bind(this);
-    this.filtersMovies = this.filterMovies(this);
   }
 
   handleSearchTextChange({ target }) {
@@ -70,7 +69,6 @@ class MovieLibrary extends React.Component {
 
   render() {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
-    console.log(typeof this.filterMovies);
     return (
       <>
         <SearchBar
