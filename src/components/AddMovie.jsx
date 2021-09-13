@@ -43,6 +43,9 @@ class AddMovie extends React.Component {
           <label data-testid="storyline-input-label">Sinopse
             <input type="text" name="storyline" value={this.state.storyline} data-testid="storyline-input" onChange={this.handleChange}/>
           </label>
+          <label data-testid="rating-input-label">Avaliação
+            <input type="number" name="rating" value={this.state.rating} data-testid="rating-input" onChange={this.handleChange}/>
+          </label>
         </form>
       </div>
     );
