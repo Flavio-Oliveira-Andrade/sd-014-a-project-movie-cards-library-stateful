@@ -1,43 +1,21 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 // implement SearchBar component here
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class SearchBar extends Component {
-  constructor() {
-    super();
-    this.props = {
-      searchText: '',
-      onSearchTextChange: (event) => this.setState({
-        [event.target.name]: event.target.value,
-      }),
-      bookmarkedOnly: false,
-      onBookmarkedChange: () => this.setState(() => {
-        const { bookmarkedOnly } = this.state;
-        if (bookmarkedOnly === false) {
-          return { bookmarkedOnly: true };
-        }
-        return { bookmarkedOnly: false };
-      }),
-      selectedGenre: '',
-      onSelectedGenreChange: () => {},
-    };
-  }
-
   render() {
-    const {
-      onSelectedGenreChange,
-      onBookmarkedChange,
-      onSearchTextChange,
-      selectedGenre,
-      searchText,
-      bookmarkedOnly } = this.props;
+    const { func } = this.props;
+    const { onSearchTextChange, onBookmarkedChange, onSelectedGenreChange } = func;
+
+    const { estados } = this.props;
+    const { searchText, bookmarkedOnly, selectedGenre } = estados;
 
     return (
       <form data-testid="search-bar-form">
-        <label data-testid="text-input-label" htmlFor="inputs">
+        <label data-testid="text-input-label">
           Inclui o texto:
           <input
-            className="inputs"
             data-testid="text-input"
             name="searchText"
             value={ searchText }
@@ -45,21 +23,19 @@ class SearchBar extends Component {
             onChange={ onSearchTextChange }
           />
         </label>
-        <label data-testid="checkbox-input-label" htmlFor="inputs">
+        <label data-testid="checkbox-input-label">
           Mostrar somente favoritos
           <input
-            className="inputs"
             data-testid="checkbox-input"
             type="checkbox"
             checked={ bookmarkedOnly }
             onChange={ onBookmarkedChange }
           />
         </label>
-        <label data-testid="select-input-label" htmlFor="seletor">
+        <label data-testid="select-input-label">
           Filtrar por gênero
           <select
             data-testid="select-input"
-            className="seletor"
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }
           >
