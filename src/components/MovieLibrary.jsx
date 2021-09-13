@@ -15,6 +15,7 @@ class MovieLibrary extends React.Component {
       movies,
     };
     this.handelChange = this.handelChange.bind(this);
+    this.submitNewMovie = this.submitNewMovie.bind(this);
   }
 
   handelChange(event) {
@@ -22,6 +23,12 @@ class MovieLibrary extends React.Component {
       [event.target.name]: event.target.type === 'checkbox'
         ? event.target.checked : event.target.value,
     });
+  }
+
+  submitNewMovie(state) {
+    const { movies } = this.state;
+    const newMovie = state;
+    this.setState({ movies: [...movies, newMovie] });
   }
 
   render() {
@@ -42,7 +49,7 @@ class MovieLibrary extends React.Component {
           selectedGenre={ selectedGenre }
           bookmarkedOnly={ bookmarkedOnly }
         />
-        <AddMovie movies={ movies } />
+        <AddMovie movies={ movies } onClick={ this.submitNewMovie } />
       </div>
     );
   }
