@@ -4,12 +4,36 @@ class AddMovie extends Component {
   constructor() {
     super();
 
-    this.state = {};
+    this.state = {
+      // subtitle: '',
+      title: '',
+      // imagePath: '',
+      // storyline: '',
+      // rating: 0,
+      // genre: 'action',
+    };
+  }
+
+  handleClick = (event) => {
+    this.setState({
+      title: event.target.value,
+    });
   }
 
   render() {
+    const { title } = this.state;
     return (
-      <h1>Pode apagar essa tag</h1>
+      <form data-testid="add-movie-form">
+        <label htmlFor="title-input" data-testid="title-input-label">
+          Título
+          <input
+            type="text"
+            value={ title }
+            data-testid="title-input"
+            onChange={ this.handleClick }
+          />
+        </label>
+      </form>
     );
   }
 }
