@@ -5,7 +5,9 @@ import Proptypes from 'prop-types';
 class SearchBar extends Component {
   render() {
     return (
-      <form action=""></form>
+      <form data-testid="search-bar-form">
+
+      </form>
     )
   }
 }
