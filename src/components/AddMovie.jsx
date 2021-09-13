@@ -1,35 +1,32 @@
-// implement AddMovie component here
 import React from 'react';
 import PropTypes from 'prop-types';
-import Title from './Title';
-import Subtitle from './Subtitle';
-import ImagePath from './ImagePath';
-import Storyline from './Storyline';
-import FormRating from './FormRating';
-import Genre from './Genre';
 
 class AddMovie extends React.Component {
   constructor() {
     super();
     this.state = {
-      subtitle: '',
       title: '',
+      subtitle: '',
       imagePath: '',
       storyline: '',
       rating: 0,
       genre: 'action',
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(event) {
+  // envia o estado atual para o elemento pai e volta o estado inicial de AddMovie
+  handleChange = ({ target }) => this.setState({
+    [target.name]: (target.type === 'checkbox' ? target.checked : target.value),
+  });
+
+  onClickHandle = (event) => {
     event.preventDefault();
     const { onClick } = this.props;
     onClick(this.state);
+
     this.setState({
-      subtitle: '',
       title: '',
+      subtitle: '',
       imagePath: '',
       storyline: '',
       rating: 0,
@@ -37,30 +34,67 @@ class AddMovie extends React.Component {
     });
   }
 
-  handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
+  // input customizado relacionado ao elemento pai
+  input(type, name, value, dataTestid) {
+    return (
+      <input
+        type={ type }
+        name={ name }
+        value={ value }
+        onChange={ this.handleChange }
+        data-testid={ dataTestid }
+      />
+    );
   }
 
   render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
-      <form data-testid="add-movie-form" onSubmit={ this.handleSubmit }>
-        <Title value={ title } onChange={ this.handleChange } />
-        <Subtitle value={ subtitle } onChange={ this.handleChange } />
-        <ImagePath value={ imagePath } onChange={ this.handleChange } />
-        <Storyline value={ storyline } onChange={ this.handleChange } />
-        <FormRating value={ rating } onChange={ this.handleChange } />
-        <Genre value={ genre } onChange={ this.handleChange } />
-        <button data-testid="send-button" type="submit">
-          Add Movie
+      <form data-testid="add-movie-form">
+        <label htmlFor="title" data-testid="title-input-label">
+          Título
+          { this.input('text', 'title', title, 'title-input') }
+        </label>
+        <label htmlFor="subtitle" data-testid="subtitle-input-label">
+          Subtítulo
+          { this.input('text', 'subtitle', subtitle, 'subtitle-input') }
+        </label>
+        <label htmlFor="imagePath" data-testid="image-input-label">
+          Imagem
+          { this.input('text', 'imagePath', imagePath, 'image-input') }
+        </label>
+        <label htmlFor="movie-storyline" data-testid="storyline-input-label">
+          Sinopse
+          <textarea
+            name="storyline"
+            value={ storyline }
+            onChange={ this.handleChange }
+            data-testid="storyline-input"
+          />
+        </label>
+        <label htmlFor="rating" data-testid="rating-input-label">
+          Avaliação
+          { this.input('number', 'rating', rating, 'rating-input') }
+        </label>
+        <label htmlFor="movie-genre" data-testid="genre-input-label">
+          Gênero
+          <select
+            name="genre"
+            value={ genre }
+            onChange={ this.handleChange }
+            data-testid="genre-input"
+          >
+            <option data-testid="genre-option" value="action">Ação</option>
+            <option data-testid="genre-option" value="comedy">Comédia</option>
+            <option data-testid="genre-option" value="thriller">Suspense</option>
+          </select>
+        </label>
+        <button type="submit" data-testid="send-button" onClick={ this.onClickHandle }>
+          Adicionar filme
         </button>
       </form>
     );
   }
 }
-
-AddMovie.propTypes = {
-  onClick: PropTypes.func.isRequired,
-};
-
+AddMovie.propTypes = { onClick: PropTypes.func.isRequired };
 export default AddMovie;
