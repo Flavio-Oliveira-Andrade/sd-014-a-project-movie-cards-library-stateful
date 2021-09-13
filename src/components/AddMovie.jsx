@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
   render() {
-    const { title, subtitle, imagePath, storyline, rating,
-      genre, onClick, handleChange } = this.props;
+    const { title, subtitle, handleChange } = this.props;
     return (
       <form data-testid="add-movie-form">
         <label data-testid="title-input-label" htmlFor="inputTitle">
@@ -37,22 +36,22 @@ class AddMovie extends React.Component {
 AddMovie.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
-  imagePath: PropTypes.string,
-  storyline: PropTypes.string,
-  rating: PropTypes.number,
-  genre: PropTypes.string,
-  onClick: PropTypes.func,
+  // imagePath: PropTypes.string,
+  // storyline: PropTypes.string,
+  // rating: PropTypes.number,
+  // genre: PropTypes.string,
+  // onClick: PropTypes.func,
   handleChange: PropTypes.func,
 };
 
 AddMovie.defaultProps = {
   title: '',
   subtitle: '',
-  imagePath: '',
-  storyline: '',
-  rating: 0,
-  genre: 'action',
-  onClick: () => {},
+  // imagePath: '',
+  // storyline: '',
+  // rating: 0,
+  // genre: 'action',
+  // onClick: () => {},
   handleChange: () => {},
 };
 

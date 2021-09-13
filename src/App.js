@@ -32,8 +32,8 @@ class App extends React.Component {
   }
 
   render() {
-    const { inputTitle, inputSubtitle, inputImagePath, inputStoryline, inputRating, inputGenre, inputText,
-      inputCheckboxFavorites, selectGenre } = this.state;
+    const { inputTitle, inputSubtitle, inputImagePath, inputStoryline, inputRating,
+      inputGenre, inputText, inputCheckboxFavorites, selectGenre } = this.state;
     return (
       <div className="App">
         <Header />
