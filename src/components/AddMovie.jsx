@@ -44,23 +44,11 @@ class AddMovie extends React.Component {
       <form data-testid="add-movie-form">
         <label htmlFor="title" data-testid="title-input-label">
           Título
-          <input
-            type="text"
-            data-testid="title-input"
-            name="title"
-            value={ title }
-            onChange={ title }
-          />
+          { this.inputConstructor('text', 'title', 'title-input', title) }
         </label>
-        <label htmlFor="title" data-testid="subtitle-input-label">
+        <label htmlFor="subtitle" data-testid="subtitle-input-label">
           Subtítulo
-          <input
-            type="text"
-            data-testid="subtitle-input"
-            name="subtitle"
-            value={ subtitle }
-            onChange={ subtitle }
-          />
+          { this.inputConstructor() }
         </label>
         <label htmlFor="imagePath" data-testid="image-input-label">
           Imagem
