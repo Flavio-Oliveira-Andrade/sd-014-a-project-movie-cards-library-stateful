@@ -35,6 +35,7 @@ class SelectInput extends React.Component {
         {options.map((opcao) => (<option
           key={ opcao.key }
           value={ opcao.value }
+          data-testid="genre-option"
         >
           {opcao.nome}
         </option>))}
