@@ -6,8 +6,13 @@ class SearchBar extends Component {
   render() {
     return (
       <form data-testid="search-bar-form">
-
+        <input
+          type="text"
+          data-testid="text-input-label"
+          onChange={ onSearchTextChange }
+          value={ searchText }
+        />
       </form>
-    )
+    );
   }
 }
