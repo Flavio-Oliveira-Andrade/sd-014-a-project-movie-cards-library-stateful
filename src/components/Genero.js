@@ -1,12 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Genero extends React.Component {
   render() {
-    const { value, handleChange} = this.props;
+    const { value, handleChange } = this.props;
     return (
       <label htmlFor data-testid="genre-input-label">
         Gênero
         <select
+          name="genre"
           value={ value }
           data-testid="genre-input"
           onChange={ handleChange }
@@ -20,4 +22,8 @@ class Genero extends React.Component {
   }
 }
 
+Genero.propTypes = {
+  value: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+};
 export default Genero;
