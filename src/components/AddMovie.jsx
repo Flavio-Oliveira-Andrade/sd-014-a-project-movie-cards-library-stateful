@@ -19,6 +19,7 @@ class AddMovie extends React.Component {
     [target.name]: (target.type === 'checkbox' ? target.checked : target.value),
   });
 
+  // input customizado para cada label
   input(name, type, value, dataTestId) {
     return (
       <input
@@ -38,11 +39,25 @@ class AddMovie extends React.Component {
       <form data-testid="add-movie-form">
         <label htmlFor="title" data-testid="title-input-label">
           Título
+          {/* carrega os componentes de input ao label */}
           { this.input('title', 'text', title, 'title-input') }
         </label>
         <label htmlFor="subtitle" data-testid="subtitle-input-label">
           Subtítulo
           { this.input('text', 'subtitle', subtitle, 'subtitle-input') }
+        </label>
+        <label htmlFor="image" data-testid="image-input-label">
+          Imagem
+          {this.input('imagePath', 'text', imagePath, 'image-input')}
+        </label>
+        <label htmlFor="storyline" data-testid="storyline-input-label">
+          Sinopse
+          <textarea
+            name="storyline"
+            data-testid="storyline-input"
+            value={ storyline }
+            onChange={ this.handleChange }
+          />
         </label>
       </form>
     );
