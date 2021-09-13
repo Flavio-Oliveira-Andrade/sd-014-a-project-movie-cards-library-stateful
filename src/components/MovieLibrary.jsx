@@ -12,23 +12,19 @@ class MovieLibrary extends Component {
     const { movies } = props;
 
     this.state = {
-      searchText: '',
+      /* searchText: '',
       bookmarkedOnly: false,
-      selectedGenre: '',
+      selectedGenre: '', */
       movies,
     };
   }
 
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    const { /* searchText, bookmarkedOnly, selectedGenre */ movies } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
-        <SearchBar
-          searchText={ searchText }
-          bookmarkedOnly={ bookmarkedOnly }
-          selectedGenre={ selectedGenre }
-        />
+        <SearchBar />
         <MovieList movies={ movies } />
         <AddMovie />
       </div>
