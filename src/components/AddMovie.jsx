@@ -3,8 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       title: '',
       subtitle: '',
@@ -15,66 +15,89 @@ class AddMovie extends React.Component {
     };
   }
 
+  // envia o estado atual para o elemento pai e volta o estado inicial de AddMovie
   handleChange = ({ target }) => this.setState({
     [target.name]: (target.type === 'checkbox' ? target.checked : target.value),
   });
 
-  // input customizado para cada label
-  input(name, type, value, dataTestId) {
+  // handleClick: event handler para o evento onClick
+  onClickHandle = (event) => {
+    event.preventDefault();
+    const { onClick } = this.props;
+    onClick(this.state);
+
+    this.setState({
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
+  // createInput: cria um elemento input customizado e seu label associado
+  input(type, name, value, dataTestid) {
     return (
       <input
-        name={ name }
         type={ type }
+        name={ name }
         value={ value }
-        data-testid={ dataTestId }
         onChange={ this.handleChange }
+        data-testid={ dataTestid }
       />
     );
   }
 
   render() {
-    // desestrutura o estado inicial de "this.state"
+    // desestrutura this.state
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="title" data-testid="title-input-label">
           Título
-          {/* carrega os componentes de input ao label */}
-          { this.input('title', 'text', title, 'title-input') }
+          { this.input('text', 'title', title, 'title-input') }
         </label>
         <label htmlFor="subtitle" data-testid="subtitle-input-label">
           Subtítulo
           { this.input('text', 'subtitle', subtitle, 'subtitle-input') }
         </label>
-        <label htmlFor="image" data-testid="image-input-label">
+        <label htmlFor="imagePath" data-testid="image-input-label">
           Imagem
-          {this.input('imagePath', 'text', imagePath, 'image-input')}
+          { this.input('text', 'imagePath', imagePath, 'image-input') }
         </label>
-        <label htmlFor="storyline" data-testid="storyline-input-label">
+        <label htmlFor="movie-storyline" data-testid="storyline-input-label">
           Sinopse
           <textarea
             name="storyline"
-            data-testid="storyline-input"
             value={ storyline }
             onChange={ this.handleChange }
+            data-testid="storyline-input"
           />
         </label>
         <label htmlFor="rating" data-testid="rating-input-label">
           Avaliação
-          { this.input('rating', 'number', rating, 'rating-input') }
+          { this.input('number', 'rating', rating, 'rating-input') }
         </label>
-        <label htmlFor="select" data-testid="genre-input-label">
+        <label htmlFor="movie-genre" data-testid="genre-input-label">
           Gênero
-          <select data-testid="genre-input" onChange={ this.handleChange }>
+          <select
+            name="genre"
+            value={ genre }
+            onChange={ this.handleChange }
+            data-testid="genre-input"
+          >
             <option data-testid="genre-option" value="action">Ação</option>
             <option data-testid="genre-option" value="comedy">Comédia</option>
             <option data-testid="genre-option" value="thriller">Suspense</option>
           </select>
         </label>
+        <button type="submit" data-testid="send-button" onClick={ this.onClickHandle  }>
+          Adicionar filme
+        </button>
       </form>
     );
   }
 }
-
 AddMovie.propTypes = { onClick: PropTypes.func.isRequired };
 export default AddMovie;
