@@ -5,16 +5,32 @@ import SelectInput from './SelectInput';
 import inputs from './inputs';
 
 class AddMovie extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      rating: 0,
+    };
+    this.isRender = this.isRender.bind(this);
+  }
+
+  isRender() {
+    const add = 0.5;
+    this.setState((anterior) => ({
+      rating: anterior.rating + add,
+    }));
+  }
+
   render() {
     const {
       onClick,
       title,
       subtitle,
-      rating,
+      // rating,
       imagePath,
       storyline,
       genre,
       change } = this.props;
+    const { rating } = this.state;
     const values = [title, subtitle, imagePath, storyline, rating];
     return (
       <form data-testid="add-movie-form">
@@ -26,7 +42,7 @@ class AddMovie extends React.Component {
             type={ input.type }
             label={ input.label }
             value={ values[i] }
-            onChange={ change }
+            onChange={ input.name === 'rating' ? this.isRender : change }
           />))}
           <SelectInput data-testid="genre-input" change={ change } genre={ genre } />
           <button
@@ -45,7 +61,7 @@ AddMovie.propTypes = {
   onClick: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
+  // rating: PropTypes.number.isRequired,
   imagePath: PropTypes.string.isRequired,
   storyline: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
