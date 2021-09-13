@@ -2,55 +2,85 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
+import AddMovie from './AddMovie';
 
 class MovieLibrary extends React.Component {
   constructor(props) {
     super(props);
-    const { movies } = this.props;
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies,
+      movies: props.movies,
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.onSearchTextChange = this.onSearchTextChange.bind(this);
+    this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
+    this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleChange({ target }) { // callback que atualiza o estado de SearchBar
+  handleClick(movie) {
+    this.setState(({ movies }) => ({
+      movies: [...movies, movie],
+    }));
+  }
+
+  handleFilter() {
+    const { searchText, selectedGenre, bookmarkedOnly, movies } = this.state;
+    let filterMovies = movies
+      .filter((movie) => movie.title.includes(searchText)
+    || movie.subtitle.includes(searchText)
+    || movie.storyline.includes(searchText));
+
+    if (bookmarkedOnly) {
+      filterMovies = movies.filter((movie) => movie.bookmarked === bookmarkedOnly);
+    }
+    if (selectedGenre) {
+      filterMovies = movies.filter((movie) => movie.genre === selectedGenre);
+    }
+    return filterMovies;
+  }
+
+  onSearchTextChange(event) {
     this.setState({
-      [target.name]: (target.type === 'checkbox' ? target.checked : target.value),
-    }); // se for um checkbox, busca pelo atributo checked; senão, busca pelo valor digitado/selecionado
+      searchText: event.target.value,
+    });
   }
 
-  movieFilter = ({ searchText, bookmarkedOnly, selectedGenre, movies }) => movies
-    .filter((movie) => movie
-      .title.includes(searchText) || movie
-      .subtitle.includes(searchText) || movie
-      .storyline.includes(searchText))
-    .filter((movie) => (bookmarkedOnly ? movie.bookmarked : true))
-    .filter((movie) => (selectedGenre ? movie.genre === selectedGenre : true));
+  onBookmarkedChange(event) {
+    this.setState({
+      bookmarkedOnly: event.target.checked,
+    });
+  }
 
+  onSelectedGenreChange(event) {
+    this.setState({
+      selectedGenre: event.target.value,
+    });
+  }
+ 
   render() {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
-        <h2>My Awesome Movie Cards Library</h2>
+        <h2>My Awesome Movie Library</h2>
         <SearchBar
           searchText={ searchText }
-          onSearchTextChange={ this.handleChange }
+          onSearchTextChange={ this.onSearchTextChange }
           bookmarkedOnly={ bookmarkedOnly }
-          onBookmarkedOnly={ this.handleChange }
+          onBookmarkedChange={ this.onBookmarkedChange }
           selectedGenre={ selectedGenre }
-          onSelectedGenre={ this.handleChange }
+          onSelectedGenreChange={ this.onSelectedGenreChange }
         />
-        <MovieList movies={ this.movieFilter(this.state) } />
+        <MovieList movies={ this.handleFilter() } />
+        <AddMovie onClick={ this.handleClick } />
       </div>
     );
   }
 }
 
 MovieLibrary.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.object),
-}.isRequired;
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default MovieLibrary;

@@ -23,7 +23,11 @@ class AddMovie extends React.Component {
   }
 
   handleChange(event) {
-    const { name, value } = event.target;
+    const { name } = event.target;
+    const { value } = event.target.type === 'checkbox'
+      ? event.target.checked
+      : event.target.value;
+
     this.setState({ [name]: value });
   }
 
