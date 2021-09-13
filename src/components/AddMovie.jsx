@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import FormAddData from './FormAddData';
 import SecondFormData from './SecondFormData';
 
@@ -6,6 +7,8 @@ class AddMovie extends Component {
   constructor() {
     super();
     this.changeState = this.changeState.bind(this);
+    this.onclick = this.onclick.bind(this);
+
     this.state = {
       subtitle: '',
       title: '',
@@ -16,6 +19,20 @@ class AddMovie extends Component {
     };
   }
 
+  onclick(event) {
+    const { onClick } = this.props;
+    onClick();
+    event.preventDefault();
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
   changeState({ target }) {
     const { name, value } = target;
     this.setState({
@@ -24,7 +41,6 @@ class AddMovie extends Component {
   }
 
   render() {
-    // const { onclick } = this.props;
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form action="" data-testid="add-movie-form">
@@ -40,10 +56,22 @@ class AddMovie extends Component {
           genreValue={ genre }
           handleChange={ this.changeState }
         />
+
+        <button
+          type="submit"
+          data-testid="send-button"
+          onClick={ this.onclick }
+        >
+          Adicionar filme
+        </button>
       </form>
 
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default AddMovie;
