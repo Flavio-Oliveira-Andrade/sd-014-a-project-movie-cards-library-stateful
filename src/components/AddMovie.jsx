@@ -30,7 +30,7 @@ class AddMovie extends React.Component {
 
   handleSubmit() {
     const { onClick } = this.props;
-    onClick();
+    onClick(this.state);
     this.setState(INITIAL_STATE);
   }
 
