@@ -8,11 +8,16 @@ class App extends React.Component {
   constructor() {
     super();
     this.handleChange = this.handleChange.bind(this);
-    // O componente pai é o dono do estado!
     this.state = {
       inputText: '',
       inputCheckboxFavorites: false,
       selectGenre: '',
+      inputSubtitle: '',
+      inputTitle: '',
+      inputImagePath: '',
+      inputStoryline: '',
+      inputRating: 0,
+      inputGenre: 'action',
     };
   }
 
@@ -22,12 +27,13 @@ class App extends React.Component {
     this.setState({ [name]: value }); // interpolando o valor da variável para ser o nome da chave do objeto
   }
 
-  onClick() {
-    
+  handleClick() {
+
   }
 
   render() {
-    const { inputText, inputCheckboxFavorites, selectGenre } = this.state;
+    const { inputTitle, inputSubtitle, inputImagePath, inputStoryline, inputRating, inputGenre, inputText,
+      inputCheckboxFavorites, selectGenre } = this.state;
     return (
       <div className="App">
         <Header />
@@ -39,7 +45,16 @@ class App extends React.Component {
           selectedGenre={ selectGenre }
           onSelectedGenreChange={ this.handleChange }
         />
-        <AddMovie onClick={ this.onClick } />
+        <AddMovie
+          title={ inputTitle }
+          subtitle={ inputSubtitle }
+          imagePath={ inputImagePath }
+          storyline={ inputStoryline }
+          rating={ inputRating }
+          genre={ inputGenre }
+          onClick={ this.handleClick }
+          handleChange={ this.handleChange }
+        />
       </div>
     );
   }
