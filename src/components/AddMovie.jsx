@@ -5,6 +5,8 @@ class AddMovie extends React.Component {
   constructor(props) {
     super(props);
 
+    this.handlechange = this.handlechange.bind(this);
+
     this.state = {
       subtitle: '',
       title: '',
@@ -13,6 +15,26 @@ class AddMovie extends React.Component {
       rating: 0,
       genre: 'action',
     };
+  }
+
+  handlechange({target}) {
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({
+      [name]: value,
+    });
+  }
+
+  inputConstructor(type, name, id, value) {
+    return (
+      <input
+        type={ type }
+        name={ name }
+        data-testid={ id }
+        value={ value }
+        onChange={ this.handlechange }
+      />
+    );
   }
 
   render() {
@@ -51,7 +73,7 @@ class AddMovie extends React.Component {
           />
         </label>
         <label htmlFor="storyline" data-testid="storyline-input-label">
-          Imagem
+          Sinopse
           <textarea
             type="storyline"
             data-testid="storyline-input"
