@@ -1,5 +1,4 @@
 // implement MovieLibrary component here
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import MovieList from './MovieList';
@@ -25,8 +24,8 @@ class MovieLibrary extends Component {
       <div>
         <h2> My awesome movie library </h2>
         <SearchBar />
-        <MovieList movies={ movies } />
         <AddMovie />
+        <MovieList movies={ movies } />
       </div>
     );
   }
