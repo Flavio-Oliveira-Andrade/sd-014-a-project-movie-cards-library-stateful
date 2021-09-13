@@ -7,7 +7,7 @@ import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
   constructor(props) {
-    super();
+    super(props);
     const { movies } = props;
     this.state = {
       searchText: '',
