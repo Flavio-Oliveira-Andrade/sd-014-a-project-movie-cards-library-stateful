@@ -1,32 +1,48 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class PutInput extends React.Component {
   render() {
-    const { data, id, type, name, value, onChange, label } = this.props;
+    const { data, type, name, value, onChange, label } = this.props;
     return (<>
-      {/* <label htmlFor={ propFor } data-testid={ `${name}-input-label` } /> */}
-      <label htmlFor={id} data-testid={`${data}-input-label`} >{label}</label>
-      {type === 'textarea' ? <textarea
-        id={name}
-        name={name}
-        type={type}
-        data-testid={`${data}-input`}
-        value={value}
-        onChange={onChange}
-        cols="30"
-        rows="10"
-      />
+      <label htmlFor={ name } data-testid={ `${data}-input-label` }>{label}</label>
+      {type === 'textarea'
+        ? <textarea
+          id={ name }
+          name={ name }
+          type={ type }
+          data-testid={ `${data}-input` }
+          value={ value }
+          onChange={ onChange }
+          cols="30"
+          rows="10"
+        />
         : <input
-          id={name}
-          name={name}
-          type={type}
-          data-testid={`${data}-input`}
-          value={value}
-          onChange={onChange}
+          id={ name }
+          name={ name }
+          type={ type }
+          data-testid={ `${data}-input` }
+          value={ value }
+          onChange={ onChange }
         />}
 
     </>);
   }
 }
-
+PutInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  data: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  label: PropTypes.string.isRequired,
+};
+// PutInput.defaultProps = {
+//   name: '',
+//   data: '',
+//   id: '',
+//   type: '',
+//   value: 0,
+//   label: '',
+// };
 export default PutInput;

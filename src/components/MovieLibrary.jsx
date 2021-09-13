@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
 import MovieList from './MovieList';
@@ -19,6 +20,7 @@ class MovieLibrary extends Component {
       rating: 0,
       genre: 'action',
     };
+
     this.clicked = this.clicked.bind(this);
     this.searching = this.searching.bind(this);
     this.bookmarking = this.bookmarking.bind(this);
@@ -27,18 +29,22 @@ class MovieLibrary extends Component {
   }
 
   changeText(event) {
-    this.setState({ [event.target.name]: event.target.value });
+    event.target.name === 'rating'
+      ? this.setState({ [event.target.name]: parseFloat(event.target.value) })
+      : this.setState({ [event.target.name]: event.target.value });
   }
 
   clicked(e) {
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
+
     e.preventDefault();
     lista.push({
-      title: this.state.title,
-      subtitle: this.state.subtitle,
-      storyline: this.state.storyline,
-      rating: this.state.rating,
-      imagePath: this.state.imagePath,
-      genre: this.state.genre,
+      title,
+      subtitle,
+      storyline,
+      rating,
+      imagePath,
+      genre,
     });
     this.setState({
       title: '',
@@ -56,7 +62,8 @@ class MovieLibrary extends Component {
   }
 
   bookmarking() {
-    if (this.state.bookmarkedOnly === true) {
+    const { bookmarkedOnly } = this.state;
+    if (bookmarkedOnly === true) {
       this.setState({ bookmarkedOnly: false });
     } else {
       this.setState({ bookmarkedOnly: true });
@@ -88,10 +95,13 @@ class MovieLibrary extends Component {
         <SearchBar searchText={ searchText } onSearchTextChange={ this.searching } bookmarkedOnly={ bookmarkedOnly } onBookmarkedChange={ this.bookmarking } selectedGenre={ selectedGenre } onSelectedGenreChange={ this.genre } />
         <MovieList movies={ filterGenre } />
         <AddMovie onClick={ this.clicked } newMovie={ mov } title={ title } subtitle={ subtitle } imagePath={ imagePath } storyline={ storyline } rating={ rating } genre={ genre } change={ this.changeText } />
-        {/* {console.log(this.state)} */}
       </>
     );
   }
 }
+
+MovieLibrary.propTypes = {
+  movies: PropTypes.array.isRequired,
+};
 
 export default MovieLibrary;
