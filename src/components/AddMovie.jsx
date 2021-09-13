@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AddForm from './AddForm';
 
 const INITIAL_STATE = {
   subtitle: '',
@@ -35,6 +34,51 @@ class AddMovie extends React.Component {
     this.setState(INITIAL_STATE);
   }
 
+  createInputElement(name, type, value) {
+    return (
+      <input
+        type={ type }
+        name={ name }
+        onChange={ this.handleChange }
+        value={ value }
+        data-testid={ name === 'imagePath' ? 'image-input' : `${name}-input` }
+      />
+    );
+  }
+
+  createStorylineInputElement(initialValue) {
+    return (
+      <label htmlFor="storyline" data-testid="storyline-input-label">
+        Sinopse
+        <textarea
+          type="text"
+          name="storyline"
+          onChange={ this.handleChange }
+          value={ initialValue }
+          data-testid="storyline-input"
+        />
+      </label>
+    );
+  }
+
+  createGenderSelectElement(initialValue) {
+    return (
+      <label htmlFor="genre" data-testid="genre-input-label">
+        Gênero
+        <select
+          name="genre"
+          data-testid="genre-input"
+          value={ initialValue }
+          onChange={ this.handleChange }
+        >
+          <option value="action" data-testid="genre-option" defaultValue>Ação</option>
+          <option value="comedy" data-testid="genre-option">Comédia</option>
+          <option value="thriller" data-testid="genre-option">Suspense</option>
+        </select>
+      </label>
+    );
+  }
+
   render() {
     const { title,
       subtitle,
@@ -46,33 +90,24 @@ class AddMovie extends React.Component {
 
     return (
       <form data-testid="add-movie-form">
-        <AddForm name="title" handle={ this.handleChange } value={ title } />
-        <AddForm name="subtitle" handle={ this.handleChange } value={ subtitle } />
-        <AddForm name="image" handle={ this.handleChange } value={ imagePath } />
-        <label htmlFor="storyline" data-testid="storyline-input-label">
-          Sinopse
-          <textarea
-            type="text"
-            name="storyline"
-            onChange={ this.handleChange }
-            value={ storyline }
-            data-testid="storyline-input"
-          />
+        <label htmlFor="title" data-testid="title-input-label">
+          Título
+          {this.createInputElement('title', 'text', title)}
         </label>
-        <AddForm name="rating" handle={ this.handleChange } value={ rating } />
-        <label htmlFor="genre" data-testid="genre-input-label">
-          Gênero
-          <select
-            name="genre"
-            data-testid="genre-input"
-            value={ genre }
-            onChange={ this.handleChange }
-          >
-            <option value="action" data-testid="genre-option" defaultValue>Ação</option>
-            <option value="comedy" data-testid="genre-option">Comédia</option>
-            <option value="thriller" data-testid="genre-option">Suspense</option>
-          </select>
+        <label htmlFor="subtitle" data-testid="subtitle-input-label">
+          Subtítulo
+          {this.createInputElement('subtitle', 'text', subtitle)}
         </label>
+        <label htmlFor="imagePath" data-testid="image-input-label">
+          Imagem
+          {this.createInputElement('imagePath', 'text', imagePath)}
+        </label>
+        {this.createStorylineInputElement(storyline) }
+        <label htmlFor="rating" data-testid="rating-input-label">
+          Avaliação
+          {this.createInputElement('rating', 'number', rating)}
+        </label>
+        {this.createGenderSelectElement(genre)}
         <button
           type="submit"
           data-testid="send-button"
