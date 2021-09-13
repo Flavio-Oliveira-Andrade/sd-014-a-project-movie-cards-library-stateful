@@ -4,29 +4,18 @@ import PropTypes from 'prop-types';
 class PutInput extends React.Component {
   render() {
     const { data, type, name, value, onChange, label } = this.props;
-    return (<>
-      <label htmlFor={ name } data-testid={ `${data}-input-label` }>{label}</label>
-      {type === 'textarea'
-        ? <textarea
+    return (
+      <>
+        <label htmlFor={ name } data-testid={ `${data}-input-label` }>{label}</label>
+        <input
           id={ name }
           name={ name }
           type={ type }
           data-testid={ `${data}-input` }
           value={ value }
           onChange={ onChange }
-          cols="30"
-          rows="10"
         />
-        : <input
-          id={ name }
-          name={ name }
-          type={ type }
-          data-testid={ `${data}-input` }
-          value={ value }
-          onChange={ onChange }
-        />}
-
-    </>);
+      </>);
   }
 }
 PutInput.propTypes = {
