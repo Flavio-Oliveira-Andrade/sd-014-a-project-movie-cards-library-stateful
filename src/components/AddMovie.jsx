@@ -4,6 +4,7 @@ import Title from './createForms/Title';
 import Image from './createForms/Image';
 import Textarea from './createForms/Textarea';
 import Rating from './createForms/Rating';
+import Genre from './createForms/Genre';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -33,6 +34,7 @@ class AddMovie extends React.Component {
         <Image imagePath={ imagePath } handleChange={ this.handleChange } />
         <Textarea storyline={ storyline } handleChange={ this.handleChange } />
         <Rating rating={ rating } handleChange={ this.handleChange } />
+        <Genre genre={ genre } handleChange={ this.handleChange } />
       </form>
     );
   }
