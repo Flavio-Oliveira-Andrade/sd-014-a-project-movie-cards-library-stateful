@@ -25,8 +25,12 @@ class MovieLibrary extends Component {
     return obj;
   }
 
-  onSearchTextChange() {
-    return 0;
+  onSearchTextChange(event) {
+    const { searchText, movies } = this.state;
+    this.setState({ [event.target.name]: event.target.value });
+    let filteredMovies = movies;
+    filteredMovies = movies.filter((ele) => ele.title.includes(searchText.value));
+    this.setState({ movies: filteredMovies });
   }
 
   onSelectedGenreChange() {
@@ -41,16 +45,14 @@ class MovieLibrary extends Component {
   }
 
   onBookmarkedChange(event) {
-    const { bookmarkedOnly } = this.state;
     const { movies } = this.props; // Array de filmes originais
     let filteredMovies = movies;
-    if (bookmarkedOnly) {
+    if (event.target.checked) {
       filteredMovies = movies.filter((ele) => ele.bookmarked);
     }
-    console.log(event.target.checked);
     this.setState({
-      movies: filteredMovies,
-      bookmarkedOnly: event.target.checked,
+      movies: filteredMovies, // Atualiza a lista de filmes
+      bookmarkedOnly: event.target.checked, // Muda a propriedade bookmarkedOnly para o valor da checkbox
     });
   }
 
