@@ -26,6 +26,8 @@ class SearchBar extends React.Component {
           onSearchTextChange={ onSearchTextChange }
           bookmarkedOnly={ bookmarkedOnly }
           onBookmarkedChange={ onBookmarkedChange }
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ onSelectedGenreChange }
         />
       </div>
     );
