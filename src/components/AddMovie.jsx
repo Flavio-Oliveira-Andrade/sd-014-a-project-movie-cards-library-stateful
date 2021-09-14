@@ -64,7 +64,7 @@ class AddMovie extends React.Component {
         </label>
         <label htmlFor="rating" data-testid="rating-input-label">
           Avaliação
-          {this.criarInputPadrao('rating', 'number', rating, 'rating-input')}
+          {this.criarInputPadrao('number', 'rating', rating, 'rating-input') }
         </label>
         <label htmlFor="image" data-testid="image-input-label">
           Imagem
