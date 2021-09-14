@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 // implement AddMovie component here
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Title from './FormComponents/Title';
 import Subtitle from './FormComponents/Subtitle';
@@ -23,24 +24,13 @@ class AddMovie extends Component {
     };
   }
 
-  handdleClick = () => {
-    // const { onClick } = this.props;
-    this.setState({
-      title: '',
-      subtitle: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    });
-  }
-
   haddleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   }
 
   render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
+    const { handdleClick } = this.props;
     return (
       <form data-testid="add-movie-form">
         <Title title={ title } haddleChange={ this.handdleChange } />
@@ -49,10 +39,14 @@ class AddMovie extends Component {
         <Storyline storyline={ storyline } haddleChange={ this.handdleChange } />
         <Rating rating={ rating } haddleChange={ this.handdleChange } />
         <Genre genre={ genre } haddleChange={ this.handdleChange } />
-        <Button onClick={ this.handdleClick } />
+        <Button onClick={ handdleClick } />
       </form>
     );
   }
 }
+
+AddMovie.propTypes = {
+  handdleClick: PropTypes.func,
+}.isRequired;
 
 export default AddMovie;

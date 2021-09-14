@@ -34,10 +34,22 @@ class MovieLibrary extends Component {
     selectedGenre: event.target.value,
   });
 
+  handdleClick = () => {
+    // const { onClick } = this.props;
+  }
+
   render() {
     const { movies: filmes } = this.state;
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
-    const { onSearchTextChange, onBookmarkedChange, onSelectedGenreChange } = this;
+    const {
+      onSearchTextChange,
+      onBookmarkedChange,
+      onSelectedGenreChange,
+      handdleClick,
+    } = this;
+    const filmesFiltrados = filmes
+      .filter((element) => element.title.includes(searchText))
+      .filter((element) => element.genre.includes(selectedGenre));
 
     return (
       <>
@@ -49,11 +61,8 @@ class MovieLibrary extends Component {
           onBookmarkedChange={ onBookmarkedChange }
           onSelectedGenreChange={ onSelectedGenreChange }
         />
-        { filmes
-          .filter((element) => element.title.includes(searchText))
-          .filter((element) => element.genre.includes(selectedGenre))
-          .map((element) => <MovieList movies={ element } key={ element.title } />) }
-        <AddMovie />
+        <MovieList movies={ filmesFiltrados } />
+        <AddMovie onClick={ handdleClick } />
       </>
     );
   }
