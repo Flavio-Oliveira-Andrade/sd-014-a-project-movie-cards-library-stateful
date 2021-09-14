@@ -8,8 +8,7 @@ const inicialState = {
   storyline: '',
   rating: '',
   genre: '',
-};// Referência: (Carlos Afonso Flach - https://github.com/tryber/sd-014-a-project-movie-cards-library-stateful/pull/88/commits/b4e0a60bfd09898afc714cfc73fa7856d4709f3a#)
-//
+};
 
 class AddMovie extends Component {
   constructor() {
@@ -22,11 +21,13 @@ class AddMovie extends Component {
     this.setState({
       [target.name]: value,
     });
+    // Referência: (Carlos Afonso Flach - https://github.com/tryber/sd-014-a-project-movie-cards-library-stateful/pull/88/commits/b4e0a60bfd09898afc714cfc73fa7856d4709f3a#)
+    //
   };
 
   render() {
     // const { OnClick } = this.props;
-    const { title, subtitle, image } = this.state;
+    const { title, subtitle, image, storyline } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="title" data-testid="title-input-label">
@@ -56,6 +57,16 @@ class AddMovie extends Component {
             name="image"
             value={ image }
             data-testid="image-input"
+            onChange={ this.handleChange }
+          />
+        </label>
+        <label data-testid="storyline-input-label" htmlFor="storyline">
+          Sinopse
+          <input
+            id="storyline"
+            name="storyline"
+            value={ storyline }
+            data-testid="storyline-input"
             onChange={ this.handleChange }
           />
         </label>
