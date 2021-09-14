@@ -1,4 +1,9 @@
 import React from 'react';
+import Subtitle from './createForms/Subtitle';
+import Title from './createForms/Title';
+import Image from './createForms/Image';
+import Textarea from './createForms/Textarea';
+import Rating from './createForms/Rating';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -12,51 +17,22 @@ class AddMovie extends React.Component {
       rating: 0,
       genre: 'action',
     };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   render() {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        <label htmlFor="title-input" data-testid="title-input-label">
-          Título
-          <input
-            name="title-input"
-            type="text"
-            data-testid="title-input"
-            onChange={ title }
-          />
-          { title }
-        </label>
-        <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            name="subtitle-input"
-            type="text"
-            data-testid="subtitle-input"
-            onChange={ subtitle }
-          />
-          {subtitle}
-        </label>
-        <label htmlFor="image-input" data-testid="image-input-label">
-          Imagem
-          <input
-            name="image-input"
-            type="text"
-            data-testid="image-input"
-            onChange={ imagePath }
-          />
-          { imagePath }
-        </label>
-        <label htmlFor="storyline-input" data-testid="storyline-input-label">
-          Sinopse
-          <textarea
-            name="storyline-input"
-            data-testid="storyline-input"
-            onChange={ storyline }
-          />
-          { storyline }
-        </label>
+        <Title title={ title } handleChange={ this.handleChange } />
+        <Subtitle subtitle={ subtitle } handleChange={ this.handleChange } />
+        <Image imagePath={ imagePath } handleChange={ this.handleChange } />
+        <Textarea storyline={ storyline } handleChange={ this.handleChange } />
+        <Rating rating={ rating } handleChange={ this.handleChange } />
       </form>
     );
   }
