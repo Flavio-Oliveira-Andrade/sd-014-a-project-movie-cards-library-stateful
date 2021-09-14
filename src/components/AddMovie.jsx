@@ -11,17 +11,19 @@ class AddMovie extends React.Component {
       storyline: '',
       rating: 0,
       genre: 'action',
-    }
+    };
   }
 
   render() {
+    const { onClick } = this.props;
+    const { subtitle, title, imagePath, storyline, rating, genre } = this.props;
     return (
       <section>
-        <form action="">
-          
+        <form data-testid="add-movie-form">
+
         </form>
       </section>
-    )
+    );
   }
 }
 
