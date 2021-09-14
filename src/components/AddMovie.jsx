@@ -45,7 +45,7 @@ class AddMovie extends React.Component {
   render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
-      <form data-testid="add-movie-form">
+      <form type="submit" ata-testid="add-movie-form">
         <TitleInput title={ title } handleChange={ this.handleChange } />
         <SubInput subtitle={ subtitle } handleChange={ this.handleChange } />
         <ImagePath ImagePath={ imagePath } handleChange={ this.handleChange } />
@@ -54,6 +54,7 @@ class AddMovie extends React.Component {
         <GenreInput genre={ genre } handleChange={ this.handleChange } />
         <button
           data-testid="send-button"
+          type="submit"
           onClick={ this.handleClick }
         >
           Adicionar filme

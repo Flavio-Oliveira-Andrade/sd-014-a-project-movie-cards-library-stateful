@@ -10,6 +10,7 @@ class Bar extends React.Component {
         <input
           type="text"
           name="searchText"
+          id="text-input"
           data-testid="text-input"
           value={ searchText }
           onChange={ onSearchTextChange }
