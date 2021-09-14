@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// OBS: refiz o projeto porque estava com 84% e com alguma mudança que não consegui localizar, o mesmo reduziu para 57%. 
+// OBS: refiz o projeto porque estava com 84% e com alguma mudança que não consegui localizar, o mesmo reduziu para 57%.
 // Refiz os itens do form dinamicamente para reduzir a quantidade de components para evitar novos erros.
 class AddMovie extends React.Component {
   constructor() {
