@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AddMovie from './AddMovie';
-import MovieCard from './MovieCard';
+import MovieList from './MovieList';
 import SearchBar from './SearchBar';
 import movies from '../data';
 
@@ -17,14 +17,9 @@ class MovieLibrary extends Component {
     };
   }
 
-  onSearchTextChange = (event) => {
-    const { filmes } = this.props;
-    const { searchText } = this.state;
-    this.setState({ [event.target.name]: event.target.value });
-    return this.setState({
-      movies: filmes.filter((element) => element.title.includes(searchText)),
-    });
-  }
+  onSearchTextChange = (event) => this.setState({
+    [event.target.name]: event.target.value,
+  });
 
   onBookmarkedChange = () => this.setState(() => {
     const { bookmarkedOnly } = this.state;
@@ -47,10 +42,17 @@ class MovieLibrary extends Component {
     return (
       <>
         <SearchBar
-          func={ { onSearchTextChange, onBookmarkedChange, onSelectedGenreChange } }
-          estados={ { searchText, bookmarkedOnly, selectedGenre } }
+          searchText={ searchText }
+          bookmarkedOnly={ bookmarkedOnly }
+          selectedGenre={ selectedGenre }
+          onSearchTextChange={ onSearchTextChange }
+          onBookmarkedChange={ onBookmarkedChange }
+          onSelectedGenreChange={ onSelectedGenreChange }
         />
-        { filmes.map((element) => <MovieCard movie={ element } key={ element.title } />) }
+        { filmes
+          .filter((element) => element.title.includes(searchText))
+          .filter((element) => element.genre.includes(selectedGenre))
+          .map((element) => <MovieList movies={ element } key={ element.title } />) }
         <AddMovie />
       </>
     );
