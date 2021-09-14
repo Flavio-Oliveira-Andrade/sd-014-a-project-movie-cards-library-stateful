@@ -2,43 +2,67 @@ import React, { Component } from 'react';
 import AddMovie from './AddMovie';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
-import movies from '../data';
-import MovieCard from './MovieCard';
 
 class MovieLibrary extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const { movies } = this.props;
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
       movies: movies,
     };
-    this.onSearchTextChange = this.onSearchTextChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.moviesFilter = this.moviesFilter.bind(this);
+    this.handleSum = this.handleSum.bind(this);
   }
 
-  handleSearchText(texto) {
-    movies.filter(({ title, subtitle, storyline }) => title.includes(texto)
-    || subtitle.includes(texto)
-    || storyline.includes(texto))
-      .map((movie) => <MovieCard key={ movie.title } movie={ movie } />);
-  }
-
-  onSearchTextChange(event) {
-    const { name, value } = event.target;
+  handleChange({ target }) {
+    const { name, type } = target;
+    const value = (type === 'checkbox' ? target.checked : target.value);
     this.setState({
       [name]: value,
     });
   }
 
+  handleSum(param) {
+    const { movies } = this.state;
+    this.setState({ movies: [...movies, param] });
+  }
+
+  moviesFilter() {
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    const generalFilter = movies.filter(({ title, subtitle, storyline }) => (
+      title.includes(searchText) || subtitle.includes(searchText)
+      || storyline.includes(searchText)
+    ));
+
+    let copyFilter = generalFilter;
+    if (bookmarkedOnly) {
+      copyFilter = generalFilter.filter(({ bookmarked }) => bookmarked);
+    }
+
+    return !bookmarkedOnly ? generalFilter
+      .filter(({ genre }) => genre.includes(selectedGenre))
+      : copyFilter.filter(({ genre }) => genre.includes(selectedGenre));
+  }
+
   render() {
-    const { searchText } = this.state;
-    const { onSearchTextChange } = this;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const { handleChange, moviesFilter, handleSum } = this;
     return (
       <div>
-        <SearchBar onSearchTextChange={ onSearchTextChange } searchText={ searchText } />
-        <MovieList movies={ movies } />
-        <AddMovie />
+        <SearchBar
+          onSearchTextChange={ handleChange }
+          searchText={ searchText }
+          bookmarkedOnly={ bookmarkedOnly }
+          selectedGenre={ selectedGenre }
+          onBookmarkedChange={ handleChange }
+          onSelectedGenreChange={ handleChange }
+        />
+        <MovieList movies={ moviesFilter() } />
+        <AddMovie onClick={ handleSum } />
       </div>
     );
   }

@@ -6,7 +6,7 @@ class Select extends Component {
     return (
       <div>
         <label htmlFor="genero" data-testid="genre-input-label">
-          gênero
+          Gênero
           <select
             id="genero"
             name="genre"

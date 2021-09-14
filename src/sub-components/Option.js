@@ -10,6 +10,7 @@ class Option extends Component {
           <select
             id="byGenre"
             data-testid="select-input"
+            name="selectedGenre"
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }
           >

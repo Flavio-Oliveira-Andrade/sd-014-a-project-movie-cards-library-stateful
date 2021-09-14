@@ -31,7 +31,9 @@ class AddMovie extends Component {
   }
 
   handleClick(event) {
+    const { onClick } = this.props;
     event.preventDefault();
+    onClick(this.state);
     this.setState(INITIAL_STATE);
   }
 
@@ -61,12 +63,12 @@ class AddMovie extends Component {
             name="imagePath"
           />
           <TextArea
-            title={ storyline }
+            storyline={ storyline }
             handleChange={ handleChange }
             customize="storyline"
           />
-          <InputNumber title={ rating } handleChange={ handleChange } />
-          <Select title={ genre } handleChange={ handleChange } />
+          <InputNumber rating={ rating } handleChange={ handleChange } />
+          <Select genre={ genre } handleChange={ handleChange } />
           <Button handleClick={ handleClick } />
         </form>
       </div>
