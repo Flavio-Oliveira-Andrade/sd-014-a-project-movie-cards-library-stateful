@@ -20,7 +20,7 @@ class MovieLibrary extends Component {
     this.handleMovie = this.handleMovie.bind(this);
   }
 
-//Tirei a ideia de um code review
+  //  Tirei a ideia de um code review
 
   handleSearchText({ target }) {
     this.setState({
