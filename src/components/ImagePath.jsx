@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 class ImagePath extends React.Component {
   render() {
     const { value, onChange } = this.props;
