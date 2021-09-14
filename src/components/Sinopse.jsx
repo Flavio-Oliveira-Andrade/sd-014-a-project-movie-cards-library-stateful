@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Sinopse extends React.Component {
   render() {
@@ -18,5 +19,10 @@ class Sinopse extends React.Component {
     );
   }
 }
+
+Sinopse.propTypes = {
+  storyline: PropTypes.string.isRequired,
+  handleClick: PropTypes.string.isRequired,
+};
 
 export default Sinopse;

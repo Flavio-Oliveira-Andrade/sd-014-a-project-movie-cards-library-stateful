@@ -21,7 +21,7 @@ class Avaliacao extends React.Component {
 
 Avaliacao.propTypes = {
   rating: PropTypes.number.isRequired,
-  handleClick: PropTypes.number.isRequired,
+  handleClick: PropTypes.string.isRequired,
 };
 
 export default Avaliacao;
