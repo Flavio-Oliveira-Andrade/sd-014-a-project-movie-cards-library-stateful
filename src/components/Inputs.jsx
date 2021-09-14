@@ -8,14 +8,14 @@ class Inputs extends React.Component {
     return (
       <label
         htmlFor={ name }
-        data-testid={ `${name}-input-label` }
+        data-testid={ name === 'imagePath' ? 'image-input-label' : `${name}-input-label` }
       >
         { labelText }
         <input
           type={ labelText === 'Avaliação' ? 'number' : 'text' }
           name={ name }
           value={ value }
-          data-testid={ `${name}-input` }
+          data-testid={ name === 'imagePath' ? 'image-input' : `${name}-input` }
           onChange={ handleChange }
         />
       </label>

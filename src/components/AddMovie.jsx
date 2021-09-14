@@ -8,15 +8,15 @@ import Select from './Select';
 const inicialState = {
   subtitle: '',
   title: '',
-  image: '',
+  imagePath: '',
   storyline: '',
   rating: 0,
   genre: '',
 };
 
 class AddMovie extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = inicialState;
     this.handleChange = this.handleChange.bind(this);
     this.sendState = this.handleState.bind(this);
@@ -31,21 +31,21 @@ class AddMovie extends React.Component {
   }
 
   handleState(event) {
-    event.preventDefault();
     const { onClick } = this.props;
-    onClick(this.state);
-    this.setState(() => ({
+    onClick();
+    event.preventDefault();
+    this.setState({
       subtitle: '',
       title: '',
       imagePath: '',
       storyline: '',
       rating: 0,
       genre: 'action',
-    }));
+    });
   }
 
   render() {
-    const { title, subtitle, image, storyline, rating, genre } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <Inputs
@@ -61,9 +61,9 @@ class AddMovie extends React.Component {
           labelText="Subtítulo"
         />
         <Inputs
-          name="image"
+          name="imagePath"
           handleChange={ this.handleChange }
-          value={ image }
+          value={ imagePath }
           labelText="Imagem"
         />
         <TextArea
@@ -99,5 +99,4 @@ class AddMovie extends React.Component {
 AddMovie.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
-
 export default AddMovie;
