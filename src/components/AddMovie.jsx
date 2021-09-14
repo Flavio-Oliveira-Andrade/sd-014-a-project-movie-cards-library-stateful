@@ -1,10 +1,10 @@
 import React from 'react';
-import TitleInput from './inputs/TitleInput';
-import SubInput from './inputs/SubInput';
-import ImagePath from './inputs/ImageInput';
-import TextareaInput from './inputs/Textarea';
-import RatingInput from './inputs/RatingInput';
-import GenreInput from './inputs/GenreInput';
+import TitleInput from './AddMInputs/TitleInput';
+import SubInput from './AddMInputs/SubInput';
+import ImagePath from './AddMInputs/ImageInput';
+import TextareaInput from './AddMInputs/Textarea';
+import RatingInput from './AddMInputs/RatingInput';
+import GenreInput from './AddMInputs/GenreInput';
 
 class AddMovie extends React.Component {
   constructor() {

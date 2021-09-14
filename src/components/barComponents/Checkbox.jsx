@@ -20,7 +20,7 @@ class Checkbox extends React.Component {
 }
 
 Checkbox.propTypes = {
-  bookMarkedOnly: PropTypes.bool,
-  onBookMarkedChange: PropTypes.func,
+  bookmarkedOnly: PropTypes.bool.isRequired,
+  onBookmarkedChange: PropTypes.func.isRequired,
 };
 export default Checkbox;
