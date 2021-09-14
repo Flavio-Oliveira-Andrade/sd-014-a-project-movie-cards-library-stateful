@@ -21,7 +21,7 @@ class Bar extends React.Component {
 }
 
 Bar.propTypes = {
-  onSearchTextChange: PropTypes.string.isRequired,
-  searchText: PropTypes.func.isRequired,
+  onSearchTextChange: PropTypes.func.isRequired,
+  searchText: PropTypes.string.isRequired,
 };
 export default Bar;
