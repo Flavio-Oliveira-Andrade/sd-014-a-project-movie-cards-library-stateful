@@ -5,7 +5,8 @@ class AddMovie extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handlechange = this.handlechange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
     this.state = {
       subtitle: '',
@@ -17,11 +18,25 @@ class AddMovie extends React.Component {
     };
   }
 
-  handlechange({ target }) {
+  handleChange({ target }) {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
+    });
+  }
+
+  handleClick(event) {
+    event.preventDefault();
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
     });
   }
 
@@ -32,14 +47,13 @@ class AddMovie extends React.Component {
         name={ name }
         data-testid={ id }
         value={ value }
-        onChange={ this.handlechange }
+        onChange={ this.handleChange }
       />
     );
   }
 
   render() {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
-    const { onClick } = this.props;
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="title" data-testid="title-input-label">
@@ -61,10 +75,11 @@ class AddMovie extends React.Component {
             data-testid="storyline-input"
             name="storyline"
             value={ storyline }
-            onChange={ storyline }
+            onChange={ this.handleChange }
           />
         </label>
         <label htmlFor="rating" data-testid="rating-input-label">
+          Avaliação
           { this.inputConstructor('number', 'rating', 'rating-input', rating) }
         </label>
         <label data-testid="genre-input-label" htmlFor="genre">
