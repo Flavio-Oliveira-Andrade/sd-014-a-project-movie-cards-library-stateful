@@ -26,46 +26,36 @@ class AddMovie extends React.Component {
     });
   }
 
+  inputs = (type, name, value, data) => ( // Ajuda do Filipe. src: https://github.com/tryber/sd-014-a-project-movie-cards-library-stateful/blob/filipe-andrade-santiago-movie-cards-library-stateful/src/components/AddMovie.jsx
+    <input
+      type={ type }
+      name={ name }
+      value={ value }
+      data-testid={ data }
+      onChange={ this.handleChange }
+    />
+  );
+
   render() {
     const { onClick } = this.props;
     const { title, subtitle, imagePath } = this.state;
 
     return (
       <form data-testid="add-movie-form">
+
         <label htmlFor="titulo" data-testid="title-input-label">
           Título
-          <input
-            type="text"
-            name="title"
-            value={ title }
-            id="titulo"
-            data-testid="title-input"
-            onChange={ this.handleChange }
-          />
+          { this.inputs('text', 'title', title, 'title-input') }
         </label>
 
         <label htmlFor="subtitulo" data-testid="subtitle-input-label">
           Subtítulo
-          <input
-            type="text"
-            name="subtitle"
-            id="subtitulo"
-            value={ subtitle }
-            data-testid="subtitle-input"
-            onChange={ this.handleChange }
-          />
+          { this.inputs('text', 'subtitle', subtitle, 'subtitle-input') }
         </label>
 
         <label htmlFor="imagem" data-testid="image-input-label">
           Imagem
-          <input
-            type="text"
-            name="imagePath"
-            id="imagem"
-            value={ imagePath }
-            data-testid="image-input"
-            onChange={ this.handleChange }
-          />
+          { this.inputs('text', 'imagePath', imagePath, 'image-input') }
         </label>
       </form>
     );
