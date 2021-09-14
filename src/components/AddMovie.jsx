@@ -14,9 +14,16 @@ class AddMovie extends Component {
       genre: 'action',
     }
   }
-  return (
-
-  )
+  render() {
+    return (
+      <form data-testid="add-movie-form">
+        <label htmlFor="" data-testid="title-input-label">
+          Título
+          <input type="text" data-testid="title-input"/>
+          </label>
+      </form>
+    )
+  }
 }
 
 export default AddMovie;
