@@ -3,13 +3,13 @@ import Title from './Title';
 import SubTitle from './SubTitle';
 import ImagePath from './ImagePath';
 import StoryLine from './StoryLine';
+import RatingForm from './RatingForm';
 
 class AddMovie extends Component {
   constructor() {
     super();
 
     this.state = {
-      // rating: 0,
       // genre: 'action',
     };
   }
@@ -21,6 +21,7 @@ class AddMovie extends Component {
         <SubTitle />
         <ImagePath />
         <StoryLine />
+        <RatingForm />
       </form>
     );
   }
