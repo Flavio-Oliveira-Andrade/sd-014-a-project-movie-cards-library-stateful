@@ -59,13 +59,13 @@ describe('6 - Crie um componente chamado `<AddMovie />`', () => {
   });
 });
 
-describe.skip('7 - Renderize um formulário dentro de `<AddMovie />`', () => {
+describe('7 - Renderize um formulário dentro de `<AddMovie />`', () => {
   it('Renderize 1, e apenas 1, form', () => {
     expect(form).toHaveLength(1);
   });
 });
 
-describe.skip('8 - Renderize um input do tipo texto dentro do formulário em `<AddMovie />` para obter o título do novo filme', () => {
+describe('8 - Renderize um input do tipo texto dentro do formulário em `<AddMovie />` para obter o título do novo filme', () => {
   it('Renderize um input de texto para quem usa escrever o titulo do filme', () => {
     expect(titleInput).toBeInTheDocument();
   });
