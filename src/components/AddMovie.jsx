@@ -3,6 +3,7 @@ import InputTitle from './formAddMovie/InputTitle';
 import InputSubtitle from './formAddMovie/InputSubtitle';
 import InputImagePath from './formAddMovie/InputImagePath';
 import TextareaStoryline from './formAddMovie/TextareaStoryline';
+import SelectGenre from './formAddMovie/SelectGenre';
 // import InputRating from './formAddMovie/InputRating';
 
 class AddMovie extends React.Component {
@@ -15,7 +16,7 @@ class AddMovie extends React.Component {
       inputImagePath: '',
       textareaStoryline: '',
       // inputRating: 0,
-      // inputGenre: 'action',
+      inputGenre: 'action',
     };
   }
 
@@ -33,7 +34,8 @@ class AddMovie extends React.Component {
   // }
 
   render() {
-    const { inputSubtitle, inputTitle, inputImagePath, textareaStoryline } = this.state;
+    const { inputSubtitle, inputTitle, inputImagePath,
+      textareaStoryline, inputGenre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <InputTitle
@@ -56,6 +58,10 @@ class AddMovie extends React.Component {
           inputRating={ inputRating }
           handleChange={ this.handleChangeInputRating }
         /> */}
+        <SelectGenre
+          inputGenre={ inputGenre }
+          handleChange={ this.handleChange }
+        />
       </form>
     );
   }
