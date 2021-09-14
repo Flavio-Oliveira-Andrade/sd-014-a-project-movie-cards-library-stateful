@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Image extends Component {
   render() {
@@ -20,5 +21,13 @@ class Image extends Component {
     );
   }
 }
+
+Image.propTypes = {
+  title: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  customize: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+};
 
 export default Image;

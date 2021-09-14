@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Option extends Component {
   render() {
@@ -24,5 +25,10 @@ class Option extends Component {
     );
   }
 }
+
+Option.propTypes = {
+  selectedGenre: PropTypes.string.isRequired,
+  onSelectedGenreChange: PropTypes.func.isRequired,
+};
 
 export default Option;
