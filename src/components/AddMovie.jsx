@@ -50,6 +50,17 @@ class AddMovie extends React.Component {
     />
   )
 
+  criarInputTextarea = (typeIn, nameIn, valueIn, dataIn) => (
+    <textarea
+      type={ typeIn }
+      onChange={ this.handleChange }
+      data-testid={ dataIn }
+      name={ nameIn }
+      id={ nameIn }
+      value={ valueIn }
+    />
+  )
+
   render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
@@ -64,7 +75,7 @@ class AddMovie extends React.Component {
         </label>
         <label htmlFor="rating" data-testid="rating-input-label">
           Avaliação
-          {this.criarInputPadrao('number', 'rating', rating, 'rating-input') }
+          {this.criarInputPadrao('number', 'rating', rating, 'rating-input')}
         </label>
         <label htmlFor="image" data-testid="image-input-label">
           Imagem
@@ -72,18 +83,13 @@ class AddMovie extends React.Component {
         </label>
         <label htmlFor="storyline" data-testid="storyline-input-label">
           Sinopse
-          <textarea
-            type="text"
-            onChange={ this.handleChange }
-            data-testid="storyline-input"
-            name="storyline"
-            id="storyline"
-            value={ storyline }
-          />
+          {this.criarInputTextarea('text', 'storyline', storyline, 'storyline-input')}
         </label>
         <label htmlFor="genre" data-testid="genre-input-label">
           Gênero
           <select
+            type="text"
+            name="genre"
             value={ genre }
             data-testid="genre-input"
             onChange={ this.handleChange }
@@ -93,7 +99,7 @@ class AddMovie extends React.Component {
             <option data-testid="genre-option" value="thriller">Suspense</option>
           </select>
         </label>
-        <button data-testid="send-button" onClick={ this.handleClick } type="button">
+        <button data-testid="send-button" onClick={ this.handleClick } type="submit">
           Adicionar filme
         </button>
       </form>
