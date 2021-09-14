@@ -23,15 +23,14 @@ class MovieLibrary extends React.Component {
   }
 
   // Essa parte do código tive a ajuda do Ilan Aragão para entender como implementar e o que cada elemento faz
-  handleChange({ target }) {
-    const { name } = target;
-    if (name.type === 'checkbox') {
+  handleChange(event) {
+    if (event.target.type === 'checkbox') {
       this.setState({
-        [name]: name.checked,
+        [event.target.name]: event.target.checked,
       });
     } else {
       this.setState({
-        [name]: name.value,
+        [event.target.name]: event.target.value,
       });
     }
   }
@@ -54,30 +53,36 @@ class MovieLibrary extends React.Component {
     } if (selectedGenre) {
       return movieFiltered.filter((movie) => movie.genre === selectedGenre);
     }
+    return movieFiltered;
   }
 
   render() {
     const { searchText, selectedGenre, bookmarkedOnly } = this.state;
-
     return (
-      <section>
+      <div>
         <SearchBar
           searchText={ searchText }
           onSearchTextChange={ this.handleChange }
           bookmarkedOnly={ bookmarkedOnly }
           onBookmarkedChange={ this.handleChange }
           selectedGenre={ selectedGenre }
-          onSlectedGenreChange={ this.handleChange }
+          onSelectedGenreChange={ this.handleChange }
         />
         <MovieList movies={ this.movieFilter(this.state) } />
-        <AddMovie onclick={ this.handleClick } />
-      </section>
+        <AddMovie onClick={ this.handleClick } />
+      </div>
     );
   }
 }
 
 MovieLibrary.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string.isRequired,
+    storyline: PropTypes.string.isRequired,
+    bookmarked: PropTypes.bool.isRequired,
+    genre: PropTypes.string.isRequired,
+  })).isRequired,
 };
 
 export default MovieLibrary;
