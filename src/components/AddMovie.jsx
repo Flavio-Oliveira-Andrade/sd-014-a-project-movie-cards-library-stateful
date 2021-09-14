@@ -5,21 +5,19 @@ import Inputs from './Inputs';
 import TextArea from './TextArea';
 import Select from './Select';
 
-const inicialState = {
-  subtitle: '',
-  title: '',
-  imagePath: '',
-  storyline: '',
-  rating: 0,
-  genre: '',
-};
-
 class AddMovie extends React.Component {
-  constructor() {
-    super();
-    this.state = inicialState;
+  constructor(props) {
+    super(props);
+    this.state = {
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: '',
+    };
     this.handleChange = this.handleChange.bind(this);
-    this.sendState = this.handleState.bind(this);
+    this.handleState = this.handleState.bind(this);
   }
 
   handleChange({ target }) {
@@ -32,8 +30,8 @@ class AddMovie extends React.Component {
 
   handleState(event) {
     const { onClick } = this.props;
-    onClick();
     event.preventDefault();
+    onClick(this.state);
     this.setState({
       subtitle: '',
       title: '',
@@ -85,7 +83,7 @@ class AddMovie extends React.Component {
           labelText="Gênero"
         />
         <button
-          type="submit"
+          type="button"
           data-testid="send-button"
           onClick={ this.handleState }
         >

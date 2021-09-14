@@ -1,4 +1,5 @@
 import React from 'react';
+// import AddMovie from './components/AddMovie';
 import Header from './components/Header';
 import MovieLibrary from './components/MovieLibrary';
 import movies from './data';

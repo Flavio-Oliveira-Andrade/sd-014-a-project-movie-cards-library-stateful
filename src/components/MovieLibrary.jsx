@@ -17,6 +17,7 @@ class MovieLibrary extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.moviesFilter = this.moviesFilter.bind(this);
+    this.handleNewMovie = this.handleNewMovie.bind(this);
   }
 
   handleChange({ target }) {
@@ -27,7 +28,13 @@ class MovieLibrary extends React.Component {
     });
   }
 
-  moviesFilter(moviesParam) { // Get help on Yasmin Souza pull.
+  handleNewMovie(newMovie) {
+    this.setState((previousState) => ({
+      movies: [...previousState.movies, { ...newMovie, bookmarked: true }],
+    }));
+  }
+
+  moviesFilter(moviesParam) { // Based on pull of Yasmin Souza
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     let moviesArray = [...moviesParam];
 
@@ -64,7 +71,7 @@ class MovieLibrary extends React.Component {
         <MovieList
           movies={ this.moviesFilter(movies) }
         />
-        <AddMovie onClick="" />
+        <AddMovie onClick={ this.handleNewMovie } />
       </div>
     );
   }
