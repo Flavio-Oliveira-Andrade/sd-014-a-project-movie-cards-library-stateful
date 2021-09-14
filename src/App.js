@@ -1,17 +1,24 @@
-import React from 'react';
-import Header from './components/Header';
-import './App.css';
-import SearchBar from './components/SearchBar';
-import AddMovie from './components/AddMovie';
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-      <SearchBar />
-      <AddMovie />
-    </div>
-  );
+import MovieList from './MovieList';
+import SearchBar from './SearchBar';
+import AddMovie from './AddMovie';
+
+class MovieLibrary extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <h2> My awesome movie library </h2>
+        <SearchBar />
+        <MovieList movies={this.props.movies} />
+        <AddMovie />
+      </div>
+    );
+  }
 }
 
-export default App;
+export default MovieLibrary;
