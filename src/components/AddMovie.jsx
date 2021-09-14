@@ -39,6 +39,30 @@ class AddMovie extends React.Component {
     );
   }
 
+  createInputText(name, value, data) {
+    return (
+      <input
+        type="text"
+        name={ name }
+        value={ value }
+        data-testid={ data }
+        onChange={ this.handleChange }
+      />
+    );
+  }
+
+  createInputNumber(name, value, data) {
+    return (
+      <input
+        type="number"
+        name={ name }
+        value={ value }
+        data-testid={ data }
+        onChange={ this.handleChange }
+      />
+    );
+  }
+
   render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
@@ -46,53 +70,23 @@ class AddMovie extends React.Component {
         <form data-testid="add-movie-form">
           <label data-testid="title-input-label" htmlFor="title">
             Título
-            <input
-              type="text"
-              name="title"
-              value={ title }
-              data-testid="title-input"
-              onChange={ this.handleChange }
-            />
+            {this.createInputText('title', title, 'title-input')}
           </label>
           <label data-testid="subtitle-input-label" htmlFor="subtitle">
             Subtítulo
-            <input
-              type="text"
-              name="subtitle"
-              value={ subtitle }
-              data-testid="subtitle-input"
-              onChange={ this.handleChange }
-            />
+            {this.createInputText('subtitle', subtitle, 'subtitle-input')}
           </label>
           <label data-testid="image-input-label" htmlFor="imagePath">
             Imagem
-            <input
-              type="text"
-              name="imagePath"
-              value={ imagePath }
-              data-testid="image-input"
-              onChange={ this.handleChange }
-            />
+            {this.createInputText('imagePath', imagePath, 'image-input')}
           </label>
           <label data-testid="storyline-input-label" htmlFor="storyline">
             Sinopse
-            <input
-              type="text"
-              name="storyline"
-              value={ storyline }
-              data-testid="storyline-input"
-              onChange={ this.handleChange }
-            />
+            {this.createInputText('storyline', storyline, 'storyline-input')}
           </label>
           <label data-testid="rating-input-label" htmlFor="rating">
             Avaliação
-            <input
-              type="number"
-              name="rating"
-              value={ rating }
-              data-testid="rating-input"
-              onChange={ this.handleChange }
-            />
+            {this.createInputNumber('rating', rating, 'rating-input')}
           </label>
           <label data-testid="genre-input-label" htmlFor="genre">
             Gênero
