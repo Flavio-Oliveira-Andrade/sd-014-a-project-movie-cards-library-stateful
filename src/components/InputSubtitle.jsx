@@ -22,7 +22,7 @@ class InputSubtitle extends React.Component {
 
 InputSubtitle.propTypes = {
   value: PropTypes.string,
-  onChange: PropTypes.string,
+  onChange: PropTypes.func,
 }.isRequired;
 
 export default InputSubtitle;
