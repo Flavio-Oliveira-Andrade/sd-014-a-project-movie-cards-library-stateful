@@ -4,18 +4,19 @@ import InputSubtitle from './formAddMovie/InputSubtitle';
 import InputImagePath from './formAddMovie/InputImagePath';
 import TextareaStoryline from './formAddMovie/TextareaStoryline';
 import SelectGenre from './formAddMovie/SelectGenre';
-// import InputRating from './formAddMovie/InputRating';
+import InputRating from './formAddMovie/InputRating';
 
 class AddMovie extends React.Component {
   constructor() {
     super();
     this.handleChange = this.handleChange.bind(this);
+    // this.handleChangeInputRating = this.handleChangeInputRating.bind(this);
     this.state = {
       inputSubtitle: '',
       inputTitle: '',
       inputImagePath: '',
       textareaStoryline: '',
-      // inputRating: 0,
+      inputRating: 0,
       inputGenre: 'action',
     };
   }
@@ -29,13 +30,15 @@ class AddMovie extends React.Component {
   // handleChangeInputRating({ target }) {
   //   const { name } = target;
   //   let value = target.value;
-  //   if( value !== null || value !== '') value = parseInt(target.value);
+  //   if( value !== null || value !== '') {
+  //     value = parseFloat(target.value);
+  //   }
   //   this.setState({ [name]: value });
   // }
 
   render() {
     const { inputSubtitle, inputTitle, inputImagePath,
-      textareaStoryline, inputGenre } = this.state;
+      textareaStoryline, inputRating, inputGenre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <InputTitle
@@ -54,14 +57,15 @@ class AddMovie extends React.Component {
           textareaStoryline={ textareaStoryline }
           handleChange={ this.handleChange }
         />
-        {/* <InputRating
+        <InputRating
           inputRating={ inputRating }
-          handleChange={ this.handleChangeInputRating }
-        /> */}
+          handleChange={ this.handleChange }
+        />
         <SelectGenre
           inputGenre={ inputGenre }
           handleChange={ this.handleChange }
         />
+        <button type="submit" data-testid="send-button">Adicionar filme</button>
       </form>
     );
   }

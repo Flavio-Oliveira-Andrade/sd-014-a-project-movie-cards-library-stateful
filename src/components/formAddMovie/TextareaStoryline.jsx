@@ -12,10 +12,9 @@ class TextareaStoryline extends React.Component {
             name="textareaStoryline"
             id="textareaStoryline"
             data-testid="storyline-input"
+            value={ textareaStoryline }
             onChange={ handleChange }
-          >
-            { textareaStoryline }
-          </textarea>
+          />
         </label>
       </div>
     );

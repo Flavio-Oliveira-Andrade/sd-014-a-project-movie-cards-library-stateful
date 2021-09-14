@@ -21,8 +21,9 @@ class MovieLibrary extends React.Component {
     this.setState({ [name]: value }); // interpolando o valor da variável para ser o nome da chave do objeto
   }
 
-  handleClick() {
-
+  handleClick(event) {
+    event.preventDefault();
+    console.log(event);
   }
 
   render() {
