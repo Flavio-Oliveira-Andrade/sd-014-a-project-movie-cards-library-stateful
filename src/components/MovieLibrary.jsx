@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
-import AddMovie from './AddMovie';
+// import AddMovie from './AddMovie';
 import MovieList from './MovieList';
 
 class MovieLibrary extends React.Component {
@@ -16,7 +16,7 @@ class MovieLibrary extends React.Component {
       movies,
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleNewMovie = this.handleNewMovie.bind(this);
+    this.moviesFilter = this.moviesFilter.bind(this);
   }
 
   handleChange({ target }) {
@@ -27,31 +27,26 @@ class MovieLibrary extends React.Component {
     });
   }
 
-  handleNewMovie(movie) {
-    this.setState(({ movies }) => ({
-      movies: [...movies, movie],
-    }));
-  }
+  moviesFilter(moviesParam) { // Get help on Yasmin Souza pull.
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    let moviesArray = [...moviesParam];
 
-  moviesFilter = () => {
-    // const { searchText, bookmarkedOnly, selectedGenre, movies, arrayMovies } = this.state;
-    // let array = movies;
-    // if (searchText !== '') {
-    //   array = array.filter((movie) => (
-    //     (movie.title.toLowerCase().includes(searchText.toLowerCase())
-    //     || movie.subtitle.toLowerCase().includes(searchText.toLowerCase())
-    //     || movie.storyline.toLowerCase().includes(searchText.toLowerCase()))
-    //   ));
-    // }
-    // if (bookmarkedOnly !== false) {
-    //   array = array.filter((movie) => movie.bookmarked);
-    // }
-    // if (selectedGenre !== '') {
-    //   array = array.filter((movie) => movie.genre === selectedGenre);
-    // }
-    // this.setState(arrayMovies, () => ({
-    //   arrayMovies: array,
-    // }));
+    if (searchText) {
+      moviesArray = moviesParam.filter((movie) => movie.title
+        .toLowerCase().includes(searchText.toLowerCase())
+        || movie.subtitle.toLowerCase().includes(searchText.toLocaleLowerCase())
+        || movie.storyline.toLowerCase().includes(searchText.toLocaleLowerCase()));
+    }
+
+    if (selectedGenre) {
+      moviesArray = moviesParam.filter((genre) => genre.genre.includes(selectedGenre));
+    }
+
+    if (bookmarkedOnly) {
+      moviesArray = moviesParam.filter((favoriteMovie) => favoriteMovie.bookmarked
+      === true);
+    }
+    return moviesArray;
   }
 
   render() {
@@ -67,9 +62,9 @@ class MovieLibrary extends React.Component {
           onSelectedGenreChange={ this.handleChange }
         />
         <MovieList
-          movies={ movies }
+          movies={ this.moviesFilter(movies) }
         />
-        <AddMovie />
+        {/* <AddMovie onClick="" /> */}
       </div>
     );
   }
