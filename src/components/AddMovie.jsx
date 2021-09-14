@@ -38,8 +38,7 @@ class AddMovie extends React.Component {
 
   render() {
     const { onClick } = this.props;
-    const { title, subtitle, imagePath, storyLine, rating } = this.state;
-
+    const { title, subtitle, imagePath, storyLine, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
 
@@ -67,13 +66,22 @@ class AddMovie extends React.Component {
             data-testid="storyline-input"
             onChange={ this.handleChange }
           >
-            { storyLine }
+            { storyLine /* src:https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/textarea */ }
           </textarea>
         </label>
 
         <label htmlFor="avaliacao" data-testid="rating-input-label">
           Avaliação
           { this.inputs('number', 'rating', rating, 'rating-input') }
+        </label>
+
+        <label htmlFor="genero" data-testid="genre-input-label">
+          Gênero
+          <select data-testid="genre-input">
+            <option value="action" data-testid="genre-option" selected>Ação</option>
+            <option value="comedy" data-testid="genre-option">Comédia</option>
+            <option value="thriller" data-testid="genre-option">Suspense</option>
+          </select>
         </label>
       </form>
     );
