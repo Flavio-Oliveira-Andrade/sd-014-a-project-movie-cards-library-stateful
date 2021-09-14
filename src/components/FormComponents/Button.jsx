@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 class Button extends Component {
   render() {
-    const { state } = this.props;
+    const { state, onClick } = this.props;
     return (
-      <button value={ state } type="submit" data-testid="send-button">
+      <button value={ state } type="submit" data-testid="send-button" onClick={ onClick }>
         Adicionar filme
       </button>
     );

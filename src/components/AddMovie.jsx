@@ -39,7 +39,10 @@ class AddMovie extends Component {
         <Storyline storyline={ storyline } haddleChange={ this.handdleChange } />
         <Rating rating={ rating } haddleChange={ this.handdleChange } />
         <Genre genre={ genre } haddleChange={ this.handdleChange } />
-        <Button onClick={ onClick } state={ this.state } />
+        <Button
+          onClick={ onClick }
+          state={ { title, subtitle, imagePath, storyline, rating, genre } }
+        />
       </form>
     );
   }

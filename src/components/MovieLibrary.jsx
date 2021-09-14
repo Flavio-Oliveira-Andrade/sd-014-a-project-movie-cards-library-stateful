@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import AddMovie from './AddMovie';
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
-import movies from '../data';
 
 class MovieLibrary extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const { movies } = props;
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
@@ -36,11 +36,11 @@ class MovieLibrary extends Component {
 
   handdleClick = (event) => {
     event.preventDefault();
-    return this.setState({ movies: event.target.value });
+    this.setState((prevState) => ({ movies: prevState.movies.push(event.target.value) }));
   }
 
   render() {
-    const { movies: filmes } = this.state;
+    const { movies } = this.state;
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     const {
       onSearchTextChange,
@@ -48,8 +48,10 @@ class MovieLibrary extends Component {
       onSelectedGenreChange,
       handdleClick,
     } = this;
-    const filmesFiltrados = filmes
-      .filter((element) => element.title.includes(searchText))
+
+    const filmesFiltrados = movies
+      .filter((element) => element.title.includes(searchText)
+      || element.subtitle.includes(searchText) || element.storyline.includes(searchText))
       .filter((element) => element.genre.includes(selectedGenre));
 
     return (
