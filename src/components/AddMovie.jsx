@@ -1,5 +1,10 @@
 import React from 'react';
 import InputTitle from './InputTitle';
+import InputSubTitle from './InputSubTitle';
+import InputImage from './InputImage';
+import InputStoryLine from './InputStoryLine';
+import InputRating from './InputRating';
+import InputGenre from './InputGenre';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -29,6 +34,11 @@ class AddMovie extends React.Component {
       <main>
         <form data-testid="add-movie-form">
           <InputTitle title={ title } handleChange={ this.handleChange } />
+          <InputSubTitle title={ subtitle } handleChange={ this.handleChange } />
+          <InputImage title={ imagePath } handleChange={ this.handleChange } />
+          <InputStoryLine title={ storyline } handleChange={ this.handleChange } />
+          <InputRating title={ rating } handleChange={ this.handleChange } />
+          <InputGenre title={ genre } handleChange={ this.handleChange } />
         </form>
       </main>
     );
