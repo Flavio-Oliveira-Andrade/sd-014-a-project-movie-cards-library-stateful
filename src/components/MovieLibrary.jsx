@@ -34,8 +34,9 @@ class MovieLibrary extends Component {
     selectedGenre: event.target.value,
   });
 
-  handdleClick = () => {
-    // const { onClick } = this.props;
+  handdleClick = (event) => {
+    event.preventDefault();
+    return this.setState({ movies: event.target.value });
   }
 
   render() {

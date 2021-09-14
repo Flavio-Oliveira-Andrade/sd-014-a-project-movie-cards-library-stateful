@@ -30,16 +30,16 @@ class AddMovie extends Component {
 
   render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
-    const { handdleClick } = this.props;
+    const { onClick } = this.props;
     return (
-      <form data-testid="add-movie-form">
+      <form data-testid="add-movie-form" onSubmit={ onClick }>
         <Title title={ title } haddleChange={ this.handdleChange } />
         <Subtitle subtitle={ subtitle } haddleChange={ this.handdleChange } />
         <ImagePath imagePath={ imagePath } haddleChange={ this.handdleChange } />
         <Storyline storyline={ storyline } haddleChange={ this.handdleChange } />
         <Rating rating={ rating } haddleChange={ this.handdleChange } />
         <Genre genre={ genre } haddleChange={ this.handdleChange } />
-        <Button onClick={ handdleClick } />
+        <Button onClick={ onClick } state={ this.state } />
       </form>
     );
   }
