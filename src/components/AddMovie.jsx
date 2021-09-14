@@ -13,10 +13,61 @@ class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     };
+    this.state = this.initialState;
+    // this.textInput = this.textInput.bind(this);
+    // this.subtitleInput = this.subtitleInput.bind(this);
+    // this.imageInput = this.imageInput.bind(this);
+    // this.textAreaInput = this.textAreaInput.bind(this);
+    // this.clickButton = this.clickButton.bind(this);
   }
 
+  textInput = () => (
+    <input
+      id="text-input"
+      type="text"
+      data-testid="title-input"
+      value={ title }
+      onChange={ title }
+    />
+  );
+
+  subtitleInput = () => (
+    <input
+      type="text"
+      value={ subtitle }
+      data-testid="subtitle-input"
+      onChange={ subtitle }
+      id="subtitle-input"
+    />
+  );
+
+  imageInput = () => (
+    <input
+      type="text"
+      data-testid="image-input"
+      onChange={ imagePath }
+      id="image-input"
+    />
+  );
+
+  textAreaInput = () => (
+    <textarea
+      id="textarea"
+      value={ storyline }
+      onChance={ storyline }
+      data-testid="storyline-input"
+      rows="4"
+      cols="50"
+    />
+  );
+
   clickButton(event) {
-    
+    // https://pt-br.reactjs.org/docs/handling-events.html
+    const { onClick } = this.props;
+
+    event.preventDefault();
+    onClick(this.state);
+    this.setState(this.initialState);
   }
 
   render() {
@@ -25,43 +76,19 @@ class AddMovie extends Component {
       <form data-testid="add-movie-form">
         <label htmlFor="text-input" data-testid="title-input-label">
           Título
-          <input
-            id="text-input"
-            type="text"
-            data-testid="title-input"
-            value={ title }
-            onChange={ title }
-          />
+          {this.textInput()}
         </label>
         <label data-testid="subtitle-input-label" htmlFor="subtitle-input">
           Subtítulo
-          <input
-            type="text"
-            value={ subtitle }
-            data-testid="subtitle-input"
-            onChange={ subtitle }
-            id="subtitle-input"
-          />
+          {this.subtitleInput()}
         </label>
         <label htmlFor="image-input" data-testid="image-input-label">
           Imagem
-          <input
-            type="text"
-            data-testid="image-input"
-            onChange={ imagePath }
-            id="image-input"
-          />
+          {this.imageInput()}
         </label>
         <label htmlFor="textarea" data-testid="storyline-input-label">
           Sinopse
-          <textarea
-            id="textarea"
-            value={ storyline }
-            onChance={ storyline }
-            data-testid="storyline-input"
-            rows="4"
-            cols="50"
-          />
+          {this.textAreaInput()}
         </label>
         <label htmlFor="number" data-testid="rating-input-label">
           Avaliação
@@ -81,10 +108,18 @@ class AddMovie extends Component {
             <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
-        <button data-testid="send-button" onClick={ clickButton }></button>
+        <button
+          data-testid="send-button"
+          onClick={ clickButton }
+          type="submit"
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
 }
+
+AddMovie.propTypes = { onClick: PropTypes.func.isRequired };
 
 export default AddMovie;
