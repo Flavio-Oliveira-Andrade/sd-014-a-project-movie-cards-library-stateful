@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Title from './Title';
 import SubTitle from './SubTitle';
 import ImagePath from './ImagePath';
 import StoryLine from './StoryLine';
 import RatingForm from './RatingForm';
 import Genre from './Genre';
+import Button from './Button';
 
 class AddMovie extends Component {
   constructor() {
@@ -20,11 +22,26 @@ class AddMovie extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value,
+    });
+  }
+
+  handleClick(event) {
+    event.preventDefault();
+    const { onClick } = this.props;
+    onClick();
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
     });
   }
 
@@ -38,9 +55,14 @@ class AddMovie extends Component {
         <StoryLine value={ storyline } onChange={ this.handleChange } />
         <RatingForm value={ rating } onChange={ this.handleChange } />
         <Genre value={ genre } onChange={ this.handleChange } />
+        <Button onClick={ this.handleClick } />
       </form>
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 
 export default AddMovie;
