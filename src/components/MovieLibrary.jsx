@@ -74,16 +74,16 @@ class MovieLibrary extends Component {
     const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     return (
       <div className="ah-main">
+        <SearchBar
+          data-testid="search-bar-form"
+          searchText={ searchText }
+          onSearchTextChange={ this.onSearchTextChange }
+          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.onBookmarkedChange }
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ this.onSelectedGenreChange }
+        />
         <nav className="ah-sidenav">
-          <SearchBar
-            data-testid="search-bar-form"
-            searchText={ searchText }
-            onSearchTextChange={ this.onSearchTextChange }
-            bookmarkedOnly={ bookmarkedOnly }
-            onBookmarkedChange={ this.onBookmarkedChange }
-            selectedGenre={ selectedGenre }
-            onSelectedGenreChange={ this.onSelectedGenreChange }
-          />
           <br />
           <AddMovie onClick={ this.addMovie } />
         </nav>
