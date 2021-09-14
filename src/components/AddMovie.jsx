@@ -5,6 +5,7 @@ import Image from './createForms/Image';
 import Textarea from './createForms/Textarea';
 import Rating from './createForms/Rating';
 import Genre from './createForms/Genre';
+import Button from './createForms/Button';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -19,10 +20,25 @@ class AddMovie extends React.Component {
       genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
+  }
+
+  handleClick(event) {
+    event.preventDefault();
+    const { onClick } = this.props;
+    onClick();
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
   }
 
   render() {
@@ -35,6 +51,7 @@ class AddMovie extends React.Component {
         <Textarea storyline={ storyline } handleChange={ this.handleChange } />
         <Rating rating={ rating } handleChange={ this.handleChange } />
         <Genre genre={ genre } handleChange={ this.handleChange } />
+        <Button handleClick={ this.handleClick } />
       </form>
     );
   }
