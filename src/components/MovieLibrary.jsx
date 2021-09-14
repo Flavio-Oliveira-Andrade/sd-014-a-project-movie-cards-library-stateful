@@ -17,6 +17,21 @@ class MovieLibrary extends React.Component {
     };
 
     this.movieFilter = this.movieFilter.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  // Essa parte do código tive a ajuda do Ilan Aragão para entender como implementar e o que cada elemento faz
+  handleChange({ target }) {
+    const { name } = target;
+    if (name.type === 'checkbox') {
+      this.setState({
+        [name]: name.checked,
+      });
+    } else {
+      this.setState({
+        [name]: name.value,
+      });
+    }
   }
 
   movieFilter({ movies, searchText, bookmarkedOnly, selectedGenre }) {
