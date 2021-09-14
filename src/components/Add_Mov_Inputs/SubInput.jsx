@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class SubInput extends React.Component {
   render() {
@@ -19,4 +20,8 @@ class SubInput extends React.Component {
   }
 }
 
+SubInput.propTypes = {
+  subtitle: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+};
 export default SubInput;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class GenreInput extends React.Component {
   render() {
@@ -22,5 +23,10 @@ class GenreInput extends React.Component {
     );
   }
 }
+
+GenreInput.propTypes = {
+  genre: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+};
 
 export default GenreInput;
