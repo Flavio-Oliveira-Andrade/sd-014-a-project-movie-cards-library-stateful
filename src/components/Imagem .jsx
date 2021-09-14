@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Imagem extends React.Component {
   render() {
@@ -17,5 +18,10 @@ class Imagem extends React.Component {
     );
   }
 }
+
+Imagem.propTypes = {
+  imagePath: PropTypes.string.isRequired,
+  handleClick: PropTypes.string.isRequired,
+};
 
 export default Imagem;

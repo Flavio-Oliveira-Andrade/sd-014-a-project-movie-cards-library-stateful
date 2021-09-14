@@ -4,6 +4,7 @@ import Titulo from './Titulo';
 import Subtitulo from './Subtitulo';
 import Sinopse from './Sinopse';
 import Imagem from './Imagem ';
+import Avaliacao from './Avaliacao';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -34,18 +35,20 @@ class AddMovie extends React.Component {
       storyline,
       rating,
       genre } = this.state;
-    const {
-      handleClick,
-    } = this.props;
     return (
       <form data-testid="add-movie-form">
-        <Titulo value={ title } handleClick={ handleClick } />
-        <Subtitulo value={ subtitle } handleClick={ handleClick } />
-        <Imagem value={ imagePath } handleClick={ handleClick } />
-        <Sinopse defaultValue={ storyline } handleClick={ handleClick } />
+        <Titulo value={ title } handleClick={ this.handleClick } />
+        <Subtitulo value={ subtitle } handleClick={ this.handleClick } />
+        <Imagem value={ imagePath } handleClick={ this.handleClick } />
+        <Sinopse defaultValue={ storyline } handleClick={ this.handleClick } />
+        <Avaliacao rating={ rating } handleClick={ this.handleClick } />
       </form>
     );
   }
 }
+
+AddMovie.propTypes = {
+  handleClick: PropTypes.string.isRequired,
+};
 
 export default AddMovie;
