@@ -48,6 +48,17 @@ class AddMovie extends Component {
             id="image-input"
           />
         </label>
+        <label htmlFor="textarea" data-testid="storyline-input-label">
+          Sinopse
+          <textarea
+            id="textarea"
+            value={ storyline }
+            onChance={ storyline }
+            data-testid="storyline-input"
+            rows="4"
+            cols="50"
+          />
+        </label>
       </form>
     );
   }
