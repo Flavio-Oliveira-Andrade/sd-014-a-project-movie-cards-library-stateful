@@ -56,28 +56,30 @@ class AddMovie extends React.Component {
       <form data-testid="add-movie-form">
         <label htmlFor="title" data-testid="title-input-label">
           Título
-          { this.criarInputPadrao('text', 'title', title, 'title-input') }
+          {this.criarInputPadrao('text', 'title', title, 'title-input')}
         </label>
         <label htmlFor="subtitle" data-testid="subtitle-input-label">
           Subtítulo
-          { this.criarInputPadrao('text', 'subtitle', subtitle, 'subtitle-input') }
+          {this.criarInputPadrao('text', 'subtitle', subtitle, 'subtitle-input')}
         </label>
         <label htmlFor="rating" data-testid="rating-input-label">
           Avaliação
-          { this.criarInputPadrao('rating', 'number', rating, 'rating-input') }
+          {this.criarInputPadrao('rating', 'number', rating, 'rating-input')}
         </label>
         <label htmlFor="image" data-testid="image-input-label">
           Imagem
-          { this.criarInputPadrao('text', 'imagePath', imagePath, 'image-input') }
+          {this.criarInputPadrao('text', 'imagePath', imagePath, 'image-input')}
         </label>
         <label htmlFor="storyline" data-testid="storyline-input-label">
           Sinopse
-          {
-            this.criarInputPadrao('textarea',
-              'storyline',
-              storyline,
-              'storyline-inputl')
-          }
+          <textarea
+            type="text"
+            onChange={ this.handleChange }
+            data-testid="storyline-input"
+            name="storyline"
+            id="storyline"
+            value={ storyline }
+          />
         </label>
         <label htmlFor="genre" data-testid="genre-input-label">
           Gênero
