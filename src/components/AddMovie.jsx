@@ -7,19 +7,21 @@ import InputStorylineAddMovie from './InputStorylineAddMovie';
 import InputRatingAddMovie from './InputRatingAddMovie';
 import SelectGenreAddMovie from './SelectGenreAddMovie';
 import InputImgAddMovie from './InputImgAddMovie';
-import ButtonAddMovie from './ButtonAddMovie';
+
+const initialState = {
+  subtitle: '',
+  title: '',
+  imagePath: '',
+  storyline: '',
+  rating: 0,
+  genre: 'action',
+};
 
 class AddMovie extends React.Component {
   constructor() {
     super();
-    this.state = {
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    };
+    this.state = initialState;
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -29,7 +31,7 @@ class AddMovie extends React.Component {
     this.setState({ [name]: value });
   }
 
-  handleSubmit = (event) => {
+  handleSubmit(event) {
     event.preventDefault();
     const { onClick } = this.props;
     onClick(this.state);
@@ -41,19 +43,25 @@ class AddMovie extends React.Component {
       rating: 0,
       genre: 'action',
     });
-  };
+  }
 
   render() {
-    const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
-      <form data-testid="add-movie-form">
+      <form data-testid="add-movie-form" onSubmit={ this.handleSubmit }>
         <InputTitleAddMovie value={ title } onChange={ this.handleChange } />
         <InputSubtitleAddMovie value={ subtitle } onChange={ this.handleChange } />
         <InputImgAddMovie value={ imagePath } onChange={ this.handleChange } />
         <InputStorylineAddMovie value={ storyline } onChange={ this.handleChange } />
         <InputRatingAddMovie value={ rating } onChange={ this.handleChange } />
         <SelectGenreAddMovie value={ genre } onChange={ this.handleChange } />
-        <ButtonAddMovie onClick={ this.handleSubmit } />
+        <button
+          type="submit"
+          data-testid="send-button"
+          onClick={ this.handleSubmit }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }

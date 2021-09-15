@@ -12,6 +12,7 @@ class InputRatingAddMovie extends React.Component {
           value={ value }
           onChange={ onChange }
           data-testid="rating-input"
+          name="rating"
         />
       </label>
     );

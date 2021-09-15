@@ -12,6 +12,7 @@ class InputSubtitleAddMovie extends React.Component {
           value={ value }
           onChange={ onChange }
           data-testid="subtitle-input"
+          name="subtitle"
         />
       </label>
     );

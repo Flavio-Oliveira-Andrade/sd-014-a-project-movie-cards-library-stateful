@@ -12,6 +12,7 @@ class InputImgAddMovie extends React.Component {
           value={ value }
           onChange={ onChange }
           data-testid="image-input"
+          name="imagePath"
         />
       </label>
     );

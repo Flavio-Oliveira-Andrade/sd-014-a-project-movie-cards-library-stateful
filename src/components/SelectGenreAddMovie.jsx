@@ -7,7 +7,12 @@ class SelectGenreAddMovie extends React.Component {
     return (
       <label htmlFor="genreLabel" data-testid="genre-input-label">
         Gênero
-        <select data-testid="genre-input" value={ value } onChange={ onChange }>
+        <select
+          data-testid="genre-input"
+          value={ value }
+          onChange={ onChange }
+          name="genre"
+        >
           <option value="action" data-testid="genre-option">
             Ação
           </option>

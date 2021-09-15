@@ -11,6 +11,7 @@ class InputStorylineAddMovie extends React.Component {
           data-testid="storyline-input"
           value={ value }
           onChange={ onChange }
+          name="storyline"
         />
       </label>
     );
