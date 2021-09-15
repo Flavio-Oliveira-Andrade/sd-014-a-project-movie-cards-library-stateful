@@ -82,7 +82,7 @@ class AddMovie extends React.Component {
               value={ genre }
               data-testid="genre-input"
               onChange={ this.handleChange }
-              name= 'genre' 
+              name="genre"
             >
               <option data-testid="genre-option" value="action">Ação</option>
               <option data-testid="genre-option" value="comedy">Comédia</option>
@@ -94,7 +94,6 @@ class AddMovie extends React.Component {
           </button>
         </form>
       </div>
-
     );
   }
 }
