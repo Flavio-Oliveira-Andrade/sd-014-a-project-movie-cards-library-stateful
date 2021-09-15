@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class ImagePath extends React.Component {
   render() {
-    const { imagePath, onClick } = this.props;
+    const { value, onChange } = this.props;
     return (
       <label htmlFor="ImagePath">
         ImagePath
@@ -11,8 +11,8 @@ class ImagePath extends React.Component {
           id="ImagePath"
           name="imagePath"
           type="text"
-          value={ imagePath }
-          onChange={ onClick }
+          value={ value }
+          onChange={ onChange }
         />
       </label>
     );
@@ -20,8 +20,8 @@ class ImagePath extends React.Component {
 }
 
 ImagePath.propTypes = {
-  imagePath: PropTypes.string.isRequired,
-  onClick: onChange.func.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default ImagePath;

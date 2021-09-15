@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Subtitle from './Subtitle';
 import Title from './Title';
 import ImagePath from './ImagePath';
@@ -7,7 +6,7 @@ import ImagePath from './ImagePath';
 class AddMovie extends React.Component {
   constructor() {
     super();
-
+    this.handleChange = this.handleChange.bind(this);
     this.state = {
       subtitle: '',
       title: '',
@@ -18,24 +17,30 @@ class AddMovie extends React.Component {
     };
   }
 
+  handleChange({ target }) {
+    const { name } = target;
+    const { value } = target;
+    this.setState({
+      [name]: value,
+    });
+  }
+
   render() {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
-
-    const { onClick } = this.props;
 
     return (
       <div>
         <form>
-          <Subtitle subtitle={ subtitle } />
-          <Title title={ title } />
-          <ImagePath imagePath={ imagePath } />
+          <Subtitle value={ subtitle } onChange={ this.handleChange } />
+          <Title value={ title } onChange={ this.handleChange } />
+          <ImagePath value={ imagePath } onChange={ this.handleChange } />
           <label htmlFor="storyline">
             <input
               id="storyline"
               name="storyline"
               type="text"
               value={ storyline }
-              onChange={ onClick }
+              onChange={ this.handleChange }
             />
           </label>
           <label htmlFor="rating">
@@ -44,7 +49,7 @@ class AddMovie extends React.Component {
               name="rating"
               type="number"
               value={ rating }
-              onChange={ onClick }
+              onChange={ this.handleChange }
             />
           </label>
           <label htmlFor="genre">
@@ -53,7 +58,7 @@ class AddMovie extends React.Component {
               name="genre"
               type="string"
               value={ genre }
-              onChange={ onClick }
+              onChange={ this.handleChange }
             />
           </label>
         </form>
@@ -61,9 +66,5 @@ class AddMovie extends React.Component {
     );
   }
 }
-
-AddMovie.propTypes = {
-  onClick: PropTypes.func.isRequired,
-};
 
 export default AddMovie;

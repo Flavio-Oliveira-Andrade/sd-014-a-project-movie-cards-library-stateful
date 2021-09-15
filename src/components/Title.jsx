@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Title extends React.Component {
   render() {
-    const { title, onClick } = this.props;
+    const { value, onChange } = this.props;
     return (
       <label htmlFor="title">
         Subtitle
@@ -11,8 +11,8 @@ class Title extends React.Component {
           id="title"
           name="title"
           type="text"
-          value={ title }
-          onChange={ onClick }
+          value={ value }
+          onChange={ onChange }
         />
       </label>
     );
@@ -20,8 +20,8 @@ class Title extends React.Component {
 }
 
 Title.propTypes = {
-  title: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Title;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Subtitle extends React.Component {
   render() {
-    const { subtitle, onClick } = this.props;
+    const { value, onChange } = this.props;
     return (
       <label htmlFor="subtitle">
         Subtitle
@@ -11,8 +11,8 @@ class Subtitle extends React.Component {
           id="subtitle"
           name="subtitle"
           type="text"
-          value={ subtitle }
-          onChange={ onClick }
+          value={ value }
+          onChange={ onChange }
         />
       </label>
     );
@@ -20,8 +20,8 @@ class Subtitle extends React.Component {
 }
 
 Subtitle.propTypes = {
-  subtitle: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Subtitle;
