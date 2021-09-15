@@ -32,9 +32,11 @@ class AddMovie extends Component {
   }
 
   handleClick(event) {
-    event.preventDefault();
     const { onClick } = this.props;
     onClick();
+
+    event.preventDefault();
+
     this.setState({
       subtitle: '',
       title: '',
