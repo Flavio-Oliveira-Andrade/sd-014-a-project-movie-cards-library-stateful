@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+// import PropTypes from 'prop-types';
+
 import TitleForm from './TitleForm';
 import SubtitleForm from './SubtitleForm';
 import ImagePathForm from './ImagePathForm';
@@ -9,8 +11,6 @@ import GenreForm from './GenreForm';
 class AddMovie extends Component {
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       subtitle: '',
       title: '',
@@ -39,6 +39,7 @@ class AddMovie extends Component {
   }
 
   render() {
+    // const { callback } = this.props;
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form" onSubmit={ this.handleSubmit }>
@@ -55,5 +56,9 @@ class AddMovie extends Component {
     );
   }
 }
+
+// AddMovie.propTypes = {
+//   callback: PropTypes.func.isRequired,
+// };
 
 export default AddMovie;

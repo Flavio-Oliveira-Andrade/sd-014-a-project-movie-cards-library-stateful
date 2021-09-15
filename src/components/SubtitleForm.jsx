@@ -21,7 +21,7 @@ class SubtitleForm extends Component {
 
 SubtitleForm.propTypes = {
   value: PropTypes.string,
-  onChange: PropTypes.string,
+  onChange: PropTypes.func,
 }.isRequired;
 
 export default SubtitleForm;

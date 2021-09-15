@@ -21,7 +21,7 @@ class ImagePathForm extends Component {
 
 ImagePathForm.propTypes = {
   value: PropTypes.string,
-  onChange: PropTypes.string,
+  onChange: PropTypes.func,
 }.isRequired;
 
 export default ImagePathForm;

@@ -27,7 +27,7 @@ class GenreFilterS extends Component {
 
 GenreFilterS.propTypes = {
   value: PropTypes.string,
-  onChange: PropTypes.string,
+  onChange: PropTypes.func,
 }.isRequired;
 
 export default GenreFilterS;

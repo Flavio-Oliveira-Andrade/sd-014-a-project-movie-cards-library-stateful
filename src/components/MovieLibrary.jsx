@@ -41,7 +41,7 @@ class MovieLibrary extends Component {
           selectedGenre={ selectedGenre }
         />
         <MovieList movies={ movies } />
-        <AddMovie onClick={ callback } />
+        <AddMovie />
       </div>
     );
   }

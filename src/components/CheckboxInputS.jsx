@@ -23,7 +23,7 @@ class CheckboxInputS extends Component {
 
 CheckboxInputS.propTypes = {
   checked: PropTypes.string,
-  onChange: PropTypes.string,
+  onChange: PropTypes.func,
 }.isRequired;
 
 export default CheckboxInputS;

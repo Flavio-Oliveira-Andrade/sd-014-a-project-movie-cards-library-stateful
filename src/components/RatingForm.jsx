@@ -21,7 +21,7 @@ class RatingForm extends Component {
 
 RatingForm.propTypes = {
   value: PropTypes.string,
-  onChange: PropTypes.string,
+  onChange: PropTypes.func,
 }.isRequired;
 
 export default RatingForm;
