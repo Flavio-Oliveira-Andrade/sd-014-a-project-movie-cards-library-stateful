@@ -17,6 +17,7 @@ class AddMovie extends React.Component {
     this.handleChangeSubtitle = this.handleChangeSubtitle.bind(this);
     this.handleChangeImage = this.handleChangeImage.bind(this);
     this.handleChangeStoryline = this.handleChangeStoryline.bind(this);
+    this.handleChangeRating = this.handleChangeRating.bind(this);
     // referencia do bind: https://stackoverflow.com/questions/32317154/react-uncaught-typeerror-cannot-read-property-setstate-of-undefined?rq=1
   }
 
@@ -34,7 +35,10 @@ class AddMovie extends React.Component {
 
   handleChangeStoryline(event) {
     this.setState({ storyline: event.target.value });
-    console.log(event.target.value);
+  }
+
+  handleChangeRating(event) {
+    this.setState({ rating: event.target.value });
   }
 
   render() {
@@ -82,6 +86,16 @@ class AddMovie extends React.Component {
               onChange={ this.handleChangeStoryline }
               cols="30"
               rows="10"
+            />
+          </label>
+
+          <label htmlFor="rating-input" data-testid="rating-input-label">
+            Avaliação
+            <input
+              type="number"
+              value={ rating }
+              data-testid="rating-input"
+              onChange={ this.handleChangeRating }
             />
           </label>
         </form>
