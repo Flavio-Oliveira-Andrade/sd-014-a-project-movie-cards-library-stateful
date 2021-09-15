@@ -3,16 +3,16 @@ import propTypes from 'prop-types';
 
 class AddMovieGenre extends React.Component {
   render() {
-    const { genre, handleChange } = this.props;
+    const { value, onChange } = this.props;
     return (
       <label htmlFor="genre-input" data-testid="genre-input-label">
         Gênero
         <select
           name="genre"
           id="genre-input"
-          value={ genre }
+          value={ value }
           data-testid="genre-input"
-          onChange={ handleChange }
+          onChange={ onChange }
         >
           <option value="action" data-testid="genre-option">Ação</option>
           <option value="comedy" data-testid="genre-option">Comédia</option>

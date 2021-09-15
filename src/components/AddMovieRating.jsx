@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 
 class AddMovieRating extends React.Component {
   render() {
-    const { rating, handleChange } = this.props;
+    const { value, onChange } = this.props;
     return (
       <label htmlFor="rating-input" data-testid="rating-input-label">
         Avaliação
@@ -12,9 +12,9 @@ class AddMovieRating extends React.Component {
           type="number"
           id="rating-input"
           defaultValue="0"
-          value={ rating }
+          value={ value }
           data-testid="rating-input"
-          onChange={ handleChange }
+          onChange={ onChange }
         />
       </label>
     );
