@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import InputTitle from './inputTitle';
 import InputSubtitle from './inputSubtitle';
 import InputImage from './inputImage';
+import InputStoryline from './inputStoryline';
 
 class AddMovie extends React.Component {
   // https://pt-br.reactjs.org/docs/react-component.html#constructor
@@ -43,17 +44,7 @@ class AddMovie extends React.Component {
           <InputTitle value={ title } onChange={ this.handleChange } />
           <InputSubtitle value={ subtitle } onChange={ this.handleChange } />
           <InputImage value={ imagePath } onChange={ this.handleChange } />
-
-          <label htmlFor="storyline-input" data-testid="storyline-input-label">
-            Sinopse
-            <textarea
-              value={ storyline }
-              data-testid="storyline-input"
-              onChange={ this.handleChangeStoryline }
-              cols="30"
-              rows="10"
-            />
-          </label>
+          <InputStoryline value={ storyline } onChange={ this.handleChange } />
 
           <label htmlFor="rating-input" data-testid="rating-input-label">
             Avaliação
