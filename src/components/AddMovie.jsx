@@ -5,6 +5,7 @@ import InputSubtitle from './inputSubtitle';
 import InputImage from './inputImage';
 import InputStoryline from './inputStoryline';
 import InputRating from './InputRating';
+import InputGenre from './InputGenre';
 
 class AddMovie extends React.Component {
   // https://pt-br.reactjs.org/docs/react-component.html#constructor
@@ -32,7 +33,7 @@ class AddMovie extends React.Component {
   //   this.props.onClick;
   // }
 
-  // Referencia para melhoria de codigo,divisão de componentes em arquivos separados devido a erro do lint:
+  // Referencia para melhoria de codigo,divisão de componentes em arquivos separados:
   // Elielson - https://github.com/tryber/sd-014-a-project-movie-cards-library-stateful/pull/120/files
 
   render() {
@@ -47,19 +48,8 @@ class AddMovie extends React.Component {
           <InputImage value={ imagePath } onChange={ this.handleChange } />
           <InputStoryline value={ storyline } onChange={ this.handleChange } />
           <InputRating value={ rating } onChange={ this.handleChange } />
+          <InputGenre value={ genre } onChange={ this.handleChange } />
 
-          <label htmlFor="genre-input" data-testid="genre-input-label">
-            Gênero
-            <select
-              data-testid="genre-input"
-              value={ genre }
-              onChange={ this.handleChangeGenre }
-            >
-              <option data-testid="genre-option" value="action">Ação</option>
-              <option data-testid="genre-option" value="comedy">Comédia</option>
-              <option data-testid="genre-option" value="thriller">Suspense</option>
-            </select>
-          </label>
           <button
             data-testid="send-button"
             onClick={ onclick }
