@@ -24,7 +24,7 @@ class MovieLibrary extends Component {
 
   handleChange(event) {
     const { name } = event.target;
-    const value = name.type === 'checkbox' ? name.checked : name.value;
+    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
     this.setState({ [name]: value });
   }
 
@@ -52,12 +52,14 @@ class MovieLibrary extends Component {
 
   onSearchTextChange(event) {
     const { movies } = this.props;
+    console.log(event.target.value);
     if (event.target.value === '') {
       this.setState({ movies });
     } else {
       this.setState({
         movies: movies.filter(({ title, subtitle, storyline }) => {
           const content = `${title}, ${subtitle}, ${storyline}`;
+          console.log(content.includes(event.target.value));
           return content.includes(event.target.value);
         }),
       });
