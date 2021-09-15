@@ -1,17 +1,18 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
 class AddMovieGenre extends React.Component {
   render() {
+    const { genre, handleChange } = this.props;
     return (
       <label htmlFor="genre-input" data-testid="genre-input-label">
         Gênero
         <select
+          name="genre"
           id="genre-input"
-          // value=""
-          // O select deve ter seu valor inicial provido pelo estado inicial do componente, via genre;
+          value={ genre }
           data-testid="genre-input"
-          // onChange=""
-          // A propriedade onChange deve atualizar o estado de <AddMovie />, atribuindo a genre o gênero atual selecionado;
+          onChange={ handleChange }
         >
           <option value="action" data-testid="genre-option">Ação</option>
           <option value="comedy" data-testid="genre-option">Comédia</option>
@@ -21,5 +22,10 @@ class AddMovieGenre extends React.Component {
     );
   }
 }
+
+AddMovieGenre.propTypes = {
+  genre: propTypes.number,
+  handleChange: propTypes.func,
+}.isRequired;
 
 export default AddMovieGenre;

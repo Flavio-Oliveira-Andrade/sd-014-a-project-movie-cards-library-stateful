@@ -1,22 +1,28 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
 class AddMovieTitle extends React.Component {
   render() {
+    const { title, handleChange } = this.props;
     return (
       <label htmlFor="title-input" data-testid="title-input-label">
         Título
         <input
+          name="title"
           type="text"
-          // value="via title"
-          // O input deve ter seu valor inicial provido pelo estado inicial do componente, via title;
+          value={ title }
           id="title-input"
           data-testid="title-input"
-          // onChange=""
-          // A propriedade onChange deve atualizar o estado de <AddMovie />, atribuindo a title o atual título contido no input.
+          onChange={ handleChange }
         />
       </label>
     );
   }
 }
+
+AddMovieTitle.propTypes = {
+  title: propTypes.string,
+  handleChange: propTypes.func,
+}.isRequired;
 
 export default AddMovieTitle;
