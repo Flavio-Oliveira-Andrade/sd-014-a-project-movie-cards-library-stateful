@@ -85,25 +85,24 @@ class AddMovie extends Component {
 
   render() {
     const { rating, genre } = this.state;
-    // subtitle, title, imagePath, storyline,
-    const { clickButton } = this.state;
+    const { textInput, subtitleInput, imageInput, textAreaInput, clickButton } = this;
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="text-input" data-testid="title-input-label">
           Título
-          {this.textInput()}
+          { textInput }
         </label>
         <label data-testid="subtitle-input-label" htmlFor="subtitle-input">
           Subtítulo
-          {this.subtitleInput()}
+          { subtitleInput }
         </label>
         <label htmlFor="image-input" data-testid="image-input-label">
           Imagem
-          {this.imageInput()}
+          { imageInput }
         </label>
         <label htmlFor="textarea" data-testid="storyline-input-label">
           Sinopse
-          {this.textAreaInput()}
+          { textAreaInput }
         </label>
         <label htmlFor="number" data-testid="rating-input-label">
           Avaliação
