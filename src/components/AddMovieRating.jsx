@@ -11,7 +11,6 @@ class AddMovieRating extends React.Component {
           name="rating"
           type="number"
           id="rating-input"
-          defaultValue="0"
           value={ value }
           data-testid="rating-input"
           onChange={ onChange }
