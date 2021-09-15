@@ -19,47 +19,60 @@ class AddMovie extends Component {
     // this.imageInput = this.imageInput.bind(this);
     // this.textAreaInput = this.textAreaInput.bind(this);
     // this.clickButton = this.clickButton.bind(this);
+    this.clickButton = this.clickButton.bind(this);
   }
 
-  textInput = () => (
-    <input
-      id="text-input"
-      type="text"
-      data-testid="title-input"
-      value={ title }
-      onChange={ title }
-    />
-  );
+  textInput = () => {
+    const { title } = this.state;
+    return (
+      <input
+        id="text-input"
+        type="text"
+        data-testid="title-input"
+        value={ title }
+        onChange={ title }
+      />
+    );
+  }
 
-  subtitleInput = () => (
-    <input
-      type="text"
-      value={ subtitle }
-      data-testid="subtitle-input"
-      onChange={ subtitle }
-      id="subtitle-input"
-    />
-  );
+  subtitleInput = () => {
+    const { subtitle } = this.state;
+    return (
+      <input
+        type="text"
+        value={ subtitle }
+        data-testid="subtitle-input"
+        onChange={ subtitle }
+        id="subtitle-input"
+      />
+    );
+  }
 
-  imageInput = () => (
-    <input
-      type="text"
-      data-testid="image-input"
-      onChange={ imagePath }
-      id="image-input"
-    />
-  );
+  imageInput = () => {
+    const { imagePath } = this.state;
+    return (
+      <input
+        type="text"
+        data-testid="image-input"
+        onChange={ imagePath }
+        id="image-input"
+      />
+    );
+  }
 
-  textAreaInput = () => (
-    <textarea
-      id="textarea"
-      value={ storyline }
-      onChance={ storyline }
-      data-testid="storyline-input"
-      rows="4"
-      cols="50"
-    />
-  );
+  textAreaInput = () => {
+    const { storyline } = this.state;
+    return (
+      <textarea
+        id="textarea"
+        value={ storyline }
+        onChance={ storyline }
+        data-testid="storyline-input"
+        rows="4"
+        cols="50"
+      />
+    );
+  }
 
   clickButton(event) {
     // https://pt-br.reactjs.org/docs/handling-events.html
@@ -73,6 +86,7 @@ class AddMovie extends Component {
   render() {
     const { rating, genre } = this.state;
     // subtitle, title, imagePath, storyline,
+    const { clickButton } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="text-input" data-testid="title-input-label">
