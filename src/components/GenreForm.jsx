@@ -9,7 +9,7 @@ class GenreForm extends Component {
         Gênero
         <select
           data-testid="genre-input"
-          name="genreForm"
+          name="genre"
           value={ value }
           onChange={ onChange }
         >
