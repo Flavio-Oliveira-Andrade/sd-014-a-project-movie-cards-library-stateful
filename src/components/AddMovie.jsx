@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import AddMovieTitle from './AddMovieTitle';
 import AddMovieSubtitle from './AddMovieSubtitle';
 import AddMovieImage from './AddMovieImage';
@@ -8,19 +9,61 @@ import AddMovieGenre from './AddMovieGenre';
 import AddMovieBtn from './AddMovieBtn';
 
 class AddMovie extends React.Component {
+  constructor() {
+    super();
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.state = {
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    };
+  }
+
+  handleChange({ target }) {
+    const { name, type, checked, value } = target;
+    this.setState({
+      [name]: type === 'checkbox' ? checked : value,
+    });
+  }
+
+  handleClick(event) {
+    event.preventDefault();
+    const { onClick } = this.props;
+    onClick(this.state);
+
+    this.setState({
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
   render() {
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
+
     return (
       <form data-testid="add-movie-form">
-        <AddMovieTitle />
-        <AddMovieSubtitle />
-        <AddMovieImage />
-        <AddMovieStoryline />
-        <AddMovieRating />
-        <AddMovieGenre />
-        <AddMovieBtn />
+        <AddMovieTitle value={ title } onChange={ this.handleChange } />
+        <AddMovieSubtitle value={ subtitle } onChange={ this.handleChange } />
+        <AddMovieImage value={ imagePath } onChange={ this.handleChange } />
+        <AddMovieStoryline value={ storyline } onChange={ this.handleChange } />
+        <AddMovieRating value={ rating } onChange={ this.handleChange } />
+        <AddMovieGenre value={ genre } onChange={ this.handleChange } />
+        <AddMovieBtn onClick={ this.handleClick } />
       </form>
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func,
+}.isRequired;
 
 export default AddMovie;

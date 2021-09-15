@@ -9,10 +9,10 @@ class AddMovieStoryline extends React.Component {
           id="storyline-input"
           cols="30"
           rows="10"
-          value="via storyline"
+          // value="via storyline"
           // A textarea deve ter seu valor inicial provido pelo estado inicial do componente, via storyline
           data-testid="storyline-input"
-          onChange=""
+          // onChange=""
           // A propriedade onChange deve atualizar o estado de <AddMovie />, atribuindo a storyline a sinopse atual continda na textarea.
         />
       </label>

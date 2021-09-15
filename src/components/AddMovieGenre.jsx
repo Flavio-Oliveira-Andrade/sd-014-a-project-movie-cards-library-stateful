@@ -7,10 +7,10 @@ class AddMovieGenre extends React.Component {
         Gênero
         <select
           id="genre-input"
-          value=""
+          // value=""
           // O select deve ter seu valor inicial provido pelo estado inicial do componente, via genre;
           data-testid="genre-input"
-          onChange=""
+          // onChange=""
           // A propriedade onChange deve atualizar o estado de <AddMovie />, atribuindo a genre o gênero atual selecionado;
         >
           <option value="action" data-testid="genre-option">Ação</option>

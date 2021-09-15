@@ -8,10 +8,10 @@ class AddMovieSubtitle extends React.Component {
         <input
           type="text"
           id="subtitle-input"
-          value="via subtitle"
+          // value="via subtitle"
           // O input deve ter seu valor inicial provido pelo estado inicial do componente, via subtitle;
           data-testid="subtitle-input"
-          onChange=""
+          // onChange=""
           // A propriedade onChange deve atualizar o estado de <AddMovie />, atribuindo a subtitle o atual subtítulo contido no input.
         />
       </label>

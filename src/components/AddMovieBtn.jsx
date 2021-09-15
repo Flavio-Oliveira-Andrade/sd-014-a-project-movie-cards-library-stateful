@@ -6,7 +6,7 @@ class AddMovieBtn extends React.Component {
       <button
         type="submit"
         data-testid="send-button"
-        onClick=""
+        // onClick=""
         // A propriedade onClick do botão invoca uma função definida por você, em <AddMovie />, que: Executa a callback passada para o componente <AddMovie /> via props, chamada onClick, que recebe como parâmetro o estado atual de <AddMovie />; Reseta o estado de <AddMovie />, voltando para o inicial, conforme mencionado anteriormente.
       >
         Adicionar filme

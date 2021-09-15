@@ -8,10 +8,10 @@ class AddMovieRating extends React.Component {
         <input
           type="number"
           id="rating-input"
-          value="via rating"
+          // value="via rating"
           // O input deve ter seu valor inicial provido pelo estado inicial do componente, via rating;
           data-testid="rating-input"
-          onChange=""
+          // onChange=""
           // A propriedade onChange deve atualizar o estado de <AddMovie />, atribuindo a rating a avaliação atual continda no input.
         />
       </label>

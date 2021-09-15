@@ -7,11 +7,11 @@ class AddMovieTitle extends React.Component {
         Título
         <input
           type="text"
-          value="via title"
+          // value="via title"
           // O input deve ter seu valor inicial provido pelo estado inicial do componente, via title;
           id="title-input"
           data-testid="title-input"
-          onChange=""
+          // onChange=""
           // A propriedade onChange deve atualizar o estado de <AddMovie />, atribuindo a title o atual título contido no input.
         />
       </label>

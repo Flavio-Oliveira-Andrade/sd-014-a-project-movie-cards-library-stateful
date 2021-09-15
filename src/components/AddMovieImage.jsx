@@ -8,10 +8,10 @@ class AddMovieImage extends React.Component {
         <input
           type="text"
           id="image-input"
-          value="via imagePath"
+          // value="via imagePath"
           // O input deve ter seu valor inicial provido pelo estado inicial do componente, via imagePath;
           data-testid="image-input"
-          onChange=""
+          // onChange=""
           // A propriedade onChange deve atualizar o estado de <AddMovie />, atribuindo a imagePath o atual caminho da imagem contido no input.
         />
       </label>
