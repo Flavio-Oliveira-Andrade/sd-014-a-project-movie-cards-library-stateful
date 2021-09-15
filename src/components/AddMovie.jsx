@@ -106,4 +106,4 @@ AddMovie.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
-export default AddMovie;// implement AddMovie component here
+export default AddMovie;
