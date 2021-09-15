@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Avaliacao from './Avaliacao';
 /* import PropTypes from 'prop-types'; */
 
 const inicialState = {
@@ -6,7 +7,6 @@ const inicialState = {
   title: '',
   image: '',
   storyline: '',
-  rating: '',
   genre: '',
 };
 
@@ -17,9 +17,10 @@ class AddMovie extends Component {
   }
 
   handleChange = ({ target }) => {
+    const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
-      [target.name]: value,
+      [name]: value,
     });
     // Referência: (Carlos Afonso Flach - https://github.com/tryber/sd-014-a-project-movie-cards-library-stateful/pull/88/commits/b4e0a60bfd09898afc714cfc73fa7856d4709f3a#)
     //
@@ -70,6 +71,7 @@ class AddMovie extends Component {
             onChange={ this.handleChange }
           />
         </label>
+        <Avaliacao />
       </form>
     );
   }
