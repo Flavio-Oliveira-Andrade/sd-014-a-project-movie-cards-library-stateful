@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ImputTitle from './inputTitle';
 
 class AddMovie extends React.Component {
   // https://pt-br.reactjs.org/docs/react-component.html#constructor
@@ -13,7 +14,7 @@ class AddMovie extends React.Component {
       rating: 0,
       genre: 'action',
     };
-    this.handleChangeTitle = this.handleChangeTitle.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleChangeSubtitle = this.handleChangeSubtitle.bind(this);
     this.handleChangeImage = this.handleChangeImage.bind(this);
     this.handleChangeStoryline = this.handleChangeStoryline.bind(this);
@@ -22,8 +23,10 @@ class AddMovie extends React.Component {
     // referencia do bind: https://stackoverflow.com/questions/32317154/react-uncaught-typeerror-cannot-read-property-setstate-of-undefined?rq=1
   }
 
-  handleChangeTitle(event) {
-    this.setState({ title: event.target.value });
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
   }
 
   handleChangeSubtitle(event) {
@@ -46,6 +49,13 @@ class AddMovie extends React.Component {
     this.setState({ genre: event.target.value });
   }
 
+  handleClickBtn() {
+    this.props.onClick;
+  }
+
+  // Referencia para melhoria de codigo,divisão de componentes em arquivos separados devido a erro do lint:
+  // Elielson - https://github.com/tryber/sd-014-a-project-movie-cards-library-stateful/pull/120/files
+
   render() {
     const { onClick } = this.props;
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
@@ -53,16 +63,7 @@ class AddMovie extends React.Component {
     return (
       <section>
         <form data-testid="add-movie-form">
-          <label htmlFor="title-input" data-testid="title-input-label">
-            Título
-            <input
-              type="text"
-              data-testid="title-input"
-              value={ title }
-              onChange={ this.handleChangeTitle }
-            />
-          </label>
-
+          <ImputTitle value={ title } onChange={ this.handleChange } />
           <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
             Subtítulo
             <input
@@ -116,6 +117,12 @@ class AddMovie extends React.Component {
               <option data-testid="genre-option" value="thriller">Suspense</option>
             </select>
           </label>
+          <button
+            data-testid="send-button"
+            onClick={ onclick }
+          >
+            Adicionar filme
+          </button>
         </form>
       </section>
     );
