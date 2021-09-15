@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ImputTitle from './inputTitle';
+import ImputSubtitle from './inputSubtitle';
 
 class AddMovie extends React.Component {
   // https://pt-br.reactjs.org/docs/react-component.html#constructor
@@ -15,11 +16,6 @@ class AddMovie extends React.Component {
       genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleChangeSubtitle = this.handleChangeSubtitle.bind(this);
-    this.handleChangeImage = this.handleChangeImage.bind(this);
-    this.handleChangeStoryline = this.handleChangeStoryline.bind(this);
-    this.handleChangeRating = this.handleChangeRating.bind(this);
-    this.handleChangeGenre = this.handleChangeGenre.bind(this);
     // referencia do bind: https://stackoverflow.com/questions/32317154/react-uncaught-typeerror-cannot-read-property-setstate-of-undefined?rq=1
   }
 
@@ -29,29 +25,9 @@ class AddMovie extends React.Component {
     });
   }
 
-  handleChangeSubtitle(event) {
-    this.setState({ subtitle: event.target.value });
-  }
-
-  handleChangeImage(event) {
-    this.setState({ imagePath: event.target.value });
-  }
-
-  handleChangeStoryline(event) {
-    this.setState({ storyline: event.target.value });
-  }
-
-  handleChangeRating(event) {
-    this.setState({ rating: event.target.value });
-  }
-
-  handleChangeGenre(event) {
-    this.setState({ genre: event.target.value });
-  }
-
-  handleClickBtn() {
-    this.props.onClick;
-  }
+  // handleClickBtn() {
+  //   this.props.onClick;
+  // }
 
   // Referencia para melhoria de codigo,divisão de componentes em arquivos separados devido a erro do lint:
   // Elielson - https://github.com/tryber/sd-014-a-project-movie-cards-library-stateful/pull/120/files
@@ -64,15 +40,7 @@ class AddMovie extends React.Component {
       <section>
         <form data-testid="add-movie-form">
           <ImputTitle value={ title } onChange={ this.handleChange } />
-          <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
-            Subtítulo
-            <input
-              type="text"
-              data-testid="subtitle-input"
-              value={ subtitle }
-              onChange={ this.handleChangeSubtitle }
-            />
-          </label>
+          <ImputSubtitle value={ subtitle } onChange={ this.handleChange } />
 
           <label htmlFor="image-input" data-testid="image-input-label">
             Imagem
