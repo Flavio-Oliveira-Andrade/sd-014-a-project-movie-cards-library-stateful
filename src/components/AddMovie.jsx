@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Avaliacao from './Avaliacao';
+import SelectGenre from './SelectGenre';
 /* import PropTypes from 'prop-types'; */
 
 const inicialState = {
@@ -7,7 +8,6 @@ const inicialState = {
   title: '',
   image: '',
   storyline: '',
-  genre: '',
 };
 
 class AddMovie extends Component {
@@ -72,6 +72,7 @@ class AddMovie extends Component {
           />
         </label>
         <Avaliacao />
+        <SelectGenre />
       </form>
     );
   }
