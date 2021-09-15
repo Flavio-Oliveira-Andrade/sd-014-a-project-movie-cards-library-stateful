@@ -16,6 +16,7 @@ class AddMovie extends React.Component {
     this.handleChangeTitle = this.handleChangeTitle.bind(this);
     this.handleChangeSubtitle = this.handleChangeSubtitle.bind(this);
     this.handleChangeImage = this.handleChangeImage.bind(this);
+    this.handleChangeStoryline = this.handleChangeStoryline.bind(this);
     // referencia do bind: https://stackoverflow.com/questions/32317154/react-uncaught-typeerror-cannot-read-property-setstate-of-undefined?rq=1
   }
 
@@ -29,6 +30,11 @@ class AddMovie extends React.Component {
 
   handleChangeImage(event) {
     this.setState({ imagePath: event.target.value });
+  }
+
+  handleChangeStoryline(event) {
+    this.setState({ storyline: event.target.value });
+    console.log(event.target.value);
   }
 
   render() {
@@ -65,6 +71,17 @@ class AddMovie extends React.Component {
               data-testid="image-input"
               value={ imagePath }
               onChange={ this.handleChangeImage }
+            />
+          </label>
+
+          <label htmlFor="storyline-input" data-testid="storyline-input-label">
+            Sinopse
+            <textarea
+              value={ storyline }
+              data-testid="storyline-input"
+              onChange={ this.handleChangeStoryline }
+              cols="30"
+              rows="10"
             />
           </label>
         </form>
