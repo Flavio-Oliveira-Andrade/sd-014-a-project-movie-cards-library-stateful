@@ -18,12 +18,27 @@ class AddMovie extends React.Component {
       genre: 'action',
     };
     this.handleClick = this.handleClick.bind(this);
+    this.movieMaker = this.movieMaker.bind(this);
   }
 
   handleClick({ target }) {
     const { name, value } = target;
     this.setState({
       [name]: value,
+    });
+  }
+
+  movieMaker(event) {
+    const { onClick } = this.props;
+    event.preventDefault();
+    onClick(this.state);
+    this.setState({
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
     });
   }
 
@@ -43,6 +58,14 @@ class AddMovie extends React.Component {
         <Sinopse defaultValue={ storyline } handleClick={ this.handleClick } />
         <Avaliacao rating={ rating } handleClick={ this.handleClick } />
         <Genero value={ genre } handleClick={ this.handleClick } />
+
+        <button
+          type="button"
+          data-testid="send-button"
+          onClick={ this.movieMaker }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
