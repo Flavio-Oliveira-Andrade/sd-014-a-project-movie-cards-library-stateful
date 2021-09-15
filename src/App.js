@@ -1,7 +1,6 @@
 // import ReactDOM from 'react-dom';
 import React from 'react';
 import Header from './components/Header';
-import MovieList from './components/MovieList';
 import MovieLibrary from './components/MovieLibrary';
 
 import data from './data';
@@ -13,7 +12,6 @@ function App() {
     <div className="App">
       <Header />
       <MovieLibrary movies={ data } />
-      <MovieList movies={ data } />
     </div>
   );
 }

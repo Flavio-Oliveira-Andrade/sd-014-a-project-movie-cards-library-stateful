@@ -2,28 +2,32 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import AddMovie from './AddMovie';
 import SearchBar from './SearchBar';
+import MovieList from './MovieList';
 
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      // title: '',
-      // subtitle: '',
-      // imagePath: '',
-      // storyline: '',
-      // rating: 0,
-      // genre: 'action',
+      searchText: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
+      // movies: '',
     };
   }
 
   render() {
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     const { movies } = this.props;
-    console.log(movies);
 
     return (
       <section>
-        <SearchBar />
+        <SearchBar
+          searchText={ searchText }
+          bookmarkedOnly={ bookmarkedOnly }
+          selectedGenre={ selectedGenre }
+        />
+        <MovieList movies={ movies } />
         <AddMovie />
       </section>
     );
@@ -33,11 +37,10 @@ class MovieLibrary extends Component {
 MovieLibrary.propTypes = {
   movies: PropTypes.arrayOf(
     PropTypes.shape({
-      title: PropTypes.string,
-      subtitle: PropTypes.string,
-      storyline: PropTypes.string,
-      rating: PropTypes.number,
-      imagePath: PropTypes.string,
+      searchText: PropTypes.string,
+      bookmarkedOnly: PropTypes.bool,
+      stoselectedGenreryline: PropTypes.string,
+      movies: PropTypes.number,
     }),
   ).isRequired,
 };

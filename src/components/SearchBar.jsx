@@ -14,16 +14,16 @@ class SearchBar extends Component {
     return (
       // item 1
       <form data-testid="search-bar-form">
-        {/*  item 2 */}
         <label htmlFor="searchText" data-testid="text-input-label">
           Inclui o texto:
           <input
+            type="text-area"
             data-testid="text-input"
             value={ searchText }
             onChange={ onSearchTextChange }
           />
         </label>
-
+        <p />
         <label htmlFor="checkbox" data-testid="checkbox-input-label">
           <input
             data-testid="checkbox-input"
@@ -33,8 +33,7 @@ class SearchBar extends Component {
           />
           Mostrar somente favoritos
         </label>
-
-        {/* item 5 */}
+        <p />
         <label htmlFor="selectInput" data-testid="select-input-label">
           Filtrar por gênero
           <select
