@@ -13,6 +13,7 @@ class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     };
+    this.handleEvent = this.handleEvent.bind(this);
 
     this.handleClick = this.handleClick.bind(this);
   }
@@ -29,7 +30,6 @@ class AddMovie extends Component {
     const { submitMovie } = this.props;
     console.log(submitMovie);
 
-    submitMovie(this.state);
     this.setState({
       title: '',
       subtitle: '',
@@ -38,6 +38,7 @@ class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     });
+    submitMovie(this.state);
   }
 
   createInput(type, name, id, value) {
@@ -105,25 +106,29 @@ class AddMovie extends Component {
 }
 
 AddMovie.propTypes = {
-  submitMovie: PropTypes.shape({
-    title: PropTypes.string,
-    subtitle: PropTypes.string,
-    imagePath: PropTypes.string,
-    storyline: PropTypes.string,
-    rating: PropTypes.number,
-    genre: PropTypes.string,
-  }),
+  submitMovie: PropTypes.objectOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      subtitle: PropTypes.string,
+      imagePath: PropTypes.string,
+      storyline: PropTypes.string,
+      rating: PropTypes.number,
+      genre: PropTypes.string,
+    }),
+  ),
 };
 
 AddMovie.defaultProps = {
-  submitMovie: PropTypes.shape({
-    title: 'undefined',
-    subtitle: 'undefined',
-    imagePath: 'undefined',
-    storyline: 'undefined',
-    rating: 'undefined',
-    genre: 'undefined',
-  }),
+  submitMovie: PropTypes.objectOf(
+    PropTypes.shape({
+      title: undefined,
+      subtitle: undefined,
+      imagePath: undefined,
+      storyline: undefined,
+      rating: undefined,
+      genre: undefined,
+    }),
+  ),
 };
 
 export default AddMovie;
