@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class RatingForm extends Component {
   render() {
+    const { value, onChange } = this.props;
     return (
       <label htmlFor="rating-input" data-testid="rating-input-label">
         Avaliação
@@ -9,10 +11,17 @@ class RatingForm extends Component {
           data-testid="rating-input"
           name="rating"
           type="number"
+          value={ value }
+          onChange={ onChange }
         />
       </label>
     );
   }
 }
+
+RatingForm.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.string,
+}.isRequired;
 
 export default RatingForm;

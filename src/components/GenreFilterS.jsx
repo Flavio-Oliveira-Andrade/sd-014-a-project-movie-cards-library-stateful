@@ -5,7 +5,7 @@ class GenreFilterS extends Component {
   render() {
     const { value, onChange } = this.props;
     return (
-      <div>
+      <section>
         <label htmlFor="select-input" data-testid="select-input-label">
           Filtrar por gênero
           <select
@@ -20,7 +20,7 @@ class GenreFilterS extends Component {
             <option data-testid="select-option" value="thriller">Suspense</option>
           </select>
         </label>
-      </div>
+      </section>
     );
   }
 }

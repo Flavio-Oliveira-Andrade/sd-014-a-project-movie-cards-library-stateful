@@ -5,7 +5,7 @@ class CheckboxInputS extends Component {
   render() {
     const { checked, onChange } = this.props;
     return (
-      <div>
+      <section>
         <label htmlFor="checkbox-input" data-testid="checkbox-input-label">
           Mostrar somente favoritos
           <input
@@ -16,7 +16,7 @@ class CheckboxInputS extends Component {
             data-testid="checkbox-input"
           />
         </label>
-      </div>
+      </section>
     );
   }
 }

@@ -5,7 +5,7 @@ class TextInputS extends Component {
   render() {
     const { value, onChange } = this.props;
     return (
-      <div>
+      <section>
         <label htmlFor="text-input" data-testid="text-input-label">
           Inclui o texto:
           <input
@@ -16,7 +16,7 @@ class TextInputS extends Component {
             onChange={ onChange }
           />
         </label>
-      </div>
+      </section>
     );
   }
 }
