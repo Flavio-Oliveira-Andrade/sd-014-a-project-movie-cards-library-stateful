@@ -13,12 +13,17 @@ class AddMovie extends React.Component {
       rating: 0,
       genre: 'action',
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChangeTitle = this.handleChangeTitle.bind(this);
+    this.handleChangeSubtitle = this.handleChangeSubtitle.bind(this);
     // referencia do bind: https://stackoverflow.com/questions/32317154/react-uncaught-typeerror-cannot-read-property-setstate-of-undefined?rq=1
   }
 
-  handleChange(event) {
+  handleChangeTitle(event) {
     this.setState({ title: event.target.value });
+  }
+
+  handleChangeSubtitle(event) {
+    this.setState({ subtitle: event.target.value });
   }
 
   render() {
@@ -34,7 +39,17 @@ class AddMovie extends React.Component {
               type="text"
               data-testid="title-input"
               value={ title }
-              onChange={ this.handleChange }
+              onChange={ this.handleChangeTitle }
+            />
+          </label>
+
+          <label htmlFor="title-input" data-testid="subtitle-input-label">
+            Subtítulo
+            <input
+              type="text"
+              data-testid="subtitle-input"
+              value={ subtitle }
+              onChange={ this.handleChangeSubtitle }
             />
           </label>
         </form>
