@@ -92,6 +92,7 @@ MovieLibrary.propTypes = {
     imagePath: PropTypes.string,
     bookmarked: PropTypes.bool,
     genre: PropTypes.string,
+    filter: PropTypes.func,
   }).isRequired,
 };
 
