@@ -19,114 +19,130 @@ class AddMovie extends Component {
     // this.imageInput = this.imageInput.bind(this);
     // this.textAreaInput = this.textAreaInput.bind(this);
     // this.clickButton = this.clickButton.bind(this);
-    this.clickButton = this.clickButton.bind(this);
+    // this.clickButton = this.clickButton.bind(this);
   }
 
-  textInput = () => {
-    const { title } = this.state;
-    return (
-      <input
-        id="text-input"
-        type="text"
-        data-testid="title-input"
-        value={ title }
-        onChange={ title }
-      />
-    );
-  }
+  // textInput = () => {
+  //   const { title } = this.state;
+  //   return (
+  //     <input
+  //       id="text-input"
+  //       type="text"
+  //       data-testid="title-input"
+  //       value={ title }
+  //       onChange={ this.changeValue }
+  //     />
+  //   );
+  // }
 
-  subtitleInput = () => {
-    const { subtitle } = this.state;
-    return (
-      <input
-        type="text"
-        value={ subtitle }
-        data-testid="subtitle-input"
-        onChange={ subtitle }
-        id="subtitle-input"
-      />
-    );
-  }
+  // subtitleInput = () => {
+  //   const { subtitle } = this.state;
+  //   return (
+  //     <input
+  //       type="text"
+  //       value={ subtitle }
+  //       data-testid="subtitle-input"
+  //       onChange={ this.changeValue }
+  //       id="subtitle-input"
+  //     />
+  //   );
+  // }
 
-  imageInput = () => {
-    const { imagePath } = this.state;
-    return (
-      <input
-        type="text"
-        data-testid="image-input"
-        onChange={ imagePath }
-        id="image-input"
-      />
-    );
-  }
+  // imageInput = () => {
+  //   const { imagePath } = this.state;
+  //   return (
+  //     <input
+  //       type="text"
+  //       data-testid="image-input"
+  //       onChange={ this.changeValue }
+  //       id="image-input"
+  //     />
+  //   );
+  // }
 
-  textAreaInput = () => {
-    const { storyline } = this.state;
-    return (
-      <textarea
-        id="textarea"
-        value={ storyline }
-        onChance={ storyline }
-        data-testid="storyline-input"
-        rows="4"
-        cols="50"
-      />
-    );
-  }
+  // textAreaInput = () => {
+  //   const { storyline } = this.state;
+  //   return (
+  //     <textarea
+  //       id="textarea"
+  //       value={ storyline }
+  //       onChange={ this.changeValue }
+  //       data-testid="storyline-input"
+  //       rows="4"
+  //       cols="50"
+  //     />
+  //   );
+  // }
 
-  clickButton(event) {
+  changeValue = ({ target }) => this.setState({
+    [target.name]: (target.type === 'checkbox' ? target.checked : target.value),
+  });
+
+  clickButton = (event) => {
     // https://pt-br.reactjs.org/docs/handling-events.html
-    const { onClick } = this.props;
-
     event.preventDefault();
+    const { onClick } = this.props;
     onClick(this.state);
     this.setState(this.initialState);
   }
 
+  customInput(type, name, value, data) {
+    return (
+      <input
+        type={ type }
+        name={ name }
+        value={ value }
+        onChange={ this.changeValue }
+        data-testid={ data }
+      />
+    );
+  }
+
   render() {
-    const { rating, genre } = this.state;
-    const { textInput, subtitleInput, imageInput, textAreaInput, clickButton } = this;
+    const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
+    // subtitle, title, imagePath, storyline,
     return (
       <form data-testid="add-movie-form">
         <label htmlFor="text-input" data-testid="title-input-label">
           Título
-          { textInput }
+          { this.customInput('text', 'title', title, 'title-input') }
         </label>
         <label data-testid="subtitle-input-label" htmlFor="subtitle-input">
           Subtítulo
-          { subtitleInput }
+          { this.customInput('text', 'subtitle', subtitle, 'subtitle-input') }
         </label>
         <label htmlFor="image-input" data-testid="image-input-label">
           Imagem
-          { imageInput }
+          { this.customInput('text', 'imagePath', imagePath, 'image-input') }
         </label>
         <label htmlFor="textarea" data-testid="storyline-input-label">
           Sinopse
-          { textAreaInput }
+          <textarea
+            name="storyline"
+            value={ storyline }
+            data-testid="storyline-input"
+            onChange={ this.changeValue }
+          />
         </label>
         <label htmlFor="number" data-testid="rating-input-label">
           Avaliação
-          <input
-            type="number"
-            id="number"
-            value={ rating }
-            onChange={ rating }
-            data-testid="rating-input"
-          />
+          { this.customInput('number', 'rating', rating, 'rating-input') }
         </label>
         <label htmlFor="select" data-testid="genre-input-label">
           Gênero
-          <select id="select-genre" value={ genre }>
+          <select
+            name="genre"
+            id="select-genre"
+            value={ genre }
+            data-testid="genre-input"
+            onChange={ this.changeValue }
+          >
             <option value="action" data-testid="genre-option">Ação</option>
             <option value="comedy" data-testid="genre-option">Comédia</option>
             <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
-        <button
-          data-testid="send-button"
-          onClick={ clickButton }
-          type="submit"
-        >
+        <button data-testid="send-button" onClick={ this.clickButton } type="submit">
           Adicionar filme
         </button>
       </form>
