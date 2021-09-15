@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class ImputSubtitle extends React.Component {
+class InputSubtitle extends React.Component {
   render() {
     const { value, onChange } = this.props;
 
@@ -21,9 +21,9 @@ class ImputSubtitle extends React.Component {
   }
 }
 
-ImputSubtitle.propTypes = {
+InputSubtitle.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
-export default ImputSubtitle;
+export default InputSubtitle;

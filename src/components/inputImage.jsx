@@ -1,29 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class InputTitle extends React.Component {
+class InputImage extends React.Component {
   render() {
     const { value, onChange } = this.props;
+
     return (
       <section>
-        <label htmlFor="title-input" data-testid="title-input-label">
-          Título
+        <label htmlFor="image-input" data-testid="image-input-label">
+          Imagem
           <input
             type="text"
-            name="title"
-            data-testid="title-input"
+            name="imagePath"
+            data-testid="image-input"
             value={ value }
             onChange={ onChange }
           />
         </label>
+
       </section>
     );
   }
 }
 
-InputTitle.propTypes = {
+InputImage.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
-export default InputTitle;
+export default InputImage;

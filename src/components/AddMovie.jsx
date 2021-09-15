@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ImputTitle from './inputTitle';
-import ImputSubtitle from './inputSubtitle';
+import InputTitle from './inputTitle';
+import InputSubtitle from './inputSubtitle';
+import InputImage from './inputImage';
 
 class AddMovie extends React.Component {
   // https://pt-br.reactjs.org/docs/react-component.html#constructor
@@ -39,18 +40,9 @@ class AddMovie extends React.Component {
     return (
       <section>
         <form data-testid="add-movie-form">
-          <ImputTitle value={ title } onChange={ this.handleChange } />
-          <ImputSubtitle value={ subtitle } onChange={ this.handleChange } />
-
-          <label htmlFor="image-input" data-testid="image-input-label">
-            Imagem
-            <input
-              type="text"
-              data-testid="image-input"
-              value={ imagePath }
-              onChange={ this.handleChangeImage }
-            />
-          </label>
+          <InputTitle value={ title } onChange={ this.handleChange } />
+          <InputSubtitle value={ subtitle } onChange={ this.handleChange } />
+          <InputImage value={ imagePath } onChange={ this.handleChange } />
 
           <label htmlFor="storyline-input" data-testid="storyline-input-label">
             Sinopse
