@@ -34,9 +34,10 @@ class AddMovie extends React.Component {
           <Subtitle value={ subtitle } onChange={ this.handleChange } />
           <Title value={ title } onChange={ this.handleChange } />
           <ImagePath value={ imagePath } onChange={ this.handleChange } />
-          <label htmlFor="storyline">
+          <label data-testid="storyline-input-label" htmlFor="storyline">
+            Sinopse
             <input
-              id="storyline"
+              data-testid="storyline-input"
               name="storyline"
               type="text"
               value={ storyline }
