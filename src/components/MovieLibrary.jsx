@@ -7,14 +7,15 @@ class MovieLibrary extends Component {
     super(props);
 
     this.state = {
-      title: '',
-      subtitle: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
+      // title: '',
+      // subtitle: '',
+      // imagePath: '',
+      // storyline: '',
+      // rating: 0,
+      // genre: 'action',
     };
   }
+
   render() {
     const { movies } = this.props;
     console.log(movies);
@@ -27,5 +28,15 @@ class MovieLibrary extends Component {
     );
   }
 }
+
+MovieLibrary.propTypes = {
+  movies: PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    imagePath: PropTypes.string,
+  }).isRequired,
+};
 
 export default MovieLibrary;
