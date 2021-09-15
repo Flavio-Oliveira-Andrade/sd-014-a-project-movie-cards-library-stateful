@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Titulo from './Titulo';
 import Subtitulo from './Subtitulo';
 import Sinopse from './Sinopse';
@@ -70,5 +71,9 @@ class AddMovie extends React.Component {
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.string.isRequired,
+};
 
 export default AddMovie;
