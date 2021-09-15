@@ -21,23 +21,30 @@ class MovieLibrary extends Component {
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
   }
 
-  onClick(obj) {
-    return obj;
+  onClick(movie) {
+    const { movies } = this.state;
+    console.log('teste');
+    this.setState(() => ({ movies: [...movies, movie] }));
   }
 
   onSearchTextChange(event) {
-    const { searchText, movies } = this.state;
-    this.setState({ [event.target.name]: event.target.value });
+    const { searchText } = this.state;
+    const { movies } = this.props;
+    this.setState({ searchText: event.target.value });
     let filteredMovies = movies;
-    filteredMovies = movies.filter((ele) => ele.title.includes(searchText.value));
+    filteredMovies = movies.filter((ele) => ele.title.includes(searchText)
+    || ele.subtitle.includes(searchText) || ele.storyline.includes(searchText));
     this.setState({ movies: filteredMovies });
   }
 
-  onSelectedGenreChange() {
-    const { movies, selectedGenre } = this.state;
+  onSelectedGenreChange(event) {
+    this.setState({
+      selectedGenre: event.target.value,
+    });
+    const { movies } = this.props;
     let filteredMovies = movies;
-    if (selectedGenre !== '') { // If selectedGenre = '' (means ALL), no movie is filtered.
-      filteredMovies = movies.filter((ele) => ele.genre === selectedGenre);
+    if (event.target.value !== '') { // If selectedGenre = '' (means ALL), no movie is filtered.
+      filteredMovies = movies.filter((ele) => ele.genre === event.target.value);
     }
     this.setState({
       movies: filteredMovies,
