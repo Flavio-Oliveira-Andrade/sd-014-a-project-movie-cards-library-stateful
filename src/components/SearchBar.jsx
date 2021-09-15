@@ -64,11 +64,11 @@ SearchBar.propTypes = {
 };
 
 SearchBar.defaultProps = {
-  searchText: 'undefined',
-  onSearchTextChange: 'undefined',
-  bookmarkedOnly: 'undefined',
-  onBookmarkedChange: 'undefined',
-  selectedGenre: 'undefined',
-  onSelectedGenreChange: 'undefined',
+  searchText: undefined,
+  onSearchTextChange: undefined,
+  bookmarkedOnly: undefined,
+  onBookmarkedChange: undefined,
+  selectedGenre: undefined,
+  onSelectedGenreChange: undefined,
 };
 export default SearchBar;
