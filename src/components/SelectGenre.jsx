@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 const inicialState = {
   genre: '',
@@ -10,23 +11,15 @@ class SelectGenre extends Component {
     this.state = inicialState;
   }
 
-  handleChange = ({ target }) => {
-    const { name } = target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({
-      [name]: value,
-    });
-  };
-
   render() {
-    const { genre } = this.state;
+    const { value, handleChange } = this.props;
     return (
       <label htmlFor="genre" data-testid="genre-input-label">
         Gênero
         <select
           name="genre"
-          onChange={ this.handleChange }
-          value={ genre }
+          onChange={ handleChange }
+          value={ value }
           data-testid="genre-input"
         >
           <option value="action" data-testid="genre-option">Ação</option>
@@ -37,5 +30,9 @@ class SelectGenre extends Component {
     );
   }
 }
+
+SelectGenre.propTypes = {
+  onClick: PropTypes.func,
+}.isRequired;
 
 export default SelectGenre;

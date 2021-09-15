@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 const inicialState = {
-  rating: 0,
+  storyline: '',
 };
 
-class Avaliacao extends Component {
+class Sinopse extends Component {
   constructor() {
     super();
     this.state = inicialState;
@@ -14,13 +14,13 @@ class Avaliacao extends Component {
   render() {
     const { value, handleChange } = this.props;
     return (
-      <label htmlFor="rating" data-testid="rating-input-label">
-        Avaliação
+      <label data-testid="storyline-input-label" htmlFor="storyline">
+        Sinopse
         <input
-          type="number"
-          name="rating"
+          id="storyline"
+          name="storyline"
           value={ value }
-          data-testid="rating-input"
+          data-testid="storyline-input"
           onChange={ handleChange }
         />
       </label>
@@ -28,8 +28,8 @@ class Avaliacao extends Component {
   }
 }
 
-Avaliacao.propTypes = {
-  onClick: PropTypes.func,
+Sinopse.propTypes = {
+  handleChange: PropTypes.func,
 }.isRequired;
 
-export default Avaliacao;
+export default Sinopse;
