@@ -10,7 +10,7 @@ class TextInputS extends Component {
           Inclui o texto:
           <input
             type="text"
-            name="textInput"
+            name="searchText"
             data-testid="text-input"
             value={ value }
             onChange={ onChange }

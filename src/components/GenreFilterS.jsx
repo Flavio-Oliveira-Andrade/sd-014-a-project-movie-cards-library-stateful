@@ -9,7 +9,7 @@ class GenreFilterS extends Component {
         <label htmlFor="select-input" data-testid="select-input-label">
           Filtrar por gênero
           <select
-            name="select-genre"
+            name="selectedGenre"
             data-testid="select-input"
             value={ value }
             onChange={ onChange }
