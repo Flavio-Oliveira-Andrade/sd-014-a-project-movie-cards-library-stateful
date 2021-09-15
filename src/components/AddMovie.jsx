@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class AddMovie extends Component {
   constructor(props) {
@@ -13,12 +13,30 @@ class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     };
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleEvent = (event) => {
     const { name, value } = event.target;
     this.setState({
       [name]: value,
+    });
+  }
+
+  handleClick = (event) => {
+    event.preventDefault();
+    const { submitMovie } = this.props;
+    console.log(submitMovie);
+
+    submitMovie(this.state);
+    this.setState({
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
     });
   }
 
@@ -57,12 +75,12 @@ class AddMovie extends Component {
         {/* item 11 */}
         <label htmlFor="storyline" data-testid="storyline-input-label">
           Sinopse
-          {this.createInput('textarea', storyline, 'storyline-input', storyline)}
+          {this.createInput('textarea', 'storyline', 'storyline-input', storyline)}
         </label>
         {/* item 12 */}
         <label htmlFor="number" data-testid="rating-input-label">
           Avaliação
-          {this.createInput('number', rating, 'rating-input', rating)}
+          {this.createInput('number', 'rating', 'rating-input', rating)}
         </label>
         {/* item 13 */}
         <label htmlFor="genre" data-testid="genre-input-label">
@@ -77,11 +95,35 @@ class AddMovie extends Component {
             <option data-testid="genre-option" value="comedy">Comédia</option>
             <option data-testid="genre-option" value="thriller">Suspense</option>
           </select>
+          <button type="submit" data-testid="send-button" onClick={ this.handleClick }>
+            Adicionar filme
+          </button>
         </label>
-
       </form>
     );
   }
 }
+
+AddMovie.propTypes = {
+  submitMovie: PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    imagePath: PropTypes.string,
+    storyline: PropTypes.string,
+    rating: PropTypes.number,
+    genre: PropTypes.string,
+  }),
+};
+
+AddMovie.defaultProps = {
+  submitMovie: PropTypes.shape({
+    title: 'undefined',
+    subtitle: 'undefined',
+    imagePath: 'undefined',
+    storyline: 'undefined',
+    rating: 'undefined',
+    genre: 'undefined',
+  }),
+};
 
 export default AddMovie;
