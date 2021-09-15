@@ -30,7 +30,7 @@ class AddMovie extends React.Component {
 
     return (
       <div>
-        <form>
+        <form data-testid="add-movie-form">
           <Subtitle value={ subtitle } onChange={ this.handleChange } />
           <Title value={ title } onChange={ this.handleChange } />
           <ImagePath value={ imagePath } onChange={ this.handleChange } />
