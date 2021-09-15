@@ -6,11 +6,11 @@ class InputImage extends React.Component {
     const { imagePath, handleChange } = this.props;
     return (
       <section>
-        <label htmlFor="image" data-testid="image-input-label">
+        <label htmlFor="imagePath" data-testid="image-input-label">
           Imagem
           <input
             type="text"
-            name="image"
+            name="imagePath"
             data-testid="image-input"
             onChange={ handleChange }
             value={ imagePath }
