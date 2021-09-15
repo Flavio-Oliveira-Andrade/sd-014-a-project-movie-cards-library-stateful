@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class SearchBar extends React.Component {
   render() {
@@ -7,7 +8,7 @@ class SearchBar extends React.Component {
       selectedGenre, onSelectedGenreChange } = this.props;
     return (
       <form action="" data-testid="search-bar-form">
-        <label htmlFor="text-input-label">
+        <label htmlFor="text-input" data-testid="text-input-label">
           Inclui o texto:
           <input
             type="text"
@@ -16,7 +17,7 @@ class SearchBar extends React.Component {
             onChange={ onSearchTextChange }
           />
         </label>
-        <label htmlFor="checkbox-input-label">
+        <label htmlFor="checkbox-input" data-testid="checkbox-input-label">
           Mostrar somente favoritos
           <input
             type="checkbox"
@@ -25,7 +26,7 @@ class SearchBar extends React.Component {
             data-testid="checkbox-input"
           />
         </label>
-        <label htmlFor="select-input-label">
+        <label htmlFor="select-input" data-testid="select-input-label">
           Filtrar por gênero
           <select
             value={ selectedGenre }
@@ -42,5 +43,14 @@ class SearchBar extends React.Component {
     );
   }
 }
+
+SearchBar.propTypes = {
+  searchText: PropTypes.string.isRequired,
+  onSearchTextChange: PropTypes.func.isRequired,
+  bookmarkedOnly: PropTypes.bool.isRequired,
+  onBookmarkedChange: PropTypes.func.isRequired,
+  selectedGenre: PropTypes.string.isRequired,
+  onSelectedGenreChange: PropTypes.func.isRequired,
+};
 
 export default SearchBar;
