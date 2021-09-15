@@ -6,6 +6,7 @@ class AddMovie extends React.Component {
     super();
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
     this.state = {
       subtitle: '',
@@ -26,6 +27,21 @@ class AddMovie extends React.Component {
     });
   }
 
+  handleClick(event) {
+    event.preventDefault();
+    const { onClick } = this.props;
+
+    onClick(this.state);
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyLine: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
   inputs = (type, name, value, data) => ( // Ajuda do Filipe. src: https://github.com/tryber/sd-014-a-project-movie-cards-library-stateful/blob/filipe-andrade-santiago-movie-cards-library-stateful/src/components/AddMovie.jsx
     <input
       type={ type }
@@ -37,21 +53,17 @@ class AddMovie extends React.Component {
   );
 
   render() {
-    const { onClick } = this.props;
     const { title, subtitle, imagePath, storyLine, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-
         <label htmlFor="titulo" data-testid="title-input-label">
           Título
           { this.inputs('text', 'title', title, 'title-input') }
         </label>
-
         <label htmlFor="subtitulo" data-testid="subtitle-input-label">
           Subtítulo
           { this.inputs('text', 'subtitle', subtitle, 'subtitle-input') }
         </label>
-
         <label htmlFor="imagem" data-testid="image-input-label">
           Imagem
           { this.inputs('text', 'imagePath', imagePath, 'image-input') }
@@ -77,15 +89,19 @@ class AddMovie extends React.Component {
 
         <label htmlFor="genero" data-testid="genre-input-label">
           Gênero
-          <select data-testid="genre-input">
+          <select data-testid="genre-input" value={ genre }>
             <option value="action" data-testid="genre-option" selected>Ação</option>
             <option value="comedy" data-testid="genre-option">Comédia</option>
             <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
+        <button type="submit" data-testid="send-button" onClick={ this.handleClick }>
+          Adicionar filme
+        </button>
       </form>
     );
   }
+  // src:https://www.geeksforgeeks.org/how-to-set-the-default-value-for-an-html-select-element/
 }
 
 AddMovie.propTypes = {
