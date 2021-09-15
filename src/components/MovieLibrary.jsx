@@ -1,18 +1,13 @@
-// import React from 'react';
-// import movies from '../data';
-// import Header from './Header';
-// import SearchBar from './SearchBar';
+import React from 'react';
 
-// class MovieLibrary extends React.Component {
-//   render() {
-//     return (
-//       <div>
-//         <Header />
-//         <SearchBar />
-//         <MovieLibrary movies={ movies } />
-//       </div>
-//     );
-//   }
-// }
+class MovieLibrary extends React.Component {
+  render() {
+    return (
+      <div>
+        Test
+      </div>
+    );
+  }
+}
 
-// export default MovieLibrary;
+export default MovieLibrary;
