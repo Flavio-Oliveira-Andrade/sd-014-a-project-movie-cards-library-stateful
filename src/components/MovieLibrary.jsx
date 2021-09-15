@@ -7,6 +7,7 @@ import AddMovie from './AddMovie';
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
@@ -16,6 +17,20 @@ class MovieLibrary extends Component {
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
+  }
+
+  handleFilter() {
+    const { movies, searchText, selectedGenre, bookmarkedOnly } = this.state;
+    const films = movies
+      .filter((mov) => mov.title.toUpperCase().includes(searchText.toUpperCase())
+      || mov.subtitle.toUpperCase().includes(searchText.toUpperCase())
+      || mov.storyline.toUpperCase().includes(searchText.toUpperCase()));
+    let result = films;
+    if (bookmarkedOnly) result = (films.filter((mov) => mov.bookmarked));
+    if (selectedGenre) {
+      result = films.filter((mov) => mov.genre === selectedGenre);
+    }
+    return result;
   }
 
   onSearchTextChange(event) {
@@ -31,11 +46,7 @@ class MovieLibrary extends Component {
   }
 
   render() {
-    const { movies, searchText, selectedGenre, bookmarkedOnly } = this.state;
-    const films = movies
-      .filter((all) => all.title.toUpperCase().includes(searchText.toUpperCase())
-      || all.subtitle.toUpperCase().includes(searchText.toUpperCase())
-      || all.storyline.toUpperCase().includes(searchText.toUpperCase()));
+    const { searchText, selectedGenre, bookmarkedOnly } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
@@ -48,8 +59,8 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ this.onSelectedGenreChange }
 
         />
-        <MovieList movies={ films } />
-        <AddMovie onClick="" />
+        <MovieList movies={ this.handleFilter(this.state) } />
+        <AddMovie onClick={ this.handleAddMovie } />
       </div>
     );
   }
