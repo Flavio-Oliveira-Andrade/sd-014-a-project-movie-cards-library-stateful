@@ -30,6 +30,17 @@ class AddMovie extends React.Component {
     );
   }
 
+  createTextArea(name, value, dataTestid) {
+    return (
+      <textarea
+        name={ name }
+        onChange={ this.handleChange }
+        value={ value }
+        data-testid={ dataTestid }
+      />
+    );
+  }
+
   render() {
     const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     return (
@@ -49,6 +60,10 @@ class AddMovie extends React.Component {
         <label data-testid="storyline-input-label" htmlFor="storyline">
           Sinopse
           {this.createTextArea('storyline', storyline, 'storyline-input') }
+        </label>
+        <label data-testid="rating-input-label" htmlFor="rating">
+          Avaliação
+          { this.createInput('number', 'rating', rating, 'rating-input') }
         </label>
       </form>
     );
