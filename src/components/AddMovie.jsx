@@ -14,10 +14,30 @@ class AddMovie extends React.Component {
     };
   }
 
+  handleChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
+  createInput(type, name, value, dataTestid) {
+    return (
+      <input
+        type={ type }
+        name={ name }
+        onChange={ this.handleChange }
+        value={ value }
+        data-testid={ dataTestid }
+      />
+    );
+  }
+
   render() {
+    const { subtitle, title, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
-        
+        <label data-testid="title-input-label" htmlFor="title'">
+          Título
+          { this.createInput('text', 'title', title, 'title-input') }
+        </label>
       </form>
     );
   }
