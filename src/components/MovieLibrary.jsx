@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+// import AddMovie from './AddMovie';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 
@@ -30,9 +31,8 @@ class MovieLibrary extends Component {
     const { movies } = this.props;
     if (event.target.value !== '') {
       this.setState({
-        movies: movies.filter((movie) => {
-          const { title, subtitle, stotyline } = movie;
-          const filterBy = [`${title}, ${subtitle}, ${stotyline}`];
+        movies: movies.filter(({ title, subtitle, storyline }) => {
+          const filterBy = `${title}, ${subtitle}, ${storyline}`;
           return filterBy.includes(event.target.value);
         }),
       });
@@ -77,6 +77,7 @@ class MovieLibrary extends Component {
           onSelectedGenreChange={ this.onSelectedGenreChange }
         />
         <MovieList movies={ movies } />
+        {/* <AddMovie onClick={ this.addMovieF } /> */}
       </div>
     );
   }
