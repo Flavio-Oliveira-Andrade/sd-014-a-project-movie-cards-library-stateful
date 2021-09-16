@@ -1,10 +1,11 @@
 import React from 'react';
+import Input from './Input';
 
 class AddMovie extends React.Component {
   constructor() {
     super();
     this.state = {
-      // subtitle: '',
+      subtitle: '',
       title: '',
       // imagePath: '',
       // storyline: '',
@@ -14,14 +15,15 @@ class AddMovie extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  onChange(event) {
-    this.setState({ title: event.target.value });
+  onChange({ target }) {
+    const { name, value } = target;
+    this.setState({ [name]: value });
   }
 
   render() {
     // const { onClick } = this.props;
     const {
-    //   subtitle,
+      subtitle,
       title,
     //   imagePath,
     //   storyline,
@@ -35,19 +37,20 @@ class AddMovie extends React.Component {
           data-testid="add-movie-form"
           action=""
         >
-          <label
-            data-testid="title-input-label"
-            htmlFor="231"
-          >
-            Título
-            <input
-              type="text"
-              value={ title }
-              data-testid="title-input"
-              onChange={ this.onChange }
-            />
-          </label>
+          <Input
+            nome="title"
+            description="Título"
+            value={ title }
+            onChange={ this.onChange }
+          />
+          <Input
+            nome="subtitle"
+            description="Subtítulo"
+            value={ subtitle }
+            onChange={ this.onChange }
+          />
         </form>
+
       </div>
 
     );
