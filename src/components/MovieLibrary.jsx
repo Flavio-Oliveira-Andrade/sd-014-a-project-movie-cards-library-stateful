@@ -20,9 +20,26 @@ class MovieLibrary extends React.Component {
 
   render() {
     return (
-      <h1>1</h1>
+      <div>
+        <SearchBar
+          searchText={ searchText }
+          onSearchTextChange={ this.handleChange }
+          bookmarkedOnly={ bookmarkedOnly }
+          onBookmarkedChange={ this.handleChange }
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ this.handleChange }
+        />
+        <MovieList movies={ this.moviesFilter(this.state) } />
+        <AddMovie onClick={ this.onClick } />
+      </div>
     );
   }
 }
+
+MovieLibrary.propTypes = {
+  movies: propTypes.arrayOf(
+    propTypes.object,
+  ).isRequired,
+};
 
 export default MovieLibrary;
