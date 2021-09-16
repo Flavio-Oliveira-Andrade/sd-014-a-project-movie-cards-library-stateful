@@ -1,5 +1,6 @@
 import React from 'react';
 import Input from './Input';
+import TextArea from './TextArea';
 
 class AddMovie extends React.Component {
   constructor() {
@@ -11,7 +12,7 @@ class AddMovie extends React.Component {
       image: '',
       storyline: '',
       rating: 0,
-      // genre: 'action',
+      genre: 'action',
     };
     this.onChange = this.onChange.bind(this);
   }
@@ -23,7 +24,7 @@ class AddMovie extends React.Component {
 
   render() {
     // const { onClick } = this.props;
-    const { subtitle, title, image, storyline, rating } = this.state;
+    const { subtitle, title, image, storyline, rating, genre } = this.state;
     return (
       <div>
         <form data-testid="add-movie-form">
@@ -45,19 +46,7 @@ class AddMovie extends React.Component {
             value={ image }
             onChange={ this.onChange }
           />
-          <label
-            data-testid="storyline-input-label"
-            htmlFor="storyline"
-          >
-            Sinopse
-            <textarea
-              id="storyline"
-              data-testid="storyline-input"
-              name="storyline"
-              value={ storyline }
-              onChange={ this.onChange }
-            />
-          </label>
+          <TextArea storyline={ storyline } onChange={ this.onChange } />
           <Input
             type="number"
             nome="rating"
@@ -65,6 +54,20 @@ class AddMovie extends React.Component {
             value={ rating }
             onChange={ this.onChange }
           />
+          <label htmlFor="select" data-testid="genre-input-label">
+            Gênero
+            <select
+              name="genre"
+              id="select"
+              value={ genre }
+              onChange={ this.onChange }
+              data-testid="genre-input"
+            >
+              <option data-testid="genre-option" value="action">Ação</option>
+              <option data-testid="genre-option" value="comedy">Comédia</option>
+              <option data-testid="genre-option" value="thriller">Suspense</option>
+            </select>
+          </label>
         </form>
       </div>
     );
