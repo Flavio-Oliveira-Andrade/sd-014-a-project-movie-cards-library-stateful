@@ -66,7 +66,7 @@ export default class AddMovie extends Component {
         { this.setAttribute('Título', 'title', 'text', title) }
         { this.setAttribute('Subtítulo', 'subtitle', 'text', subtitle) }
         { this.setAttribute('Imagem', 'imagePath', 'text', imagePath) }
-        { this.setAttribute('Sinopse', 'storyline', 'text', storyline) } 
+        { this.setAttribute('Sinopse', 'storyline', 'text', storyline) }
         { this.setAttribute('Avaliação', 'rating', 'number', rating) }
         <label htmlFor="control" data-testid="genre-input-label">
           Gênero
