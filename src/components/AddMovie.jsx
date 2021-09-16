@@ -25,7 +25,7 @@ class AddMovie extends React.Component {
     const {
       subtitle,
       title,
-    //   imagePath,
+      imagePath,
     //   storyline,
     //   rating,
     //   genre
@@ -39,14 +39,20 @@ class AddMovie extends React.Component {
         >
           <Input
             nome="title"
-            description="Título"
+            textLabel="Título"
             value={ title }
             onChange={ this.onChange }
           />
           <Input
             nome="subtitle"
-            description="Subtítulo"
+            textLabel="Subtítulo"
             value={ subtitle }
+            onChange={ this.onChange }
+          />
+          <Input
+            nome="image"
+            textLabel="Imagem"
+            value={ imagePath }
             onChange={ this.onChange }
           />
         </form>
