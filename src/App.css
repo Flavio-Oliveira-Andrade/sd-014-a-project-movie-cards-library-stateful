@@ -88,3 +88,14 @@ label {
   margin-left: 1%;
   padding: 12px 12px 12px 0;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
