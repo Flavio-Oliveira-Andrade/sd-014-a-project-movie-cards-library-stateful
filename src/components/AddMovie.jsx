@@ -16,6 +16,7 @@ class AddMovie extends React.Component {
       genre: 'action',
     };
     this.onChange = this.onChange.bind(this);
+    this.addMovie = this.addMovie.bind(this);
   }
 
   onChange({ target }) {
@@ -23,8 +24,21 @@ class AddMovie extends React.Component {
     this.setState({ [name]: value });
   }
 
+  addMovie() {
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState({
+      subtitle: '',
+      title: '',
+      // trocado o nome da chave de imagePath pra image.
+      image: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
   render() {
-    // const { onClick } = this.props;
     const { subtitle, title, image, storyline, rating, genre } = this.state;
     return (
       <div>
@@ -56,11 +70,21 @@ class AddMovie extends React.Component {
             onChange={ this.onChange }
           />
           <Select genre={ genre } onChange={ this.onChange } />
+          <button
+            type="button"
+            data-testid="send-button"
+            onClick={ this.addMovie }
+          >
+            Adicionar filme
+          </button>
 
         </form>
       </div>
     );
   }
 }
+AddMovie.propTypes = {
+  onClick: propTypes.func.isRequired,
+};
 
 export default AddMovie;
