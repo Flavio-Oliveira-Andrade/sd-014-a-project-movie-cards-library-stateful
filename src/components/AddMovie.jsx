@@ -36,14 +36,14 @@ class AddMovie extends React.Component {
             type="text"
           />
         </label>
-        <label data-testid="subtitle-input-label" htmlFor="subtitle-input">
+        <label data-testid="subtitle-input-label" htmlFor="subtitle">
           Subtítulo
           <input
             data-testid="subtitle-input"
             value={ subtitle }
             onChange={ this.handleChange }
             name="subtitle"
-            id="input-subtitle"
+            id="subtitle"
             type="text"
           />
         </label>
