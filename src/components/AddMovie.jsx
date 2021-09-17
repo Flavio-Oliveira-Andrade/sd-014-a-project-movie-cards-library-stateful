@@ -1,5 +1,6 @@
 import React from 'react';
 import Input from './Input';
+import Select from './Select';
 import TextArea from './TextArea';
 
 class AddMovie extends React.Component {
@@ -54,20 +55,8 @@ class AddMovie extends React.Component {
             value={ rating }
             onChange={ this.onChange }
           />
-          <label htmlFor="select" data-testid="genre-input-label">
-            Gênero
-            <select
-              name="genre"
-              id="select"
-              value={ genre }
-              onChange={ this.onChange }
-              data-testid="genre-input"
-            >
-              <option data-testid="genre-option" value="action">Ação</option>
-              <option data-testid="genre-option" value="comedy">Comédia</option>
-              <option data-testid="genre-option" value="thriller">Suspense</option>
-            </select>
-          </label>
+          <Select genre={ genre } onChange={ this.onChange } />
+
         </form>
       </div>
     );
