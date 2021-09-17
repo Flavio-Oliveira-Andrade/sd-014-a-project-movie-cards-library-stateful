@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Input from './Input';
 import Select from './Select';
 import TextArea from './TextArea';
@@ -84,7 +85,7 @@ class AddMovie extends React.Component {
   }
 }
 AddMovie.propTypes = {
-  onClick: propTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default AddMovie;
