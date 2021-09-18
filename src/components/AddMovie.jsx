@@ -19,7 +19,7 @@ class AddMovie extends React.Component {
     } = this.props;
 
     return (
-      <form>
+      <form data-testid="add-movie-form">
         <label htmlFor="subtitle">
           Subtítulo
           <input type="text" id="subtitle" />
