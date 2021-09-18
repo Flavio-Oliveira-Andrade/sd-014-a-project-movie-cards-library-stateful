@@ -1,15 +1,16 @@
 import React from 'react';
 import Seletor from './formCompose/Seletor';
+import Avaliar from './formCompose/Avaliar';
 
 class AddMovie extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       subtitle: '',
       title: '',
       imagePath: '',
       storyline: '',
-      // rating: 0,
+      rating: 0,
       genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
@@ -23,7 +24,7 @@ class AddMovie extends React.Component {
 
   render() {
     // const { onClick } = this.props;
-    const { title, subtitle, imagePath, storyline, genre } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form data-testid="add-movie-form">
         <label data-testid="title-input-label" htmlFor="input-title">
@@ -66,6 +67,7 @@ class AddMovie extends React.Component {
             id="input-image"
           />
         </label>
+        <Avaliar rating={ rating } handleChange={ this.handleChange } />
         <Seletor genre={ genre } handleChange={ this.handleChange } />
       </form>
     );
