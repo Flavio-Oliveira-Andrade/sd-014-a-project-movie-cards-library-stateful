@@ -1,6 +1,5 @@
 import React from 'react';
 import Seletor from './formCompose/Seletor';
-import Rating from './formCompose/Rating';
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -67,7 +66,6 @@ class AddMovie extends React.Component {
             id="input-image"
           />
         </label>
-        <Rating rating={ rating } handleChange={ this.handleChange } />
         <Seletor genre={ genre } handleChange={ this.handleChange } />
       </form>
     );
