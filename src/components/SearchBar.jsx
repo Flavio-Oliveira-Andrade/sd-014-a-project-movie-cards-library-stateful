@@ -2,6 +2,31 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class SearchBar extends Component {
+  eventHandler = (event) => {
+    const { name, value, type, checked } = event.target;
+    if (type === 'checkbox') {
+      this.setState({
+        [name]: checked,
+      });
+    } else {
+      this.setState({
+        [name]: value,
+      });
+    }
+  }
+
+  createInput(type, id, value, handler) {
+    return (
+      <input
+        type={ type }
+        name={ `${type}` }
+        data-testid={ id }
+        checked={ value }
+        onChange={ handler }
+      />
+    );
+  }
+
   render() {
     const {
       searchText,
@@ -12,12 +37,12 @@ class SearchBar extends Component {
       onSelectedGenreChange,
     } = this.props;
     return (
-      // item 1
       <form data-testid="search-bar-form">
         <label htmlFor="searchText" data-testid="text-input-label">
           Inclui o texto
           <input
             type="text"
+            name="searchText"
             data-testid="text-input"
             value={ searchText }
             onChange={ onSearchTextChange }
@@ -25,13 +50,14 @@ class SearchBar extends Component {
         </label>
         <p />
         <label htmlFor="checkbox" data-testid="checkbox-input-label">
+          Mostrar somente favoritos
           <input
-            data-testid="checkbox-input"
             type="checkbox"
+            name="bookmarkedOnly"
+            data-testid="checkbox-input"
             checked={ bookmarkedOnly }
             onChange={ onBookmarkedChange }
           />
-          Mostrar somente favoritos
         </label>
         <p />
         <label htmlFor="selectInput" data-testid="select-input-label">
@@ -54,20 +80,11 @@ class SearchBar extends Component {
 }
 
 SearchBar.propTypes = {
-  searchText: PropTypes.string,
-  onSearchTextChange: PropTypes.func,
-  bookmarkedOnly: PropTypes.bool,
-  onBookmarkedChange: PropTypes.func,
-  selectedGenre: PropTypes.string,
-  onSelectedGenreChange: PropTypes.func,
-};
-
-SearchBar.defaultProps = {
-  searchText: undefined,
-  onSearchTextChange: undefined,
-  bookmarkedOnly: undefined,
-  onBookmarkedChange: undefined,
-  selectedGenre: undefined,
-  onSelectedGenreChange: undefined,
+  searchText: PropTypes.string.isRequired,
+  onSearchTextChange: PropTypes.func.isRequired,
+  bookmarkedOnly: PropTypes.bool.isRequired,
+  onBookmarkedChange: PropTypes.func.isRequired,
+  selectedGenre: PropTypes.string.isRequired,
+  onSelectedGenreChange: PropTypes.func.isRequired,
 };
 export default SearchBar;

@@ -13,22 +13,32 @@ class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     };
-    this.handleEvent = this.handleEvent.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+
+    this.eventHandler = this.eventHandler.bind(this);
+    this.clickHandler = this.clickHandler.bind(this);
   }
 
-  handleEvent = (event) => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
+  eventHandler = (event) => {
+    const { name, value, type, checked } = event.target;
+    if (type === 'checkbox') {
+      this.setState({
+        [name]: checked,
+      });
+    } else {
+      this.setState({
+        [name]: value,
+      });
+    }
   }
 
-  handleClick = (event) => {
+  clickHandler = (event) => {
     event.preventDefault();
-    const { submitMovie } = this.props;
+    const { onClick } = this.props;
+    // console.log(this.props);
+    // console.log('Clickou!');
 
-    submitMovie(this.state);
+    onClick(this.state);
+
     this.setState({
       title: '',
       subtitle: '',
@@ -41,13 +51,15 @@ class AddMovie extends Component {
 
   createInput(type, name, id, value) {
     return (
-      <input
-        type={ type }
-        name={ name }
-        data-testid={ id }
-        value={ value }
-        onChange={ this.handleEvent }
-      />
+      <p>
+        <input
+          type={ type }
+          name={ name }
+          data-testid={ id }
+          value={ value }
+          onChange={ this.eventHandler }
+        />
+      </p>
     );
   }
 
@@ -56,45 +68,45 @@ class AddMovie extends Component {
     return (
       // item 7
       <form data-testid="add-movie-form">
-        {/* item 8 */}
+        <p />
         <label htmlFor="movieTitle" data-testid="title-input-label">
           Título
           {this.createInput('text', 'title', 'title-input', title)}
         </label>
-        {/* item 9 */}
+        <p />
         <label htmlFor="movieSubtitle" data-testid="subtitle-input-label">
           Subtítulo
           {this.createInput('text', 'subtitle', 'subtitle-input', subtitle)}
         </label>
-        {/* item 10 */}
+        <p />
         <label htmlFor="image" data-testid="image-input-label">
           Imagem
           {this.createInput('text', 'imagePath', 'image-input', imagePath)}
         </label>
-        {/* item 11 */}
+        <p />
         <label htmlFor="storyline" data-testid="storyline-input-label">
           Sinopse
           {this.createInput('textarea', 'storyline', 'storyline-input', storyline)}
         </label>
-        {/* item 12 */}
+        <p />
         <label htmlFor="number" data-testid="rating-input-label">
           Avaliação
           {this.createInput('number', 'rating', 'rating-input', rating)}
         </label>
-        {/* item 13 */}
+        <p />
         <label htmlFor="genre" data-testid="genre-input-label">
           Gênero
           <select
             name="genre"
             data-testid="genre-input"
             value={ genre }
-            onChange={ this.handleEvent }
+            onChange={ this.eventHandler }
           >
             <option data-testid="genre-option" value="action">Ação</option>
             <option data-testid="genre-option" value="comedy">Comédia</option>
             <option data-testid="genre-option" value="thriller">Suspense</option>
           </select>
-          <button type="submit" data-testid="send-button" onClick={ this.handleClick }>
+          <button type="submit" data-testid="send-button" onClick={ this.clickHandler }>
             Adicionar filme
           </button>
         </label>
@@ -104,36 +116,16 @@ class AddMovie extends Component {
 }
 
 AddMovie.propTypes = {
-  submitMovie: PropTypes.func,
+  onClick: PropTypes.objectOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      subtitle: PropTypes.string,
+      imagePath: PropTypes.string,
+      storyline: PropTypes.string,
+      rating: PropTypes.number,
+      genre: PropTypes.string,
+    }),
+  ).isRequired,
 };
-AddMovie.defaultProps = {
-  submitMovie: undefined,
-};
-
-// AddMovie.propTypes = {
-//   submitMovie: PropTypes.objectOf(
-//     PropTypes.shape({
-//       title: PropTypes.string,
-//       subtitle: PropTypes.string,
-//       imagePath: PropTypes.string,
-//       storyline: PropTypes.string,
-//       rating: PropTypes.number,
-//       genre: PropTypes.string,
-//     }),
-//   ),
-// };
-
-// AddMovie.defaultProps = {
-//   submitMovie: PropTypes.objectOf(
-//     PropTypes.shape({
-//       title: undefined,
-//       subtitle: undefined,
-//       imagePath: undefined,
-//       storyline: undefined,
-//       rating: undefined,
-//       genre: undefined,
-//     }),
-//   ),
-// };
 
 export default AddMovie;
