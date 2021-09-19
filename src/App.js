@@ -1,13 +1,21 @@
+// Código do colega Wendel Melo: https://github.com/tryber/sd-014-a-project-movie-cards-library-stateful/pull/140/files
 import React from 'react';
 import Header from './components/Header';
 import './App.css';
+import MovieLibrary from './components/MovieLibrary';
+import movies from './data';
 
-function App() {
-  return (
-    <div className="App">
-      <Header />
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <body>
+        <main>
+          <Header />
+          <MovieLibrary movies={ movies } />
+        </main>
+      </body>
+    );
+  }
 }
 
 export default App;

@@ -1,3 +1,4 @@
+// Código do colega Wendel Melo: https://github.com/tryber/sd-014-a-project-movie-cards-library-stateful/pull/140/files
 import React from 'react';
 
 class Header extends React.Component {
