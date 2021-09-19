@@ -2,12 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Seletor from './formCompose/Seletor';
 import Avaliar from './formCompose/Avaliar';
-import Button from './formCompose/Button';
 import Sinopse from './formCompose/Sinopse';
 
 class AddMovie extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       subtitle: '',
       title: '',
@@ -30,7 +29,7 @@ class AddMovie extends React.Component {
   handleClick(event) {
     event.preventDefault();
     const { onClick } = this.props;
-    onClick();
+    onClick(this.state);
     this.setState({
       subtitle: '',
       title: '',
@@ -44,7 +43,7 @@ class AddMovie extends React.Component {
   render() {
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
-      <form data-testid="add-movie-form">
+      <form data-testid="add-movie-form" onSubmit={ this.handleClick }>
         <label data-testid="title-input-label" htmlFor="input-title">
           Título
           <input
@@ -78,7 +77,9 @@ class AddMovie extends React.Component {
         <Sinopse value={ storyline } handleChange={ this.handleChange } />
         <Avaliar rating={ rating } handleChange={ this.handleChange } />
         <Seletor genre={ genre } handleChange={ this.handleChange } />
-        <Button onClick={ this.handleClick } />
+        <button type="submit" data-testid="send-button">
+          Adicionar filme
+        </button>
       </form>
     );
   }
