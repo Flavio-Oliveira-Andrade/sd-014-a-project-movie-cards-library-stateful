@@ -1,9 +1,9 @@
 import React from 'react';
 
 class AddMovie extends React.Component {
-  constructor() {
-    super();
-    this.state = {
+  constructor(props) {
+    super(props);
+    this.initialState = {
       subtitle: '',
       title: '',
       imagePath: '',
@@ -11,17 +11,24 @@ class AddMovie extends React.Component {
       rating: 0,
       genre: 'action',
     };
+
+    this.state = this.initialState;
+
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange(event) {
     this.setState({ [event.target.id]: event.target.value });
   }
 
+  handleClick() {
+    const { onClick } = this.props;
+    onClick(this.state);
+    this.setState(this.initialState);
+  }
+
   render() {
-    const {
-      onClick,
-    } = this.props;
     const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
 
     return (
@@ -92,6 +99,12 @@ class AddMovie extends React.Component {
             <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
+        <button
+          data-testid="send-button"
+          onClick={ this.handleClick }
+        >
+          Adicionar filme
+        </button>
       </form>
     );
   }
