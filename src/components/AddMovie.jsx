@@ -96,6 +96,7 @@ class AddMovie extends React.Component {
           { this.createTextArea('text', storyline, 'storyline', 'storyline-input') }
         </label>
         <label htmlFor="rating" data-testid="rating-input-label">
+          Avaliação
           { this.createInput('number', rating, 'rating', 'rating-input') }
         </label>
         <label htmlFor="genre" data-testid="genre-input-label">
