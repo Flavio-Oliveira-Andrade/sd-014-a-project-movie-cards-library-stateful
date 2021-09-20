@@ -52,7 +52,7 @@ class AddMovie extends Component {
             type="text"
             name="imagePath"
             value={ imagePath }
-            data-testid="subtitle-input"
+            data-testid="image-input"
             onChange={ this.changeState }
           />
         </label>
