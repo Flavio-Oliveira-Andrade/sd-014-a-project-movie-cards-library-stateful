@@ -10,11 +10,13 @@ class MovieLibrary extends Component {
     const { movies } = this.props;
     this.state = {
       searchText: '',
-      // bookmarkedOnly: false,
-      // selectedGenre: '',
+      bookmarkedOnly: false,
+      selectedGenre: '',
       movies,
     };
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
+    this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
+    this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
   }
 
   onSearchTextChange(event) {
@@ -23,18 +25,30 @@ class MovieLibrary extends Component {
     });
   }
 
+  onBookmarkedChange(event) {
+    this.setState({
+      bookmarkedOnly: event.target.checked,
+    });
+  }
+
+  onSelectedGenreChange(event) {
+    this.setState({
+      selectedGenre: event.target.value,
+    });
+  }
+
   render() {
-    const { searchText, movies } = this.state;
+    const { searchText, movies, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
         <SearchBar
           searchText={ searchText }
           onSearchTextChange={ this.onSearchTextChange }
-          // onBookmarkedChange={ onBookmarkedChange }
-          // bookmarkedOnly={ bookmarkedOnly }
-          // selectedGenre={ selectedGenre }
-          // onSelectedGenreChange={ onSelectedGenreChange }
+          onBookmarkedChange={ this.onBookmarkedChange }
+          bookmarkedOnly={ bookmarkedOnly }
+          selectedGenre={ selectedGenre }
+          onSelectedGenreChange={ this.onSelectedGenreChange }
 
         />
         <MovieList movies={ movies } />
