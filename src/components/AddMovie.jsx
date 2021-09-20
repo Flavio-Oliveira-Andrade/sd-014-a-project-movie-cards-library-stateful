@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class AddMovie extends Component {
   constructor() {
     super();
+    this.changeState = this.changeState.bind(this);
     this.state = {
       subtitle: '',
       title: '',
