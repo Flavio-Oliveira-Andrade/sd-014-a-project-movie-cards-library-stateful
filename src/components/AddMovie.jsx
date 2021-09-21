@@ -64,6 +64,10 @@ class AddMovie extends Component {
           Imagem
           { this.createInput('text', 'imagePath', imagePath, 'image-input')}
         </label>
+        <label htmlFor="storyline" data-testid="storyline-input-label">
+          Sinopse
+          { this.createInput('textarea', 'storyline', storyline, 'storyline-input')}
+        </label>
       </form>
     );
   }
