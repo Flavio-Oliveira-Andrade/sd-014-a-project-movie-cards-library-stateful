@@ -68,6 +68,10 @@ class AddMovie extends Component {
           Sinopse
           { this.createInput('textarea', 'storyline', storyline, 'storyline-input')}
         </label>
+        <label htmlFor="rating" data-testid="rating-input-label">
+          Avaliação
+          { this.createInput('number', 'rating', rating, 'rating-input')}
+        </label>
       </form>
     );
   }
