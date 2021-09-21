@@ -81,6 +81,7 @@ class AddMovie extends React.Component {
           type="submit"
           data-testid="send-button"
           onClick={ this.handleClick }
+          name="send-button"
         >
           Adicionar filme
         </button>
@@ -91,7 +92,6 @@ class AddMovie extends React.Component {
 
 AddMovie.propTypes = {
   onClick: PropTypes.func.isRequired,
-
 };
 
 export default AddMovie;
