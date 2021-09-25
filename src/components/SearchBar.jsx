@@ -33,11 +33,10 @@ class SearchBar extends React.Component {
               onChange={ onBookmarkedChange }
             />
           </label>
-          <label 
-            data-testid="select-input-label"
-            htmlFor="">
+          <label data-testid="select-input-label" htmlFor="filter">
             Filtrar por gênero
-            <select 
+            <select
+            name="filter"
             data-testid="select-input"
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }>
