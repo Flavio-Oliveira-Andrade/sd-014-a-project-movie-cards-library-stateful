@@ -22,11 +22,23 @@ class AddMovie extends React.Component {
     };
     this.saveState = this.saveState.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange({ target }) {
     const { name } = target;
     this.saveState({ key: name, value: (target.value) });
+  }
+
+  handleClick() {
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
   }
 
   saveState(content) {
@@ -68,6 +80,7 @@ class AddMovie extends React.Component {
           />
           <AddMovieButton
             onClick={ onClick }
+            handleClick={ this.handleClick }
           />
         </form>
       </div>
