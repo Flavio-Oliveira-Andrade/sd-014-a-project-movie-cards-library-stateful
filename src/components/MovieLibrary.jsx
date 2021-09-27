@@ -15,11 +15,18 @@ export default class MovieLibrary extends Component {
       movies,
     };
     this.handleChange = this.handleChange.bind(this);
+    this.addMovie = this.addMovie.bind(this);
   }
 
   handleChange({ target: { name, type, checked, value } }) {
     const input = type === 'checkbox' ? checked : value;
     this.setState({ [name]: input });
+  }
+
+  addMovie(newMovie) {
+    this.setState((state) => ({
+      movies: [...state.movies, { ...newMovie, bookmarked: true }],
+    }));
   }
 
   render() {
@@ -35,7 +42,7 @@ export default class MovieLibrary extends Component {
           onSelectedGenre={ this.handleChange }
         />
         <MovieList movies={ movies } />
-        <AddMovie />
+        <AddMovie onClick={ this.addMovie } />
       </div>
     );
   }
