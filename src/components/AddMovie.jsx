@@ -7,6 +7,7 @@ import AddMovieImage from './AddMovieImage';
 import AddMovieStoryline from './AddMovieStoryline';
 import AddMovieRating from './AddMovieRating';
 import AddMovieGenre from './AddMovieGenre';
+import AddMovieButton from './AddMovieButton';
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -65,13 +66,9 @@ class AddMovie extends React.Component {
             genre={ genre }
             handleChanceGenre={ this.handleChange }
           />
-          <button
-            type="button"
-            data-testid="send-button"
+          <AddMovieButton
             onClick={ onClick }
-          >
-            Adicionar filme
-          </button>
+          />
         </form>
       </div>
     );
