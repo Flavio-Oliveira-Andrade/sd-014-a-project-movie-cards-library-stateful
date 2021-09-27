@@ -5,7 +5,10 @@ export default class AddInputText extends Component {
   render() {
     const { id, label, value, callback } = this.props;
     return (
-      <label htmlFor={ id } data-testid={ `${id}-input-label` }>
+      <label
+        htmlFor={ id === 'image' ? 'imagePath' : id }
+        data-testid={ `${id}-input-label` }
+      >
         { label }
         <input
           data-testid={ `${id}-input` }

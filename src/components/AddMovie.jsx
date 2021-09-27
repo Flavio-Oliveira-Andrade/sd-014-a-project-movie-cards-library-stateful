@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import AddInputText from './inputs/AddInputText';
 import AddInputNumber from './inputs/AddInputNumber';
 import AddTextArea from './inputs/AddTextArea';
@@ -23,8 +24,9 @@ export default class AddMovie extends Component {
     this.setState({ [id]: value });
   }
 
-  restore(event) {
-    event.prevetDefault();
+  restore() {
+    const { onClick } = this.props;
+    onClick(this.state);
     this.setState({
       subtitle: '',
       title: '',
@@ -52,7 +54,7 @@ export default class AddMovie extends Component {
           callback={ this.handleChange }
         />
         <AddInputText
-          id="imagePath"
+          id="image"
           label="Imagem"
           value={ imagePath }
           callback={ this.handleChange }
@@ -83,3 +85,7 @@ export default class AddMovie extends Component {
     );
   }
 }
+
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};

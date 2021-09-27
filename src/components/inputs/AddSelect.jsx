@@ -36,6 +36,7 @@ export default class AddSelect extends Component {
             <option
               key={ genre.pt }
               value={ genre.en }
+              data-testid={ `${id}-option` }
             >
               { genre.pt }
             </option>))}
