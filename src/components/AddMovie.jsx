@@ -19,6 +19,7 @@ class AddMovie extends React.Component {
     this.handleChanceImagePath = this.handleChanceImagePath.bind(this);
     this.handleChanceStoryline = this.handleChanceStoryline.bind(this);
     this.handleChanceRating = this.handleChanceRating.bind(this);
+    this.handleChanceGenre = this.handleChanceGenre.bind(this);
   }
 
   handleChanceTitle(event) {
@@ -39,6 +40,10 @@ class AddMovie extends React.Component {
 
   handleChanceRating(event) {
     this.saveState({ key: 'rating', value: (event.target.value) });
+  }
+
+  handleChanceGenre(event) {
+    this.saveState({ key: 'genre', value: (event.target.value) });
   }
 
   saveState(content) {
