@@ -10,7 +10,7 @@ class AddMovie extends React.Component {
       title: '',
       imagePath: '',
       storyline: '',
-      // rating: 0,
+      rating: 0,
       // genre: 'action',
     };
     this.saveState = this.saveState.bind(this);
@@ -18,6 +18,7 @@ class AddMovie extends React.Component {
     this.handleChanceSubtitle = this.handleChanceSubtitle.bind(this);
     this.handleChanceImagePath = this.handleChanceImagePath.bind(this);
     this.handleChanceStoryline = this.handleChanceStoryline.bind(this);
+    this.handleChanceRating = this.handleChanceRating.bind(this);
   }
 
   handleChanceTitle(event) {
@@ -36,6 +37,10 @@ class AddMovie extends React.Component {
     this.saveState({ key: 'storyline', value: (event.target.value) });
   }
 
+  handleChanceRating(event) {
+    this.saveState({ key: 'rating', value: (event.target.value) });
+  }
+
   saveState(content) {
     const { key, value } = content;
     this.setState({
@@ -45,7 +50,7 @@ class AddMovie extends React.Component {
 
   render() {
     // const { onClick } = this.props;
-    const { title, subtitle, imagePath, storyline } = this.state;
+    const { title, subtitle, imagePath, storyline, rating } = this.state;
     return (
       <div>
         <form data-testid="add-movie-form">
@@ -91,6 +96,17 @@ class AddMovie extends React.Component {
               rows="10"
               value={ storyline }
               onChange={ this.handleChanceStoryline }
+            />
+          </label>
+          <label htmlFor="rating-input" data-testid="rating-input-label">
+            Avaliação
+            <input
+              type="number"
+              name="rating-input"
+              id="rating-input"
+              data-testid="rating-input"
+              value={ rating }
+              onChange={ this.handleChanceRating }
             />
           </label>
         </form>
