@@ -10,60 +10,33 @@ class AddMovie extends React.Component {
       imagePath: '',
       storyline: '',
       rating: 0,
-      genre: 'action'
+      genre: 'action',
    }
 
-    this.titleHG = this.titleHG.bind(this);
-
-    this.subtitleHG = this.subtitleHG.bind(this);
-
-    this.searchImagePath = this.searchImagePath.bind(this);
-
-    this.storylineChange = this.storylineChange.bind(this);
-
-    this.ratingChange = this.ratingChange.bind(this);
-
-    this.genreSelect = this.genreSelect.bind(this);
+    this.handleChange = this.handleChange.bind(this);
 }
 
-  titleHG(event) {
+  handleChange(event) {
     this.setState({
-      title: event.target.value,
+      [event.target.name]: event.target.value,
      });
   }
 
-  subtitleHG(event) {
+  handleAdd = (event) => {
+    const { onClick } = this.props;
+    event.preventDefault();
+    // onClick( console.log('ok') );
     this.setState({
-      subtitle: event.target.value,
-    });
-  }
-
-  searchImagePath(event) {
-    this.setState({
-      imagePath: event.target.value,
-    });
-  }
-
-  storylineChange(event) {
-    this.setState({
-      storyline: event.target.value,
-    });
-  }
-
-  ratingChange(event) {
-    this.setState({
-      rating: event.target.value,
-    });
-  }
-
-  genreSelect(event) {
-    this.setState({
-      genre: event.target.value,
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
     });
   }
 
   render() {
-    const { onClick } = this.props;
     const { 
       subtitle,
       title,
@@ -75,42 +48,42 @@ class AddMovie extends React.Component {
     return(
       <div>
         <form data-testid="add-movie-form">
-          <label htmlFor="titulo" data-testid="title-input-label">
+          <label htmlFor="title" data-testid="title-input-label">
             Título
             <input
-              name="titulo"
+              name="title"
               data-testid="title-input"      
               type="text"
               value={ title }
-              onChange={ this.titleHG }/>
+              onChange={ this.handleChange }/>
           </label >
-          <label htmlFor="subtitulo" data-testid="subtitle-input-label">
+          <label htmlFor="subtitle" data-testid="subtitle-input-label">
             Subtítulo
             <input
-              name="subtitulo"
+              name="subtitle"
               data-testid="subtitle-input"
               type="text"
               value={ subtitle }
-              onChange={ this.subtitleHG }/>
+              onChange={ this.handleChange }/>
           </label>
-          <label htmlFor="cartaz" data-testid="image-input-label">
+          <label htmlFor="imagePath" data-testid="image-input-label">
             Imagem
             <input
-              name="cartaz"
+              name="imagePath"
               data-testid="image-input"
               type="text"
               value={ imagePath }
-              onChange={ this.searchImagePath } />
+              onChange={ this.handleChange } />
           </label>
-          <label htmlFor="sinopse" data-testid="storyline-input-label">
+          <label htmlFor="storyline" data-testid="storyline-input-label">
             Sinopse
             <textarea
-              name="sinopse"
+              name="storyline"
               data-testid="storyline-input"
               cols="25" 
               rows="1"
               value={ storyline }
-              onChange={ this.storylineChange }/>
+              onChange={ this.handleChange }/>
           </label>
           <label htmlFor="rating" data-testid="rating-input-label">
             Avaliação
@@ -119,7 +92,7 @@ class AddMovie extends React.Component {
             data-testid="rating-input"
             type="number"
             value={ rating }
-            onChange={ this.ratingChange }/>
+            onChange={ this.handleChange }/>
           </label>
           <label htmlFor="genre" data-testid="genre-input-label">
             Gênero
@@ -127,12 +100,17 @@ class AddMovie extends React.Component {
             data-testid="genre-input"
             name="genre"
             value={ genre }
-            onChange={ this.genreSelect }>
+            onChange={ this.handleChange }>
               <option data-testid="genre-option" value="action">Ação</option>
               <option data-testid="genre-option" value="comedy">Comédia</option>
               <option data-testid="genre-option" value="thriller">Suspense</option>
             </select>
           </label>
+          <button
+            data-testid="send-button"
+            onClick={ this.handleAdd }>
+            Adicionar filme
+          </button>
         </form>
       </div>
     )
