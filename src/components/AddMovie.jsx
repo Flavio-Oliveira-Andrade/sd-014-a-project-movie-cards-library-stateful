@@ -15,9 +15,9 @@ export default class AddMovie extends Component {
 
   render() {
     return (
-      <div>
-        Teste
-      </div>
+      <form data-testid="add-movie-form">
+        sim
+      </form>
     );
   }
 }
