@@ -12,10 +12,23 @@ export default class AddMovie extends Component {
       genre: 'action',
     };
     this.handleChange = this.handleChange.bind(this);
+    this.restore = this.restore.bind(this);
   }
 
   handleChange({ target: { id, value } }) {
     this.setState({ [id]: value });
+  }
+
+  restore(event) {
+    event.prevetDefault();
+    this.setState({
+      subtitle: '',
+      title: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
   }
 
   render() {
@@ -88,6 +101,7 @@ export default class AddMovie extends Component {
             <option value="thriller" data-testid="genre-option">Suspense</option>
           </select>
         </label>
+        <button ata-testid="send-button" onClick={ this.restore }>Adicionar filme</button>
       </form>
     );
   }
