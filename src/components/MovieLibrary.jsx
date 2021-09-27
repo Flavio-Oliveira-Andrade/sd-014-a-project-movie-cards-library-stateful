@@ -16,11 +16,37 @@ export default class MovieLibrary extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.addMovie = this.addMovie.bind(this);
+    this.filter = this.filter.bind(this);
   }
 
-  handleChange({ target: { name, type, checked, value } }) {
+  /* handleChange({ target: { name, type, checked, value } }) {
     const input = type === 'checkbox' ? checked : value;
     this.setState({ [name]: input });
+  } */
+
+  handleChange({ target }) {
+    const { name } = target;
+    const inputType = target.type === 'checkbox'
+      ? target.checked : target.value;
+    this.setState({
+      [name]: inputType,
+    });
+  }
+
+  filter({ movies, searchText, bookmarkedOnly, selectedGenre }) {
+    const filterMovies = movies.filter((movie) => {
+      const title = movie.title.includes(searchText);
+      const subtitle = movie.subtitle.includes(searchText);
+      const storyline = movie.storyline.includes(searchText);
+      return title || subtitle || storyline;
+    });
+    if (selectedGenre) {
+      return filterMovies.filter((movie) => movie.genre === selectedGenre);
+    }
+    if (bookmarkedOnly) {
+      return filterMovies.filter((movie) => movie.bookmarked);
+    }
+    return filterMovies;
   }
 
   addMovie(newMovie) {
@@ -30,7 +56,7 @@ export default class MovieLibrary extends Component {
   }
 
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
     return (
       <div>
         <SearchBar
@@ -39,9 +65,9 @@ export default class MovieLibrary extends Component {
           bookmarkedOnly={ bookmarkedOnly }
           onBookmarkedChange={ this.handleChange }
           selectedGenre={ selectedGenre }
-          onSelectedGenre={ this.handleChange }
+          onSelectedGenreChange={ this.handleChange }
         />
-        <MovieList movies={ movies } />
+        <MovieList movies={ this.filter(this.state) } />
         <AddMovie onClick={ this.addMovie } />
       </div>
     );
@@ -49,5 +75,5 @@ export default class MovieLibrary extends Component {
 }
 
 MovieLibrary.propTypes = {
-  movies: PropTypes.arrayOf.isRequired,
+  movies: PropTypes.arrayOf(Object).isRequired,
 };
