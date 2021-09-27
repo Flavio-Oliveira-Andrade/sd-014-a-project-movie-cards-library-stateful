@@ -17,6 +17,7 @@ export default class SearchBar extends Component {
           <input
             data-testid="text-input"
             id="text-input-label"
+            name="searchText"
             type="text"
             value={ searchText }
             onChange={ onSearchTextChange }
@@ -28,6 +29,7 @@ export default class SearchBar extends Component {
           <input
             data-testid="checkbox-input"
             id="checkbox-input-label"
+            name="bookMarkedOnly"
             type="checkbox"
             checked={ bookmarkedOnly }
             onChange={ onBookmarkedChange }
