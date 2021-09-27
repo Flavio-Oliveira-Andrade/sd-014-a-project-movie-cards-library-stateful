@@ -9,7 +9,7 @@ class AddMovie extends React.Component {
       subtitle: '',
       title: '',
       imagePath: '',
-      // storyline: '',
+      storyline: '',
       // rating: 0,
       // genre: 'action',
     };
@@ -17,6 +17,7 @@ class AddMovie extends React.Component {
     this.handleChanceTitle = this.handleChanceTitle.bind(this);
     this.handleChanceSubtitle = this.handleChanceSubtitle.bind(this);
     this.handleChanceImagePath = this.handleChanceImagePath.bind(this);
+    this.handleChanceStoryline = this.handleChanceStoryline.bind(this);
   }
 
   handleChanceTitle(event) {
@@ -31,6 +32,10 @@ class AddMovie extends React.Component {
     this.saveState({ key: 'imagePath', value: (event.target.value) });
   }
 
+  handleChanceStoryline(event) {
+    this.saveState({ key: 'storyline', value: (event.target.value) });
+  }
+
   saveState(content) {
     const { key, value } = content;
     this.setState({
@@ -40,7 +45,7 @@ class AddMovie extends React.Component {
 
   render() {
     // const { onClick } = this.props;
-    const { title, subtitle, imagePath } = this.state;
+    const { title, subtitle, imagePath, storyline } = this.state;
     return (
       <div>
         <form data-testid="add-movie-form">
@@ -74,6 +79,18 @@ class AddMovie extends React.Component {
               data-testid="image-input"
               value={ imagePath }
               onChange={ this.handleChanceImagePath }
+            />
+          </label>
+          <label htmlFor="storyline-input" data-testid="storyline-input-label">
+            Sinopse
+            <textarea
+              name="storyline-input"
+              id="storyline-input"
+              data-testid="storyline-input"
+              cols="30"
+              rows="10"
+              value={ storyline }
+              onChange={ this.handleChanceStoryline }
             />
           </label>
         </form>
