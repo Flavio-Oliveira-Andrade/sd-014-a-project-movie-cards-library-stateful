@@ -22,7 +22,14 @@ class MovieLibrary extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
-  onClick({ target }) {
+  onClick(movie) {
+    const { movies } = this.state;
+    console.log(movie);
+    console.table(movies.length);
+    movies.push(movie);
+    this.saveState({
+      movies,
+    });
   }
 
   onSearchTextChange({ target }) {
