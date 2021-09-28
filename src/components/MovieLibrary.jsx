@@ -1,9 +1,9 @@
 // implement MovieLibrary component here
 import React from 'react';
+import PropTypes from 'prop-types';
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
-import PropTypes from 'prop-types';
 
 class MovieLibrary extends React.Component {
   constructor(props) {
@@ -13,10 +13,12 @@ class MovieLibrary extends React.Component {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      movies: (movies),
+      movies,
     };
     this.saveState = this.saveState.bind(this);
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
+    this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
+    this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -25,15 +27,16 @@ class MovieLibrary extends React.Component {
   }
 
   onSearchTextChange({ target }) {
-    this.saveState({ searchText: target.value });
+    this.saveState({ searchText: (target.value) });
   }
 
-  onBookmarkedChange({ target }) {
-
+  onBookmarkedChange() {
+    const { bookmarkedOnly } = this.state;
+    this.saveState({ bookmarkedOnly: !(bookmarkedOnly) });
   }
 
   onSelectedGenreChange({ target }) {
-    this.saveState({ selectedGenre: target.value });
+    this.saveState({ selectedGenre: (target.value) });
   }
 
   saveState(content) {
