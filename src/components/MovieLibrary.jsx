@@ -19,24 +19,46 @@ class MovieLibrary extends React.Component {
     this.onSearchTextChange = this.onSearchTextChange.bind(this);
     this.onSelectedGenreChange = this.onSelectedGenreChange.bind(this);
     this.onBookmarkedChange = this.onBookmarkedChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
-  handleClick() {
-
+  onClick({ target }) {
   }
 
   onSearchTextChange({ target }) {
-    this.saveState({ searchText: (target.value) });
+    const { movies } = this.props;
+    this.saveState({
+      searchText: (target.value),
+      movies: (target.value
+        ? movies.filter(
+          (movie) => movie.title.includes(target.value)
+          || movie.subtitle.includes(target.value)
+          || movie.storyline.includes(target.value),
+        )
+        : movies),
+    });
   }
 
   onBookmarkedChange() {
+    const { movies } = this.props;
     const { bookmarkedOnly } = this.state;
-    this.saveState({ bookmarkedOnly: !(bookmarkedOnly) });
+    this.saveState({
+      bookmarkedOnly: (!bookmarkedOnly),
+      movies: (!bookmarkedOnly)
+        ? movies.filter((movie) => movie.bookmarked)
+        : movies,
+    });
+    console.log(bookmarkedOnly);
   }
 
   onSelectedGenreChange({ target }) {
-    this.saveState({ selectedGenre: (target.value) });
+    const { movies } = this.props;
+    this.saveState({
+      selectedGenre: (target.value),
+      movies: (target.value !== '')
+        ? movies.filter((movie) => movie.genre === target.value)
+        : movies,
+    });
   }
 
   saveState(content) {
@@ -44,8 +66,7 @@ class MovieLibrary extends React.Component {
   }
 
   render() {
-    const { movies } = this.props;
-    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+    const { searchText, bookmarkedOnly, selectedGenre, movies } = this.state;
     return (
       <div>
         <SearchBar
@@ -60,7 +81,7 @@ class MovieLibrary extends React.Component {
           movies={ movies }
         />
         <AddMovie
-          onClick={ this.handleClick }
+          onClick={ this.onClick }
         />
       </div>
     );
