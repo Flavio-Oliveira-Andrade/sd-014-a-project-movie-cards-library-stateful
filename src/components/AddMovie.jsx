@@ -16,9 +16,9 @@ class AddMovie extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleChange = ({ target }) => this.setState({
-    [target.name]: (target.type === 'checkbox' ? target.checked : target.value),
-  });
+  handleChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
 
   handleClick(event) {
     event.preventDefault();
