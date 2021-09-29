@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class AddMovie extends React.Component {
   constructor(props) {
@@ -38,14 +39,14 @@ class AddMovie extends React.Component {
 
   inputGenerator(data, type, name, value) {
     return (
-      <input 
+      <input
         data-testid={ data }
         type={ type }
         name={ name }
         value={ value }
-        onChange={ this.handleChange }      
+        onChange={ this.handleChange }
       />
-    )
+    );
   }
 
   createTextArea(data, name, value) {
@@ -67,16 +68,16 @@ class AddMovie extends React.Component {
       <div>
         <form data-testid="add-movie-form">
           <label htmlFor="title" data-testid="title-input-label">
-            Titulo
+            Título
             { this.inputGenerator('title-input', 'text', 'title', title) }
-          </label >
+          </label>
           <label htmlFor="subtitle" data-testid="subtitle-input-label">
             Subtítulo
             { this.inputGenerator('subtitle-input', 'text', 'subtitle', subtitle) }
           </label>
           <label htmlFor="imagePath" data-testid="image-input-label">
             Imagem
-            { this.inputGenerator('image-input', 'text', 'image', imagePath) }
+            { this.inputGenerator('image-input', 'text', 'imagePath', imagePath) }
           </label>
           <label htmlFor="storyline" data-testid="storyline-input-label">
             Sinopse
@@ -84,26 +85,32 @@ class AddMovie extends React.Component {
           </label>
           <label htmlFor="rating" data-testid="rating-input-label">
             Avaliação
-            { this.inputGenerator('rating-input', 'text', 'rating', rating) }
+            { this.inputGenerator('rating-input', 'number', 'rating', rating) }
           </label>
           <label htmlFor="genre" data-testid="genre-input-label">
             Gênero
             <select
               data-testid="genre-input"
               name="genre"
-              value={ genre } onChange={ this.handleChange }>
-                <option data-testid="genre-option" value="action">Ação</option>
-                <option data-testid="genre-option" value="comedy">Comédia</option>
-                <option data-testid="genre-option" value="thriller">Suspense</option>
+              value={ genre }
+              onChange={ this.handleChange }
+            >
+              <option data-testid="genre-option" value="action">Ação</option>
+              <option data-testid="genre-option" value="comedy">Comédia</option>
+              <option data-testid="genre-option" value="thriller">Suspense</option>
             </select>
           </label>
-          <button data-testid="send-button"onClick={ this.handleAdd }>
+          <button data-testid="send-button" type="button" onClick={ this.handleAdd }>
             Adicionar filme
           </button>
         </form>
       </div>
-    )
+    );
   }
 }
+// conselho do colega Oshiro para desestruturar os inputs em uma função gênerica.
 
+AddMovie.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
 export default AddMovie;
