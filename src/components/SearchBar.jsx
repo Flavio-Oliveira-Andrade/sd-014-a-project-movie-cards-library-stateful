@@ -34,10 +34,10 @@ class SearchBar extends Component {
             data-testid="checkbox-input"
           />
         </label>
-        <label htmlFor="selectdGenre" data-testid="select-input-label">
+        <label htmlFor="selectedGenre" data-testid="select-input-label">
           Filtrar por gênero
           <select
-            name="selectdGenre"
+            name="selectedGenre"
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }
             data-testid="select-input"
