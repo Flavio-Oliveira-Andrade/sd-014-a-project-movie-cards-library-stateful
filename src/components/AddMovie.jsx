@@ -6,8 +6,6 @@ import SecondMovieForm from './SecondMovieForm';
 class AddMovie extends Component {
   constructor() {
     super();
-    this.changeState = this.changeState.bind(this);
-    this.onclick = this.onclick.bind(this);
     this.state = {
       subtitle: '',
       title: '',
@@ -16,11 +14,13 @@ class AddMovie extends Component {
       rating: 0,
       genre: 'action',
     };
+    this.changeState = this.changeState.bind(this);
+    this.onclick = this.onclick.bind(this);
   }
 
   onclick(event) {
     const { onClick } = this.props;
-    onClick();
+    onClick(this.state);
     event.preventDefault();
     this.setState({
       subtitle: '',
@@ -56,7 +56,7 @@ class AddMovie extends Component {
           handleChange={ this.changeState }
         />
         <button
-          type="submit"
+          type="button"
           data-testid="send-button"
           onClick={ this.onclick }
         >

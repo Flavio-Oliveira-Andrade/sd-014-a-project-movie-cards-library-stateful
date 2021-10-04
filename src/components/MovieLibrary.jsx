@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
-// import AddMovie from './AddMovie';
+import AddMovie from './AddMovie';
 
 class MovieLibrary extends Component {
   constructor(props) {
@@ -16,6 +16,7 @@ class MovieLibrary extends Component {
     };
     this.filterFilm = this.filterFilm.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.addFilm = this.addFilm.bind(this);
   }
 
   handleChange({ target }) {
@@ -48,6 +49,12 @@ class MovieLibrary extends Component {
     return filmesArray;
   } // Ajuda dos colegas!!
 
+  addFilm(newFilm) {
+    this.setState((estado) => ({
+      movies: [...estado.movies, { ...newFilm, bookmarked: true }],
+    }));
+  }
+
   render() {
     const { searchText, bookMarkedOnly, selectedGenre, movies } = this.state;
     return (
@@ -63,7 +70,7 @@ class MovieLibrary extends Component {
         />
 
         <MovieList movies={ this.filterFilm(movies) } />
-        {/* //<AddMovie// */}
+        <AddMovie onClick={ this.addFilm } />
       </div>
     );
   }
