@@ -6,18 +6,20 @@ import Subtitle from './subAddMovies/Subtitle';
 import Storyline from './subAddMovies/Storyline';
 import Rating from './subAddMovies/Rating';
 
+const stateStart = {
+  subtitle: '',
+  title: '',
+  imagePath: '',
+  storyline: '',
+  rating: 0,
+  genre: 'action',
+};
+
 class AddMovie extends React.Component {
   constructor() {
     super();
 
-    this.state = {
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    };
+    this.state = stateStart;
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -36,14 +38,7 @@ class AddMovie extends React.Component {
     const { onClick } = this.props;
     onClick(this.state);
 
-    this.setState({
-      subtitle: '',
-      title: '',
-      imagePath: '',
-      storyline: '',
-      rating: 0,
-      genre: 'action',
-    });
+    this.setState(stateStart);
   }
 
   render() {

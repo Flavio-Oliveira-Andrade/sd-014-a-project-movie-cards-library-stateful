@@ -11,6 +11,7 @@ class Storyline extends React.Component {
           data-testeid="storyline-input"
           type="text"
           name="storyline"
+          id="storyline"
           value={ storyline }
           onChange={ handleChange }
         />
