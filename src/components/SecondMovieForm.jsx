@@ -12,8 +12,8 @@ class SecondMovieForm extends Component {
             type="number"
             name="rating"
             value={ ratingValue }
-            onChange={ handleChange }
             data-testid="rating-input"
+            onChange={ handleChange }
           />
         </label>
         <label htmlFor="genre-input" data-testid="genre-input-label">
@@ -21,8 +21,8 @@ class SecondMovieForm extends Component {
           <select
             value={ genreValue }
             name="genre"
-            onChange={ handleChange }
             data-testid="genre-input"
+            onChange={ handleChange }
           >
             <option
               value="action"

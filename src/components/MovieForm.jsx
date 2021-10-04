@@ -17,24 +17,24 @@ class MovieForm extends Component {
             data-testid="title-input"
           />
         </label>
-        <label htmlFor="subtitle-Input" data-testid="subtitle-input-label">
+        <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
           Subtítulo
           <input
             type="text"
             name="subtitle"
             value={ subtitleValue }
-            onChange={ handleChange }
             data-testid="subtitle-input"
+            onChange={ handleChange }
           />
         </label>
-        <label htmlFor="image-input" data-testid="title-input-label">
+        <label htmlFor="image-input" data-testid="image-input-label">
           Imagem
           <input
             type="text"
             name="imagePath"
             value={ imagePathValue }
-            onChange={ handleChange }
             data-testid="image-input"
+            onChange={ handleChange }
           />
         </label>
         <label htmlFor="storyline-input" data-testid="storyline-input-label">
@@ -44,8 +44,8 @@ class MovieForm extends Component {
             value={ storylineValue }
             cols="30"
             rows="10"
-            onChange={ handleChange }
             data-testid="storyline-input"
+            onChange={ handleChange }
           />
         </label>
       </>
