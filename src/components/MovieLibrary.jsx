@@ -29,7 +29,7 @@ class MovieLibrary extends Component {
   }
 
   filterFilm(filmes) {
-    const { searchText, bookMarkendOnly, selectedGenre } = this.state;
+    const { searchText, bookMarkedOnly, selectedGenre } = this.state;
     let filmesArray = [...filmes];
 
     if (searchText) {
@@ -43,7 +43,7 @@ class MovieLibrary extends Component {
       filmesArray = filmes.filter((genero) => genero.genre.includes(selectedGenre));
     }
 
-    if (bookMarkendOnly) {
+    if (bookMarkedOnly) {
       filmesArray = filmes.filter((favoritos) => favoritos.bookmarked === true);
     }
     return filmesArray;
