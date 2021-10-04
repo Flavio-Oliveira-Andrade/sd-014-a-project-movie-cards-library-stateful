@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import MovieForm from './MovieForm';
+import SecondMovieForm from './SecondMovieForm';
 
 class AddMovie extends Component {
   constructor() {
@@ -8,9 +10,9 @@ class AddMovie extends Component {
       subtitle: '',
       title: '',
       imagePath: '',
-      // storyline: '',
-      // rating: 0,
-      // genre: 'action',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
     };
   }
 
@@ -23,40 +25,23 @@ class AddMovie extends Component {
 
   render() {
     // const { onclick } = this.props;
-    const { title, subtitle, imagePath } = this.state;
+    const { title, subtitle, imagePath, storyline, rating, genre } = this.state;
     return (
       <form action="" data-testid="add-movie-form">
-        <label htmlFor="titleInput" data-testid="title-input-label">
-          Título
-          <input
-            type="text"
-            name="title"
-            value={ title }
-            onChange={ this.changeState }
-            data-testid="title-input"
-          />
-        </label>
-        <label htmlFor="subtitle-input" data-testid="subtitle-input-label">
-          Subtítulo
-          <input
-            type="text"
-            name="subtitle"
-            value={ subtitle }
-            data-testid="subtitle-input"
-            onChange={ this.changeState }
-          />
-        </label>
-        <label htmlFor="image-input" data-testid="image-input-label">
-          Imagem
-          <input
-            type="text"
-            name="imagePath"
-            value={ imagePath }
-            data-testid="image-input"
-            onChange={ this.changeState }
-          />
-        </label>
+        <MovieForm
+          titleValue={ title }
+          subtitleValue={ subtitle }
+          imagePathValue={ imagePath }
+          storylineValue={ storyline }
+          handleChange={ this.changeState }
+        />
+        <SecondMovieForm
+          ratingValue={ rating }
+          genreValue={ genre }
+          handleChange={ this.changeState }
+        />
       </form>
+
     );
   }
 }
