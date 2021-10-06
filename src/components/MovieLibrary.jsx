@@ -12,7 +12,7 @@ class MovieLibrary extends Component {
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
-      // selected: '',
+      selectedGenre: '',
       filter: movies,
       movies,
     };
@@ -40,11 +40,19 @@ class MovieLibrary extends Component {
   }
 
   handleChange = (event) => {
+    const { movies } = this.state;
     const { name, value, checked, type } = event.target;
-    let filter = [];
-    console.log(event.target);
+    let filter = movies;
     this.setState({ [name]: type === 'checkbox' ? checked : value }, () => {
-      filter = this.getMovieByGenre(this.getBookmarkedMovies(this.filterText()));
+      if (name === 'searchText') {
+        filter = this.filterText(filter);
+      }
+      if (name === 'bookmarkedOnly') {
+        filter = this.getBookmarkedMovies(filter);
+      }
+      if (name === 'selectedGenre') {
+        filter = this.getMovieByGenre(filter);
+      }
       this.setState({ filter });
     });
   };
