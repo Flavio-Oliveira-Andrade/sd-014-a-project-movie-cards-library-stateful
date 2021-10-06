@@ -12,7 +12,7 @@ class MovieLibrary extends Component {
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
-      selected: '',
+      // selected: '',
       filter: movies,
       movies,
     };
@@ -28,7 +28,8 @@ class MovieLibrary extends Component {
 
   getBookmarkedMovies() {
     const { movies, bookmarkedOnly } = this.state;
-    const bookMarked = movies.filter(({ bookmarked }) => (bookmarkedOnly ? bookmarked : true));
+    const bookMarked = movies
+      .filter(({ bookmarked }) => (bookmarkedOnly ? bookmarked : true));
     console.log(bookMarked);
     return bookMarked;
   }
