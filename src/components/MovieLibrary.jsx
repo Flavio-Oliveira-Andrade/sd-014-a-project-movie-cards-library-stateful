@@ -29,7 +29,21 @@ class MovieLibrary extends Component {
     this.setState({ [name]: value });
   }
 
-  onSearchTextChange() {
+  onSearchTextChange(event) {
+    const { movies } = this.props;
+    console.log(event.target.value);
+    if (event.target.value === '') {
+      this.setState({ movies });
+    } else {
+      this.setState({
+        movies: movies.filter(({ title, subtitle, storyline }) => {
+          const content = `${title}, ${subtitle}, ${storyline}`;
+          console.log(content.includes(event.target.value));
+          return content.includes(event.target.value);
+        }),
+      });
+    }
+    this.handleChange(event);
   }
 
   onBookmarkedChange(event) {
