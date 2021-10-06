@@ -13,38 +13,53 @@ class MovieLibrary extends Component {
       searchText: '',
       bookmarkedOnly: false,
       selected: '',
+      filter: movies,
       movies,
     };
+    this.getBookmarkedMovies = this.getBookmarkedMovies.bind(this);
+    this.getMovieByGenre = this.getMovieByGenre.bind(this);
+    this.filterText = this.filterText.bind(this);
+  }
+
+  handleClick = (newMovie) => {
+    const { filter, movies } = this.state;
+    this.setState({ filter: [...filter, newMovie], movies: [...movies, newMovie] });
+  };
+
+  getBookmarkedMovies() {
+    const { movies, bookmarkedOnly } = this.state;
+    const bookMarked = movies.filter(({ bookmarked }) => (bookmarkedOnly ? bookmarked : true));
+    console.log(bookMarked);
+    return bookMarked;
+  }
+
+  getMovieByGenre(array) {
+    const { selectedGenre } = this.state;
+    return array.filter(({ genre }) => genre.includes(selectedGenre));
   }
 
   handleChange = (event) => {
     const { name, value, checked, type } = event.target;
-    this.setState({ [name]: type === 'checkbox' ? checked : value });
+    let filter = [];
+    console.log(event.target);
+    this.setState({ [name]: type === 'checkbox' ? checked : value }, () => {
+      filter = this.getMovieByGenre(this.getBookmarkedMovies(this.filterText()));
+      this.setState({ filter });
+    });
   };
 
-  handleClick = (newMovie) => {
-    const { movies } = this.state;
-    this.setState({ movies: [...movies, newMovie] });
-  };
-
-  filterText = ({ searchText, movies }) => movies
-    .filter(({ title, subtitle, storyline }) => (title.includes(searchText)
-    || subtitle.includes(searchText) || storyline.includes(searchText)));
-
-  getBookmarkedMovies = ((array) => {
-    const { bookmarkedOnly } = this.state;
-    return array.filter(({ bookmarked }) => (bookmarkedOnly ? bookmarked : true));
-  })
-
-  getMovieByGenre = ((array) => {
-    const { selectedGenre } = this.state;
-    return array.filter(({ genre }) => genre.includes(selectedGenre));
-  })
+  filterText() {
+    const { searchText, movies } = this.state;
+    const filterMovies = movies
+      .filter(({ title, subtitle, storyline }) => (title.includes(searchText)
+      || subtitle.includes(searchText) || storyline.includes(searchText)));
+    return filterMovies;
+  }
 
   render() {
-    const { filterText, getBookmarkedMovies, getMovieByGenre } = this;
-    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
-    const filter = getMovieByGenre(getBookmarkedMovies(filterText(this.state)));
+    // const { filterText, getBookmarkedMovies, getMovieByGenre } = this;
+    const { searchText, bookmarkedOnly, selectedGenre, filter } = this.state;
+    // const filter = getMovieByGenre(getBookmarkedMovies(filterText(this.state)));
     return (
       <div>
         <SearchBar
