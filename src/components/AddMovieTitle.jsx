@@ -22,7 +22,7 @@ class AddMovieTitle extends React.Component {
 }
 
 AddMovieTitle.propTypes = {
-  value: PropTypes.number,
+  value: PropTypes.string,
   handleChange: PropTypes.func,
 }.isRequired;
 

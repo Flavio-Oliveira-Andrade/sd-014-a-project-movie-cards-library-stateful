@@ -22,7 +22,7 @@ class AddMovieSubtitle extends React.Component {
 }
 
 AddMovieSubtitle.propTypes = {
-  value: PropTypes.number,
+  value: PropTypes.string,
   handleChange: PropTypes.func,
 }.isRequired;
 

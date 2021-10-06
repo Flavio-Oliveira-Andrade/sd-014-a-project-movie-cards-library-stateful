@@ -22,7 +22,7 @@ class AddMovieImage extends React.Component {
 }
 
 AddMovieImage.propTypes = {
-  value: PropTypes.number,
+  value: PropTypes.string,
   handleChange: PropTypes.func,
 }.isRequired;
 
