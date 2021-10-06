@@ -10,35 +10,36 @@ class SearchBar extends Component {
       bookmarkedOnly,
       onBookmarkedChange,
       selectedGenre,
-      onSelectedGenreChange,
-    } = this.props;
-
+      onSelectedGenreChange } = this.props;
     return (
       <form data-testid="search-bar-form" className="search-bar-form">
-        <label htmlFor="searchText" data-testid="text-input-label">
-          Inclui o Texto:
+        <label htmlFor="search-bar-text" data-testid="text-input-label">
+          Inclui o texto:
           <input
             type="text"
             name="searchText"
+            id="search-bar-text"
             value={ searchText }
             onChange={ onSearchTextChange }
             data-testid="text-input"
           />
         </label>
-        <label htmlFor="checkBoxFav" data-testid="checkbox-input-label">
+        <label htmlFor="search-bar-bookmarked" data-testid="checkbox-input-label">
           <input
             type="checkbox"
             name="bookmarkedOnly"
+            id="search-bar-bookmarked"
             checked={ bookmarkedOnly }
             onChange={ onBookmarkedChange }
             data-testid="checkbox-input"
           />
           Mostrar somente favoritos
         </label>
-        <label htmlFor="selectedGenre" data-testid="select-input-label">
+        <label htmlFor="search-bar-genre" data-testid="select-input-label">
           Filtrar por gênero
           <select
             name="selectedGenre"
+            id="search-bar-genre"
             value={ selectedGenre }
             onChange={ onSelectedGenreChange }
             data-testid="select-input"
