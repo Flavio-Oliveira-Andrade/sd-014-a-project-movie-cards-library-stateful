@@ -3,18 +3,26 @@ import PropTypes from 'prop-types';
 
 class AddMovieRating extends React.Component {
   render() {
-    const { rating } = this.props;
-
+    const { value, handleChange } = this.props;
     return (
-      <div className="movie-card-rating" data-testid="rating">
-        <span className="rating">{rating}</span>
-      </div>
+      <label htmlFor="add-movie-rating" data-testid="rating-input-label">
+        Avaliação
+        <input
+          type="number"
+          name="rating"
+          id="add-movie-rating"
+          value={ value }
+          data-testid="rating-input"
+          onChange={ handleChange }
+        />
+      </label>
     );
   }
 }
 
-AddMovieRating.propTypes = { rating: PropTypes.number }.isRequired;
-
-AddMovieRating.defaultProps = { rating: 'undefined' };
+AddMovieRating.propTypes = {
+  value: PropTypes.number,
+  handleChange: PropTypes.func,
+}.isRequired;
 
 export default AddMovieRating;
