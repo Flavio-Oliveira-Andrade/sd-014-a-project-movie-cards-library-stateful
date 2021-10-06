@@ -7,6 +7,7 @@ import AddMovieImage from './AddMovieImage';
 import AddMovieStoryline from './AddMovieStoryline';
 import AddMovieRating from './AddMovieRating';
 import AddMovieGenre from './AddMovieGenre';
+import AddMovieButton from './AddMovieButton';
 
 class AddMovie extends React.Componet {
   constructor() {
@@ -30,6 +31,7 @@ class AddMovie extends React.Componet {
         <AddMovieStoryline value={ storyline } handleChange={ this.handleChange } />
         <AddMovieRating value={ rating } handleChange={ this.handleChange } />
         <AddMovieGenre value={ genre } handleChange={ this.handleChange } />
+        <AddMovieButton handleClick={ this.handleClick } />
       </form>
     );
   }
