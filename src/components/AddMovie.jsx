@@ -9,7 +9,7 @@ import AddMovieRating from './AddMovieRating';
 import AddMovieGenre from './AddMovieGenre';
 import AddMovieButton from './AddMovieButton';
 
-class AddMovie extends React.Componet {
+class AddMovie extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -22,7 +22,35 @@ class AddMovie extends React.Componet {
     };
   }
 
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  }
+
+  handleClick = (event) => {
+    const { onClick } = this.props;
+    onClick(this.state);
+    event.preventDefault();
+    this.setState({
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      rating: 0,
+      genre: 'action',
+    });
+  }
+
   render() {
+    const {
+      title,
+      subtitle,
+      imagePath,
+      storyline,
+      rating,
+      genre,
+    } = this.state;
+
     return (
       <form className="add-movie-form" data-testid="add-movie-form">
         <AddMovieTitle value={ title } handleChange={ this.handleChange } />

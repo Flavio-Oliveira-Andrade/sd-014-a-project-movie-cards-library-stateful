@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class AddMovieStoryline extends React.Components {
+class AddMovieStoryline extends React.Component {
   render() {
     const { value, handleChange } = this.props;
 
