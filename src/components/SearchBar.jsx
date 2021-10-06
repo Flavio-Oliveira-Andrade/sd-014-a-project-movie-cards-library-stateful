@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 // implement SearchBar component here
 
-class SearchBar extends React.Component {
+class SearchBar extends Component {
   render() {
     const {
       searchText,

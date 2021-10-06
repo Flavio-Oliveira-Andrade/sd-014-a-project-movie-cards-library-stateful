@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class AddMovieRating extends React.Component {
+class AddMovieRating extends Component {
   render() {
     const { value, handleChange } = this.props;
     return (

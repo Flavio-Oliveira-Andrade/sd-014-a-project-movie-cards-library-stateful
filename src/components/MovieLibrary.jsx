@@ -1,11 +1,11 @@
 // implement MovieLibrary component here
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 import AddMovie from './AddMovie';
 
-class MovieLibrary extends React.Component {
+class MovieLibrary extends Component {
   constructor(props) {
     super(props);
     const { movies } = props;
@@ -44,7 +44,7 @@ class MovieLibrary extends React.Component {
   render() {
     const { filterText, getBookmarkedMovies, getMovieByGenre } = this;
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
-    const filterFunctions = getMovieByGenre(getBookmarkedMovies(filterText(this.state)));
+    const filter = getMovieByGenre(getBookmarkedMovies(filterText(this.state)));
     return (
       <div>
         <SearchBar
@@ -55,7 +55,7 @@ class MovieLibrary extends React.Component {
           selectedGenre={ selectedGenre }
           onSelectedGenreChange={ this.handleChange }
         />
-        <MovieList movies={ filterFunctions } />
+        <MovieList movies={ filter } />
         <AddMovie onClick={ this.handleClick } />
       </div>
     );
