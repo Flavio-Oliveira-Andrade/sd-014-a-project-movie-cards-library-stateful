@@ -16,7 +16,7 @@ class MovieLibrary extends Component {
     };
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     const { name } = event.target;
     const value = event.target.type === 'checkbox'
       ? event.target.checked
@@ -24,29 +24,23 @@ class MovieLibrary extends Component {
     this.setState({ [name]: value });
   }
 
-  onSearchTextChange = (event) => {
-    const { movies } = this.props;
-    console.log(event.target.value);
-    if (event.target.value === '') {
-      this.setState({ movies });
-    } else {
-      this.setState({
-        movies: movies.filter(({ title, subtitle, storyline }) => {
-          const content = `${title}, ${subtitle}, ${storyline}`;
-          console.log(content.includes(event.target.value));
-          return content.includes(event.target.value);
-        }),
-      });
-    }
-    this.handleChange(event);
+  onSearchTextChange = () => {
   }
 
   onBookmarkedChange = () => {
 
   }
 
-  onSelectedGenreChange = () => {
-
+  onSelectedGenreChange = (event) => {
+    const { movies } = this.props;
+    if (event.target.value === '') {
+      this.setState({ movies });
+    } else {
+      this.setState({
+        movies: movies.filter((movie) => movie.genre === event.target.value),
+      });
+    }
+    this.handleChange(event);
   }
 
     addMovie = (movie) => {
