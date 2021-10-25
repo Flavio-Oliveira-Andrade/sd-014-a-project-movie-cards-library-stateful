@@ -7,6 +7,7 @@ const INITIAL_STATE = {
   imagePath: '',
   storyline: '',
   rating: 0,
+  bookmarked: false,
   genre: 'action',
 };
 
@@ -109,7 +110,7 @@ class AddMovie extends React.Component {
         </label>
         {this.createGenderSelectElement(genre)}
         <button
-          type="submit"
+          type="button"
           data-testid="send-button"
           onClick={ this.handleSubmit }
         >
@@ -120,12 +121,8 @@ class AddMovie extends React.Component {
   }
 }
 
-AddMovie.defaultProps = {
-  onClick: null,
-};
-
 AddMovie.propTypes = {
-  onClick: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default AddMovie;

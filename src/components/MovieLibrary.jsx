@@ -8,25 +8,30 @@ import AddMovie from './AddMovie';
 class MovieLibrary extends Component {
   constructor(props) {
     super(props);
+
+    const { movies } = this.props;
+
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
+      movies,
     };
+
     this.handleChange = this.handleChange.bind(this);
     this.filterMovies = this.filterMovies.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
   handleChange({ target }) {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({
-      [name]: value,
-    });
+    this.setState({ [name]: value });
   }
 
-  onClick() {
-    console.log('On click');
+  onClick(info) {
+    const { movies } = this.state;
+    this.setState({ movies: [...movies, info] });
   }
 
   filterMovies(moviesToFilter) {
@@ -47,7 +52,7 @@ class MovieLibrary extends Component {
 
   render() {
     const { searchText, bookmarkedOnly, selectedGenre } = this.state;
-    const { movies } = this.props;
+    const { movies } = this.state;
     return (
       <div>
         <h2> My awesome movie library </h2>
